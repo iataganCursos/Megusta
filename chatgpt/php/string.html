@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Strings em PHP</title>
+</head>
+
+<body>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>replace</strong></td>
+  </tr>
+  <tr>
+    <td>$frase = &quot;O rato roeu a roupa do rei de Roma.&quot;;<br />
+      $nova_frase = str_replace(&quot;rato&quot;, &quot;gato&quot;, $frase);<br />
+    echo $nova_frase;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>length</strong></td>
+  </tr>
+  <tr>
+    <td>$minhaString = &quot;Isso &eacute; uma string de exemplo.&quot;;<br />
+      $comprimento = strlen($minhaString);<br />
+    echo &quot;O comprimento da string &eacute;: $comprimento&quot;;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>substring</strong></td>
+  </tr>
+  <tr>
+    <td>$minhaString = &quot;Esta &eacute; uma string de exemplo&quot;;<br />
+      $subString = substr($minhaString, 5, 6);<br />
+    echo $subString;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>charAt </strong></td>
+  </tr>
+  <tr>
+    <td><p>$minhaString = &quot;Exemplo de string&quot;;<br />
+      $primeiroCaractere = $minhaString[0]; // Acessa o primeiro caractere (&iacute;ndice 0)<br />
+      echo $primeiroCaractere; // Isso ir&aacute; imprimir &quot;E&quot;</p>
+      <p>$terceiroCaractere = $minhaString[2]; // Acessa o terceiro caractere (&iacute;ndice 2)<br />
+    echo $terceiroCaractere; // Isso ir&aacute; imprimir &quot;e&quot;</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>indexOf</strong></td>
+  </tr>
+  <tr>
+    <td>$minhaString = &quot;Esta &eacute; uma string de exemplo&quot;;<br />
+      $posicao = strpos($minhaString, &quot;&eacute;&quot;);<br />
+    echo &quot;A posi&ccedil;&atilde;o da substring '&eacute;' na string &eacute;: $posicao&quot;;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>lastIndexOf</strong></td>
+  </tr>
+  <tr>
+    <td>$minhaString = &quot;Esta &eacute; uma string de exemplo com uma palavra exemplo.&quot;;<br />
+      $posicao = strrpos($minhaString, &quot;exemplo&quot;);<br />
+    echo &quot;A posi&ccedil;&atilde;o da &uacute;ltima ocorr&ecirc;ncia de 'exemplo' na string &eacute;: $posicao&quot;;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>toLowerCase</strong></td>
+  </tr>
+  <tr>
+    <td>$minhaString = &quot;Isso &eacute; uma String de Exemplo&quot;;<br />
+      $string_em_minusculas = strtolower($minhaString);<br />
+    echo $string_em_minusculas;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>toUpperCase </strong></td>
+  </tr>
+  <tr>
+    <td>$minhaString = &quot;Isso &eacute; uma string de exemplo&quot;;<br />
+      $string_em_maiusculas = strtoupper($minhaString);<br />
+    echo $string_em_maiusculas;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>compareTo </strong></td>
+  </tr>
+  <tr>
+    <td><p>$string1 = &quot;Hello&quot;;<br />
+      $string2 = &quot;hello&quot;;</p>
+      <p>$resultado = strcmp($string1, $string2);</p>
+      <p>if ($resultado === 0) {<br />
+        echo &quot;As strings s&atilde;o iguais.&quot;;<br />
+        } elseif ($resultado &lt; 0) {<br />
+        echo &quot;A primeira string &eacute; menor.&quot;;<br />
+        } else {<br />
+        echo &quot;A primeira string &eacute; maior.&quot;;<br />
+    }</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>compareToIgnoreCase </strong></td>
+  </tr>
+  <tr>
+    <td><p>$string1 = &quot;Hello&quot;;<br />
+      $string2 = &quot;hello&quot;;</p>
+      <p>$resultado = strcasecmp($string1, $string2);</p>
+      <p>if ($resultado === 0) {<br />
+        echo &quot;As strings s&atilde;o iguais (ignorando a diferen&ccedil;a entre mai&uacute;sculas e min&uacute;sculas).&quot;;<br />
+        } else {<br />
+        echo &quot;As strings s&atilde;o diferentes (ignorando a diferen&ccedil;a entre mai&uacute;sculas e min&uacute;sculas).&quot;;<br />
+        }</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>equals</strong></td>
+  </tr>
+  <tr>
+    <td><p>$string1 = &quot;Hello&quot;;<br />
+      $string2 = &quot;hello&quot;;</p>
+      <p>if ($string1 === $string2) {<br />
+        echo &quot;As strings s&atilde;o id&ecirc;nticas.&quot;;<br />
+        } else {<br />
+        echo &quot;As strings s&atilde;o diferentes.&quot;;<br />
+    }</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>equalsIgnoreCase </strong></td>
+  </tr>
+  <tr>
+    <td><p>$string1 = &quot;Hello&quot;;<br />
+      $string2 = &quot;hello&quot;;</p>
+      <p>$resultado = strcasecmp($string1, $string2);</p>
+      <p>if ($resultado === 0) {<br />
+        echo &quot;As strings s&atilde;o iguais (ignorando a diferen&ccedil;a entre mai&uacute;sculas e min&uacute;sculas).&quot;;<br />
+        } else {<br />
+        echo &quot;As strings s&atilde;o diferentes (ignorando a diferen&ccedil;a entre mai&uacute;sculas e min&uacute;sculas).&quot;;<br />
+    }</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+</html>

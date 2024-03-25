@@ -1,0 +1,305 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Strings em Clipper</title>
+</head>
+
+<body>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>replace</strong></td>
+  </tr>
+  <tr>
+    <td><p>CLEAR<br />
+      LOCAL cadeia_original, resultado</p>
+      <p>cadeia_original = &quot;Isso &eacute; uma amostra de texto com uma palavra para substituir.&quot;<br />
+        resultado = STRTRAN(cadeia_original, &quot;palavra&quot;, &quot;substitui&ccedil;&atilde;o&quot;)</p>
+      <p>? resultado  // Isso imprimir&aacute; &quot;Isso &eacute; uma amostra de texto com uma substitui&ccedil;&atilde;o para substituir.&quot;<br />
+    </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>length</strong></td>
+  </tr>
+  <tr>
+    <td><p>CLEAR<br />
+      LOCAL minha_cadeia, tamanho</p>
+      <p>minha_cadeia = &quot;Isso &eacute; uma cadeia de caracteres.&quot;<br />
+        tamanho = LEN(minha_cadeia)</p>
+    <p>? tamanho  // Isso imprimir&aacute; o valor 26, que &eacute; o comprimento da cadeia de caracteres.</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>substring</strong></td>
+  </tr>
+  <tr>
+    <td><p>CLEAR<br />
+      LOCAL minha_cadeia, subcadeia</p>
+      <p>minha_cadeia = &quot;Isso &eacute; uma cadeia de caracteres.&quot;<br />
+        subcadeia = SUBSTR(minha_cadeia, 6, 4)</p>
+    <p>? subcadeia  // Isso imprimir&aacute; &quot;&eacute; uma&quot;, que &eacute; a subcadeia de 4 caracteres a partir da posi&ccedil;&atilde;o 6.</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>charAt </strong></td>
+  </tr>
+  <tr>
+    <td><p>CLEAR<br />
+      LOCAL minha_cadeia, caractere</p>
+      <p>minha_cadeia = &quot;Exemplo&quot;<br />
+        posicao = 4  // A posi&ccedil;&atilde;o do caractere que queremos acessar</p>
+      <p>IF posicao &gt;= 1 .AND. posicao &lt;= LEN(minha_cadeia)<br />
+        caractere = SUBSTR(minha_cadeia, posicao, 1)<br />
+        ? caractere  // Isso imprimir&aacute; o caractere na posi&ccedil;&atilde;o 4, que &eacute; &quot;e&quot;<br />
+        ENDIF<br />
+      </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>indexOf</strong></td>
+  </tr>
+  <tr>
+    <td><p>FUNCTION IndexOf(cadeia, subcadeia)<br />
+      LOCAL pos<br />
+      LOCAL len_cadeia, len_subcadeia</p>
+      <p> len_cadeia = LEN(cadeia)<br />
+        len_subcadeia = LEN(subcadeia)</p>
+      <p> FOR pos = 1 TO len_cadeia - len_subcadeia + 1<br />
+        IF SUBSTR(cadeia, pos, len_subcadeia) == subcadeia<br />
+        RETURN pos<br />
+        ENDIF<br />
+        NEXT</p>
+      <p> RETURN 0  // Retorna 0 se a subcadeia n&atilde;o for encontrada<br />
+    </p></td>
+  </tr>
+  <tr>
+    <td><p>CLEAR<br />
+      LOCAL minha_cadeia, subcadeia, posicao</p>
+      <p>minha_cadeia = &quot;Esta &eacute; uma cadeia de caracteres de exemplo.&quot;<br />
+        subcadeia = &quot;cadeia&quot;<br />
+        posicao = IndexOf(minha_cadeia, subcadeia)</p>
+      <p>IF posicao &gt; 0<br />
+        ? &quot;Subcadeia encontrada na posi&ccedil;&atilde;o:&quot;, posicao  // Isso imprimir&aacute; a posi&ccedil;&atilde;o da subcadeia<br />
+        ELSE<br />
+        ? &quot;Subcadeia n&atilde;o encontrada.&quot;  // Isso ser&aacute; exibido se a subcadeia n&atilde;o for encontrada<br />
+    ENDIF</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>lastIndexOf</strong></td>
+  </tr>
+  <tr>
+    <td><p>FUNCTION LastIndexOf(cadeia, subcadeia)<br />
+      LOCAL pos<br />
+      LOCAL len_cadeia, len_subcadeia</p>
+      <p> len_cadeia = LEN(cadeia)<br />
+        len_subcadeia = LEN(subcadeia)</p>
+      <p> FOR pos = len_cadeia TO 1 STEP -1<br />
+        IF SUBSTR(cadeia, pos, len_subcadeia) == subcadeia<br />
+        RETURN pos<br />
+        ENDIF<br />
+        NEXT</p>
+      <p> RETURN 0  // Retorna 0 se a subcadeia n&atilde;o for encontrada<br />
+    </p></td>
+  </tr>
+  <tr>
+    <td><p>CLEAR<br />
+      LOCAL minha_cadeia, subcadeia, posicao</p>
+      <p>minha_cadeia = &quot;Esta &eacute; uma cadeia de caracteres de exemplo com uma palavra cadeia.&quot;<br />
+        subcadeia = &quot;cadeia&quot;<br />
+        posicao = LastIndexOf(minha_cadeia, subcadeia)</p>
+      <p>IF posicao &gt; 0<br />
+        ? &quot;&Uacute;ltima posi&ccedil;&atilde;o da subcadeia encontrada:&quot;, posicao  // Isso imprimir&aacute; a posi&ccedil;&atilde;o da &uacute;ltima ocorr&ecirc;ncia da subcadeia<br />
+        ELSE<br />
+        ? &quot;Subcadeia n&atilde;o encontrada.&quot;  // Isso ser&aacute; exibido se a subcadeia n&atilde;o for encontrada<br />
+    ENDIF</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>toLowerCase</strong></td>
+  </tr>
+  <tr>
+    <td><p>FUNCTION ToLowerCaseLatin(cadeia)<br />
+      LOCAL i, caractere, resultado<br />
+      LOCAL maiusculas, minusculas</p>
+      <p> maiusculas = &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&Aacute;&Eacute;&Iacute;&Oacute;&Uacute;&Agrave;&Egrave;&Igrave;&Ograve;&Ugrave;&Acirc;&Ecirc;&Icirc;&Ocirc;&Ucirc;&Atilde;&Otilde;&Ccedil;&quot;<br />
+        minusculas = &quot;abcdefghijklmnopqrstuvwxyz&aacute;&eacute;&iacute;&oacute;&uacute;&agrave;&egrave;&igrave;&ograve;&ugrave;&acirc;&ecirc;&icirc;&ocirc;&ucirc;&atilde;&otilde;&ccedil;&quot;</p>
+      <p> resultado = &quot;&quot;</p>
+      <p> FOR i = 1 TO LEN(cadeia)<br />
+        caractere = SUBSTR(cadeia, i, 1)<br />
+        pos = AT(caractere, maiusculas)<br />
+        IF pos &gt; 0<br />
+        caractere = SUBSTR(minusculas, pos, 1)<br />
+        ENDIF<br />
+        resultado = resultado + caractere<br />
+        NEXT</p>
+      <p> RETURN resultado<br />
+    </p></td>
+  </tr>
+  <tr>
+    <td><p>CLEAR<br />
+      LOCAL minha_cadeia, cadeia_minusculas</p>
+      <p>minha_cadeia = &quot;Esta &Eacute; Uma Cadeia De Caracteres.&quot;<br />
+        cadeia_minusculas = ToLowerCaseLatin(minha_cadeia)</p>
+    <p>? cadeia_minusculas  // Isso imprimir&aacute; &quot;esta &eacute; uma cadeia de caracteres.&quot;</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>toUpperCase </strong></td>
+  </tr>
+  <tr>
+    <td><p>FUNCTION ToUpperCaseLatin(cadeia)<br />
+      LOCAL i, caractere, resultado<br />
+      LOCAL maiusculas, minusculas</p>
+      <p> maiusculas = &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&Aacute;&Eacute;&Iacute;&Oacute;&Uacute;&Agrave;&Egrave;&Igrave;&Ograve;&Ugrave;&Acirc;&Ecirc;&Icirc;&Ocirc;&Ucirc;&Atilde;&Otilde;&Ccedil;&quot;<br />
+        minusculas = &quot;abcdefghijklmnopqrstuvwxyz&aacute;&eacute;&iacute;&oacute;&uacute;&agrave;&egrave;&igrave;&ograve;&ugrave;&acirc;&ecirc;&icirc;&ocirc;&ucirc;&atilde;&otilde;&ccedil;&quot;</p>
+      <p> resultado = &quot;&quot;</p>
+      <p> FOR i = 1 TO LEN(cadeia)<br />
+        caractere = SUBSTR(cadeia, i, 1)<br />
+        pos = AT(caractere, minusculas)<br />
+        IF pos &gt; 0<br />
+        caractere = SUBSTR(maiusculas, pos, 1)<br />
+        ENDIF<br />
+        resultado = resultado + caractere<br />
+        NEXT</p>
+      <p> RETURN resultado<br />
+    </p></td>
+  </tr>
+  <tr>
+    <td><p>CLEAR<br />
+      LOCAL minha_cadeia, cadeia_maiusculas</p>
+      <p>minha_cadeia = &quot;Esta &Eacute; Uma Cadeia De Caracteres.&quot;<br />
+        cadeia_maiusculas = ToUpperCaseLatin(minha_cadeia)</p>
+    <p>? cadeia_maiusculas  // Isso imprimir&aacute; &quot;ESTA &Eacute; UMA CADEIA DE CARACTERES.&quot;</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>compareTo </strong></td>
+  </tr>
+  <tr>
+    <td><p>FUNCTION CompareStrings(cadeia1, cadeia2)<br />
+IF cadeia1 == cadeia2<br />
+RETURN 0  // As cadeias s&atilde;o iguais<br />
+ELSE<br />
+IF cadeia1 &lt; cadeia2<br />
+RETURN -1  // cadeia1 &eacute; menor que cadeia2<br />
+ELSE<br />
+RETURN 1  // cadeia1 &eacute; maior que cadeia2<br />
+ENDIF<br />
+ENDIF<br />
+    </p>    </td>
+  </tr>
+  <tr>
+    <td><p>CLEAR<br />
+      LOCAL minha_cadeia1, minha_cadeia2, resultado</p>
+      <p>minha_cadeia1 = &quot;banana&quot;<br />
+        minha_cadeia2 = &quot;abacaxi&quot;<br />
+        resultado = CompareStrings(minha_cadeia1, minha_cadeia2)</p>
+      <p>IF resultado == 0<br />
+        ? &quot;As cadeias s&atilde;o iguais.&quot;<br />
+        ELSEIF resultado &lt; 0<br />
+        ? &quot;minha_cadeia1 &eacute; menor que minha_cadeia2.&quot;<br />
+        ELSE<br />
+        ? &quot;minha_cadeia1 &eacute; maior que minha_cadeia2.&quot;<br />
+    ENDIF</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>compareToIgnoreCase </strong></td>
+  </tr>
+  <tr>
+    <td><p>FUNCTION CompareStringsIgnoreCase(cadeia1, cadeia2)<br />
+LOCAL lowerCadeia1, lowerCadeia2<br />
+lowerCadeia1 = LOWER(cadeia1)<br />
+lowerCadeia2 = LOWER(cadeia2)</p>
+      <p> IF lowerCadeia1 == lowerCadeia2<br />
+        RETURN 0  // As cadeias s&atilde;o iguais sem distin&ccedil;&atilde;o entre mai&uacute;sculas e min&uacute;sculas<br />
+        ELSE<br />
+        IF lowerCadeia1 &lt; lowerCadeia2<br />
+        RETURN -1  // cadeia1 &eacute; menor que cadeia2 sem distin&ccedil;&atilde;o entre mai&uacute;sculas e min&uacute;sculas<br />
+        ELSE<br />
+        RETURN 1  // cadeia1 &eacute; maior que cadeia2 sem distin&ccedil;&atilde;o entre mai&uacute;sculas e min&uacute;sculas<br />
+        ENDIF<br />
+        ENDIF<br />
+      </p></td>
+  </tr>
+  <tr>
+    <td><p>CLEAR<br />
+      LOCAL minha_cadeia1, minha_cadeia2, resultado</p>
+      <p>minha_cadeia1 = &quot;Banana&quot;<br />
+        minha_cadeia2 = &quot;banana&quot;<br />
+        resultado = CompareStringsIgnoreCase(minha_cadeia1, minha_cadeia2)</p>
+      <p>IF resultado == 0<br />
+        ? &quot;As cadeias s&atilde;o iguais sem distin&ccedil;&atilde;o entre mai&uacute;sculas e min&uacute;sculas.&quot;<br />
+        ELSEIF resultado &lt; 0<br />
+        ? &quot;minha_cadeia1 &eacute; menor que minha_cadeia2 sem distin&ccedil;&atilde;o entre mai&uacute;sculas e min&uacute;sculas.&quot;<br />
+        ELSE<br />
+        ? &quot;minha_cadeia1 &eacute; maior que minha_cadeia2 sem distin&ccedil;&atilde;o entre mai&uacute;sculas e min&uacute;sculas.&quot;<br />
+    ENDIF</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>equals</strong></td>
+  </tr>
+  <tr>
+    <td><p>CLEAR<br />
+      LOCAL minha_cadeia1, minha_cadeia2</p>
+      <p>minha_cadeia1 = &quot;Texto de exemplo&quot;<br />
+        minha_cadeia2 = &quot;Outro texto de exemplo&quot;</p>
+      <p>IF minha_cadeia1 == minha_cadeia2<br />
+        ? &quot;As cadeias s&atilde;o iguais.&quot;<br />
+        ELSE<br />
+        ? &quot;As cadeias s&atilde;o diferentes.&quot;<br />
+    ENDIF</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>equalsIgnoreCase </strong></td>
+  </tr>
+  <tr>
+    <td>FUNCTION EqualsIgnoreCase(cadeia1, cadeia2)<br />
+IF UPPER(cadeia1) == UPPER(cadeia2)<br />
+RETURN .T.  // As cadeias s&atilde;o iguais sem distin&ccedil;&atilde;o entre mai&uacute;sculas e min&uacute;sculas<br />
+ELSE<br />
+RETURN .F.  // As cadeias s&atilde;o diferentes<br />
+ENDIF</td>
+  </tr>
+  <tr>
+    <td><p>CLEAR<br />
+      LOCAL minha_cadeia1, minha_cadeia2, resultado</p>
+      <p>minha_cadeia1 = &quot;Texto de exemplo&quot;<br />
+        minha_cadeia2 = &quot;texto de exemplo&quot;</p>
+      <p>resultado = EqualsIgnoreCase(minha_cadeia1, minha_cadeia2)</p>
+      <p>IF resultado<br />
+        ? &quot;As cadeias s&atilde;o iguais sem distin&ccedil;&atilde;o entre mai&uacute;sculas e min&uacute;sculas.&quot;<br />
+        ELSE<br />
+        ? &quot;As cadeias s&atilde;o diferentes.&quot;<br />
+    ENDIF</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+</html>

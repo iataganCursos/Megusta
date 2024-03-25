@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Strings em Java</title>
+</head>
+
+<body>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>replace</strong></td>
+  </tr>
+  <tr>
+    <td>String original = &quot;Hoje &eacute; um lindo dia!&quot;;<br />
+      String substituida = original.replace(&quot;lindo&quot;, &quot;maravilhoso&quot;);<br />
+    System.out.println(substituida); // Sa&iacute;da: &quot;Hoje &eacute; um maravilhoso dia!&quot;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>length</strong></td>
+  </tr>
+  <tr>
+    <td>String minhaString = &quot;Ol&aacute;, mundo!&quot;;<br />
+      int tamanho = minhaString.length();<br />
+    System.out.println(&quot;O tamanho da string &eacute;: &quot; + tamanho); // Sa&iacute;da: &quot;O tamanho da string &eacute;: 12&quot;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>substring</strong></td>
+  </tr>
+  <tr>
+    <td>String original = &quot;Isso &eacute; uma String de exemplo.&quot;;<br />
+      String sub = original.substring(8, 13);<br />
+    System.out.println(sub); // Sa&iacute;da: &quot;uma S&quot;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>charAt </strong></td>
+  </tr>
+  <tr>
+    <td><p>String minhaString = &quot;Ol&aacute;, mundo!&quot;;<br />
+      char primeiroCaractere = minhaString.charAt(0); // Obt&eacute;m o primeiro caractere 'O'<br />
+      char quintoCaractere = minhaString.charAt(4);  // Obt&eacute;m o quinto caractere ','</p>
+      <p>System.out.println(&quot;Primeiro caractere: &quot; + primeiroCaractere);<br />
+        System.out.println(&quot;Quinto caractere: &quot; + quintoCaractere);<br />
+      </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>indexOf</strong></td>
+  </tr>
+  <tr>
+    <td>String minhaString = &quot;Isso &eacute; um exemplo de indexOf em Java.&quot;;<br />
+      int indice = minhaString.indexOf(&quot;exemplo&quot;);<br />
+    System.out.println(&quot;A substring 'exemplo' come&ccedil;a no &iacute;ndice: &quot; + indice); // Sa&iacute;da: &quot;A substring 'exemplo' come&ccedil;a no &iacute;ndice: 13&quot;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>lastIndexOf</strong></td>
+  </tr>
+  <tr>
+    <td>String minhaString = &quot;Isso &eacute; um exemplo de lastIndexOf em Java. lastIndexOf &eacute; &uacute;til para encontrar a &uacute;ltima ocorr&ecirc;ncia de uma substring.&quot;;<br />
+      int indice = minhaString.lastIndexOf(&quot;lastIndexOf&quot;);<br />
+    System.out.println(&quot;A &uacute;ltima ocorr&ecirc;ncia de 'lastIndexOf' come&ccedil;a no &iacute;ndice: &quot; + indice); // Sa&iacute;da: &quot;A &uacute;ltima ocorr&ecirc;ncia de 'lastIndexOf' come&ccedil;a no &iacute;ndice: 38&quot;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>toLowerCase</strong></td>
+  </tr>
+  <tr>
+    <td>String minhaString = &quot;Isso &Eacute; Uma String De Exemplo.&quot;;<br />
+      String emMinusculas = minhaString.toLowerCase();<br />
+    System.out.println(emMinusculas); // Sa&iacute;da: &quot;isso &eacute; uma string de exemplo.&quot;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>toUpperCase </strong></td>
+  </tr>
+  <tr>
+    <td>String minhaString = &quot;Isso &Eacute; Uma String De Exemplo.&quot;;<br />
+      String emMaiusculas = minhaString.toUpperCase();<br />
+    System.out.println(emMaiusculas); // Sa&iacute;da: &quot;ISSO &Eacute; UMA STRING DE EXEMPLO.&quot;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>compareTo </strong></td>
+  </tr>
+  <tr>
+    <td><p>String string1 = &quot;abacate&quot;;<br />
+      String string2 = &quot;banana&quot;;</p>
+      <p>int resultado = string1.compareTo(string2);</p>
+      <p>if (resultado &lt; 0) {<br />
+        System.out.println(&quot;string1 &eacute; menor que string2&quot;);<br />
+        } else if (resultado == 0) {<br />
+        System.out.println(&quot;string1 &eacute; igual a string2&quot;);<br />
+        } else {<br />
+        System.out.println(&quot;string1 &eacute; maior que string2&quot;);<br />
+    }</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>compareToIgnoreCase </strong></td>
+  </tr>
+  <tr>
+    <td><p>String string1 = &quot;ma&ccedil;&atilde;&quot;;<br />
+      String string2 = &quot;Ma&Ccedil;&Atilde;&quot;;</p>
+      <p>int resultado = string1.compareToIgnoreCase(string2);</p>
+      <p>if (resultado &lt; 0) {<br />
+        System.out.println(&quot;string1 &eacute; menor que string2 (ignorando a diferen&ccedil;a entre mai&uacute;sculas e min&uacute;sculas)&quot;);<br />
+        } else if (resultado == 0) {<br />
+        System.out.println(&quot;string1 &eacute; igual a string2 (ignorando a diferen&ccedil;a entre mai&uacute;sculas e min&uacute;sculas)&quot;);<br />
+        } else {<br />
+        System.out.println(&quot;string1 &eacute; maior que string2 (ignorando a diferen&ccedil;a entre mai&uacute;sculas e min&uacute;sculas)&quot;);<br />
+        }<br />
+      </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>equals</strong></td>
+  </tr>
+  <tr>
+    <td><p>String string1 = &quot;Ol&aacute;, mundo!&quot;;<br />
+      String string2 = &quot;Ol&aacute;, mundo!&quot;;<br />
+      String string3 = &quot;Ol&aacute;, Mundo!&quot;;</p>
+      <p>boolean saoIguais1 = string1.equals(string2); // Retorna true<br />
+        boolean saoIguais2 = string1.equals(string3); // Retorna false<br />
+      </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>equalsIgnoreCase </strong></td>
+  </tr>
+  <tr>
+    <td><p>String string1 = &quot;Ol&aacute;, mundo!&quot;;<br />
+      String string2 = &quot;ol&aacute;, Mundo!&quot;;</p>
+      <p>boolean saoIguais = string1.equalsIgnoreCase(string2); // Retorna true<br />
+      </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+</html>

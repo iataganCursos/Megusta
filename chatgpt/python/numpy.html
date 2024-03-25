@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Array em Python com NumPy</title>
+</head>
+
+<body>
+<h1 align="center">Array em Python NumPy </h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>add</strong></td>
+  </tr>
+  <tr>
+    <td><p>import numpy as np</p>
+      <p># Criando um array unidimensional<br />
+        my_array = np.array([1, 2, 3])</p>
+      <p># Adicionando um elemento ao final do array usando numpy.append()<br />
+        my_array = np.append(my_array, 4)</p>
+      <p># O array agora cont&eacute;m [1, 2, 3, 4]<br />
+        print(my_array)<br />
+      </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>size</strong></td>
+  </tr>
+  <tr>
+    <td><p>import numpy as np</p>
+      <p># Criando um array bidimensional (matriz)<br />
+        my_array = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])</p>
+      <p># Obtendo o tamanho (n&uacute;mero total de elementos) do array<br />
+        array_size = my_array.size</p>
+      <p># Imprimindo o tamanho<br />
+        print(array_size)<br />
+      </p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>get</strong></td>
+  </tr>
+  <tr>
+    <td><p>import numpy as np</p>
+      <p>my_array = np.array([1, 2, 3, 4, 5])</p>
+      <p># Acessando o elemento na posi&ccedil;&atilde;o 2 (&iacute;ndice 1)<br />
+        element = my_array[1]</p>
+      <p># Imprimindo o elemento<br />
+        print(element)<br />
+      </p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>set</strong></td>
+  </tr>
+  <tr>
+    <td><p>import numpy as np</p>
+      <p>my_array = np.array([1, 2, 3, 4, 5])</p>
+      <p># Atribuindo o valor 10 &agrave; posi&ccedil;&atilde;o 2 (&iacute;ndice 1) do array<br />
+        my_array[1] = 10</p>
+      <p># Imprimindo o array ap&oacute;s a modifica&ccedil;&atilde;o<br />
+        print(my_array)
+        <br />
+      </p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>remove</strong></td>
+  </tr>
+  <tr>
+    <td><p>import numpy as np</p>
+      <p>my_array = np.array([1, 2, 3, 4, 5])</p>
+      <p># Removendo o elemento na posi&ccedil;&atilde;o 2 (&iacute;ndice 1) do array<br />
+        my_array = np.delete(my_array, 1)</p>
+      <p># Imprimindo o array ap&oacute;s a remo&ccedil;&atilde;o<br />
+        print(my_array)
+        <br />
+      </p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>clear</strong></td>
+  </tr>
+  <tr>
+    <td><p>import numpy as np</p>
+      <p>my_array = np.array([1, 2, 3, 4, 5])</p>
+      <p># Limpando todos os elementos do array<br />
+        my_array = np.clear(my_array)</p>
+      <p># Imprimindo o array ap&oacute;s a limpeza<br />
+        print(my_array)
+        <br />
+      </p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>contains</strong></td>
+  </tr>
+  <tr>
+    <td><p> import numpy as np<br />
+        <br />
+        my_array = np.array([1, 2, 3, 4, 5])<br />
+        <br />
+        # Verificando se o elemento 3 est&aacute; no array<br />
+        if 3 in my_array:<br />
+        &nbsp;&nbsp;&nbsp; print(&quot;O elemento 3 est&aacute; no array.&quot;)<br />
+        else:<br />
+        &nbsp;&nbsp;&nbsp; print(&quot;O elemento 3 n&atilde;o est&aacute; no array.&quot;)
+        <br />
+</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>toArray</strong></td>
+  </tr>
+  <tr>
+    <td><p>import numpy as np</p>
+      <p>my_dict = {'nome': 'Jo&atilde;o', 'idade': 30, 'sexo': 'M'}</p>
+      <p># Convertendo os valores do dicion&aacute;rio para uma array NumPy<br />
+        my_array = np.array(list(my_dict.values()))</p>
+      <p># Imprimindo a array NumPy<br />
+    print(my_array)</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>indexOf</strong></td>
+  </tr>
+  <tr>
+    <td><p>import numpy as np</p>
+      <p>my_array = np.array([10, 20, 30, 40, 50])</p>
+      <p># Encontrando os &iacute;ndices dos elementos iguais a 30<br />
+        indices = np.where(my_array == 30)</p>
+      <p># Imprimindo os &iacute;ndices<br />
+        print(&quot;Os &iacute;ndices dos elementos iguais a 30 s&atilde;o:&quot;, indices)
+        <br />
+      </p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>lastIndexOf</strong></td>
+  </tr>
+  <tr>
+    <td><p>import numpy as np</p>
+      <p>my_array = np.array([10, 20, 30, 40, 30, 50])</p>
+      <p># Encontrando os &iacute;ndices dos elementos iguais a 30 (usando NumPy)<br />
+        indices = np.where(my_array == 30)[0]</p>
+      <p># Imprimindo o &uacute;ltimo &iacute;ndice do elemento 30<br />
+        last_index = indices[-1] if len(indices) &gt; 0 else None<br />
+        print(&quot;O &uacute;ltimo &iacute;ndice do elemento 30 &eacute;:&quot;, last_index)
+        <br />
+      </p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+
+</html>

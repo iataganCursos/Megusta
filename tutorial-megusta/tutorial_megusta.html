@@ -1,0 +1,1034 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Tutorial Megusta</title>
+<style type="text/css">
+<!--
+.style1 {
+   color: #FFFFFF;
+   font-family:"Courier New", Courier, monospace;
+}
+.style2 {color: #CCCCCC}
+-->
+</style>
+</head>
+
+<body>
+<div>
+  <h2 align="center">ArrayList</h2>
+  <table width="100%" border="1">
+    <tbody>
+      <tr>
+        <td bgcolor="#CCCCCC">add(Object o): adiciona &agrave; cole&ccedil;&atilde;o o objeto passado como argumento.</td>
+      </tr>
+      <tr>
+        <td bgcolor="#CCCCCC">size(): retorna o tamanho da cole&ccedil;&atilde;o</td>
+      </tr>
+      <tr>
+        <td bgcolor="#CCCCCC">get(int index): retorna um objeto dada uma posi&ccedil;&atilde;o.</td>
+      </tr>
+      <tr>
+        <td><p>import java.util.ArrayList;</p>
+            <p>public class JavaTeste {<br />
+              public static void main(String[] args) {<br />
+              ArrayList&lt;String&gt; frutas = new ArrayList&lt;String&gt;();<br />
+              <br />
+              // adiciona itens na lista<br />
+              frutas.add(&quot;Banana&quot;);<br />
+              frutas.add(&quot;Mel&atilde;o&quot;);<br />
+              frutas.add(&quot;Goiaba&quot;);<br />
+              frutas.add(&quot;Morango&quot;);<br />
+              <br />
+              // exibe os valores da lista<br />
+              for(int i = 0; i &lt; frutas.size(); i++){<br />
+              System.out.println(frutas.get(i));<br />
+              }</p>
+          <p>}<br />
+            }</p></td>
+      </tr>
+      <tr>
+        <td bgcolor="#000000"><p class="style1">Resultado:</p>
+            <p class="style1">Banana<br />
+              Mel&atilde;o<br />
+              Goiaba<br />
+              Morango</p></td>
+      </tr>
+      <tr>
+        <td bgcolor="#CCCCCC">add(int index, Object element): adiciona um objeto dada uma posi&ccedil;&atilde;o.</td>
+      </tr>
+      <tr>
+        <td><p>import java.util.ArrayList;</p>
+            <p>public class JavaTeste {<br />
+              public static void main(String[] args) {<br />
+              ArrayList&lt;String&gt; frutas = new ArrayList&lt;String&gt;();<br />
+              <br />
+              // adiciona itens na lista<br />
+              frutas.add(&quot;Banana&quot;);<br />
+              frutas.add(&quot;Mel&atilde;o&quot;);<br />
+              frutas.add(&quot;Goiaba&quot;);<br />
+              frutas.add(&quot;Morango&quot;);<br />
+              <br />
+              frutas.add(1, &quot;======&quot;);<br />
+              <br />
+              // exibe os valores da lista<br />
+              for(int i = 0; i &lt; frutas.size(); i++){<br />
+              System.out.println(frutas.get(i));<br />
+              }</p>
+          <p>}<br />
+            }</p></td>
+      </tr>
+      <tr>
+        <td bgcolor="#000000"><p class="style1">Resultado:</p>
+            <p class="style1">Banana<br />
+              ======<br />
+              Mel&atilde;o<br />
+              Goiaba<br />
+              Morango</p></td>
+      </tr>
+      <tr>
+        <td bgcolor="#CCCCCC">set(int index, Object element): edita um objeto dada uma posi&ccedil;&atilde;o.</td>
+      </tr>
+      <tr>
+        <td><p>import java.util.ArrayList;</p>
+            <p>public class JavaTeste {<br />
+              public static void main(String[] args) {<br />
+              ArrayList&lt;String&gt; frutas = new ArrayList&lt;String&gt;();<br />
+              <br />
+              // adiciona itens na lista<br />
+              frutas.add(&quot;Banana&quot;);<br />
+              frutas.add(&quot;Mel&atilde;o&quot;);<br />
+              frutas.add(&quot;Goiaba&quot;);<br />
+              frutas.add(&quot;Morango&quot;);<br />
+              <br />
+              frutas.set(1, &quot;======&quot;);<br />
+              <br />
+              // exibe os valores da lista<br />
+              for(int i = 0; i &lt; frutas.size(); i++){<br />
+              System.out.println(frutas.get(i));<br />
+              }</p>
+          <p>}<br />
+            }</p></td>
+      </tr>
+      <tr>
+        <td bgcolor="#000000"><p class="style2">Resultado:</p>
+            <p class="style2">Banana<br />
+              ======<br />
+              Goiaba<br />
+              Morango</p></td>
+      </tr>
+      <tr>
+        <td bgcolor="#CCCCCC">remove(int index): remove um objeto dada sua posi&ccedil;&atilde;o.</td>
+      </tr>
+      <tr>
+        <td><p>import java.util.ArrayList;</p>
+            <p>public class JavaTeste {<br />
+              public static void main(String[] args) {<br />
+              ArrayList&lt;String&gt; frutas = new ArrayList&lt;String&gt;();<br />
+              <br />
+              // adiciona itens na lista<br />
+              frutas.add(&quot;Banana&quot;);<br />
+              frutas.add(&quot;Mel&atilde;o&quot;);<br />
+              frutas.add(&quot;Goiaba&quot;);<br />
+              frutas.add(&quot;Morango&quot;);<br />
+              <br />
+              frutas.remove(1);<br />
+              <br />
+              // exibe os valores da lista<br />
+              for(int i = 0; i &lt; frutas.size(); i++){<br />
+              System.out.println(frutas.get(i));<br />
+              }</p>
+          <p>}<br />
+            }</p></td>
+      </tr>
+      <tr>
+        <td bgcolor="#000000"><p class="style1">Resultado:</p>
+            <p class="style1">Banana<br />
+              Goiaba<br />
+              Morango</p></td>
+      </tr>
+      <tr>
+        <td bgcolor="#CCCCCC">clear(): apaga todo o conte&uacute;do da cole&ccedil;&atilde;o.</td>
+      </tr>
+      <tr>
+        <td><p>import java.util.ArrayList;</p>
+            <p>public class JavaTeste {<br />
+              public static void main(String[] args) {<br />
+              ArrayList&lt;String&gt; frutas = new ArrayList&lt;String&gt;();<br />
+              <br />
+              // adiciona itens na lista<br />
+              frutas.add(&quot;Banana&quot;);<br />
+              frutas.add(&quot;Mel&atilde;o&quot;);<br />
+              frutas.add(&quot;Goiaba&quot;);<br />
+              frutas.add(&quot;Morango&quot;);<br />
+              <br />
+              frutas.clear();<br />
+              <br />
+              // exibe os valores da lista<br />
+              for(int i = 0; i &lt; frutas.size(); i++){<br />
+              System.out.println(frutas.get(i));<br />
+              }</p>
+          <p>}<br />
+            }</p></td>
+      </tr>
+      <tr>
+        <td bgcolor="#000000"><p class="style1">Resultado</p>
+            <p class="style1">&nbsp;</p></td>
+      </tr>
+      <tr>
+        <td bgcolor="#CCCCCC">boolean contains(Object o): verifica se o objeto passado como argumento existe na cole&ccedil;&atilde;o.</td>
+      </tr>
+      <tr>
+        <td>ArrayList lista = new ArrayList();<br />
+          lista.add(&ldquo;Jose&rdquo;);<br />
+          lista.add(&ldquo;Maria&rdquo;);<br />
+          System.out.println(lista.contains(&ldquo;Jose&rdquo;)); // True</td>
+      </tr>
+      <tr>
+        <td bgcolor="#CCCCCC">Object[ ] toArray(): converte os elementos da cole&ccedil;&atilde;o em um array (r&aacute;pidos acesso aos elementos).</td>
+      </tr>
+      <tr>
+        <td>ArrayList lista = new ArrayList();<br />
+          lista.add(&ldquo;Jose&rdquo;);<br />
+          lista.add(&ldquo;Maria&rdquo;);<br />
+          lista.add(&ldquo;Joao&rdquo;);<br />
+          Object[] elementos = lista.toArray();<br />
+          for(int i=0; i&lt;elementos.length;i++) {<br />
+          System.out.println(elementos[i]);<br />
+          }</td>
+      </tr>
+      <tr>
+        <td bgcolor="#CCCCCC">int indexOf (Object o): retorna a posi&ccedil;&atilde;o de um objeto.</td>
+      </tr>
+      <tr>
+        <td>ArrayList lista = new ArrayList();<br />
+          lista.add(&ldquo;Jose&rdquo;);<br />
+          lista.add(&ldquo;Maria&rdquo;);<br />
+          lista.add(&ldquo;Jo&atilde;o&rdquo;);<br />
+          lista.indexOf(&ldquo;Maria&rdquo;); //1</td>
+      </tr>
+      <tr>
+        <td bgcolor="#CCCCCC">int lastIndexOf (Object o): retorna o &uacute;ltimo &iacute;ndice de um objeto.</td>
+      </tr>
+      <tr>
+        <td>ArrayList lista = new ArrayList();<br />
+          lista.add(&ldquo;Maria&rdquo;);<br />
+          lista.add(&ldquo;Maria&rdquo;);<br />
+          lista.lastIndexOf(&ldquo;Maria&rdquo;); //1</td>
+      </tr>
+    </tbody>
+  </table>
+  <h2 align="center">ArrayList (Matriz)</h2>
+  <p align="center">N&atilde;o utilize Matriz no ArraList, pode acontecer erros.</p>
+  <table width="100%" border="1">
+    <tbody>
+      <tr>
+        <td bgcolor="#CCCCCC"><strong>Arquivo: JavaTeste.java</strong></td>
+      </tr>
+      <tr>
+        <td><p>import java.util.ArrayList;<br />
+                <br />
+          public class JavaTeste {<br />
+          &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ArrayList &lt; ArrayList &gt; Exemplo = new ArrayList &lt; ArrayList &gt; ();<br />
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int numero_deLinhas = 4;<br />
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for (int i = 0; i &lt; numero_deLinhas; i++) {<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Exemplo.add(new ArrayList &lt; String &gt; ());<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Exemplo.get(0).add(&quot;Linha 1 Coluna 1&quot;);<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Exemplo.get(0).add(&quot;Linha 1 Coluna 2&quot;);<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Exemplo.get(0).add(&quot;Linha 1 Coluna 3&quot;);<br />
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Exemplo.get(1).add(&quot;Linha 2 Coluna 1&quot;);<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Exemplo.get(1).add(&quot;Linha 2 Coluna 2&quot;);<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Exemplo.get(1).add(&quot;Linha 2 Coluna 3&quot;);<br />
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Exemplo.get(2).add(&quot;Linha 3 Coluna 1&quot;);<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Exemplo.get(2).add(&quot;Linha 3 Coluna 2&quot;);<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Exemplo.get(2).add(&quot;Linha 3 Coluna 3&quot;);<br />
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Exemplo.get(3).add(&quot;Linha 4 Coluna 1&quot;);<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Exemplo.get(3).add(&quot;Linha 4 Coluna 2&quot;);<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Exemplo.get(3).add(&quot;Linha 4 Coluna 3&quot;);<br />
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for (int i = 0; i &lt; numero_deLinhas; i++) {<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for (int j = 0; j &lt; Exemplo.size(); j++) {<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; try {<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(Exemplo.get(i).get(j));<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } catch (IndexOutOfBoundsException e) {}<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />
+          <br />
+          &nbsp;&nbsp;&nbsp; }<br />
+          }</p></td>
+      </tr>
+      <tr>
+        <td bgcolor="#CCCCCC"><strong>Resultado:</strong></td>
+      </tr>
+      <tr>
+        <td bgcolor="#000000"><p class="style1"><strong>Linha 1 Coluna 1<br />
+          Linha 1 Coluna 2<br />
+          Linha 1 Coluna 3<br />
+          Linha 2 Coluna 1<br />
+          Linha 2 Coluna 2<br />
+          Linha 2 Coluna 3<br />
+          Linha 3 Coluna 1<br />
+          Linha 3 Coluna 2<br />
+          Linha 3 Coluna 3<br />
+          Linha 4 Coluna 1<br />
+          Linha 4 Coluna 2<br />
+          Linha 4 Coluna 3</strong></p></td>
+      </tr>
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+</div>
+<p>&nbsp;</p>
+<h1 align="center">Fun&ccedil;&otilde;es Matem&aacute;ticas</h1>
+<p>Para auxiliar os c&aacute;lculos matem&aacute;ticos, al&eacute;m dos operadores matem&aacute;ticos de adi&ccedil;&atilde;o, subtra&ccedil;&atilde;o, multiplica&ccedil;&atilde;o e divis&atilde;o existem outras fun&ccedil;oes matem&aacute;ticas.</p>
+<p>Algumas fun&ccedil;&otilde;es s&atilde;o comuns, tais como: raiz quadrada, pot&ecirc;ncia&ccedil;&atilde;o, m&oacute;dulo, etc. Outras exigem conhecimento a n&iacute;vel de 2&ordm; grau tais como: trigonometria e logar&iacute;tmos.</p>
+<p>Vejamos</p>
+<p align="center"><strong>Covertendo string para num&eacute;rica</strong></p>
+<table width="100%" border="1">
+  <tbody>
+    <tr>
+      <td colspan="2"><p>public class ExemploJava {<br />
+              <br />
+        &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String Texto;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto = &quot;&quot;;<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // ==&gt; Para testar, coloque o script abaixo aqui &lt;==<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(Texto);<br />
+        <br />
+        &nbsp;&nbsp;&nbsp; }<br />
+        }<br />
+      </p></td>
+    </tr>
+    <tr>
+      <td colspan="2"><p>Aten&ccedil;&atilde;o:<br />
+        Se colocarmos n&uacute;meros reais dentro de um conversor de n&uacute;meros inteiros, sempre da erros, ent&atilde;o:<br />
+        Use conversores de n&uacute;meros inteiros para n&uacute;meros inteiros e<br />
+        Use conversores de n&uacute;meros reais para n&uacute;meros reais.<br />
+        Observando que os n&uacute;meros devem ficar dentro da faixa estabelacida por Java.</p></td>
+    </tr>
+    <tr>
+      <td colspan="2">N&uacute;meros Inteiros</td>
+    </tr>
+    <tr>
+      <td>Byte.parseByte(string)</td>
+      <td><p>De -128 a +127 (8 bits).<br />
+        Transforma string em inteiro</p>
+          <p>Exemplo:<br />
+            byte valor=Byte.parseByte(&quot;127&quot;);<br />
+            Texto = &quot;&quot; + valor;</p>
+        <p>Resultado: 127</p></td>
+    </tr>
+    <tr>
+      <td>Short.parseShort(string)</td>
+      <td>De -32.768 a +32.767 (16 bits)<br />
+          <p>Transforma string em inteiro</p>
+        <p>Exemplo:<br />
+          short valor=Short.parseShort(&quot;-55&quot;);<br />
+          Texto = &quot;&quot; + valor;</p>
+        <p>Resultado: -55</p></td>
+    </tr>
+    <tr>
+      <td>Integer.parseInt(String)</td>
+      <td>De -2.147.483.648 a +2.147.483.647 (32 bits)<br />
+        Transforma string em inteiro
+          <p>Exemplo:<br />
+            int valor=Integer.parseInt(&quot;1456&quot;);<br />
+            Texto = &quot;&quot; + valor;</p>
+        <p>Resultado: 79</p></td>
+    </tr>
+    <tr>
+      <td>Long.parseLong(string)</td>
+      <td>De -9.223.372.036.854.775.808 a +9.223.372.036.854.775.807 (64 bits)<br />
+        Transforma string em inteiro
+          <p>Exemplo:<br />
+            long valor=Long.parseLong(&quot;5673456&quot;);<br />
+            Texto = &quot;&quot; + valor;</p>
+        <p>Resultado: 79</p></td>
+    </tr>
+    <tr>
+      <td colspan="2">N&uacute;meros Reais</td>
+    </tr>
+    <tr>
+      <td>Float.parseFloat(String)</td>
+      <td><p>(32 bits)<br />
+        Transforma string em n&uacute;mero real</p>
+          <p>Exemplo:<br />
+            double valor=Float.parseFloat(&quot;79.65732&quot;);<br />
+            Texto = &quot;&quot; + valor;</p>
+        <p>Resultado: 79.65732</p></td>
+    </tr>
+    <tr>
+      <td>Double.parseDouble(string)</td>
+      <td><p>(64 bits)<br />
+        Transforma string em n&uacute;mero real</p>
+          <p>Exemplo:<br />
+            double valor=Double.parseDouble(&quot;79.65732&quot;);<br />
+            Texto = &quot;&quot; + valor;</p>
+        <p>Resultado: 79.65732</p></td>
+    </tr>
+    <tr>
+      <td colspan="2">Booleanos</td>
+    </tr>
+    <tr>
+      <td>Boolean.parseBoolean(string)</td>
+      <td>L&oacute;gico<br />
+          <p>Transforma string em n&uacute;mero real</p>
+        <p>Exemplo:<br />
+          boolean valor=Boolean.parseBoolean(&quot;true&quot;);<br />
+          Texto = &quot;&quot; + valor;<br />
+          <br />
+          Resultado: true</p></td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;</p>
+<p align="center"><strong>Arredondando valores</strong></p>
+<ul>
+  <li>Math.floor(n&uacute;mero) - Devolve o inteiro anterior menor que &quot;n&uacute;mero&quot; 32.5 torna-se 32 e -24.8 torna-se -24.</li>
+  <li>Math.ceil(n&uacute;mero) - Devolve o inteiro maior que o &quot;n&uacute;mero&quot; 32.5 torna-se 33 e -24.8 torna-se -25.</li>
+  <li>Math.round(n&uacute;mero) - Arredonda &quot;n&uacute;mero&quot; para o inteiro mais pr&oacute;ximo. Se a por&ccedil;&atilde;o decimal do n&uacute;mero for 0.5, o n&uacute;mero arredonda para cima.</li>
+</ul>
+<p align="center"><strong>Fun&ccedil;&otilde;es matem&aacute;ticas comuns</strong></p>
+<ul>
+  <li>Math.random() - Devolve um n&uacute;mero aleat&oacute;rio entre 0 e 1.</li>
+  <li>Math.abs(n&uacute;mero) - Valor absoluto do &quot;n&uacute;mero&quot;, ou seja, sempre o valor idependente do sinal (positivo ou negativo) -4 fica igual a 4.</li>
+  <li>Math.max(num1, num2) - Devolve o n&uacute;mero maior dos n&uacute;meros &quot;num1&quot; e &quot;num2&quot;.</li>
+  <li>Math.min(num1, num2) - Devolve o n&uacute;mero menor dos n&uacute;meros &quot;num1&quot; e &quot;num2&quot;.</li>
+  <li>Math.pow(num, expoente) - Devolve &quot;num&quot; elevado a &quot;expoente&quot;.</li>
+  <li>Math.sqrt(n&uacute;mero) - Raiz quadrada de &quot;n&uacute;mero&quot;.</li>
+  <li>Math.SQRT1_2 - Raiz quadrada de 1/2 (aproximadamente 0.7071067811865476).</li>
+  <li>Math.SQRT2 - Raiz quadrada de 2 (aproximadamente 1.4142135623730951).</li>
+</ul>
+<p align="center"><strong>Fun&ccedil;&otilde;es trigonom&eacute;tricas</strong></p>
+<ul>
+  <li>Math.PI - Retorma o valor de PI (aproximadamente 3.141592653589793).</li>
+</ul>
+<hr />
+<ul>
+  <li>Math.sin(n&uacute;mero) - Retorna o seno de um n&uacute;mero (em radianos).</li>
+  <li>Math.cos(n&uacute;mero) - Retorna o cosseno de um n&uacute;mero (em radianos).</li>
+  <li>Math.tan(n&uacute;mero) - Retorna a tangente de um n&uacute;mero (em radianos).</li>
+</ul>
+<hr />
+<ul>
+  <li>Math.asin(n&uacute;mero) - Retorna o arco seno de um n&uacute;mero (em radianos).</li>
+  <li>Math.acos(n&uacute;mero) - Retorna o arco cosseno de um n&uacute;mero (em radianos).</li>
+  <li>Math.atan(n&uacute;mero) - Retorna o arco tangente de um n&uacute;mero (em radianos).</li>
+</ul>
+<p align="center"><strong>Calculando o seno, cosseno e tangente pelo computador</strong></p>
+<p>Se o argumento estiver em graus, multiplique-o por PI()/180 ou use a fun&ccedil;&atilde;o&nbsp;<u><strong>radianos()</strong></u>&nbsp;para convert&ecirc;-lo em radianos.</p>
+<p align="left">Exemplo:</p>
+<table width="100%" border="1">
+  <tbody>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Arquivo ExemploJava.java</strong></td>
+    </tr>
+    <tr>
+      <td><p>public class ExemploJava {<br />
+              <br />
+        &nbsp;&nbsp;&nbsp; public static double radianos() {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return Math.PI / 180;<br />
+        &nbsp;&nbsp;&nbsp; }<br />
+        <br />
+        &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String Texto;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto = &quot;&quot;;<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto += &quot;\n&quot; + Math.sin(Math.PI); // O seno de radianos de pi(0, aproximadamente). Resultado: 1.2246063538223773e-16<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto += &quot;\n&quot; + Math.sin(Math.PI / 2); // O seno de radianos de pi/2 (1). Resultado: 1<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto += &quot;\n&quot; + Math.sin(30 * Math.PI / 180); // O seno de 30 graus (0,5). Resultado: 0.49999999999999994<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto += &quot;\n&quot; + Math.sin(30 * radianos()); // O seno de 30 graus (0,5). Resultado: 0.49999999999999994<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto += &quot;\n&quot; + Math.cos(60 * Math.PI / 180); // O cosseno de 60 graus (0,5). Resuntado: 0.5000000000000001<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto += &quot;\n&quot; + Math.cos(60 * radianos()); // O cosseno de 60 graus (0,5). Resultado: 0.5000000000000001<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto += &quot;\n&quot; + Math.tan(45 * Math.PI / 180); // A tangente de 45 graus (1). Resultado: 0.9999999999999999<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto += &quot;\n&quot; + Math.tan(45 * radianos()); // A tangente de 45 graus (1). Resultado: 0.9999999999999999<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(Texto);<br />
+        <br />
+        &nbsp;&nbsp;&nbsp; }<br />
+        }<br />
+      </p></td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Resultado:</strong></td>
+    </tr>
+    <tr>
+      <td bgcolor="#000000"><p class="style1">C:\ExemploJava&gt;javac ExemploJava.java</p>
+          <p class="style1">C:\ExemploJava&gt;java ExemploJava</p>
+        <p class="style1">1.2246467991473532E-16<br />
+          1.0<br />
+          0.49999999999999994<br />
+          0.49999999999999994<br />
+          0.5000000000000001<br />
+          0.5000000000000001<br />
+          0.9999999999999999<br />
+          0.9999999999999999</p>
+        <p class="style1">C:\ExemploJava&gt;</p></td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;</p>
+<p align="center"><strong>Calculando o arco seno, arco cosseno e arco tangente pelo computador</strong></p>
+<p align="left">Retorna o arco seno ou o seno inverso de um n&uacute;mero. O arco seno &eacute; o &acirc;ngulo cujo seno &eacute;&nbsp;<em>n&uacute;m</em>. O &acirc;ngulo retornado &eacute; fornecido em radianos; o mesmo para arco cosseno e arco tangente.</p>
+<p align="left">Para expressar o arco seno em graus, multiplique o resultado por 180/PI( ) ou use a fun&ccedil;&atilde;o&nbsp;<u><strong>graus()</strong></u>.</p>
+<table width="100%" border="1">
+  <tbody>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Arquivo ExemploJava.java</strong></td>
+    </tr>
+    <tr>
+      <td><p>public class ExemploJava {<br />
+              <br />
+        &nbsp;&nbsp;&nbsp; public static double graus() {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 180 / Math.PI;<br />
+        &nbsp;&nbsp;&nbsp; }<br />
+        <br />
+        &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String Texto;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto = &quot;&quot;;<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto += &quot;\n&quot; + Math.round(Math.asin(0.5) * 180 / Math.PI); // O arco seno de 0,5 em graus &eacute; 30<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto += &quot;\n&quot; + Math.round(Math.asin(0.5) * graus()); // O arco seno de 0,5 em graus &eacute; 30<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto += &quot;\n&quot; + Math.round(Math.acos(-0.5) * 180 / Math.PI); // O arco cosseno de -0.5 em graus &eacute; 120<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto += &quot;\n&quot; + Math.round(Math.acos(-0.5) * graus()); // O arco cosseno de -0.5 em graus &eacute; 120<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto += &quot;\n&quot; + Math.round(Math.atan(1) * 180 / Math.PI); // O arco tangente de 1 em graus &eacute; 45<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto += &quot;\n&quot; + Math.round(Math.atan(1) * graus()); // O arco tangente de 1 em graus &eacute; 45<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(Texto);<br />
+        <br />
+        &nbsp;&nbsp;&nbsp; }<br />
+        }<br />
+      </p></td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Resultado:</strong></td>
+    </tr>
+    <tr>
+      <td bgcolor="#000000"><p class="style1">C:\ExemploJava&gt;javac ExemploJava.java</p>
+          <p class="style1">C:\ExemploJava&gt;java ExemploJava</p>
+        <p class="style1">30<br />
+          30<br />
+          120<br />
+          120<br />
+          45<br />
+          45</p>
+        <p class="style1">C:\ExemploJava&gt;</p></td>
+    </tr>
+  </tbody>
+</table>
+<p align="center"><strong>Logar&iacute;tmos</strong></p>
+<ul>
+  <li>Math.log(n&uacute;mero) - Retorna op logar&iacute;tmo de um n&uacute;mero</li>
+</ul>
+<hr />
+<ul>
+  <li>Math.E - Retorna a base dos logar&iacute;tmos naturais (aproximadamente 2.718281828459045)</li>
+  <li>Math.LN2 - Retorna o valor do logar&iacute;tmo de 2 (aproximadamente 0.6931471805599453)</li>
+  <li>Math.LOG2E - Retorna a base do logaritmo de 2 (aproximadamente 1.4426950408889634)</li>
+  <li>Math.LN10 - Retorna o valor do logar&iacute;timo de 10 (aproximadamente 2.302585092994046)</li>
+  <li>Math.LOG10E - Retorna a base do logar&iacute;tmo de 10 (aproximadamente0.4342944819032518)</li>
+</ul>
+<h1 align="center">Fun&ccedil;&otilde;es de tratamento de String</h1>
+<p>Manipulando Strings</p>
+<p>O Javascript &eacute; bastante poderoso no manuseio de Strings, fornecendo ao programador uma total flexibilidade em seu manuseio.</p>
+<p>Abaixo apresentamos os m&eacute;todos dispon&iacute;veis para manuseio de strings.</p>
+<table width="100%" border="1">
+  <tbody>
+    <tr>
+      <td colspan="2"><p>public class ExemploJava {<br />
+              <br />
+        &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String Texto;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto = &quot;&quot;;<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // ==&gt; Para testar, coloque o script abaixo aqui &lt;==<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(Texto);<br />
+        <br />
+        &nbsp;&nbsp;&nbsp; }<br />
+        }</p></td>
+    </tr>
+    <tr>
+      <td>length()</td>
+      <td><p>Retorna o comprimento de uma String.<br />
+        * Obs: Com length parenteses.</p>
+          <p>Exemplo:<br />
+            String s=&quot;Esta e uma string de texto&quot;;<br />
+            Texto = &quot;Tamanho da String = &quot;+s.length()+&quot; caracteres&quot;;</p>
+        <p>Resultado:<br />
+          Tamanho da String = 26 caracteres</p></td>
+    </tr>
+    <tr>
+      <td>substring(indiceInicial, indiceFinal)</td>
+      <td><p>O m&eacute;todo substring (subcadeia) retorna a cadeia que se estende do indice Inicial at&eacute; o caractere logo antes de indice final. Se indice Inicial for maior que indice final, o m&eacute;todo funciona como se ambos estivessem com as posi&ccedil;&otilde;es trocadas. Se os dois &iacute;ndices forem iguais, retorna uma cadeia vasia.</p>
+          <p>Exemplo:<br />
+            String s=&quot;Esta e uma string de texto&quot;;<br />
+            String s1=s.substring(4, 10);<br />
+            Texto = s1;</p>
+        <p>Resultado:<br />
+          &quot;e uma&quot;</p></td>
+    </tr>
+    <tr>
+      <td>charAt(posi&ccedil;&atilde;o)</td>
+      <td><p>Funciona da mesma forma que o substring, s&oacute; que, retorna o caractere simples em uma posi&ccedil;&atilde;o espec&iacute;fica na String.</p>
+          <p>Exemplo:<br />
+            String s=&quot;Esta e uma string de texto&quot;;<br />
+            char s1=s.charAt(5);<br />
+            Texto = &quot;&quot;+s1;</p>
+        <p>Resultado: &quot;e&quot;<br />
+        </p></td>
+    </tr>
+    <tr>
+      <td>indexOf(caractere, [inicIndex])</td>
+      <td><p>O m&eacute;todo indexOf faz a busca no objeto string pela primeira ocorr&ecirc;ncia do caractere e retorna o &iacute;ndice correspondente. o argumento inicIndex &eacute; opcional e indica a partir de onde inicia a busca. Podemos localizar os valores dos &iacute;ndices para todos os caracteres do mesmo tipo iniciando ap&oacute;s o &iacute;ndice anterior.</p>
+          <p>Exemplo:<br />
+            String text=&quot;Hello, world!&quot;;<br />
+            int index=0;<br />
+            Texto += &quot;&lt;pre&gt;&quot;;<br />
+            while(index&lt;text.lastIndexOf(&quot;l&quot;)) {<br />
+            index= text.indexOf(&quot;l&quot;, index+1);<br />
+            Texto += index+&quot;\t&quot;;<br />
+            }<br />
+            Texto += &quot;\n&quot;;<br />
+            Texto += &quot;&lt;/pre&gt;&quot;;</p>
+        <p>Resultado:&quot; 2 3 10&quot;</p></td>
+    </tr>
+    <tr>
+      <td>lastIndexOf(caractere, [inicIndex])</td>
+      <td>O m&eacute;todo lasIndexOf &eacute; id&ecirc;ntico ao m&eacute;todo index of exceto que faz a busca do caractere na cadeia do fim para o come&ccedil;o iniciando em inicIndex.<br />
+        Veja o exemplo anterior</td>
+    </tr>
+    <tr>
+      <td>replace(palavra, substituto)</td>
+      <td><p>O m&eacute;todo replace voc&ecirc; insere uma palavra ou uma letra em que voc&ecirc; deseja substituir por outra.</p>
+          <p>Exemplo:<br />
+            String s=&quot;Este automovel &eacute; caro&quot;;<br />
+            Texto = s.replace(&quot;automovel&quot;, &quot;carro&quot;);</p>
+        <p>Resultado:<br />
+          Este carro &eacute; caro</p></td>
+    </tr>
+    <tr>
+      <td>toLowerCase()</td>
+      <td><p>O m&eacute;todo toLowerCase (para min&uacute;sculo) retorna a cadeia com todos os caracteres alterados para min&uacute;sculo.</p>
+          <p>Exemplo:<br />
+            String s=&quot;ISTO &Eacute; UM EXEMPLO&quot;;<br />
+            Texto = s.toLowerCase();</p>
+        <p>Resultado:<br />
+          isto &eacute; um exemplo</p></td>
+    </tr>
+    <tr>
+      <td>toUpperCase()</td>
+      <td><p>O m&eacute;todo toUpperCase (para mai&uacute;sculo) retorna a cadeia com todos os caracteres alterados para mai&uacute;sculo.</p>
+          <p>Exemplo:<br />
+            String s=&quot;isto &eacute; um exemplo&quot;;<br />
+            Texto = s.toUpperCase();</p>
+        <p>Resultado:<br />
+          ISTO &Eacute; UM EXEMPLO</p></td>
+    </tr>
+  </tbody>
+</table>
+<h2 align="center">Ordenar String em Ordem Alfab&eacute;tica</h2>
+<table width="100%" border="1">
+  <tbody>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Arquivo: ExemploJava.java</strong></td>
+    </tr>
+    <tr>
+      <td>import java.util.ArrayList;<br />
+        public class ExemploJava {<br />
+        <br />
+        &nbsp;&nbsp;&nbsp; public static ArrayList Texto;<br />
+        <br />
+        &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto = new ArrayList();<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto.add(&quot;Tiago&quot;);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto.add(&quot;Maria&quot;);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto.add(&quot;Pedro&quot;);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto.add(&quot;Carlos&quot;);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto.add(&quot;Fabio&quot;);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto.add(&quot;Ana&quot;);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto.add(&quot;Francisco&quot;);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto.add(&quot;Bianca&quot;);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String memo = &quot;&quot;;<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int total = Texto.size();<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (total &gt; 1) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for (int x = 0; x &lt; total - 1; x++) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for (int y = x + 1; y &lt; total; y++) {<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (Texto.get(x).toString().compareTo(Texto.get(y).toString()) &gt; 0) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; memo = Texto.get(x).toString();<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto.set(x, Texto.get(y));<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto.set(y, memo);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for (int z = 0; z &lt; total; z++) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(Texto.get(z));<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />
+        &nbsp;&nbsp;&nbsp; }<br />
+        }<br /></td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Resultado:</strong></td>
+    </tr>
+    <tr>
+      <td bgcolor="#000000"><p class="style1">C:\ExemploJava&gt;javac ExemploJava.java<br />
+        Note: ExemploJava.java uses unchecked or unsafe operations.<br />
+        Note: Recompile with -Xlint:unchecked for details.</p>
+          <p class="style1">C:\ExemploJava&gt;java ExemploJava<br />
+            Ana<br />
+            Bianca<br />
+            Carlos<br />
+            Fabio<br />
+            Francisco<br />
+            Maria<br />
+            Pedro<br />
+            Tiago</p>
+        <p class="style1">C:\ExemploJava&gt;</p></td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;</p>
+<h1 align="center">Manipulando datas e horas</h1>
+<p>Existe apenas uma fun&ccedil;&atilde;o para que se possa obter a data e a hora. &Eacute; a fun&ccedil;&atilde;o&nbsp;<strong>Calendar.getInstance()</strong>. Esta fun&atilde;o devolve data e hora no formanto: Dia da semana, Nome do m&ecirc;s, Dia do m&ecirc;s, Hora:Minuto:Segundo e Ano</p>
+<p>Ex:</p>
+<p><strong>Fri May 24 16:58:02 1996</strong></p>
+<p>Para se obter os dados separadamente, existem os seguintes m&eacute;todos:</p>
+<ul>
+  <li>get(Calendar.DATE) - Retorna o dia do m&ecirc;s (inteiro entre 1 e 31)</li>
+  <li>.get(Calendar.DAY_OF_WEEK) - Retorna o dia da semana (1=Domingo, 2=Segunda-feira,... , 7=S&aacute;bado)</li>
+  <li>get(Calendar.MONTH) - Retorna o m&ecirc;s (entre 0=Janeiro e 11=Dezembro)</li>
+  <li>get(Calendar.YEAR) - Retorna o ano com quatro d&iacute;gitos (o mais usado)</li>
+</ul>
+<hr />
+<ul>
+  <li>get(Calendar.HOUR_OF_DAY) - Retorna a hora do dia (entre 0 e 23)</li>
+  <li>get(Calendar.MINUTE) - Retorna os minutos dentro da hora (entre 0 e 59)</li>
+  <li>get(Calendar.SECOND) - Retorna os segundos (entre 0 e 59)</li>
+</ul>
+<hr />
+<p>No&nbsp;<strong>exemplo 1</strong>&nbsp;abaixo obteremos o dia da semana e as horas. Para tal, utilizaremos a vari&aacute;vel&nbsp;<strong>DataToda</strong>&nbsp;para armazenar data e hora.</p>
+<table width="100%" border="1">
+  <tbody>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Arquivo ExemploJava.java</strong></td>
+    </tr>
+    <tr>
+      <td><p>/*<br />
+        N&atilde;o use getYear, getDay (Como no Javascript).<br />
+        a) S&atilde;o m&eacute;todos &quot;deprecated&quot; - ou seja, n&atilde;o devem ser usados. Em vez disso, use java.util.Calendar.</p>
+          <p>b) Voc&ecirc; n&atilde;o leu a documenta&ccedil;&atilde;o direito. getYear lhe volta o ano menos 1900, ou seja, para 2006 ele lhe retorna 2006 - 1900 = 106. getDay volta o dia da semana, sendo 0 = Domingo. E getMonth lhe retorna 0 para janeiro, 1 para fevereiro, e assim por diante.</p>
+        <p>c) Quando a linguagem Java foi definida, s&oacute; existia o java.util.Date, e ela era bem boboca (o pr&oacute;prio James Gosling que a escreveu, e ele n&atilde;o quis p&ocirc;r um monte de frescuras nela)<br />
+          Na vers&atilde;o 1.1 algu&eacute;m na Sun comprou um monte de c&oacute;digo fonte da Taligent, uma joint-venture entre a IBM, a Apple e mais algumas companhias. Nesse pacot&atilde;o veio a classe java.util.Calendar, que &eacute; terrivelmente complicada, e para encurtar a conversa eles disseram que t&iacute;nhamos de usar java.util.Date E java.util.Calendar, sendo que aquelas coisas tipo &quot;getDate&quot;, &quot;getMonth&quot;, &quot;getYear&quot; que existem em java.util.Date n&atilde;o deveriam mais ser usadas.<br />
+          */</p>
+        <p>import java.util.Calendar;<br />
+            <br />
+          public class ExemploJava {<br />
+          <br />
+          <br />
+          &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String Texto;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto = &quot;&quot;;<br />
+          <br />
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Calendar DataToda = Calendar.getInstance();<br />
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int Dia_do_mes = DataToda.get(Calendar.DATE);<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int Dia_da_semana = DataToda.get(Calendar.DAY_OF_WEEK);<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int Mes = DataToda.get(Calendar.MONTH);<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int Ano = DataToda.get(Calendar.YEAR);<br />
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // ---------------------------------------<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int Horas = DataToda.get(Calendar.HOUR_OF_DAY);<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int Minutos = DataToda.get(Calendar.MINUTE);<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int Segundos = DataToda.get(Calendar.SECOND);<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // ---------------------------------------<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String semana[];<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; semana = new String[8];<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; semana[0] = &quot;&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; semana[1] = &quot;Domingo&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; semana[2] = &quot;Segunda&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; semana[3] = &quot;Ter&ccedil;a&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; semana[4] = &quot;Quarta&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; semana[5] = &quot;Quinta&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; semana[6] = &quot;Sexta&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; semana[7] = &quot;Sabado&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String Semana_atual = semana[Dia_da_semana];<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //-------------------------<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String Mes2[];<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2 = new String[12];<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[0] = &quot;Janeiro&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[1] = &quot;Fevereiro&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[2] = &quot;Mar&ccedil;o&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[3] = &quot;Abril&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[4] = &quot;Maio&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[5] = &quot;Junho&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[6] = &quot;Julho&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[7] = &quot;Agosto&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[8] = &quot;Setembro&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[9] = &quot;Outubro&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[10] = &quot;Novembro&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[11] = &quot;Desembro&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String Mes_atual = Mes2[Mes];<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto += Semana_atual + &quot;, &quot; + Dia_do_mes + &quot; de &quot; + Mes_atual + &quot; de &quot; + Ano;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto += &quot;\n&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto += &quot;S&atilde;o: &quot; + Horas + &quot; horas, &quot; + Minutos + &quot; minutos e &quot; + Segundos + &quot; segundos.&quot;;<br />
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(Texto);<br />
+          &nbsp;&nbsp;&nbsp; }<br />
+          }<br />
+        </p></td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Resultado:</strong></td>
+    </tr>
+    <tr>
+      <td bgcolor="#000000"><p class="style2">C:\ExemploJava&gt;javac ExemploJava.java</p>
+          <p class="style2">C:\ExemploJava&gt;java ExemploJava<br />
+            Sabado, 27 de Fevereiro de 2016<br />
+            S&atilde;o: 6 horas, 55 minutos e 27 segundos.</p>
+        <p class="style2">C:\ExemploJava&gt;</p></td>
+    </tr>
+  </tbody>
+</table>
+<p align="center"><strong>exemplo 4: alterando a data</strong></p>
+<p>Para criar uma vari&aacute;vel tipo Date com o conte&uacute;do informado pela aplica&ccedil;&atilde;o, existe o m&eacute;todo&nbsp;<strong>set</strong>. Os mas importantes s&atilde;o:</p>
+<ul>
+  <li>set(java.util.Calendar.DATE, x_dia) - Coloca o dia do m&ecirc;s (valor entre 1 e 31)</li>
+  <li>set(java.util.Calendar.MONTH, mes) - coloca o m&ecirc;s (valor entre 0 e 11)</li>
+  <li>set(java.util.Calendar.YEAR, ano) - coloca os anos</li>
+</ul>
+<p>Voc&ecirc; pode simplificar as datas veja:</p>
+<ul>
+  <li>set(ano, mes, dia)</li>
+</ul>
+<p>Tanto pode usar esta forma quanto da outra.</p>
+<table width="100%" border="1">
+  <tbody>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Arquivo ExemploJava.java</strong></td>
+    </tr>
+    <tr>
+      <td><p>/*<br />
+        N&atilde;o use getYear, getDay (Como no Javascript).<br />
+        a) S&atilde;o m&eacute;todos &quot;deprecated&quot; - ou seja, n&atilde;o devem ser usados. Em vez disso, use java.util.Calendar.</p>
+          <p>b) Voc&ecirc; n&atilde;o leu a documenta&ccedil;&atilde;o direito. getYear lhe volta o ano menos 1900, ou seja, para 2006 ele lhe retorna 2006 - 1900 = 106. getDay volta o dia da semana, sendo 0 = Domingo. E getMonth lhe retorna 0 para janeiro, 1 para fevereiro, e assim por diante.</p>
+        <p>c) Quando a linguagem Java foi definida, s&oacute; existia o java.util.Date, e ela era bem boboca (o pr&oacute;prio James Gosling que a escreveu, e ele n&atilde;o quis p&ocirc;r um monte de frescuras nela)<br />
+          Na vers&atilde;o 1.1 algu&eacute;m na Sun comprou um monte de c&oacute;digo fonte da Taligent, uma joint-venture entre a IBM, a Apple e mais algumas companhias. Nesse pacot&atilde;o veio a classe java.util.Calendar, que &eacute; terrivelmente complicada, e para encurtar a conversa eles disseram que t&iacute;nhamos de usar java.util.Date E java.util.Calendar, sendo que aquelas coisas tipo &quot;getDate&quot;, &quot;getMonth&quot;, &quot;getYear&quot; que existem em java.util.Date n&atilde;o deveriam mais ser usadas.<br />
+          */</p>
+        <p>import java.util.Calendar;<br />
+            <br />
+          public class ExemploJava {<br />
+          <br />
+          <br />
+          &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String Texto;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto = &quot;&quot;;<br />
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Calendar DataToda = Calendar.getInstance();<br />
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int x_dia = 28;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int x_mes = 4;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int x_ano = 1997;<br />
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Tando pode usar desta forma:<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // DataToda.set(x_ano, x_mes, x_dia);<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Quanto desta outra forma:<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DataToda.set(java.util.Calendar.YEAR, x_ano);<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DataToda.set(java.util.Calendar.MONTH, x_mes);<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DataToda.set(java.util.Calendar.DATE, x_dia);<br />
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // ---------------------------------------<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int Dia_do_mes = DataToda.get(Calendar.DATE);<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int Dia_da_semana = DataToda.get(Calendar.DAY_OF_WEEK);<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int Mes = DataToda.get(Calendar.MONTH);<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int Ano = DataToda.get(Calendar.YEAR);<br />
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String semana[];<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; semana = new String[8];<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; semana[0] = &quot;&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; semana[1] = &quot;Domingo&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; semana[2] = &quot;Segunda&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; semana[3] = &quot;Ter&ccedil;a&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; semana[4] = &quot;Quarta&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; semana[5] = &quot;Quinta&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; semana[6] = &quot;Sexta&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; semana[7] = &quot;Sabado&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String Semana_atual = semana[Dia_da_semana];<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //-------------------------<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String Mes2[];<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2 = new String[12];<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[0] = &quot;Janeiro&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[1] = &quot;Fevereiro&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[2] = &quot;Mar&ccedil;o&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[3] = &quot;Abril&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[4] = &quot;Maio&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[5] = &quot;Junho&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[6] = &quot;Julho&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[7] = &quot;Agosto&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[8] = &quot;Setembro&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[9] = &quot;Outubro&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[10] = &quot;Novembro&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[11] = &quot;Desembro&quot;;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String Mes_atual = Mes2[Mes];<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto += Semana_atual + &quot;, &quot; + Dia_do_mes + &quot; de &quot; + Mes_atual + &quot; de &quot; + Ano;<br />
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(Texto);<br />
+          &nbsp;&nbsp;&nbsp; }<br />
+          }<br />
+        </p></td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Resultado:</strong></td>
+    </tr>
+    <tr>
+      <td bgcolor="#000000"><p class="style1">C:\ExemploJava&gt;javac ExemploJava.java</p>
+          <p class="style1">C:\ExemploJava&gt;java ExemploJava<br />
+            Quarta, 28 de Maio de 1997</p>
+        <p class="style1">C:\ExemploJava&gt;</p></td>
+    </tr>
+  </tbody>
+</table>
+<p align="center"><strong>exmeplo 3: vendo as horas</strong></p>
+<table width="100%" border="1">
+  <tbody>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Arquivo ExemploJava.java</strong></td>
+    </tr>
+    <tr>
+      <td><p>import java.util.Calendar;<br />
+              <br />
+        public class ExemploJava {<br />
+        <br />
+        &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String Texto;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto = &quot;&quot;;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Nome do arquivo: semana.txt<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Calendar rel = Calendar.getInstance();<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int hora = rel.get(Calendar.HOUR_OF_DAY);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int minuto = rel.get(Calendar.MINUTE);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int segundo = rel.get(Calendar.SECOND);<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String temp = &quot;&quot; + hora;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; temp += ((minuto &lt; 10) ? &quot;:0&quot; : &quot;:&quot;) + minuto;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; temp += ((segundo &lt; 10) ? &quot;:0&quot; : &quot;:&quot;) + segundo;<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto += &quot;S&atilde;o exatamente: &quot; + temp;<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(Texto);<br />
+        &nbsp;&nbsp;&nbsp; }<br />
+        }<br />
+      </p></td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Resultado:</strong></td>
+    </tr>
+    <tr>
+      <td bgcolor="#000000"><p class="style2">C:\ExemploJava&gt;javac ExemploJava.java</p>
+          <p class="style2">C:\ExemploJava&gt;java ExemploJava<br />
+            S&atilde;o exatamente: 7:05:23</p>
+        <p class="style2">C:\ExemploJava&gt;</p></td>
+    </tr>
+  </tbody>
+</table>
+<h2 align="center">Diferencia&ccedil;&atilde;o de datas</h2>
+<table width="100%" border="1">
+  <tbody>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Arquivo: ExemploJava.java</strong></td>
+    </tr>
+    <tr>
+      <td><p>import java.util.Calendar;<br />
+              <br />
+        public class ExemploJava {<br />
+        <br />
+        &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Calendar DataAtual = Calendar.getInstance();<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Calendar Data_1 = Calendar.getInstance();<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int x_dia = 28;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int x_mes = 4;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int x_ano = 1997;<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Quanto desta outra forma:<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Data_1.set(java.util.Calendar.YEAR, x_ano);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Data_1.set(java.util.Calendar.MONTH, x_mes);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Data_1.set(java.util.Calendar.DATE, x_dia);<br />
+        <br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Calendar Data_2 = Calendar.getInstance();<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int y_dia = 12;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int y_mes = 6;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int y_ano = 2160;<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Quanto desta outra forma:<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Data_2.set(java.util.Calendar.YEAR, y_ano);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Data_2.set(java.util.Calendar.MONTH, y_mes);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Data_2.set(java.util.Calendar.DATE, y_dia);<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (Data_1.compareTo(DataAtual) &lt; 0) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;Passado&quot;);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (Data_2.compareTo(DataAtual) &gt; 0) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;Futuro&quot;);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />
+        <br />
+        &nbsp;&nbsp;&nbsp; }<br />
+        }<br />
+      </p></td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>No Prompt</strong></td>
+    </tr>
+    <tr>
+      <td bgcolor="#000000"><p class="style1">C:\ExemploJava&gt;javac ExemploJava.java</p>
+          <p class="style1">C:\ExemploJava&gt;java ExemploJava<br />
+            Passado<br />
+            Futuro</p>
+        <p class="style1">C:\ExemploJava&gt;</p></td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tbody>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Opera&ccedil;&atilde;o</strong></td>
+      <td bgcolor="#CCCCCC"><strong>Resultado</strong></td>
+    </tr>
+    <tr>
+      <td>&quot;FRED&quot;.equals(&quot;FRED&quot;)</td>
+      <td>true (verdadeiro)</td>
+    </tr>
+    <tr>
+      <td>! &quot;SAM&quot;.equals(&quot;FRED&quot;)</td>
+      <td>true (verdadeiro)</td>
+    </tr>
+    <tr>
+      <td>&quot;TWO&quot;.equals(&quot;ONE&quot;)</td>
+      <td>false (falso)</td>
+    </tr>
+    <tr>
+      <td>! &quot;TRHEE&quot;.equals(&quot;TRHEE&quot;)</td>
+      <td>false (falso)</td>
+    </tr>
+    <tr>
+      <td colspan="2">Compara&ccedil;&otilde;es de strings n&atilde;o s&atilde;o feitas com o operador == e sim com o m&eacute;todo equals ou com equalsIgnoreCase (que ignora mai&uacute;sculas e min&uacute;sculas).</td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

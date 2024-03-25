@@ -1,0 +1,371 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Strings em C</title>
+</head>
+
+<body>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>replace</strong></td>
+  </tr>
+  <tr>
+    <td> #include &lt;stdio.h&gt;<br />
+      #include &lt;string.h&gt;<br />
+      <br />
+      // Fun&ccedil;&atilde;o para substituir todas as ocorr&ecirc;ncias de 'old_str' por 'new_str' em 'input_str'<br />
+      void replaceString(char *input_str, const char *old_str, const char *new_str) {<br />
+      &nbsp;&nbsp;&nbsp; char *result;<br />
+      &nbsp;&nbsp;&nbsp; int i, count = 0;<br />
+      &nbsp;&nbsp;&nbsp; int new_str_len = strlen(new_str);<br />
+      &nbsp;&nbsp;&nbsp; int old_str_len = strlen(old_str;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; // Conta quantas vezes 'old_str' aparece em 'input_str'<br />
+      &nbsp;&nbsp;&nbsp; for (i = 0; input_str[i] != '\0'; i++) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (strstr(&amp;input_str[i], old_str) == &amp;input_str[i]) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; count++;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i += old_str_len - 1;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; // Aloca mem&oacute;ria para a nova string<br />
+      &nbsp;&nbsp;&nbsp; result = (char *)malloc(i + count * (new_str_len - old_str_len) + 1);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; i = 0;<br />
+      &nbsp;&nbsp;&nbsp; while (*input_str) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (strstr(input_str, old_str) == input_str) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; strcpy(&amp;result[i], new_str);<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i += new_str_len;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; input_str += old_str_len;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; result[i++] = *input_str++;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+      &nbsp;&nbsp;&nbsp; result[i] = '\0';<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; // Copia a nova string de volta para a string de entrada<br />
+      &nbsp;&nbsp;&nbsp; strcpy(input_str, result);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; // Libera a mem&oacute;ria alocada para a nova string<br />
+      &nbsp;&nbsp;&nbsp; free(result);<br />
+      }<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; char str[] = &quot;Esta &eacute; uma string de exemplo. Exemplo de string.&quot;;<br />
+      &nbsp;&nbsp;&nbsp; const char old_str[] = &quot;exemplo&quot;;<br />
+      &nbsp;&nbsp;&nbsp; const char new_str[] = &quot;amostra&quot;;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; replaceString(str, old_str, new_str);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;String ap&oacute;s a substitui&ccedil;&atilde;o: %s\n&quot;, str);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+    }</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>length</strong></td>
+  </tr>
+  <tr>
+    <td> #include &lt;stdio.h&gt;<br />
+      #include &lt;string.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; char minhaString[] = &quot;Esta &eacute; uma string de exemplo&quot;;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; int comprimento = strlen(minhaString);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;O comprimento da string &eacute;: %d\n&quot;, comprimento);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+    }<br /></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>substring</strong></td>
+  </tr>
+  <tr>
+    <td> #include &lt;stdio.h&gt;<br />
+      #include &lt;string.h&gt;<br />
+      <br />
+      // Fun&ccedil;&atilde;o para extrair uma substring de uma string<br />
+      void substring(const char *input, int start, int length, char *output) {<br />
+      &nbsp;&nbsp;&nbsp; int input_length = strlen(input);<br />
+      &nbsp;&nbsp;&nbsp; int i;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; if (start &lt; 0 || start &gt;= input_length) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;&Iacute;ndice de in&iacute;cio inv&aacute;lido\n&quot;);<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return;<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; for (i = 0; i &lt; length &amp;&amp; input[start + i] != '\0'; i++) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; output[i] = input[start + i];<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; output[i] = '\0';<br />
+      }<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; char minhaString[] = &quot;Esta &eacute; uma string de exemplo&quot;;<br />
+      &nbsp;&nbsp;&nbsp; char subString[20]; // Alocando espa&ccedil;o para a substring<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; int startIndex = 5; // &Iacute;ndice inicial<br />
+      &nbsp;&nbsp;&nbsp; int length = 8;&nbsp;&nbsp;&nbsp; // Comprimento da substring<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; substring(minhaString, startIndex, length, subString);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;Substring: %s\n&quot;, subString);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+    }</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>charAt </strong></td>
+  </tr>
+  <tr>
+    <td> #include &lt;stdio.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; char minhaString[] = &quot;Esta &eacute; uma string de exemplo&quot;;<br />
+      &nbsp;&nbsp;&nbsp; <br />
+      &nbsp;&nbsp;&nbsp; // Acessando o caractere na posi&ccedil;&atilde;o 5 (&iacute;ndice 4) da string<br />
+      &nbsp;&nbsp;&nbsp; char caractere = minhaString[4];<br />
+      &nbsp;&nbsp;&nbsp; <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;O caractere na posi&ccedil;&atilde;o 5 &eacute;: %c\n&quot;, caractere);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+    }</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>indexOf</strong></td>
+  </tr>
+  <tr>
+    <td> #include &lt;stdio.h&gt;<br />
+      #include &lt;string.h&gt;<br />
+      <br />
+      // Fun&ccedil;&atilde;o para encontrar a posi&ccedil;&atilde;o da primeira ocorr&ecirc;ncia de uma subcadeia em uma string<br />
+      int indexOf(const char *haystack, const char *needle) {<br />
+      &nbsp;&nbsp;&nbsp; const char *result = strstr(haystack, needle);<br />
+      &nbsp;&nbsp;&nbsp; if (result != NULL) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return result - haystack;<br />
+      &nbsp;&nbsp;&nbsp; } else {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return -1; // Subcadeia n&atilde;o encontrada<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+      }<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; char minhaString[] = &quot;Esta &eacute; uma string de exemplo&quot;;<br />
+      &nbsp;&nbsp;&nbsp; const char subcadeia[] = &quot;exemplo&quot;;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; int posicao = indexOf(minhaString, subcadeia);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; if (posicao != -1) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;A subcadeia foi encontrada na posi&ccedil;&atilde;o %d\n&quot;, posicao);<br />
+      &nbsp;&nbsp;&nbsp; } else {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;A subcadeia n&atilde;o foi encontrada na string.\n&quot;);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+    }</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>lastIndexOf</strong></td>
+  </tr>
+  <tr>
+    <td> #include &lt;stdio.h&gt;<br />
+      #include &lt;string.h&gt;<br />
+      <br />
+      // Fun&ccedil;&atilde;o para encontrar a posi&ccedil;&atilde;o da &uacute;ltima ocorr&ecirc;ncia de uma subcadeia em uma string<br />
+      int lastIndexOf(const char *haystack, const char *needle) {<br />
+      &nbsp;&nbsp;&nbsp; const char *result = NULL;<br />
+      &nbsp;&nbsp;&nbsp; const char *current = haystack;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; while ((current = strstr(current, needle)) != NULL) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; result = current;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; current++;<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; if (result != NULL) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return result - haystack;<br />
+      &nbsp;&nbsp;&nbsp; } else {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return -1; // Subcadeia n&atilde;o encontrada<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+      }<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; char minhaString[] = &quot;Esta &eacute; uma string de exemplo com uma palavra exemplo.&quot;;<br />
+      &nbsp;&nbsp;&nbsp; const char subcadeia[] = &quot;exemplo&quot;;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; int posicao = lastIndexOf(minhaString, subcadeia);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; if (posicao != -1) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;A &uacute;ltima ocorr&ecirc;ncia da subcadeia foi encontrada na posi&ccedil;&atilde;o %d\n&quot;, posicao);<br />
+      &nbsp;&nbsp;&nbsp; } else {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;A subcadeia n&atilde;o foi encontrada na string.\n&quot;);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+    }</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>toLowerCase</strong></td>
+  </tr>
+  <tr>
+    <td> #include &lt;stdio.h&gt;<br />
+      #include &lt;ctype.h&gt;<br />
+      #include &lt;string.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; char minhaString[] = &quot;Esta &eacute; uma String com Caracteres Latinos: &Aacute;&Eacute;&Iacute;&Oacute;&Uacute;&Ntilde;&quot;;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; for (int i = 0; minhaString[i]; i++) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; minhaString[i] = tolower(minhaString[i]);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;String em min&uacute;sculas: %s\n&quot;, minhaString);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+    }</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>toUpperCase </strong></td>
+  </tr>
+  <tr>
+    <td> #include &lt;stdio.h&gt;<br />
+      #include &lt;ctype.h&gt;<br />
+      #include &lt;string.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; char minhaString[] = &quot;Esta &eacute; uma String com Caracteres Latinos: &aacute;&eacute;&iacute;&oacute;&uacute;&ntilde;&quot;;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; for (int i = 0; minhaString[i]; i++) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; minhaString[i] = toupper(minhaString[i]);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;String em mai&uacute;sculas: %s\n&quot;, minhaString);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+    }</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>compareTo </strong></td>
+  </tr>
+  <tr>
+    <td> #include &lt;stdio.h&gt;<br />
+      #include &lt;string.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; char string1[] = &quot;banana&quot;;<br />
+      &nbsp;&nbsp;&nbsp; char string2[] = &quot;abacaxi&quot;;<br />
+      &nbsp;&nbsp;&nbsp; <br />
+      &nbsp;&nbsp;&nbsp; int resultado = strcmp(string1, string2);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; if (resultado &lt; 0) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;string1 vem antes de string2 na ordem lexicogr&aacute;fica.\n&quot;);<br />
+      &nbsp;&nbsp;&nbsp; } else if (resultado == 0) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;As duas strings s&atilde;o id&ecirc;nticas.\n&quot;);<br />
+      &nbsp;&nbsp;&nbsp; } else {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;string1 vem depois de string2 na ordem lexicogr&aacute;fica.\n&quot;);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+    }</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>compareToIgnoreCase </strong></td>
+  </tr>
+  <tr>
+    <td><p>#include &lt;stdio.h&gt;<br />
+      #include &lt;strings.h&gt;  // Para strcasecmp</p>
+      <p>int main() {<br />
+        char string1[] = &quot;banana&quot;;<br />
+        char string2[] = &quot;Banana&quot;;</p>
+      <p> int resultado = strcasecmp(string1, string2);</p>
+      <p> if (resultado == 0) {<br />
+        printf(&quot;As duas strings s&atilde;o iguais (sem diferencia&ccedil;&atilde;o de mai&uacute;sculas e min&uacute;sculas).\n&quot;);<br />
+        } else {<br />
+        printf(&quot;As duas strings s&atilde;o diferentes (sem diferencia&ccedil;&atilde;o de mai&uacute;sculas e min&uacute;sculas).\n&quot;);<br />
+        }</p>
+      <p> return 0;<br />
+    }</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>equals </strong></td>
+  </tr>
+  <tr>
+    <td> #include &lt;stdio.h&gt;<br />
+      #include &lt;string.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; char string1[] = &quot;banana&quot;;<br />
+      &nbsp;&nbsp;&nbsp; char string2[] = &quot;banana&quot;;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; int resultado = strcmp(string1, string2);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; if (resultado == 0) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;As duas strings s&atilde;o iguais.\n&quot;);<br />
+      &nbsp;&nbsp;&nbsp; } else {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;As duas strings s&atilde;o diferentes.\n&quot;);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+    }</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>equalsIgnoreCase </strong></td>
+  </tr>
+  <tr>
+    <td> #include &lt;stdio.h&gt;<br />
+      #include &lt;strings.h&gt;&nbsp; // Para strcasecmp<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; char string1[] = &quot;banana&quot;;<br />
+      &nbsp;&nbsp;&nbsp; char string2[] = &quot;Banana&quot;;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; int resultado = strcasecmp(string1, string2);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; if (resultado == 0) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;As duas strings s&atilde;o iguais (sem diferencia&ccedil;&atilde;o de mai&uacute;sculas e min&uacute;sculas).\n&quot;);<br />
+      &nbsp;&nbsp;&nbsp; } else {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;As duas strings s&atilde;o diferentes (sem diferencia&ccedil;&atilde;o de mai&uacute;sculas e min&uacute;sculas).\n&quot;);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+    }</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+</html>

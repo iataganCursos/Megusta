@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Strings em Python</title>
+</head>
+
+<body>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>replace</strong></td>
+  </tr>
+  <tr>
+    <td>frase = &quot;Python &eacute; uma linguagem de programa&ccedil;&atilde;o. Python &eacute; muito popular.&quot;<br />
+      nova_frase = frase.replace(&quot;Python&quot;, &quot;JavaScript&quot;)<br />
+    print(nova_frase)</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>length</strong></td>
+  </tr>
+  <tr>
+    <td>minha_string = &quot;Ol&aacute;, mundo!&quot;<br />
+      comprimento_da_string = len(minha_string)<br />
+    print(comprimento_da_string)  # Isso ir&aacute; imprimir o comprimento da string, que &eacute; 12</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>substring</strong></td>
+  </tr>
+  <tr>
+    <td><p>minha_string = &quot;Python &eacute; uma linguagem de programa&ccedil;&atilde;o&quot;</p>
+      <p># Extrair os primeiros 6 caracteres<br />
+        substring1 = minha_string[0:6]  # Equivalente a minha_string[:6]<br />
+        print(substring1)  # Isso ir&aacute; imprimir &quot;Python&quot;</p>
+      <p># Extrair os caracteres de 7 a 18<br />
+        substring2 = minha_string[7:19]  # Equivalente a minha_string[7:19]<br />
+        print(substring2)  # Isso ir&aacute; imprimir &quot;&eacute; uma lingua&quot;</p>
+      <p># Extrair os &uacute;ltimos 6 caracteres<br />
+        substring3 = minha_string[-6:]  # Equivalente a minha_string[25:]<br />
+    print(substring3)  # Isso ir&aacute; imprimir &quot;&ccedil;&atilde;o&quot;</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>charAt </strong></td>
+  </tr>
+  <tr>
+    <td><p>minha_string = &quot;Python&quot;</p>
+      <p># Acessar o caractere na posi&ccedil;&atilde;o 0 (primeiro caractere)<br />
+        primeiro_caractere = minha_string[0]<br />
+        print(primeiro_caractere)  # Isso ir&aacute; imprimir &quot;P&quot;</p>
+      <p># Acessar o caractere na posi&ccedil;&atilde;o 2 (terceiro caractere)<br />
+        terceiro_caractere = minha_string[2]<br />
+        print(terceiro_caractere)  # Isso ir&aacute; imprimir &quot;t&quot;<br />
+      </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>indexOf</strong></td>
+  </tr>
+  <tr>
+    <td>minha_string = &quot;Python &eacute; uma linguagem de programa&ccedil;&atilde;o&quot;<br />
+      indice = minha_string.find(&quot;&eacute;&quot;)<br />
+      if indice != -1:<br />
+print(f&quot;A substring '&eacute;' foi encontrada no &iacute;ndice {indice}&quot;)<br />
+else:<br />
+print(&quot;A substring n&atilde;o foi encontrada&quot;)</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>lastIndexOf</strong></td>
+  </tr>
+  <tr>
+    <td><p>minha_string = &quot;Python &eacute; uma linguagem de programa&ccedil;&atilde;o. Python &eacute; muito popular.&quot;</p>
+      <p># Inverter a string<br />
+        string_invertida = minha_string[::-1]</p>
+      <p># Encontrar a &uacute;ltima ocorr&ecirc;ncia de &quot;Python&quot; na string invertida<br />
+        indice_invertido = string_invertida.rfind(&quot;Python&quot;)</p>
+      <p># Calcular o &iacute;ndice na string original<br />
+        indice_original = len(minha_string) - indice_invertido - 1</p>
+      <p>if indice_invertido != -1:<br />
+        print(f&quot;A &uacute;ltima ocorr&ecirc;ncia de 'Python' come&ccedil;a no &iacute;ndice {indice_original}&quot;)<br />
+        else:<br />
+    print(&quot;A substring n&atilde;o foi encontrada&quot;) </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>toLowerCase</strong></td>
+  </tr>
+  <tr>
+    <td><p>minha_string = &quot;Ol&aacute;, Mundo!&quot;<br />
+      string_em_minusculas = minha_string.lower()<br />
+      print(string_em_minusculas)  # Isso ir&aacute; imprimir &quot;ol&aacute;, mundo!&quot;<br />
+    </p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>toUpperCase </strong></td>
+  </tr>
+  <tr>
+    <td>minha_string = &quot;Ol&aacute;, Mundo!&quot;<br />
+      string_em_maiusculas = minha_string.upper()<br />
+    print(string_em_mai&uacute;sculas)  # Isso ir&aacute; imprimir &quot;OL&Aacute;, MUNDO!&quot;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>compareTo </strong></td>
+  </tr>
+  <tr>
+    <td><p>string1 = &quot;python&quot;<br />
+      string2 = &quot;Python&quot;</p>
+      <p># Comparar se duas strings s&atilde;o iguais (sem diferencia&ccedil;&atilde;o entre mai&uacute;sculas e min&uacute;sculas)<br />
+        if string1.lower() == string2.lower():<br />
+        print(&quot;As strings s&atilde;o iguais (ignorando mai&uacute;sculas e min&uacute;sculas)&quot;)</p>
+      <p># Comparar se uma string &eacute; maior que a outra (ordem alfab&eacute;tica)<br />
+        if string1 &gt; string2:<br />
+        print(&quot;string1 vem depois de string2 no dicion&aacute;rio&quot;)</p>
+      <p># Comparar se uma string &eacute; menor que a outra (ordem alfab&eacute;tica)<br />
+        if string1 &lt; string2:<br />
+        print(&quot;string1 vem antes de string2 no dicion&aacute;rio&quot;)<br />
+      </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>compareToIgnoreCase </strong></td>
+  </tr>
+  <tr>
+    <td><p>string1 = &quot;python&quot;<br />
+      string2 = &quot;Python&quot;</p>
+      <p># Comparar strings sem diferencia&ccedil;&atilde;o entre mai&uacute;sculas e min&uacute;sculas<br />
+        if string1.lower() == string2.lower():<br />
+        print(&quot;As strings s&atilde;o iguais (ignorando mai&uacute;sculas e min&uacute;sculas)&quot;)<br />
+        else:<br />
+        print(&quot;As strings s&atilde;o diferentes&quot;)<br />
+      </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>equals</strong></td>
+  </tr>
+  <tr>
+    <td><p>string1 = &quot;Python&quot;<br />
+      string2 = &quot;python&quot;</p>
+      <p>if string1 == string2:<br />
+        print(&quot;As strings s&atilde;o iguais&quot;)<br />
+        else:<br />
+    print(&quot;As strings s&atilde;o diferentes&quot;)</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>equalsIgnoreCase </strong></td>
+  </tr>
+  <tr>
+    <td><p>string1 = &quot;Python&quot;<br />
+      string2 = &quot;python&quot;</p>
+      <p># Comparar strings sem diferencia&ccedil;&atilde;o entre mai&uacute;sculas e min&uacute;sculas<br />
+        if string1.lower() == string2.lower():<br />
+        print(&quot;As strings s&atilde;o iguais (ignorando mai&uacute;sculas e min&uacute;sculas)&quot;)<br />
+        else:<br />
+        print(&quot;As strings s&atilde;o diferentes&quot;)<br />
+      </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+</html>

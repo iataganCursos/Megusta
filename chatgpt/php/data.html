@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Data em PHP</title>
+</head>
+
+<body>
+<h1 align="center">Data em PHP</h1>
+<h1 align="center">Manipulando datas e horas</h1>
+<p>Existe apenas uma fun&ccedil;&atilde;o para que se possa obter a data e a hora. &Eacute; a fun&ccedil;&atilde;o&nbsp;<strong>date()</strong>. Esta fun&atilde;o devolve data e hora no formanto: Dia da semana, Nome do m&ecirc;s, Dia do m&ecirc;s, Hora:Minuto:Segundo e Ano</p>
+<p>Para se obter os dados separadamente, existem as seguintes fun&ccedil;&atilde;o:</p>
+<ul>
+  <li>date('d') - Retorna o dia do m&ecirc;s (inteiro entre 1 e 31)</li>
+  <li>date('w') - Retorna o dia da semana (0=Domingo, 1=Segunda-feira,... , 6=S&aacute;bado)</li>
+  <li>date('n') - Retorna o m&ecirc;s (entre 1=Janeiro e 11=Dezembro)</li>
+  <li>date('Y') - Retorna o ano com quatro d&iacute;gitos (o mais usado)</li>
+  <li>date('y') - Retorna o ano com 2 d&iacute;gitos.</li>
+</ul>
+<hr />
+<ul>
+  <li>date('G') - Retorna a hora do dia (entre 0 e 23)</li>
+  <li>date('i') - Retorna os minutos dentro da hora (entre 0 e 59)</li>
+  <li>date('s') - Retorna os segundos (entre 0 e 59)</li>
+  <li>--------------------------------------------------------------</li>
+  <li>date('g') - Retorna a hora no formato 12 horas (entre 1 e 12)</li>
+  <li>date('a') - Retorma a hora no formato am ou pm</li>
+  <li>date('A') - Retorna a hora no formato AM ou PM</li>
+</ul>
+<hr />
+<p>No&nbsp;<strong>exemplo 1</strong>&nbsp;abaixo obteremos o dia da semana e as horas. Para tal, utilizaremos a vari&aacute;vel&nbsp;<strong>DataToda</strong>&nbsp;para armazenar data e hora.</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Exemplo 1 </strong></td>
+  </tr>
+  <tr>
+    <td><p>&lt;?php<br />
+      $Dia_do_mes=date('d');<br />
+      $Dia_da_semana=date('w');<br />
+      $Mes=date('n');<br />
+      $Ano=date('Y');<br />
+      // ---------------------------------------<br />
+      $Horas=date('G');<br />
+      $Minutos=date('i');<br />
+      $Segundos=date('s');<br />
+      // ---------------------------------------<br />
+      $semana = array();<br />
+      $semana[0]=&quot;Domingo&quot;;<br />
+      $semana[1]=&quot;Segunda&quot;;<br />
+      $semana[2]=&quot;Ter&ccedil;a&quot;;<br />
+      $semana[3]=&quot;Quarta&quot;;<br />
+      $semana[4]=&quot;Quinta&quot;;<br />
+      $semana[5]=&quot;Sexta&quot;;<br />
+      $semana[6]=&quot;Sabado&quot;;<br />
+      $Semana_atual=$semana[$Dia_da_semana];<br />
+      //-------------------------<br />
+      $Mes2=array();<br />
+      $Mes2[0]=&quot;&quot;;<br />
+      $Mes2[1]=&quot;Janeiro&quot;;<br />
+      $Mes2[2]=&quot;Fevereiro&quot;;<br />
+      $Mes2[3]=&quot;Mar&ccedil;o&quot;;<br />
+      $Mes2[4]=&quot;Abril&quot;;<br />
+      $Mes2[5]=&quot;Maio&quot;;<br />
+      $Mes2[6]=&quot;Junho&quot;;<br />
+      $Mes2[7]=&quot;Julho&quot;;<br />
+      $Mes2[8]=&quot;Agosto&quot;;<br />
+      $Mes2[9]=&quot;Setembro&quot;;<br />
+      $Mes2[10]=&quot;Outubro&quot;;<br />
+      $Mes2[11]=&quot;Novembro&quot;;<br />
+      $Mes2[12]=&quot;Desembro&quot;;<br />
+      $Mes_atual=$Mes2[$Mes];<br />
+      echo $Semana_atual.&quot;, &quot;.$Dia_do_mes.&quot; de &quot;.$Mes_atual.&quot; de &quot;.$Ano;<br />
+      echo &quot;&lt;br&gt;&quot;;<br />
+      echo &quot;S&atilde;o: &quot;.$Horas.&quot; horas, &quot;.$Minutos.&quot; minutos e &quot;.$Segundos.&quot; segundos.&quot;;<br />
+      ?&gt;</p>
+    </td>
+  </tr>
+</table>
+<p><strong>exemplo 2: alterando a data</strong></p>
+<p>$date = new DateTime();<br />
+  $date-&gt;setDate(2022, 1, 7); // ano, m&ecirc;s, dia</p>
+<ul>
+  <li>$Dia_do_mes=$Date-&gt;format('d'); // Coloca o dia do m&ecirc;s (valor entre 1 e 31)</li>
+  <li>$Dia_da_semana=$Date-&gt;format('w'); // Coloca o dia da semaa (valor entre 0 e 6)</li>
+  <li>$Mes=$Date-&gt;format('n'); // coloca o m&ecirc;s (valor entre 0 e 11)</li>
+  <li>$Ano=$Date-&gt;format('Y'); // coloca os anos</li>
+</ul>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Exemplo 2 </strong></td>
+  </tr>
+  <tr>
+    <td><p>&lt;?php<br />
+      $Date = new DateTime();<br />
+      $Date-&gt;setDate(2022, 1, 7); // ano, m&ecirc;s, dia</p>    
+      <p>$Dia_do_mes=$Date-&gt;format('d');<br />
+        $Dia_da_semana=$Date-&gt;format('w');<br />
+        $Mes=$Date-&gt;format('n');<br />
+        $Ano=$Date-&gt;format('Y'); <br />
+        // ---------------------------------------<br />
+        $semana = array();<br />
+        $semana[0]=&quot;Domingo&quot;;<br />
+        $semana[1]=&quot;Segunda&quot;;<br />
+        $semana[2]=&quot;Ter&ccedil;a&quot;;<br />
+        $semana[3]=&quot;Quarta&quot;;<br />
+        $semana[4]=&quot;Quinta&quot;;<br />
+        $semana[5]=&quot;Sexta&quot;;<br />
+        $semana[6]=&quot;Sabado&quot;;<br />
+        $Semana_atual=$semana[$Dia_da_semana];<br />
+        //-------------------------<br />
+        $Mes2=array();<br />
+        $Mes2[0]=&quot;&quot;;<br />
+        $Mes2[1]=&quot;Janeiro&quot;;<br />
+        $Mes2[2]=&quot;Fevereiro&quot;;<br />
+        $Mes2[3]=&quot;Mar&ccedil;o&quot;;<br />
+        $Mes2[4]=&quot;Abril&quot;;<br />
+        $Mes2[5]=&quot;Maio&quot;;<br />
+        $Mes2[6]=&quot;Junho&quot;;<br />
+        $Mes2[7]=&quot;Julho&quot;;<br />
+        $Mes2[8]=&quot;Agosto&quot;;<br />
+        $Mes2[9]=&quot;Setembro&quot;;<br />
+        $Mes2[10]=&quot;Outubro&quot;;<br />
+        $Mes2[11]=&quot;Novembro&quot;;<br />
+        $Mes2[12]=&quot;Desembro&quot;;<br />
+        $Mes_atual=$Mes2[$Mes];<br />
+        echo $Semana_atual.&quot;, &quot;.$Dia_do_mes.&quot; de &quot;.$Mes_atual.&quot; de &quot;.$Ano; <br />
+    ?&gt;</p></td>
+  </tr>
+</table>
+</body>
+</html>

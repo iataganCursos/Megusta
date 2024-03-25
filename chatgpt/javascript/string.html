@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Strings em Javascript</title>
+</head>
+
+<body>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>replace</strong></td>
+  </tr>
+  <tr>
+    <td>const originalString = &quot;O JavaScript &eacute; uma linguagem de programa&ccedil;&atilde;o. O JavaScript &eacute; vers&aacute;til.&quot;;<br />
+      const novaString = originalString.replace(&quot;JavaScript&quot;, &quot;Python&quot;);<br />
+      console.log(novaString);<br />
+    // Sa&iacute;da: &quot;O Python &eacute; uma linguagem de programa&ccedil;&atilde;o. O JavaScript &eacute; vers&aacute;til.&quot;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>length</strong></td>
+  </tr>
+  <tr>
+    <td>const minhaString = &quot;Ol&aacute;, mundo!&quot;;<br />
+      const comprimentoDaString = minhaString.length;<br />
+    console.log(comprimentoDaString); // Sa&iacute;da: 12</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>substring</strong></td>
+  </tr>
+  <tr>
+    <td>const minhaString = &quot;Isso &eacute; uma string de exemplo.&quot;;<br />
+      const substring = minhaString.substring(5, 12);<br />
+      console.log(substring);<br />
+    // Sa&iacute;da: &quot;&eacute; uma s&quot;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>charAt </strong></td>
+  </tr>
+  <tr>
+    <td><p>const minhaString = &quot;Ol&aacute;, mundo!&quot;;<br />
+      const primeiroCaractere = minhaString.charAt(0);<br />
+      console.log(primeiroCaractere); // Sa&iacute;da: &quot;O&quot;</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>indexOf</strong></td>
+  </tr>
+  <tr>
+    <td>const minhaString = &quot;Isso &eacute; uma string de exemplo.&quot;;<br />
+      const indice = minhaString.indexOf(&quot;string&quot;);<br />
+      console.log(indice);<br />
+    // Sa&iacute;da: 10 (o &iacute;ndice do &quot;s&quot; em &quot;string&quot;)</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>lastIndexOf</strong></td>
+  </tr>
+  <tr>
+    <td>const minhaString = &quot;Isso &eacute; uma string de exemplo com uma string no final.&quot;;<br />
+      const indice = minhaString.lastIndexOf(&quot;string&quot;);<br />
+      console.log(indice);<br />
+    // Sa&iacute;da: 32 (o &iacute;ndice do &quot;s&quot; em &quot;string&quot; na &uacute;ltima ocorr&ecirc;ncia)</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>toLowerCase</strong></td>
+  </tr>
+  <tr>
+    <td>const minhaString = &quot;Isso &Eacute; Uma StRinG ExeMPLO&quot;;<br />
+      const stringEmMinusculas = minhaString.toLowerCase();<br />
+      console.log(stringEmMinusculas);<br />
+    // Sa&iacute;da: &quot;isso &eacute; uma string exemplo&quot;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>toUpperCase </strong></td>
+  </tr>
+  <tr>
+    <td>const minhaString = &quot;Isso &Eacute; Uma StRinG ExeMPLO&quot;;<br />
+      const stringEmMaiusculas = minhaString.toUpperCase();<br />
+      console.log(stringEmMaiusculas);<br />
+    // Sa&iacute;da: &quot;ISSO &Eacute; UMA STRING EXEMPLO&quot;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>compareTo </strong></td>
+  </tr>
+  <tr>
+    <td><p>const string1 = &quot;apple&quot;;<br />
+      const string2 = &quot;banana&quot;;</p>
+      <p>if (string1 &lt; string2) {<br />
+        console.log(&quot;string1 &eacute; menor que string2&quot;);<br />
+        } else if (string1 &gt; string2) {<br />
+        console.log(&quot;string1 &eacute; maior que string2&quot;);<br />
+        } else {<br />
+        console.log(&quot;string1 &eacute; igual a string2&quot;);<br />
+    }</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>compareToIgnoreCase </strong></td>
+  </tr>
+  <tr>
+    <td><p>function compareToIgnoreCase(string1, string2) {<br />
+const str1 = string1.toLowerCase();<br />
+const str2 = string2.toLowerCase();</p>
+      <p> if (str1 &lt; str2) {<br />
+        return -1;<br />
+        } else if (str1 &gt; str2) {<br />
+        return 1;<br />
+        } else {<br />
+        return 0;<br />
+        }<br />
+        }</p>
+      <p>const resultado = compareToIgnoreCase(&quot;Ma&ccedil;&atilde;&quot;, &quot;ma&Ccedil;&atilde;&quot;);<br />
+        console.log(resultado); // Sa&iacute;da: 0 (strings s&atilde;o consideradas iguais, independentemente das mai&uacute;sculas/min&uacute;sculas)<br />
+      </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>equals</strong></td>
+  </tr>
+  <tr>
+    <td><p>const string1 = &quot;Ol&aacute;, mundo!&quot;;<br />
+      const string2 = &quot;Ol&aacute;, mundo!&quot;;</p>
+      <p>const saoIguais = string1 === string2;</p>
+      <p>console.log(saoIguais); // Sa&iacute;da: true (as duas strings s&atilde;o id&ecirc;nticas)<br />
+      </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>equalsIgnoreCase </strong></td>
+  </tr>
+  <tr>
+    <td><p>function equalsIgnoreCase(string1, string2) {<br />
+const str1 = string1.toLowerCase();<br />
+const str2 = string2.toLowerCase();</p>
+      <p> return str1 === str2;<br />
+        }</p>
+      <p>const saoIguais = equalsIgnoreCase(&quot;Ma&ccedil;&atilde;&quot;, &quot;ma&Ccedil;&atilde;&quot;);<br />
+        console.log(saoIguais); // Sa&iacute;da: true (as strings s&atilde;o consideradas iguais, independentemente das mai&uacute;sculas/min&uacute;sculas)      </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+</html>

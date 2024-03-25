@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Data em C</title>
+</head>
+
+<body>
+<h1 align="center">Data em C</h1>
+<h1 align="center">Manipulando datas e horas</h1>
+<p>Existe apenas uma fun&ccedil;&atilde;o para que se possa obter a data e a hora. &Eacute; a fun&ccedil;&atilde;o t= time('\0'); local=localtime(&amp;t);. Esta fun&atilde;o devolve data e hora.</p>
+<p>Para se obter os dados separadamente, existem os seguintes m&eacute;todos:</p>
+<ul>
+  <li>local-&gt;tm_mday - Retorna o dia do m&ecirc;s (inteiro entre 1 e 31)</li>
+  <li>local-&gt;tm_wday - Retorna o dia da semana (0=Domingo, 1=Segunda-feira,... , 6=S&aacute;bado)</li>
+  <li>glocal-&gt;tm_mon - Retorna o m&ecirc;s (entre 0=Janeiro e 11=Dezembro)</li>
+  <li>local-&gt;tm_year+1900 - Retorna o ano com quatro d&iacute;gitos (o mais usado)</li>
+</ul>
+<hr />
+<ul>
+  <li>local-&gt;tm_hour - Retorna a hora do dia (entre 0 e 23)</li>
+  <li>ocal-&gt;tm_min - Retorna os minutos dentro da hora (entre 0 e 59)</li>
+  <li>local-&gt;tm_sec - Retorna os segundos (entre 0 e 59)</li>
+</ul>
+<hr />
+<table border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Arquivo: Exemplo.c</strong></td>
+    </tr>
+    <tr>
+      <td>#include &lt;stdio.h&gt;<br />
+        #include &lt;time.h&gt;<br />
+        #include &lt;string.h&gt;<br />
+        <br />
+        int main(int argc, char **argv){<br />
+        &nbsp;&nbsp; struct tm *local;<br />
+        &nbsp;&nbsp; time_t t;<br />
+        &nbsp;&nbsp; t= time('\0');<br />
+        &nbsp;&nbsp; local=localtime(&amp;t);<br />
+        &nbsp;&nbsp; // -------------------<br />
+        &nbsp;&nbsp; int dia=local-&gt;tm_mday;<br />
+        &nbsp;&nbsp; int mes=local-&gt;tm_mon;<br />
+        &nbsp;&nbsp; int ano=local-&gt;tm_year+1900;<br />
+        &nbsp;&nbsp; int dia_da_semana=local-&gt;tm_wday;<br />
+        &nbsp;&nbsp; // -------------------<br />
+        &nbsp;&nbsp; char semana[][30] = {&quot;Domingo&quot;, &quot;Segunda&quot;, &quot;Ter&ccedil;a&quot;,&quot;Quarta&quot;, &quot;Quinta&quot;, &quot;Sexta&quot;, &quot;Sabado&quot;};<br />
+        char semana_atual[30];<br />
+        &nbsp;&nbsp; strcpy(semana_atual, semana[dia_da_semana]);<br />
+        &nbsp;&nbsp; // -------------------<br />
+        &nbsp;&nbsp; char mes2[][30] = {&quot;Janeiro&quot;, &quot;Fevereiro&quot;, &quot;Mar&ccedil;o&quot;, &quot;Abril&quot;, &quot;Maio&quot;, &quot;Junho&quot;, &quot;Julho&quot;, &quot;Agosto&quot;, &quot;Setembro&quot;, &quot;Outubro&quot;, &quot;Novembro&quot;, &quot;Desembro&quot;};<br />
+        &nbsp;&nbsp; char mes_atual[30];<br />
+        &nbsp;&nbsp; strcpy(mes_atual, mes2[mes]);<br />
+        &nbsp;&nbsp; // -------------------<br />
+        &nbsp;&nbsp; printf(&quot;%s, %d de %s de %d\n&quot;,semana_atual,dia,mes_atual,ano); // Retorna a data<br />
+        &nbsp;&nbsp; // -------------------<br />
+        &nbsp;&nbsp; int horas=local-&gt;tm_hour;<br />
+        &nbsp;&nbsp; int minutos=local-&gt;tm_min;<br />
+        &nbsp;&nbsp; int segundos=local-&gt;tm_sec;<br />
+        &nbsp;&nbsp; printf(&quot;S&atilde;o: %d horas, %d minutos, %d segundos.\n&quot;,horas,minutos,segundos); // Retorna a hora<br />
+        &nbsp;&nbsp; return 0;<br />
+        }<br /></td>
+    </tr>
+  </tbody>
+</table>
+<p align="center">exemplo 4: alterando a data</p>
+<table border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Arquivo: Exemplo.c</strong></td>
+    </tr>
+    <tr>
+      <td>#include &lt;stdio.h&gt;<br />
+        #include &lt;string.h&gt;<br />
+        #include &lt;time.h&gt;<br />
+        <br />
+        int main(int argc, char **argv){<br />
+        <br />
+        &nbsp;&nbsp; // -------------------<br />
+        &nbsp;&nbsp; int dia=4;<br />
+        &nbsp;&nbsp; int mes=11;<br />
+        &nbsp;&nbsp; int ano=2011;<br />
+        &nbsp;&nbsp; // -------------------<br />
+        <br />
+        &nbsp;&nbsp; time_t rawtime;<br />
+        &nbsp;&nbsp; struct tm * timeinfo;<br />
+        &nbsp;&nbsp; time ( &amp;rawtime );<br />
+        &nbsp;&nbsp; timeinfo = localtime ( &amp;rawtime );<br />
+        &nbsp;&nbsp; timeinfo-&gt;tm_year = ano - 1900;<br />
+        &nbsp;&nbsp; timeinfo-&gt;tm_mon = mes - 1;<br />
+        &nbsp;&nbsp; timeinfo-&gt;tm_mday = dia;<br />
+        &nbsp;&nbsp; mktime ( timeinfo );<br />
+        <br />
+        &nbsp;&nbsp; // -------------------<br />
+        &nbsp;&nbsp; char semana[][30] = { &quot;Domingo&quot;, &quot;Segunda&quot;, &quot;Ter&ccedil;a&quot;,&quot;Quarta&quot;, &quot;Quinta&quot;, &quot;Sexta&quot;, &quot;Sabado&quot;};<br />
+        &nbsp;&nbsp; char semana_atual[30];<br />
+        &nbsp;&nbsp; strcpy(semana_atual, semana[timeinfo-&gt;tm_wday]);<br />
+        &nbsp;&nbsp; // -------------------<br />
+        &nbsp;&nbsp; char mes2[][30] = {&quot;Janeiro&quot;, &quot;Fevereiro&quot;, &quot;Mar&ccedil;o&quot;, &quot;Abril&quot;, &quot;Maio&quot;, &quot;Junho&quot;, &quot;Julho&quot;, &quot;Agosto&quot;, &quot;Setembro&quot;, &quot;Outubro&quot;, &quot;Novembro&quot;, &quot;Desembro&quot;};<br />
+        &nbsp;&nbsp; char mes_atual[30];<br />
+        &nbsp;&nbsp; strcpy(mes_atual, mes2[mes-1]);<br />
+        &nbsp;&nbsp; // -------------------<br />
+        &nbsp;&nbsp; printf(&quot;%s, %d de %s de %d\n&quot;,semana_atual,dia,mes_atual,ano); // Retorna a data<br />
+        &nbsp;&nbsp; return 0;<br />
+        }</td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;</p>
+</body>
+</html>
