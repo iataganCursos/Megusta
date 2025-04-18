@@ -10,6 +10,8 @@
    font-family:"Courier New", Courier, monospace;
 }
 .style2 {color: #CCCCCC}
+.style3 {color: #0000FF; font-style: italic; }
+.style4 {color: #FFFFFF}
 -->
 </style>
 </head>
@@ -524,6 +526,291 @@
     </tr>
   </tbody>
 </table>
+<h1 align="center">Fun&ccedil;&otilde;es trigonom&eacute;tricas</h1>
+<table width="100%" border="1">
+  <tbody>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Math.PI</strong></td>
+    </tr>
+    <tr>
+      <td>public class ExemploPi {<br />
+        &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Acesso &agrave; constante Math.PI<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double pi = Math.PI;<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o valor de pi<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O valor de pi &eacute;: &quot; + pi);<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exemplo de c&aacute;lculo usando pi<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double raio = 5.0;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double area = pi * raio * raio;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;A &aacute;rea de um c&iacute;rculo com raio &quot; + raio + &quot; &eacute;: &quot; + area);<br />
+        &nbsp;&nbsp;&nbsp; }<br />
+        }</td>
+    </tr>
+    <tr>
+      <td bgcolor="#000000"><span class="style4">function radianos(){<br />
+        return Math.PI/180<br />
+        }</span></td>
+    </tr>
+    <tr>
+      <td>public class ConversorGrausRadianos {<br />
+        &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double graus = 45.0;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double radianos = converterParaRadianos(graus);<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(graus + &quot; graus &eacute; equivalente a &quot; + radianos + &quot; radianos.&quot;);<br />
+        &nbsp;&nbsp;&nbsp; }<br />
+        <br />
+        &nbsp;&nbsp;&nbsp; // Fun&ccedil;&atilde;o para converter graus para radianos<br />
+        &nbsp;&nbsp;&nbsp; public static double converterParaRadianos(double graus) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return graus * (Math.PI / 180.0);<br />
+        &nbsp;&nbsp;&nbsp; }<br />
+        }</td>
+    </tr>
+    <tr>
+      <td bgcolor="#00FFFF">&nbsp;</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Math.sin</strong></td>
+    </tr>
+    <tr>
+      <td>public class ExemploSeno {<br />
+        &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // &Acirc;ngulo em radianos<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double anguloEmRadianos = Math.PI / 4.0;<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o seno do &acirc;ngulo<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double senoDoAngulo = Math.sin(anguloEmRadianos);<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O seno de &quot; + anguloEmRadianos + &quot; radianos &eacute;: &quot; + senoDoAngulo);<br />
+        &nbsp;&nbsp;&nbsp; }<br />
+        }</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Math.cos</strong></td>
+    </tr>
+    <tr>
+      <td>public class ExemploCosseno {<br />
+        &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // &Acirc;ngulo em radianos<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double anguloEmRadianos = Math.PI / 3.0;<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o cosseno do &acirc;ngulo<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double cossenoDoAngulo = Math.cos(anguloEmRadianos);<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O cosseno de &quot; + anguloEmRadianos + &quot; radianos &eacute;: &quot; + cossenoDoAngulo);<br />
+        &nbsp;&nbsp;&nbsp; }<br />
+        }</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Math.tan</strong></td>
+    </tr>
+    <tr>
+      <td>public class ExemploTangente {<br />
+        &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // &Acirc;ngulo em radianos<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double anguloEmRadianos = Math.PI / 6.0;<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando a tangente do &acirc;ngulo<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double tangenteDoAngulo = Math.tan(anguloEmRadianos);<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;A tangente de &quot; + anguloEmRadianos + &quot; radianos &eacute;: &quot; + tangenteDoAngulo);<br />
+        &nbsp;&nbsp;&nbsp; }<br />
+        }</td>
+    </tr>
+    <tr>
+      <td bgcolor="#00FFFF">&nbsp;</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Math.asin</strong></td>
+    </tr>
+    <tr>
+      <td>public class ExemploArcoSeno {<br />
+        &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o arco seno<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double valor = 0.5;<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o arco seno do valor<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double arcoSeno = Math.asin(valor);<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado em radianos<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O arco seno de &quot; + valor + &quot; &eacute;: &quot; + arcoSeno + &quot; radianos.&quot;);<br />
+        &nbsp;&nbsp;&nbsp; }<br />
+        }</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Math.acos</strong></td>
+    </tr>
+    <tr>
+      <td>public class ExemploArcoCosseno {<br />
+        &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o arco cosseno<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double valor = 0.5;<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o arco cosseno do valor<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double arcoCosseno = Math.acos(valor);<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado em radianos<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O arco cosseno de &quot; + valor + &quot; &eacute;: &quot; + arcoCosseno + &quot; radianos.&quot;);<br />
+        &nbsp;&nbsp;&nbsp; }<br />
+        }</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Math.atan</strong></td>
+    </tr>
+    <tr>
+      <td>public class ExemploArcoTangente {<br />
+        &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o arco tangente<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double valor = 0.5;<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o arco tangente do valor<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double arcoTangente = Math.atan(valor);<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado em radianos<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O arco tangente de &quot; + valor + &quot; &eacute;: &quot; + arcoTangente + &quot; radianos.&quot;);<br />
+        &nbsp;&nbsp;&nbsp; }<br />
+        }</td>
+    </tr>
+    <tr>
+      <td bgcolor="#00FFFF">&nbsp;</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Math.sinh</strong></td>
+    </tr>
+    <tr>
+      <td>public class ExemploSenoHiperbolico {<br />
+        &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o seno hiperb&oacute;lico<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double valor = 2.0;<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o seno hiperb&oacute;lico do valor<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double senoHiperbolico = Math.sinh(valor);<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O seno hiperb&oacute;lico de &quot; + valor + &quot; &eacute;: &quot; + senoHiperbolico);<br />
+        &nbsp;&nbsp;&nbsp; }<br />
+        }</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Math.cosh</strong></td>
+    </tr>
+    <tr>
+      <td>public class ExemploCossenoHiperbolico {<br />
+        &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o cosseno hiperb&oacute;lico<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double valor = 2.0;<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o cosseno hiperb&oacute;lico do valor<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double cossenoHiperbolico = Math.cosh(valor);<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O cosseno hiperb&oacute;lico de &quot; + valor + &quot; &eacute;: &quot; + cossenoHiperbolico);<br />
+        &nbsp;&nbsp;&nbsp; }<br />
+        }</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Math.tanh</strong></td>
+    </tr>
+    <tr>
+      <td>public class ExemploTangenteHiperbolica {<br />
+        &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular a tangente hiperb&oacute;lica<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double valor = 2.0;<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando a tangente hiperb&oacute;lica do valor<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double tangenteHiperbolica = Math.tanh(valor);<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;A tangente hiperb&oacute;lica de &quot; + valor + &quot; &eacute;: &quot; + tangenteHiperbolica);<br />
+        &nbsp;&nbsp;&nbsp; }<br />
+        }</td>
+    </tr>
+    <tr>
+      <td bgcolor="#00FFFF">&nbsp;</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Math.asinh</strong></td>
+    </tr>
+    <tr>
+      <td>public class ExemploArcoSenoHiperbolico {<br />
+        &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o arco seno hiperb&oacute;lico<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double valor = 2.0;<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o arco seno hiperb&oacute;lico do valor<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double arcoSenoHiperbolico = asinh(valor);<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O arco seno hiperb&oacute;lico de &quot; + valor + &quot; &eacute;: &quot; + arcoSenoHiperbolico);<br />
+        &nbsp;&nbsp;&nbsp; }<br />
+        <br />
+        &nbsp;&nbsp;&nbsp; // Fun&ccedil;&atilde;o para calcular o arco seno hiperb&oacute;lico<br />
+        &nbsp;&nbsp;&nbsp; public static double asinh(double x) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return Math.log(x + Math.sqrt(x*x + 1));<br />
+        &nbsp;&nbsp;&nbsp; }<br />
+        }</td>
+    </tr>
+    <tr>
+      <td>asinh(x) = ln(x + sqrt(x^2 + 1))</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Math.acosh</strong></td>
+    </tr>
+    <tr>
+      <td>public class ExemploArcoCossenoHiperbolico {<br />
+        &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o arco cosseno hiperb&oacute;lico<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double valor = 2.0;<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o arco cosseno hiperb&oacute;lico do valor<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double arcoCossenoHiperbolico = acosh(valor);<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O arco cosseno hiperb&oacute;lico de &quot; + valor + &quot; &eacute;: &quot; + arcoCossenoHiperbolico);<br />
+        &nbsp;&nbsp;&nbsp; }<br />
+        <br />
+        &nbsp;&nbsp;&nbsp; // Fun&ccedil;&atilde;o para calcular o arco cosseno hiperb&oacute;lico<br />
+        &nbsp;&nbsp;&nbsp; public static double acosh(double x) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return Math.log(x + Math.sqrt(x*x - 1));<br />
+        &nbsp;&nbsp;&nbsp; }<br />
+        }</td>
+    </tr>
+    <tr>
+      <td>acosh(x) = ln(x + sqrt(x^2 - 1))</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Math.atanh</strong></td>
+    </tr>
+    <tr>
+      <td>public class ExemploArcoTangenteHiperbolico {<br />
+        &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o arco tangente hiperb&oacute;lico<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double valor = 0.5;<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o arco tangente hiperb&oacute;lico do valor<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double arcoTangenteHiperbolico = atanh(valor);<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O arco tangente hiperb&oacute;lico de &quot; + valor + &quot; &eacute;: &quot; + arcoTangenteHiperbolico);<br />
+        &nbsp;&nbsp;&nbsp; }<br />
+        <br />
+        &nbsp;&nbsp;&nbsp; // Fun&ccedil;&atilde;o para calcular o arco tangente hiperb&oacute;lico<br />
+        &nbsp;&nbsp;&nbsp; public static double atanh(double x) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 0.5 * Math.log((1 + x) / (1 - x));<br />
+        &nbsp;&nbsp;&nbsp; }<br />
+        }</td>
+    </tr>
+    <tr>
+      <td>atanh(x) = 0.5 * ln((1 + x) / (1 - x))</td>
+    </tr>
+  </tbody>
+</table>
+<br />
 <p align="center"><strong>Logar&iacute;tmos</strong></p>
 <ul>
   <li>Math.log(n&uacute;mero) - Retorna op logar&iacute;tmo de um n&uacute;mero</li>
@@ -631,6 +918,34 @@
             Texto = s.toUpperCase();</p>
         <p>Resultado:<br />
           ISTO &Eacute; UM EXEMPLO</p></td>
+    </tr>
+  </tbody>
+</table>
+<h1 align="center">Comparadores de Strings </h1>
+<table width="100%" border="1">
+  <tbody>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Opera&ccedil;&atilde;o</strong></td>
+      <td bgcolor="#CCCCCC"><strong>Resultado</strong></td>
+    </tr>
+    <tr>
+      <td>&quot;FRED&quot;.equals(&quot;FRED&quot;)</td>
+      <td>true (verdadeiro)</td>
+    </tr>
+    <tr>
+      <td>! &quot;SAM&quot;.equals(&quot;FRED&quot;)</td>
+      <td>true (verdadeiro)</td>
+    </tr>
+    <tr>
+      <td>&quot;TWO&quot;.equals(&quot;ONE&quot;)</td>
+      <td>false (falso)</td>
+    </tr>
+    <tr>
+      <td>! &quot;TRHEE&quot;.equals(&quot;TRHEE&quot;)</td>
+      <td>false (falso)</td>
+    </tr>
+    <tr>
+      <td colspan="2">Compara&ccedil;&otilde;es de strings n&atilde;o s&atilde;o feitas com o operador == e sim com o m&eacute;todo equals ou com equalsIgnoreCase (que ignora mai&uacute;sculas e min&uacute;sculas).</td>
     </tr>
   </tbody>
 </table>
@@ -1002,31 +1317,358 @@
     </tr>
   </tbody>
 </table>
-<p>&nbsp;</p>
-<table width="100%" border="1">
+<h1 align="center">Biblioteca de Fun&ccedil;&otilde;es</h1>
+<table border="1" cellpadding="0" cellspacing="0">
   <tbody>
     <tr>
-      <td bgcolor="#CCCCCC"><strong>Opera&ccedil;&atilde;o</strong></td>
-      <td bgcolor="#CCCCCC"><strong>Resultado</strong></td>
+      <td bgcolor="#FF8A8A"><strong>Criptografia</strong></td>
     </tr>
     <tr>
-      <td>&quot;FRED&quot;.equals(&quot;FRED&quot;)</td>
-      <td>true (verdadeiro)</td>
+      <td>Criptografar</td>
     </tr>
     <tr>
-      <td>! &quot;SAM&quot;.equals(&quot;FRED&quot;)</td>
-      <td>true (verdadeiro)</td>
+      <td>Descriptografar</td>
     </tr>
     <tr>
-      <td>&quot;TWO&quot;.equals(&quot;ONE&quot;)</td>
-      <td>false (falso)</td>
+      <td>Criptografia de <span class="style3">&quot;M&atilde;o &Uacute;nica&quot;</span></td>
     </tr>
     <tr>
-      <td>! &quot;TRHEE&quot;.equals(&quot;TRHEE&quot;)</td>
-      <td>false (falso)</td>
+      <td>Software que encripta o <span class="style3">c&oacute;digo-fonte</span></td>
     </tr>
     <tr>
-      <td colspan="2">Compara&ccedil;&otilde;es de strings n&atilde;o s&atilde;o feitas com o operador == e sim com o m&eacute;todo equals ou com equalsIgnoreCase (que ignora mai&uacute;sculas e min&uacute;sculas).</td>
+      <td>Criptografar <span class="style3">&quot;Arquivos e Pastas&quot; </span></td>
+    </tr>
+    <tr>
+      <td bgcolor="#FF8A8A"><strong>Fun&ccedil;&otilde;es</strong></td>
+    </tr>
+    <tr>
+      <td>Convertendo String para Num&eacute;rica</td>
+    </tr>
+    <tr>
+      <td>Convertendo Num&eacute;rica para String</td>
+    </tr>
+    <tr>
+      <td>Fun&ccedil;&otilde;es Matem&aacute;ticas (O B&aacute;sico) </td>
+    </tr>
+    <tr>
+      <td>Fun&ccedil;&otilde;es Strings</td>
+    </tr>
+    <tr>
+      <td>Manipulando Data e Hora</td>
+    </tr>
+    <tr>
+      <td>Lista de Sele&ccedil;&atilde;o =&gt; Idiomas | Pa&iacute;ses | Regi&otilde;es | Fuso Hor&aacute;rios | Mapas</td>
+    </tr>
+    <tr>
+      <td>Array List</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Fun&ccedil;&atilde;o String</strong></td>
+    </tr>
+    <tr>
+      <td><ul>
+        <li>Alltrim - Apagando espa&ccedil;os em branco</li>
+      </ul></td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Outras Fun&ccedil;&otilde;es Matem&aacute;ticas</strong></td>
+    </tr>
+    <tr>
+      <td><ul>
+        <li>Arredondando valores
+          <ul>
+                <li> rSetDecimalTo(numero, casas_decimais): Configurar a quantidade de casas decimais exibidas.<br />
+                  Exemplo: rSetDecimalTo(11/3, 2) // 2 casas decimais sem arredondamento.</li>
+            <li> rRoundDecimalTo(numero, casas_decimais): Configurar a quantidade de casas decimais exibidas e arredonda.<br />
+              Exemplo: rRoundDecimalTo(11/3, 2) // 2 casas decimais arredondando 1 casa decimal mais pr&oacute;ximo. Se a por&ccedil;&atilde;o decimal do n&uacute;mero for 0.5, o n&uacute;mero &eacute; arredondo para cima.</li>
+          </ul>
+        </li>
+        <li>Sistema de numera&ccedil;&atilde;o Romano
+          <ul>
+                <li>rNumRoman(): De n&uacute;mero Decimal para Romano.</li>
+            <li>rRomanNum(): De n&uacute;mero Romando para Decimal.</li>
+          </ul>
+        </li>
+        <li>Sistema de Numera&ccedil;&atilde;o Decimal
+          <ul>
+                <li>sistNumDec(): Define as casas Decimais, Ex: 1.487.964.574,93.758.46 </li>
+          </ul>
+        </li>
+        <li>Convertendo n&uacute;meros
+          <ul>
+                <li>rScientificNotation(): Converte N&uacute;mero Real em Nota&ccedil;&atilde;o Cient&iacute;fica. Ex: 8.457E+14</li>
+            <li>rNotation10(): Converte N&uacute;mero Real na base 10. Ex: 3.5674 * 10^4</li>
+          </ul>
+        </li>
+        <li>Logar&iacute;tmos
+          <ul>
+                <li>rMath_logB(n&uacute;mero, base): Retorna op logar&iacute;tmo de um n&uacute;mero</li>
+            <li>rMath_log10(n&uacute;mero): Retorna op logar&iacute;tmo de um n&uacute;mero na base 10</li>
+            <li>rMath_exp(n&uacute;mero): Retorna op Euler de n&uacute;mero e = 2.718281828459045. Ex: e^2 = 7.3890560989306495</li>
+            <li>rMath_LN10<br />
+              console.log(rMath_LN10); // Sa&iacute;da: ~2.302585092994046</li>
+            <li>rMath_E<br />
+              console.log(rMath_E); // Sa&iacute;da: ~2.718281828459045</li>
+          </ul>
+        </li>
+        <li>Aleat&oacute;rio
+          <ul>
+                <li>rMath_Random(): Retorna um N&uacute;mero Aleat&oacute;rio entre 0 e 1</li>
+            <li>rMath_RandomInt(min,max): Retorna um N&uacute;mero Aleat&oacute;rio</li>
+            <li>rMath_RandomFloat(min,max): Retorna um N&uacute;mero Aleat&oacute;rio</li>
+          </ul>
+        </li>
+      </ul></td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Fun&ccedil;&otilde;es de Base</strong></td>
+    </tr>
+    <tr>
+      <td><ul>
+        <li>Binario</li>
+        <li>Octal</li>
+        <li>Hexadecimal maiusculo</li>
+        <li>Hexadecimal minusculo</li>
+        <li>C&oacute;digo ASCII</li>
+        <li>M&eacute;todo BCD</li>
+        <li>Decimal</li>
+        <li>Fun&ccedil;&atilde;o de Base</li>
+        <li>Letras Mai&uacute;sculas</li>
+        <li>Letras Min&uacute;sculas</li>
+      </ul></td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Dados do Usu&aacute;rio I (Servidor)</strong></td>
+    </tr>
+    <tr>
+      <td><ul>
+        <li>IP</li>
+        <li>IP =&gt; Endere&ccedil;o</li>
+        <li>IP =&gt; P&aacute;ginas</li>
+        <li>IP =&gt; Mapa</li>
+        <li>IP =&gt; Nome do Sistema Operacional | Nome do Navegador | Resolu&ccedil;&atilde;o de Tela </li>
+        <li>IP =&gt; Data | Horas | Dura&ccedil;&atilde;o da Visita</li>
+        <li>Pa&iacute;s</li>
+        <li>Idioma</li>
+        <li>Data</li>
+        <li>Fuso Hor&aacute;rio</li>
+        <li>Horas do Usu&aacute;rio</li>
+        <li>Horas do Servidor</li>
+      </ul></td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Dados do Usu&aacute;rio II (Servidor)</strong></td>
+    </tr>
+    <tr>
+      <td><ul>
+        <li>Nome</li>
+        <li>Endere&ccedil;o</li>
+        <li>Celular</li>
+        <li>Telefone</li>
+        <li>CPF</li>
+        <li>CEP</li>
+      </ul></td>
+    </tr>
+    <tr>
+      <td bgcolor="#FF8A8A"><strong>Url e Diret&oacute;rio</strong></td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Url 1</strong></td>
+    </tr>
+    <tr>
+      <td>&nbsp;
+          <table border="1" cellspacing="0" cellpadding="2">
+            <tbody>
+              <tr>
+                <td bgcolor="#cccccc"><strong>Url</strong></td>
+                <td colspan="7">http://blog.meusite.com:8080/pasta/documento/pagina.html#teste?var=teste</td>
+              </tr>
+              <tr>
+                <td bgcolor="#cccccc"><strong>Target</strong></td>
+                <td colspan="7">_blank</td>
+              </tr>
+              <tr>
+                <td>http:</td>
+                <td>blog.</td>
+                <td>meusite.com</td>
+                <td>8080</td>
+                <td>/pasta/documento/</td>
+                <td>pagina.html</td>
+                <td>#teste</td>
+                <td>?var=teste</td>
+              </tr>
+              <tr>
+                <td bgcolor="#cccccc"><strong>Protocolo</strong></td>
+                <td bgcolor="#cccccc"><strong>subdom&iacute;nio</strong></td>
+                <td bgcolor="#cccccc"><strong>hostname</strong></td>
+                <td bgcolor="#cccccc"><strong>Porta</strong></td>
+                <td bgcolor="#cccccc"><strong>Pastas</strong></td>
+                <td bgcolor="#cccccc"><strong>P&aacute;gina</strong></td>
+                <td bgcolor="#cccccc"><strong>&acirc;ncora</strong></td>
+                <td bgcolor="#cccccc"><strong>vari&aacute;veis</strong></td>
+              </tr>
+            </tbody>
+          </table>
+       </td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Protocolos</strong></td>
+    </tr>
+    <tr>
+      <td>http://</td>
+    </tr>
+    <tr>
+      <td>https://</td>
+    </tr>
+    <tr>
+      <td>ftp://</td>
+    </tr>
+    <tr>
+      <td>file://</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Url 2</strong></td>
+    </tr>
+    <tr>
+      <td>_top</td>
+    </tr>
+    <tr>
+      <td>_blank</td>
+    </tr>
+    <tr>
+      <td>Form</td>
+    </tr>
+    <tr>
+      <td>Frameset</td>
+    </tr>
+    <tr>
+      <td>iFrame</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Url 3</strong></td>
+    </tr>
+    <tr>
+      <td>Enviando Vari&aacute;veis atrav&eacute;s de um link</td>
+    </tr>
+    <tr>
+      <td>Enviando Vari&aacute;veis atrav&eacute;s de um campo de texto</td>
+    </tr>
+    <tr>
+      <td>(Largura / Altura) de um Objeto (Imagem, flash, java, etc)</td>
+    </tr>
+    <tr>
+      <td>(Tamanho em Bytes) de um Objeto (Imagem, flash, java, etc)</td>
+    </tr>
+    <tr>
+      <td>Url Amig&aacute;vel</td>
+    </tr>
+    <tr>
+      <td>Mini Url (Url Amig&aacute;vel)</td>
+    </tr>
+    <tr>
+      <td>Subdom&iacute;nio</td>
+    </tr>
+    <tr>
+      <td>Coockies</td>
+    </tr>
+    <tr>
+      <td>Redirecionamento</td>
+    </tr>
+    <tr>
+      <td><ul>
+        <li>Doctype [W3C / charset / language / dir=&quot;rtl&quot;]</li>
+        <li>UrlEncode (%C3%A1tomo)</li>
+        <li>UrlDecode (&aacute;tomo)</li>
+        <li>CharHtmlEncode (&amp;spades;)</li>
+        <li>CharHtmlDecode (&#9824;)</li>
+      </ul></td>
+    </tr>
+    <tr>
+      <td><ul>
+        <li>Convertendo
+          <ul>
+                <li>Par&aacute;grafos:
+                  <ul>
+                      <li>paragraph()</li>
+                  </ul>
+                </li>
+            <li>Espa&ccedil;os em Branco:
+              <ul>
+                      <li>spaceBlank()</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul></td>
+    </tr>
+    <tr>
+      <td>Url Open Connection</td>
+    </tr>
+    <tr>
+      <td>Url Checked Connection</td>
+    </tr>
+    <tr>
+      <td>Url Checked Error</td>
+    </tr>
+    <tr>
+      <td>Enviando E-Mail</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Caminho do Diret&oacute;rio</strong></td>
+    </tr>
+    <tr>
+      <td>Nome do Sistema Operacional</td>
+    </tr>
+    <tr>
+      <td>Diret&oacute;rio Atual =&gt; do Computador</td>
+    </tr>
+    <tr>
+      <td>Url Atual =&gt; de uma p&aacute;gina da Web</td>
+    </tr>
+    <tr>
+      <td>Diret&oacute;rio Atual =&gt; de uma Classe Interna do Arquivo Compactado Jar do Java</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Applet's Java</strong></td>
+    </tr>
+    <tr>
+      <td>(Lagura / Altura) do Applet</td>
+    </tr>
+    <tr>
+      <td>Parametros</td>
+    </tr>
+    <tr>
+      <td>Url</td>
+    </tr>
+    <tr>
+      <td>De Javascript para Java</td>
+    </tr>
+    <tr>
+      <td>De Java para Javascript</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Flash</strong></td>
+    </tr>
+    <tr>
+      <td>(Lagura / Altura) do Flash </td>
+    </tr>
+    <tr>
+      <td>Parametros</td>
+    </tr>
+    <tr>
+      <td>Url</td>
+    </tr>
+    <tr>
+      <td>De Javascript para Flash </td>
+    </tr>
+    <tr>
+      <td>De Flash para Javascript</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Upload</strong></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
     </tr>
   </tbody>
 </table>
