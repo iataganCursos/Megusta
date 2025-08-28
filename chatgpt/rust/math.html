@@ -1,0 +1,837 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Fun&ccedil;&otilde;es Matem&aacute;ticas em Java</title>
+<style type="text/css">
+<!--
+.style1 {color: #FFFFFF}
+.style2 {
+	font-size: 50px;
+	font-weight: bold;
+}
+-->
+</style>
+</head>
+
+<body>
+<p align="center" class="style2">Fun&ccedil;&otilde;es Matem&aacute;ticas em Java</p>
+<h1 align="center">Convertendo String para Num&eacute;rica</h1>
+<h1 align="center">N&uacute;meros Inteiros</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Long.parseLong</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploParseLong {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exemplo simples<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String numeroString = &quot;123456&quot;;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; long numeroLong = Long.parseLong(numeroString);<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;N&uacute;mero convertido: &quot; + numeroLong);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Tratamento de exce&ccedil;&atilde;o para entrada inv&aacute;lida<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String entradaInvalida = &quot;abc&quot;;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; try {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; long resultado = Long.parseLong(entradaInvalida);<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;N&uacute;mero convertido: &quot; + resultado);<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } catch (NumberFormatException e) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;Erro: A string n&atilde;o &eacute; um n&uacute;mero v&aacute;lido.&quot;);<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+</table>
+<h1 align="center">N&uacute;meros Reais</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Double.parseDouble</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploParseDouble {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exemplo simples<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String numeroString = &quot;123.456&quot;;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numeroDouble = Double.parseDouble(numeroString);<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;N&uacute;mero convertido: &quot; + numeroDouble);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Tratamento de exce&ccedil;&atilde;o para entrada inv&aacute;lida<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String entradaInvalida = &quot;abc&quot;;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; try {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double resultado = Double.parseDouble(entradaInvalida);<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;N&uacute;mero convertido: &quot; + resultado);<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } catch (NumberFormatException e) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;Erro: A string n&atilde;o &eacute; um n&uacute;mero v&aacute;lido.&quot;);<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+</table>
+<h1 align="center">Boleanos</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Boolean.parseBoolean</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploParseBoolean {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exemplos simples<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String trueString = &quot;true&quot;;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; boolean booleanTrue = Boolean.parseBoolean(trueString);<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;Valor booleano: &quot; + booleanTrue);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String falseString = &quot;false&quot;;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; boolean booleanFalse = Boolean.parseBoolean(falseString);<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;Valor booleano: &quot; + booleanFalse);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Tratamento de entrada inv&aacute;lida<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String entradaInvalida = &quot;abc&quot;;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; boolean resultado = Boolean.parseBoolean(entradaInvalida);<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;Valor booleano: &quot; + resultado);<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Como &quot;abc&quot; n&atilde;o &eacute; &quot;true&quot;, o resultado ser&aacute; false<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+</table>
+<h1 align="center">Arredondando valores</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.floor</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploMathFloor {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numeroOriginal = 7.8;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numeroArredondado = Math.floor(numeroOriginal);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;N&uacute;mero original: &quot; + numeroOriginal);<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;N&uacute;mero arredondado para baixo: &quot; + numeroArredondado);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.ceil</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploMathCeil {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numeroOriginal = 7.2;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numeroArredondado = Math.ceil(numeroOriginal);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;N&uacute;mero original: &quot; + numeroOriginal);<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;N&uacute;mero arredondado para cima: &quot; + numeroArredondado);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.round</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploMathRound {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numeroOriginal = 7.5;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; long numeroArredondado = Math.round(numeroOriginal);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;N&uacute;mero original: &quot; + numeroOriginal);<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;N&uacute;mero arredondado: &quot; + numeroArredondado);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.trunc</strong></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr></tr>
+</table>
+<h1 align="center">Digite um n&uacute;mero com 3 casas decimais</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC">&nbsp;</td>
+  </tr>
+  <tr>
+    <td> import java.text.DecimalFormat;<br />
+      <br />
+      public class NumeroComTresCasasDecimais {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numero = 123.456789;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Criar um objeto DecimalFormat<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DecimalFormat formato = new DecimalFormat(&quot;#.###&quot;);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Formatar o n&uacute;mero com 3 casas decimais<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String numeroFormatado = formato.format(numero);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(numeroFormatado);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+      }</td>
+  </tr>
+</table>
+<h1 align="center">Formatar moeda</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>toLocaleString</strong></td>
+  </tr>
+  <tr>
+    <td> import java.text.NumberFormat;<br />
+      import java.util.Locale;<br />
+      <br />
+      public class ExemploFormatarNumeroBrasil {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numero = 1234567.89;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Formatar o n&uacute;mero de acordo com a localidade do Brasil<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Locale localeBrasil = new Locale(&quot;pt&quot;, &quot;BR&quot;);<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NumberFormat formatoBrasil = NumberFormat.getInstance(localeBrasil);<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String numeroFormatadoBrasil = formatoBrasil.format(numero);<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;Brasil: &quot; + numeroFormatadoBrasil);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+</table>
+<h1 align="center">Fun&ccedil;&otilde;es matem&aacute;ticas comuns</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.random</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploMathRandom {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Gerar um n&uacute;mero aleat&oacute;rio no intervalo [0.0, 1.0)<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numeroAleatorio = Math.random();<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;N&uacute;mero aleat&oacute;rio: &quot; + numeroAleatorio);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+  <tr>
+    <td>double numeroAleatorioNoIntervalo = Math.random() * (max - min) + min;</td>
+  </tr>
+  <tr>
+    <td>double numeroAleatorioIntervalo = Math.random() * (10.0 - 5.0) + 5.0;<br />
+    System.out.println(&quot;N&uacute;mero aleat&oacute;rio no intervalo: &quot; + numeroAleatorioIntervalo);</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.abs</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploMathAbs {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int numeroInteiro = -5;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; long numeroLongo = -123456789L;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; float numeroFloat = -3.14f;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numeroDouble = -2.71828;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calcular o valor absoluto para diferentes tipos de n&uacute;meros<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int absInt = Math.abs(numeroInteiro);<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; long absLong = Math.abs(numeroLongo);<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; float absFloat = Math.abs(numeroFloat);<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double absDouble = Math.abs(numeroDouble);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;Valor absoluto de &quot; + numeroInteiro + &quot; = &quot; + absInt);<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;Valor absoluto de &quot; + numeroLongo + &quot; = &quot; + absLong);<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;Valor absoluto de &quot; + numeroFloat + &quot; = &quot; + absFloat);<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;Valor absoluto de &quot; + numeroDouble + &quot; = &quot; + absDouble);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.max</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploMathMax {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int numero1 = 10;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int numero2 = 20;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Encontrar o m&aacute;ximo entre dois n&uacute;meros inteiros<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int maximoInt = Math.max(numero1, numero2);<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;M&aacute;ximo entre &quot; + numero1 + &quot; e &quot; + numero2 + &quot; = &quot; + maximoInt);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numero3 = 15.5;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numero4 = 12.3;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Encontrar o m&aacute;ximo entre dois n&uacute;meros de ponto flutuante<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double maximoDouble = Math.max(numero3, numero4);<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;M&aacute;ximo entre &quot; + numero3 + &quot; e &quot; + numero4 + &quot; = &quot; + maximoDouble);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+  <tr>
+    <td>int maximoEntreTres = Math.max(Math.max(numero1, numero2), numero3);</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.min</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploMathMin {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int numero1 = 10;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int numero2 = 20;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Encontrar o m&iacute;nimo entre dois n&uacute;meros inteiros<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int minimoInt = Math.min(numero1, numero2);<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;M&iacute;nimo entre &quot; + numero1 + &quot; e &quot; + numero2 + &quot; = &quot; + minimoInt);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numero3 = 15.5;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numero4 = 12.3;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Encontrar o m&iacute;nimo entre dois n&uacute;meros de ponto flutuante<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double minimoDouble = Math.min(numero3, numero4);<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;M&iacute;nimo entre &quot; + numero3 + &quot; e &quot; + numero4 + &quot; = &quot; + minimoDouble);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+  <tr>
+    <td> int minimoEntreTres = Math.min(Math.min(numero1, numero2), numero3);</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.pow</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploMathPow {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double base = 2.0;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double expoente = 3.0;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calcular 2^3<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double resultado = Math.pow(base, expoente);<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;Resultado: &quot; + resultado);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.sqrt</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploMathSqrt {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numero = 25.0;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calcular a raiz quadrada de 25<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double raizQuadrada = Math.sqrt(numero);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;Raiz quadrada de &quot; + numero + &quot; = &quot; + raizQuadrada);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.SQRT1_2</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploMathSqrt1_2 {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Utilizando a constante Math.SQRT1_2<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double raizQuadradaDeUmMeio = Math.SQRT1_2;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;Raiz quadrada de 1/2: &quot; + raizQuadradaDeUmMeio);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+  <tr>
+    <td>public static final double SQRT1_2 = 0.7071067811865476;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.SQRT2</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploMathSqrt2 {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Utilizando a constante Math.SQRT2<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double raizQuadradaDeDois = Math.SQRT2;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;Raiz quadrada de 2: &quot; + raizQuadradaDeDois);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+  <tr>
+    <td>public static final double SQRT2 = 1.4142135623730951;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.cbrt</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploMathCbrt {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numero = 27.0;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calcular a raiz c&uacute;bica de 27<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double raizCubica = Math.cbrt(numero);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;Raiz c&uacute;bica de &quot; + numero + &quot; = &quot; + raizCubica);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.sign</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploMathSign {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numero = -5.5;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Obtendo o sinal do n&uacute;mero<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int sinal = (int) Math.signum(numero);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;Sinal de &quot; + numero + &quot; = &quot; + sinal);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+</table>
+<h1 align="center">Fun&ccedil;&otilde;es trigonom&eacute;tricas</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.PI</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploPi {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Acesso &agrave; constante Math.PI<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double pi = Math.PI;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o valor de pi<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O valor de pi &eacute;: &quot; + pi);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exemplo de c&aacute;lculo usando pi<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double raio = 5.0;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double area = pi * raio * raio;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;A &aacute;rea de um c&iacute;rculo com raio &quot; + raio + &quot; &eacute;: &quot; + area);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+  <tr>
+    <td bgcolor="#000000"><span class="style1">function radianos(){<br />
+      return Math.PI/180<br />
+    }</span></td>
+  </tr>
+  <tr>
+    <td> public class ConversorGrausRadianos {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double graus = 45.0;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double radianos = converterParaRadianos(graus);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(graus + &quot; graus &eacute; equivalente a &quot; + radianos + &quot; radianos.&quot;);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; // Fun&ccedil;&atilde;o para converter graus para radianos<br />
+      &nbsp;&nbsp;&nbsp; public static double converterParaRadianos(double graus) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return graus * (Math.PI / 180.0);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.sin</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploSeno {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // &Acirc;ngulo em radianos<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double anguloEmRadianos = Math.PI / 4.0;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o seno do &acirc;ngulo<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double senoDoAngulo = Math.sin(anguloEmRadianos);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O seno de &quot; + anguloEmRadianos + &quot; radianos &eacute;: &quot; + senoDoAngulo);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.cos</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploCosseno {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // &Acirc;ngulo em radianos<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double anguloEmRadianos = Math.PI / 3.0;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o cosseno do &acirc;ngulo<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double cossenoDoAngulo = Math.cos(anguloEmRadianos);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O cosseno de &quot; + anguloEmRadianos + &quot; radianos &eacute;: &quot; + cossenoDoAngulo);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.tan</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploTangente {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // &Acirc;ngulo em radianos<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double anguloEmRadianos = Math.PI / 6.0;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando a tangente do &acirc;ngulo<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double tangenteDoAngulo = Math.tan(anguloEmRadianos);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;A tangente de &quot; + anguloEmRadianos + &quot; radianos &eacute;: &quot; + tangenteDoAngulo);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.asin</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploArcoSeno {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o arco seno<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double valor = 0.5;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o arco seno do valor<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double arcoSeno = Math.asin(valor);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado em radianos<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O arco seno de &quot; + valor + &quot; &eacute;: &quot; + arcoSeno + &quot; radianos.&quot;);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.acos</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploArcoCosseno {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o arco cosseno<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double valor = 0.5;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o arco cosseno do valor<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double arcoCosseno = Math.acos(valor);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado em radianos<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O arco cosseno de &quot; + valor + &quot; &eacute;: &quot; + arcoCosseno + &quot; radianos.&quot;);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.atan</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploArcoTangente {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o arco tangente<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double valor = 0.5;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o arco tangente do valor<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double arcoTangente = Math.atan(valor);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado em radianos<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O arco tangente de &quot; + valor + &quot; &eacute;: &quot; + arcoTangente + &quot; radianos.&quot;);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.sinh</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploSenoHiperbolico {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o seno hiperb&oacute;lico<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double valor = 2.0;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o seno hiperb&oacute;lico do valor<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double senoHiperbolico = Math.sinh(valor);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O seno hiperb&oacute;lico de &quot; + valor + &quot; &eacute;: &quot; + senoHiperbolico);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.cosh</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploCossenoHiperbolico {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o cosseno hiperb&oacute;lico<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double valor = 2.0;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o cosseno hiperb&oacute;lico do valor<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double cossenoHiperbolico = Math.cosh(valor);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O cosseno hiperb&oacute;lico de &quot; + valor + &quot; &eacute;: &quot; + cossenoHiperbolico);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.tanh</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploTangenteHiperbolica {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular a tangente hiperb&oacute;lica<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double valor = 2.0;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando a tangente hiperb&oacute;lica do valor<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double tangenteHiperbolica = Math.tanh(valor);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;A tangente hiperb&oacute;lica de &quot; + valor + &quot; &eacute;: &quot; + tangenteHiperbolica);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.asinh</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploArcoSenoHiperbolico {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o arco seno hiperb&oacute;lico<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double valor = 2.0;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o arco seno hiperb&oacute;lico do valor<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double arcoSenoHiperbolico = asinh(valor);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O arco seno hiperb&oacute;lico de &quot; + valor + &quot; &eacute;: &quot; + arcoSenoHiperbolico);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; // Fun&ccedil;&atilde;o para calcular o arco seno hiperb&oacute;lico<br />
+      &nbsp;&nbsp;&nbsp; public static double asinh(double x) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return Math.log(x + Math.sqrt(x*x + 1));<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+  <tr>
+    <td>asinh(x) = ln(x + sqrt(x^2 + 1))</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.acosh</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploArcoCossenoHiperbolico {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o arco cosseno hiperb&oacute;lico<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double valor = 2.0;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o arco cosseno hiperb&oacute;lico do valor<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double arcoCossenoHiperbolico = acosh(valor);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O arco cosseno hiperb&oacute;lico de &quot; + valor + &quot; &eacute;: &quot; + arcoCossenoHiperbolico);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; // Fun&ccedil;&atilde;o para calcular o arco cosseno hiperb&oacute;lico<br />
+      &nbsp;&nbsp;&nbsp; public static double acosh(double x) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return Math.log(x + Math.sqrt(x*x - 1));<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+  <tr>
+    <td>acosh(x) = ln(x + sqrt(x^2 - 1))</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.atanh</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploArcoTangenteHiperbolico {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o arco tangente hiperb&oacute;lico<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double valor = 0.5;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o arco tangente hiperb&oacute;lico do valor<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double arcoTangenteHiperbolico = atanh(valor);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O arco tangente hiperb&oacute;lico de &quot; + valor + &quot; &eacute;: &quot; + arcoTangenteHiperbolico);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; // Fun&ccedil;&atilde;o para calcular o arco tangente hiperb&oacute;lico<br />
+      &nbsp;&nbsp;&nbsp; public static double atanh(double x) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 0.5 * Math.log((1 + x) / (1 - x));<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+  <tr>
+    <td>atanh(x) = 0.5 * ln((1 + x) / (1 - x))</td>
+  </tr>
+</table>
+<h1 align="center">Logar&iacute;tmos</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.log</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploLogaritmo {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // N&uacute;mero para o qual queremos calcular o logaritmo natural<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numero = 10.0;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o logaritmo natural do n&uacute;mero<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double logaritmoNatural = Math.log(numero);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O logaritmo natural de &quot; + numero + &quot; &eacute;: &quot; + logaritmoNatural);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.log10</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploLogaritmoBase10 {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // N&uacute;mero para o qual queremos calcular o logaritmo na base 10<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numero = 1000.0;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o logaritmo na base 10 do n&uacute;mero<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double logaritmoBase10 = Math.log10(numero);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O logaritmo na base 10 de &quot; + numero + &quot; &eacute;: &quot; + logaritmoBase10);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.E</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploConstanteE {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Acesso &agrave; constante Math.E<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double constanteE = Math.E;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o valor da constante E<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O valor da constante E &eacute;: &quot; + constanteE);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.LN2</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploConstanteLN2 {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Acesso &agrave; constante Math.LN2<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double ln2 = Math.LN2;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o valor do logaritmo natural de 2<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O valor do logaritmo natural de 2 &eacute;: &quot; + ln2);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.LOG2E</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploConstanteLOG2E {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Acesso &agrave; constante Math.LOG2E<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double log2e = Math.LOG2E;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o valor do logaritmo natural de base 2 de e<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O valor do logaritmo natural de base 2 de e &eacute;: &quot; + log2e);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.LN10</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploConstanteLN10 {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Acesso &agrave; constante Math.LN10<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double ln10 = Math.LN10;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o valor do logaritmo natural de 10<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O valor do logaritmo natural de 10 &eacute;: &quot; + ln10);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.LOG10E</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploConstanteLOG10E {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Acesso &agrave; constante Math.LOG10E<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double log10e = Math.LOG10E;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o valor do logaritmo natural de base 10 de e<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O valor do logaritmo natural de base 10 de e &eacute;: &quot; + log10e);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.exp</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploExponenciacao {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Expoente para o qual queremos calcular a exponencia&ccedil;&atilde;o<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double expoente = 2.0;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando a exponencia&ccedil;&atilde;o de e elevado ao expoente<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double resultado = Math.exp(expoente);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O resultado de e elevado a &quot; + expoente + &quot; &eacute;: &quot; + resultado);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.log2</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploLog2 {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // N&uacute;mero para o qual queremos calcular o logaritmo de base 2<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numero = 8.0;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o logaritmo de base 2 do n&uacute;mero<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double log2 = Math.log(numero) / Math.log(2);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O logaritmo de base 2 de &quot; + numero + &quot; &eacute;: &quot; + log2);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+  <tr>
+    <td>log2(x) = ln(x) / ln(2)</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.log1p</strong></td>
+  </tr>
+  <tr>
+    <td> public class ExemploLog1p {<br />
+      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o logaritmo natural de 1 mais um<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double valor = 0.5;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o logaritmo natural de 1 mais um<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double resultado = Math.log1p(valor);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O logaritmo natural de 1 mais &quot; + valor + &quot; &eacute;: &quot; + resultado);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+    }</td>
+  </tr>
+</table>
+<p></p>
+</body>
+</html>
