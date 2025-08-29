@@ -2,213 +2,211 @@
 <html lang="pt-br">
  <head>
    <meta charset="utf-8">
-<title>Data em Java</title>
+<title>Data em Rust</title>
 <style type="text/css">
 <!--
 .style1 {color: #FFFFFF}
+.style2 {color: #FF0000}
+.style3 {
+	color: #0000FF;
+	font-weight: bold;
+}
 -->
 </style>
 </head>
 
 <body>
-<h1 align="center">Data em Java</h1>
+<h1 align="center">Data em Rust </h1>
 <h1 align="center">Manipulando datas e horas</h1>
-<p>Existe apenas uma fun&ccedil;&atilde;o para que se possa obter a data e a hora. &Eacute; a fun&ccedil;&atilde;o&nbsp;<strong>Calendar.getInstance()</strong>. Esta fun&atilde;o devolve data e hora no formanto: Dia da semana, Nome do m&ecirc;s, Dia do m&ecirc;s, Hora:Minuto:Segundo e Ano</p>
-<p>Ex:</p>
-<p><strong>Fri May 24 16:58:02 1996</strong></p>
-<p>Para se obter os dados separadamente, existem os seguintes m&eacute;todos:</p>
+<p>Existe apenas uma fun&ccedil;&atilde;o para que se possa obter a data e a hora. &Eacute; a fun&ccedil;&atilde;o&nbsp;<span class="style3">chrono</span><strong>. <br>
+</strong> Para se obter os dados separadamente, existem os seguintes m&eacute;todos:</p>
 <ul>
-  <li>get(Calendar.DATE) - Retorna o dia do m&ecirc;s (inteiro entre 1 e 31)</li>
-  <li>.get(Calendar.DAY_OF_WEEK) - Retorna o dia da semana (1=Domingo, 2=Segunda-feira,... , 7=S&aacute;bado)</li>
-  <li>get(Calendar.MONTH) - Retorna o m&ecirc;s (entre 0=Janeiro e 11=Dezembro)</li>
-  <li>get(Calendar.YEAR) - Retorna o ano com quatro d&iacute;gitos (o mais usado)</li>
+  <li> let dia_do_mes = data.day();         // 28  (1..31)<br>
+  </li>
+  <li>let dia_da_semana =
+data.weekday().number_from_sunday(); // agora vai de 0..=6</li>
+  <li> let mes = data.month();         // 4   (1=Jan .. 12=Dez)</li>
+  <li>let mes = data.month0(); // 0 = Janeiro</li>
+  <li> let ano = data.year();               // 1997<br>
+  </li>
 </ul>
 <hr />
 <ul>
-  <li>get(Calendar.HOUR_OF_DAY) - Retorna a hora do dia (entre 0 e 23)</li>
-  <li>get(Calendar.MINUTE) - Retorna os minutos dentro da hora (entre 0 e 59)</li>
-  <li>get(Calendar.SECOND) - Retorna os segundos (entre 0 e 59)</li>
+  <li> let hora = data_hora.hour();    // 15 (0..23)<br>
+  </li>
+  <li> let minuto = data_hora.minute(); // 45 (0..59)<br>
+  </li>
+  <li> let segundo = data_hora.second(); // 30 (0..59)<br>
+  </li>
 </ul>
 <hr />
-<p>No&nbsp;<strong>exemplo 1</strong>&nbsp;abaixo obteremos o dia da semana e as horas. Para tal, utilizaremos a vari&aacute;vel&nbsp;<strong>DataToda</strong>&nbsp;para armazenar data e hora.</p>
+<p>No&nbsp;<strong>exemplo 1</strong>&nbsp;abaixo obteremos o dia da semana e as horas. Para tal, utilizaremos a vari&aacute;vel&nbsp;<strong>agora</strong>&nbsp;para armazenar data e hora.</p>
 <table width="100%" border="1">
   <tbody>
     <tr>
-      <td bgcolor="#CCCCCC"><strong>Arquivo ExemploJava.java</strong></td>
+      <td bgcolor="#CCCCCC"><strong>Arquivo <span class="style2">data_hora/src/</span>main.rs </strong></td>
     </tr>
     <tr>
-      <td><p>/*<br />
-        N&atilde;o use getYear, getDay (Como no Javascript).<br />
-        a) S&atilde;o m&eacute;todos &quot;deprecated&quot; - ou seja, n&atilde;o devem ser usados. Em vez disso, use java.util.Calendar.</p>
-          <p>b) Voc&ecirc; n&atilde;o leu a documenta&ccedil;&atilde;o direito. getYear lhe volta o ano menos 1900, ou seja, para 2006 ele lhe retorna 2006 - 1900 = 106. getDay volta o dia da semana, sendo 0 = Domingo. E getMonth lhe retorna 0 para janeiro, 1 para fevereiro, e assim por diante.</p>
-        <p>c) Quando a linguagem Java foi definida, s&oacute; existia o java.util.Date, e ela era bem boboca (o pr&oacute;prio James Gosling que a escreveu, e ele n&atilde;o quis p&ocirc;r um monte de frescuras nela)<br />
-          Na vers&atilde;o 1.1 algu&eacute;m na Sun comprou um monte de c&oacute;digo fonte da Taligent, uma joint-venture entre a IBM, a Apple e mais algumas companhias. Nesse pacot&atilde;o veio a classe java.util.Calendar, que &eacute; terrivelmente complicada, e para encurtar a conversa eles disseram que t&iacute;nhamos de usar java.util.Date E java.util.Calendar, sendo que aquelas coisas tipo &quot;getDate&quot;, &quot;getMonth&quot;, &quot;getYear&quot; que existem em java.util.Date n&atilde;o deveriam mais ser usadas.<br />
-          */</p>
-        <p>import java.util.Calendar;<br />
-            <br />
-          public class ExemploJava {<br />
-          <br />
-          <br />
-          &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String Texto;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto = &quot;&quot;;<br />
-          <br />
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Calendar DataToda = Calendar.getInstance();<br />
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int Dia_do_mes = DataToda.get(Calendar.DATE);<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int Dia_da_semana = DataToda.get(Calendar.DAY_OF_WEEK);<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int Mes = DataToda.get(Calendar.MONTH);<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int Ano = DataToda.get(Calendar.YEAR);<br />
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // ---------------------------------------<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int Horas = DataToda.get(Calendar.HOUR_OF_DAY);<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int Minutos = DataToda.get(Calendar.MINUTE);<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int Segundos = DataToda.get(Calendar.SECOND);<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // ---------------------------------------<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String semana[];<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; semana = new String[8];<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; semana[0] = &quot;&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; semana[1] = &quot;Domingo&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; semana[2] = &quot;Segunda&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; semana[3] = &quot;Ter&ccedil;a&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; semana[4] = &quot;Quarta&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; semana[5] = &quot;Quinta&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; semana[6] = &quot;Sexta&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; semana[7] = &quot;Sabado&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String Semana_atual = semana[Dia_da_semana];<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //-------------------------<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String Mes2[];<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2 = new String[12];<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[0] = &quot;Janeiro&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[1] = &quot;Fevereiro&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[2] = &quot;Mar&ccedil;o&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[3] = &quot;Abril&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[4] = &quot;Maio&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[5] = &quot;Junho&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[6] = &quot;Julho&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[7] = &quot;Agosto&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[8] = &quot;Setembro&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[9] = &quot;Outubro&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[10] = &quot;Novembro&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[11] = &quot;Desembro&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String Mes_atual = Mes2[Mes];<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto += Semana_atual + &quot;, &quot; + Dia_do_mes + &quot; de &quot; + Mes_atual + &quot; de &quot; + Ano;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto += &quot;\n&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto += &quot;S&atilde;o: &quot; + Horas + &quot; horas, &quot; + Minutos + &quot; minutos e &quot; + Segundos + &quot; segundos.&quot;;<br />
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(Texto);<br />
-          &nbsp;&nbsp;&nbsp; }<br />
-          }<br />
-        </p></td>
+      <td>use chrono::prelude::*; // DateTime, Local, etc.<br>
+use chrono::{Datelike, Timelike}; // Para day(), month(), hour(), etc.<br>
+<br>
+fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Data e hora atual<br>
+&nbsp;&nbsp;&nbsp; let agora: DateTime&lt;Local&gt; = Local::now();<br>
+<br>
+&nbsp;&nbsp;&nbsp; let dia_do_mes = agora.day();<br>
+&nbsp;&nbsp;&nbsp; let dia_da_semana =
+agora.weekday().number_from_sunday() - 1; // agora vai de 0..=6<br>
+&nbsp;&nbsp;&nbsp; let mes = agora.month0(); // 0 = Janeiro<br>
+&nbsp;&nbsp;&nbsp; let ano = agora.year();<br>
+<br>
+&nbsp;&nbsp;&nbsp; let horas = agora.hour();<br>
+&nbsp;&nbsp;&nbsp; let minutos = agora.minute();<br>
+&nbsp;&nbsp;&nbsp; let segundos = agora.second();<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Dias da semana<br>
+&nbsp;&nbsp;&nbsp; let semana = [<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Domingo", "Segunda",
+"Terça", "Quarta", "Quinta", "Sexta", "Sábado",<br>
+&nbsp;&nbsp;&nbsp; ];<br>
+&nbsp;&nbsp;&nbsp; let semana_atual = semana[dia_da_semana as usize];<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Meses<br>
+&nbsp;&nbsp;&nbsp; let meses = [<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Janeiro", "Fevereiro",
+"Março", "Abril", "Maio", "Junho",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Julho", "Agosto",
+"Setembro", "Outubro", "Novembro", "Dezembro",<br>
+&nbsp;&nbsp;&nbsp; ];<br>
+&nbsp;&nbsp;&nbsp; let mes_atual = meses[mes as usize];<br>
+<br>
+&nbsp;&nbsp;&nbsp; println!("{}, {} de {} de {}", semana_atual,
+dia_do_mes, mes_atual, ano);<br>
+&nbsp;&nbsp;&nbsp; println!("São: {} horas, {} minutos e {} segundos.",
+horas, minutos, segundos);<br>
+}</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Arquivo: Cargo.toml</strong></td>
+    </tr>
+    <tr>
+      <td><p>[package]<br>
+        name = &quot;data_hora&quot;<br>
+        version = &quot;0.1.0&quot;<br>
+        edition = &quot;2024&quot;</p>
+        <p>[dependencies]<br>
+      chrono = &quot;0.4&quot;</p></td>
     </tr>
     <tr>
       <td bgcolor="#CCCCCC"><strong>Resultado:</strong></td>
     </tr>
     <tr>
-      <td bgcolor="#000000"><p class="style1">C:\ExemploJava&gt;javac ExemploJava.java</p>
-          <p class="style1">C:\ExemploJava&gt;java ExemploJava<br />
-            Sabado, 27 de Fevereiro de 2016<br />
-            S&atilde;o: 6 horas, 55 minutos e 27 segundos.</p>
-        <p class="style1">C:\ExemploJava&gt;</p></td>
+      <td bgcolor="#000000"><p class="style1">C:\testerust&gt; cargo new data_hora --bin<br>
+        C:\testerust&gt; cd data_hora<br>
+        C:\testerust\data_hora&gt; cargo run</p>
+          <p class="style1">PS C:\testerust\data_hora&gt; target\debug\data_hora.exe<br>
+          Sexta, 29 de Agosto de 2025<br>
+          São: 13 horas, 47 minutos e 50 segundos.<br>
+           C:\testerust\data_hora&gt;</p>        </td>
     </tr>
   </tbody>
 </table>
 <p align="center"><strong>exemplo 4: alterando a data</strong></p>
-<p>Para criar uma vari&aacute;vel tipo Date com o conte&uacute;do informado pela aplica&ccedil;&atilde;o, existe o m&eacute;todo&nbsp;<strong>set</strong>. Os mas importantes s&atilde;o:</p>
-<ul>
-  <li>set(java.util.Calendar.DATE, x_dia) - Coloca o dia do m&ecirc;s (valor entre 1 e 31)</li>
-  <li>set(java.util.Calendar.MONTH, mes) - coloca o m&ecirc;s (valor entre 0 e 11)</li>
-  <li>set(java.util.Calendar.YEAR, ano) - coloca os anos</li>
-</ul>
+<p>use chrono::NaiveDate;<br>
+  <br>
+fn main() {<br>
+&nbsp;&nbsp;&nbsp; let x_dia = 28;<br>
+&nbsp;&nbsp;&nbsp; let x_mes = 4;&nbsp;&nbsp; // Em Java seria 3
+(Abril, pois começa em 0)<br>
+&nbsp;&nbsp;&nbsp; let x_ano = 1997;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Em Rust os meses vão de 1..=12, diferente do Java
+(0..11)<br>
+&nbsp;&nbsp;&nbsp; let data = NaiveDate::from_ymd_opt(x_ano, x_mes,
+x_dia).unwrap();<br>
+<br>
+&nbsp;&nbsp;&nbsp; println!("Data configurada: {}", data); // Saída:
+1997-04-28<br>
+}</p>
 <p>Voc&ecirc; pode simplificar as datas veja:</p>
 <ul>
-  <li>set(ano, mes, dia)</li>
+  <li>NaiveDate::from_ymd_opt(ano, mes, dia).unwrap()</li>
 </ul>
 <p>Tanto pode usar esta forma quanto da outra.</p>
 <table width="100%" border="1">
   <tbody>
     <tr>
-      <td bgcolor="#CCCCCC"><strong>Arquivo ExemploJava.java</strong></td>
+      <td bgcolor="#CCCCCC"><strong>Arquivo <span class="style2">data_hora/src/</span>main.rs </strong></td>
     </tr>
     <tr>
-      <td><p>/*<br />
-        N&atilde;o use getYear, getDay (Como no Javascript).<br />
-        a) S&atilde;o m&eacute;todos &quot;deprecated&quot; - ou seja, n&atilde;o devem ser usados. Em vez disso, use java.util.Calendar.</p>
-          <p>b) Voc&ecirc; n&atilde;o leu a documenta&ccedil;&atilde;o direito. getYear lhe volta o ano menos 1900, ou seja, para 2006 ele lhe retorna 2006 - 1900 = 106. getDay volta o dia da semana, sendo 0 = Domingo. E getMonth lhe retorna 0 para janeiro, 1 para fevereiro, e assim por diante.</p>
-        <p>c) Quando a linguagem Java foi definida, s&oacute; existia o java.util.Date, e ela era bem boboca (o pr&oacute;prio James Gosling que a escreveu, e ele n&atilde;o quis p&ocirc;r um monte de frescuras nela)<br />
-          Na vers&atilde;o 1.1 algu&eacute;m na Sun comprou um monte de c&oacute;digo fonte da Taligent, uma joint-venture entre a IBM, a Apple e mais algumas companhias. Nesse pacot&atilde;o veio a classe java.util.Calendar, que &eacute; terrivelmente complicada, e para encurtar a conversa eles disseram que t&iacute;nhamos de usar java.util.Date E java.util.Calendar, sendo que aquelas coisas tipo &quot;getDate&quot;, &quot;getMonth&quot;, &quot;getYear&quot; que existem em java.util.Date n&atilde;o deveriam mais ser usadas.<br />
-          */</p>
-        <p>import java.util.Calendar;<br />
-            <br />
-          public class ExemploJava {<br />
-          <br />
-          <br />
-          &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String Texto;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto = &quot;&quot;;<br />
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Calendar DataToda = Calendar.getInstance();<br />
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int x_dia = 28;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int x_mes = 4;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int x_ano = 1997;<br />
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Tando pode usar desta forma:<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // DataToda.set(x_ano, x_mes, x_dia);<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Quanto desta outra forma:<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DataToda.set(java.util.Calendar.YEAR, x_ano);<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DataToda.set(java.util.Calendar.MONTH, x_mes);<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DataToda.set(java.util.Calendar.DATE, x_dia);<br />
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // ---------------------------------------<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int Dia_do_mes = DataToda.get(Calendar.DATE);<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int Dia_da_semana = DataToda.get(Calendar.DAY_OF_WEEK);<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int Mes = DataToda.get(Calendar.MONTH);<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int Ano = DataToda.get(Calendar.YEAR);<br />
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String semana[];<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; semana = new String[8];<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; semana[0] = &quot;&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; semana[1] = &quot;Domingo&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; semana[2] = &quot;Segunda&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; semana[3] = &quot;Ter&ccedil;a&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; semana[4] = &quot;Quarta&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; semana[5] = &quot;Quinta&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; semana[6] = &quot;Sexta&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; semana[7] = &quot;Sabado&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String Semana_atual = semana[Dia_da_semana];<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //-------------------------<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String Mes2[];<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2 = new String[12];<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[0] = &quot;Janeiro&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[1] = &quot;Fevereiro&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[2] = &quot;Mar&ccedil;o&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[3] = &quot;Abril&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[4] = &quot;Maio&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[5] = &quot;Junho&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[6] = &quot;Julho&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[7] = &quot;Agosto&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[8] = &quot;Setembro&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[9] = &quot;Outubro&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[10] = &quot;Novembro&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mes2[11] = &quot;Desembro&quot;;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String Mes_atual = Mes2[Mes];<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto += Semana_atual + &quot;, &quot; + Dia_do_mes + &quot; de &quot; + Mes_atual + &quot; de &quot; + Ano;<br />
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(Texto);<br />
-          &nbsp;&nbsp;&nbsp; }<br />
-          }<br />
-        </p></td>
+      <td>use chrono::{Datelike, NaiveDate, Weekday};<br>
+<br>
+fn main() {<br>
+&nbsp;&nbsp;&nbsp; let x_dia = 28;<br>
+&nbsp;&nbsp;&nbsp; let x_mes = 4;&nbsp;&nbsp; // Abril<br>
+&nbsp;&nbsp;&nbsp; let x_ano = 1997;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Cria uma data (sem fuso horário)<br>
+&nbsp;&nbsp;&nbsp; let data = NaiveDate::from_ymd_opt(x_ano, x_mes,
+x_dia).unwrap();<br>
+<br>
+&nbsp;&nbsp;&nbsp; let dia_do_mes = data.day();<br>
+&nbsp;&nbsp;&nbsp; let dia_da_semana = data.weekday();<br>
+&nbsp;&nbsp;&nbsp; let mes = data.month();<br>
+&nbsp;&nbsp;&nbsp; let ano = data.year();<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Dias da semana (Java: 1=Domingo ... 7=Sábado)<br>
+&nbsp;&nbsp;&nbsp; let semana = [<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "", "Domingo", "Segunda",
+"Terça", "Quarta", "Quinta", "Sexta", "Sábado",<br>
+&nbsp;&nbsp;&nbsp; ];<br>
+<br>
+&nbsp;&nbsp;&nbsp; let indice_semana = match dia_da_semana {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Weekday::Sun =&gt; 1,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Weekday::Mon =&gt; 2,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Weekday::Tue =&gt; 3,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Weekday::Wed =&gt; 4,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Weekday::Thu =&gt; 5,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Weekday::Fri =&gt; 6,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Weekday::Sat =&gt; 7,<br>
+&nbsp;&nbsp;&nbsp; };<br>
+&nbsp;&nbsp;&nbsp; let semana_atual = semana[indice_semana];<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Meses (Java: 0=Janeiro ... 11=Dezembro)<br>
+&nbsp;&nbsp;&nbsp; let meses = [<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Janeiro", "Fevereiro",
+"Março", "Abril", "Maio", "Junho",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Julho", "Agosto",
+"Setembro", "Outubro", "Novembro", "Dezembro",<br>
+&nbsp;&nbsp;&nbsp; ];<br>
+&nbsp;&nbsp;&nbsp; let mes_atual = meses[(mes - 1) as usize];<br>
+<br>
+&nbsp;&nbsp;&nbsp; println!("{}, {} de {} de {}", semana_atual,
+dia_do_mes, mes_atual, ano);<br>
+}</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><strong>Arquivo: Cargo.toml</strong></td>
+    </tr>
+    <tr>
+      <td><p>[package]<br>
+        name = &quot;data_hora&quot;<br>
+        version = &quot;0.1.0&quot;<br>
+        edition = &quot;2024&quot;</p>
+          <p>[dependencies]<br>
+            chrono = &quot;0.4&quot;</p></td>
     </tr>
     <tr>
       <td bgcolor="#CCCCCC"><strong>Resultado:</strong></td>
     </tr>
     <tr>
-      <td bgcolor="#000000"><p class="style1">C:\ExemploJava&gt;javac ExemploJava.java</p>
-          <p class="style1">C:\ExemploJava&gt;java ExemploJava<br />
-            Quarta, 28 de Maio de 1997</p>
-        <p class="style1">C:\ExemploJava&gt;</p></td>
+      <td bgcolor="#000000"><p class="style1">C:\testerust&gt; cargo new data_hora --bin<br>
+        C:\testerust&gt; cd data_hora<br>
+        C:\testerust\data_hora&gt; cargo run</p>
+          <p class="style1">PS C:\testerust\data_hora&gt; target\debug\data_hora.exe
+            <br>
+            Segunda, 28 de Abril de 1997<br>
+            C:\testerust\data_hora&gt;</p></td>
     </tr>
   </tbody>
 </table>
