@@ -23,23 +23,25 @@
     <td bgcolor="#CCCCCC"><strong>Long.parseLong</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploParseLong {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exemplo simples<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String numeroString = &quot;123456&quot;;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; long numeroLong = Long.parseLong(numeroString);<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;N&uacute;mero convertido: &quot; + numeroLong);<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Tratamento de exce&ccedil;&atilde;o para entrada inv&aacute;lida<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String entradaInvalida = &quot;abc&quot;;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; try {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; long resultado = Long.parseLong(entradaInvalida);<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;N&uacute;mero convertido: &quot; + resultado);<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } catch (NumberFormatException e) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;Erro: A string n&atilde;o &eacute; um n&uacute;mero v&aacute;lido.&quot;);<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Exemplo simples<br>
+&nbsp;&nbsp;&nbsp; let numero_string = "123456";<br>
+&nbsp;&nbsp;&nbsp; match numero_string.parse::&lt;i64&gt;() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ok(numero_long) =&gt;
+println!("Número convertido: {}", numero_long),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Err(_) =&gt; println!("Erro:
+A string não é um número válido."),<br>
+&nbsp;&nbsp;&nbsp; }<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Tratamento de exceção para entrada inválida<br>
+&nbsp;&nbsp;&nbsp; let entrada_invalida = "abc";<br>
+&nbsp;&nbsp;&nbsp; match entrada_invalida.parse::&lt;i64&gt;() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ok(resultado) =&gt;
+println!("Número convertido: {}", resultado),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Err(_) =&gt; println!("Erro:
+A string não é um número válido."),<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}</td>
   </tr>
 </table>
 <h1 align="center">N&uacute;meros Reais</h1>
@@ -48,23 +50,25 @@
     <td bgcolor="#CCCCCC"><strong>Double.parseDouble</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploParseDouble {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exemplo simples<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String numeroString = &quot;123.456&quot;;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numeroDouble = Double.parseDouble(numeroString);<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;N&uacute;mero convertido: &quot; + numeroDouble);<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Tratamento de exce&ccedil;&atilde;o para entrada inv&aacute;lida<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String entradaInvalida = &quot;abc&quot;;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; try {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double resultado = Double.parseDouble(entradaInvalida);<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;N&uacute;mero convertido: &quot; + resultado);<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } catch (NumberFormatException e) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;Erro: A string n&atilde;o &eacute; um n&uacute;mero v&aacute;lido.&quot;);<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Exemplo simples<br>
+&nbsp;&nbsp;&nbsp; let numero_string = "123.456";<br>
+&nbsp;&nbsp;&nbsp; match numero_string.parse::&lt;f64&gt;() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ok(numero_double) =&gt;
+println!("Número convertido: {}", numero_double),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Err(_) =&gt; println!("Erro:
+A string não é um número válido."),<br>
+&nbsp;&nbsp;&nbsp; }<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Tratamento de exceção para entrada inválida<br>
+&nbsp;&nbsp;&nbsp; let entrada_invalida = "abc";<br>
+&nbsp;&nbsp;&nbsp; match entrada_invalida.parse::&lt;f64&gt;() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ok(resultado) =&gt;
+println!("Número convertido: {}", resultado),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Err(_) =&gt; println!("Erro:
+A string não é um número válido."),<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}</td>
   </tr>
 </table>
 <h1 align="center">Boleanos</h1>
@@ -73,24 +77,26 @@
     <td bgcolor="#CCCCCC"><strong>Boolean.parseBoolean</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploParseBoolean {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exemplos simples<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String trueString = &quot;true&quot;;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; boolean booleanTrue = Boolean.parseBoolean(trueString);<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;Valor booleano: &quot; + booleanTrue);<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String falseString = &quot;false&quot;;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; boolean booleanFalse = Boolean.parseBoolean(falseString);<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;Valor booleano: &quot; + booleanFalse);<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Tratamento de entrada inv&aacute;lida<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String entradaInvalida = &quot;abc&quot;;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; boolean resultado = Boolean.parseBoolean(entradaInvalida);<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;Valor booleano: &quot; + resultado);<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Como &quot;abc&quot; n&atilde;o &eacute; &quot;true&quot;, o resultado ser&aacute; false<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn parse_boolean(input: &amp;str) -&gt; bool {<br>
+&nbsp;&nbsp;&nbsp; input.eq_ignore_ascii_case("true")<br>
+}<br>
+<br>
+fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Exemplos simples<br>
+&nbsp;&nbsp;&nbsp; let true_string = "true";<br>
+&nbsp;&nbsp;&nbsp; let boolean_true = parse_boolean(true_string);<br>
+&nbsp;&nbsp;&nbsp; println!("Valor booleano: {}", boolean_true);<br>
+<br>
+&nbsp;&nbsp;&nbsp; let false_string = "false";<br>
+&nbsp;&nbsp;&nbsp; let boolean_false = parse_boolean(false_string);<br>
+&nbsp;&nbsp;&nbsp; println!("Valor booleano: {}", boolean_false);<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Tratamento de entrada inválida<br>
+&nbsp;&nbsp;&nbsp; let entrada_invalida = "abc";<br>
+&nbsp;&nbsp;&nbsp; let resultado = parse_boolean(entrada_invalida);<br>
+&nbsp;&nbsp;&nbsp; println!("Valor booleano: {}", resultado);<br>
+&nbsp;&nbsp;&nbsp; // Como "abc" não é "true", o resultado será false<br>
+}</td>
   </tr>
 </table>
 <h1 align="center">Arredondando valores</h1>
@@ -99,43 +105,41 @@
     <td bgcolor="#CCCCCC"><strong>Math.floor</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploMathFloor {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numeroOriginal = 7.8;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numeroArredondado = Math.floor(numeroOriginal);<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;N&uacute;mero original: &quot; + numeroOriginal);<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;N&uacute;mero arredondado para baixo: &quot; + numeroArredondado);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; let numero_original: f64 = 7.8;<br>
+&nbsp;&nbsp;&nbsp; let numero_arredondado = numero_original.floor();<br>
+<br>
+&nbsp;&nbsp;&nbsp; println!("Número original: {}", numero_original);<br>
+&nbsp;&nbsp;&nbsp; println!("Número arredondado para baixo: {}",
+numero_arredondado);<br>
+}</td>
   </tr>
   <tr>
     <td bgcolor="#CCCCCC"><strong>Math.ceil</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploMathCeil {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numeroOriginal = 7.2;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numeroArredondado = Math.ceil(numeroOriginal);<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;N&uacute;mero original: &quot; + numeroOriginal);<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;N&uacute;mero arredondado para cima: &quot; + numeroArredondado);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; let numero_original: f64 = 7.2;<br>
+&nbsp;&nbsp;&nbsp; let numero_arredondado = numero_original.ceil();<br>
+<br>
+&nbsp;&nbsp;&nbsp; println!("Número original: {}", numero_original);<br>
+&nbsp;&nbsp;&nbsp; println!("Número arredondado para cima: {}",
+numero_arredondado);<br>
+}</td>
   </tr>
   <tr>
     <td bgcolor="#CCCCCC"><strong>Math.round</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploMathRound {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numeroOriginal = 7.5;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; long numeroArredondado = Math.round(numeroOriginal);<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;N&uacute;mero original: &quot; + numeroOriginal);<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;N&uacute;mero arredondado: &quot; + numeroArredondado);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; let numero_original: f64 = 7.5;<br>
+&nbsp;&nbsp;&nbsp; let numero_arredondado: i64 =
+numero_original.round() as i64;<br>
+<br>
+&nbsp;&nbsp;&nbsp; println!("Número original: {}", numero_original);<br>
+&nbsp;&nbsp;&nbsp; println!("Número arredondado: {}",
+numero_arredondado);<br>
+}</td>
   </tr>
   <tr>
     <td bgcolor="#CCCCCC"><strong>Math.trunc</strong></td>
@@ -151,21 +155,14 @@
     <td bgcolor="#CCCCCC">&nbsp;</td>
   </tr>
   <tr>
-    <td> import java.text.DecimalFormat;<br />
-      <br />
-      public class NumeroComTresCasasDecimais {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numero = 123.456789;<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Criar um objeto DecimalFormat<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DecimalFormat formato = new DecimalFormat(&quot;#.###&quot;);<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Formatar o n&uacute;mero com 3 casas decimais<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String numeroFormatado = formato.format(numero);<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(numeroFormatado);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-      }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; let numero: f64 = 123.456789;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Formatar com 3 casas decimais<br>
+&nbsp;&nbsp;&nbsp; let numero_formatado = format!("{:.3}", numero);<br>
+<br>
+&nbsp;&nbsp;&nbsp; println!("{}", numero_formatado);<br>
+}</td>
   </tr>
 </table>
 <h1 align="center">Formatar moeda</h1>
@@ -197,67 +194,77 @@
     <td bgcolor="#CCCCCC"><strong>Math.random</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploMathRandom {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Gerar um n&uacute;mero aleat&oacute;rio no intervalo [0.0, 1.0)<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numeroAleatorio = Math.random();<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;N&uacute;mero aleat&oacute;rio: &quot; + numeroAleatorio);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>use rand::Rng;<br>
+<br>
+fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Gerar número aleatório no intervalo [0.0, 1.0)<br>
+&nbsp;&nbsp;&nbsp; let mut rng = rand::thread_rng();<br>
+&nbsp;&nbsp;&nbsp; let numero_aleatorio: f64 = rng.gen::&lt;f64&gt;();<br>
+<br>
+&nbsp;&nbsp;&nbsp; println!("Número aleatório: {}", numero_aleatorio);<br>
+}</td>
   </tr>
   <tr>
-    <td>double numeroAleatorioNoIntervalo = Math.random() * (max - min) + min;</td>
+    <td> let numero_aleatorio_no_intervalo: f64 = rng.gen::&lt;f64&gt;() * (max - min) + min;</td>
   </tr>
   <tr>
-    <td>double numeroAleatorioIntervalo = Math.random() * (10.0 - 5.0) + 5.0;<br />
-    System.out.println(&quot;N&uacute;mero aleat&oacute;rio no intervalo: &quot; + numeroAleatorioIntervalo);</td>
+    <td>use rand::Rng;<br>
+<br>
+fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Gerar número aleatório no intervalo [5.0, 10.0)<br>
+&nbsp;&nbsp;&nbsp; let mut rng = rand::thread_rng();<br>
+&nbsp;&nbsp;&nbsp; let numero_aleatorio_intervalo: f64 =
+rng.gen_range(5.0..10.0);<br>
+<br>
+&nbsp;&nbsp;&nbsp; println!("Número aleatório no intervalo: {}",
+numero_aleatorio_intervalo);<br>
+}</td>
   </tr>
   <tr>
     <td bgcolor="#CCCCCC"><strong>Math.abs</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploMathAbs {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int numeroInteiro = -5;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; long numeroLongo = -123456789L;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; float numeroFloat = -3.14f;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numeroDouble = -2.71828;<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calcular o valor absoluto para diferentes tipos de n&uacute;meros<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int absInt = Math.abs(numeroInteiro);<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; long absLong = Math.abs(numeroLongo);<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; float absFloat = Math.abs(numeroFloat);<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double absDouble = Math.abs(numeroDouble);<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;Valor absoluto de &quot; + numeroInteiro + &quot; = &quot; + absInt);<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;Valor absoluto de &quot; + numeroLongo + &quot; = &quot; + absLong);<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;Valor absoluto de &quot; + numeroFloat + &quot; = &quot; + absFloat);<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;Valor absoluto de &quot; + numeroDouble + &quot; = &quot; + absDouble);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; let numero_inteiro: i32 = -5;<br>
+&nbsp;&nbsp;&nbsp; let numero_longo: i64 = -123456789;<br>
+&nbsp;&nbsp;&nbsp; let numero_float: f32 = -3.14;<br>
+&nbsp;&nbsp;&nbsp; let numero_double: f64 = -2.71828;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calcular o valor absoluto<br>
+&nbsp;&nbsp;&nbsp; let abs_int = numero_inteiro.abs();<br>
+&nbsp;&nbsp;&nbsp; let abs_long = numero_longo.abs();<br>
+&nbsp;&nbsp;&nbsp; let abs_float = numero_float.abs();<br>
+&nbsp;&nbsp;&nbsp; let abs_double = numero_double.abs();<br>
+<br>
+&nbsp;&nbsp;&nbsp; println!("Valor absoluto de {} = {}",
+numero_inteiro, abs_int);<br>
+&nbsp;&nbsp;&nbsp; println!("Valor absoluto de {} = {}", numero_longo,
+abs_long);<br>
+&nbsp;&nbsp;&nbsp; println!("Valor absoluto de {} = {}", numero_float,
+abs_float);<br>
+&nbsp;&nbsp;&nbsp; println!("Valor absoluto de {} = {}", numero_double,
+abs_double);<br>
+}</td>
   </tr>
   <tr>
     <td bgcolor="#CCCCCC"><strong>Math.max</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploMathMax {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int numero1 = 10;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int numero2 = 20;<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Encontrar o m&aacute;ximo entre dois n&uacute;meros inteiros<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int maximoInt = Math.max(numero1, numero2);<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;M&aacute;ximo entre &quot; + numero1 + &quot; e &quot; + numero2 + &quot; = &quot; + maximoInt);<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numero3 = 15.5;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numero4 = 12.3;<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Encontrar o m&aacute;ximo entre dois n&uacute;meros de ponto flutuante<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double maximoDouble = Math.max(numero3, numero4);<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;M&aacute;ximo entre &quot; + numero3 + &quot; e &quot; + numero4 + &quot; = &quot; + maximoDouble);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Máximo entre inteiros<br>
+&nbsp;&nbsp;&nbsp; let numero1: i32 = 10;<br>
+&nbsp;&nbsp;&nbsp; let numero2: i32 = 20;<br>
+&nbsp;&nbsp;&nbsp; let maximo_int = numero1.max(numero2);<br>
+&nbsp;&nbsp;&nbsp; println!("Máximo entre {} e {} = {}", numero1,
+numero2, maximo_int);<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Máximo entre números de ponto flutuante<br>
+&nbsp;&nbsp;&nbsp; let numero3: f64 = 15.5;<br>
+&nbsp;&nbsp;&nbsp; let numero4: f64 = 12.3;<br>
+&nbsp;&nbsp;&nbsp; let maximo_double = numero3.max(numero4);<br>
+&nbsp;&nbsp;&nbsp; println!("Máximo entre {} e {} = {}", numero3,
+numero4, maximo_double);<br>
+}</td>
   </tr>
   <tr>
     <td>int maximoEntreTres = Math.max(Math.max(numero1, numero2), numero3);</td>
@@ -266,23 +273,21 @@
     <td bgcolor="#CCCCCC"><strong>Math.min</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploMathMin {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int numero1 = 10;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int numero2 = 20;<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Encontrar o m&iacute;nimo entre dois n&uacute;meros inteiros<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int minimoInt = Math.min(numero1, numero2);<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;M&iacute;nimo entre &quot; + numero1 + &quot; e &quot; + numero2 + &quot; = &quot; + minimoInt);<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numero3 = 15.5;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numero4 = 12.3;<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Encontrar o m&iacute;nimo entre dois n&uacute;meros de ponto flutuante<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double minimoDouble = Math.min(numero3, numero4);<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;M&iacute;nimo entre &quot; + numero3 + &quot; e &quot; + numero4 + &quot; = &quot; + minimoDouble);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Mínimo entre inteiros<br>
+&nbsp;&nbsp;&nbsp; let numero1: i32 = 10;<br>
+&nbsp;&nbsp;&nbsp; let numero2: i32 = 20;<br>
+&nbsp;&nbsp;&nbsp; let minimo_int = numero1.min(numero2);<br>
+&nbsp;&nbsp;&nbsp; println!("Mínimo entre {} e {} = {}", numero1,
+numero2, minimo_int);<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Mínimo entre números de ponto flutuante<br>
+&nbsp;&nbsp;&nbsp; let numero3: f64 = 15.5;<br>
+&nbsp;&nbsp;&nbsp; let numero4: f64 = 12.3;<br>
+&nbsp;&nbsp;&nbsp; let minimo_double = numero3.min(numero4);<br>
+&nbsp;&nbsp;&nbsp; println!("Mínimo entre {} e {} = {}", numero3,
+numero4, minimo_double);<br>
+}</td>
   </tr>
   <tr>
     <td> int minimoEntreTres = Math.min(Math.min(numero1, numero2), numero3);</td>
@@ -291,63 +296,60 @@
     <td bgcolor="#CCCCCC"><strong>Math.pow</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploMathPow {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double base = 2.0;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double expoente = 3.0;<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calcular 2^3<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double resultado = Math.pow(base, expoente);<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;Resultado: &quot; + resultado);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; let base: f64 = 2.0;<br>
+&nbsp;&nbsp;&nbsp; let expoente: f64 = 3.0;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calcular 2^3<br>
+&nbsp;&nbsp;&nbsp; let resultado = base.powf(expoente);<br>
+<br>
+&nbsp;&nbsp;&nbsp; println!("Resultado: {}", resultado);<br>
+}</td>
   </tr>
   <tr>
     <td bgcolor="#CCCCCC"><strong>Math.sqrt</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploMathSqrt {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numero = 25.0;<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calcular a raiz quadrada de 25<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double raizQuadrada = Math.sqrt(numero);<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;Raiz quadrada de &quot; + numero + &quot; = &quot; + raizQuadrada);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; let numero: f64 = 25.0;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calcular a raiz quadrada<br>
+&nbsp;&nbsp;&nbsp; let raiz_quadrada = numero.sqrt();<br>
+<br>
+&nbsp;&nbsp;&nbsp; println!("Raiz quadrada de {} = {}", numero,
+raiz_quadrada);<br>
+}</td>
   </tr>
   <tr>
     <td bgcolor="#CCCCCC"><strong>Math.SQRT1_2</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploMathSqrt1_2 {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Utilizando a constante Math.SQRT1_2<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double raizQuadradaDeUmMeio = Math.SQRT1_2;<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;Raiz quadrada de 1/2: &quot; + raizQuadradaDeUmMeio);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Raiz quadrada de 1/2<br>
+&nbsp;&nbsp;&nbsp; let raiz_quadrada_de_um_meio =
+f64::consts::FRAC_1_SQRT_2;<br>
+<br>
+&nbsp;&nbsp;&nbsp; println!("Raiz quadrada de 1/2: {}",
+raiz_quadrada_de_um_meio);<br>
+}</td>
   </tr>
   <tr>
-    <td>public static final double SQRT1_2 = 0.7071067811865476;</td>
+    <td> SQRT1_2 = 0.7071067811865476;</td>
   </tr>
   <tr>
     <td bgcolor="#CCCCCC"><strong>Math.SQRT2</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploMathSqrt2 {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Utilizando a constante Math.SQRT2<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double raizQuadradaDeDois = Math.SQRT2;<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;Raiz quadrada de 2: &quot; + raizQuadradaDeDois);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Raiz quadrada de 2<br>
+&nbsp;&nbsp;&nbsp; let raiz_quadrada_de_dois = f64::consts::SQRT_2;<br>
+<br>
+&nbsp;&nbsp;&nbsp; println!("Raiz quadrada de 2: {}",
+raiz_quadrada_de_dois);<br>
+}</td>
   </tr>
   <tr>
-    <td>public static final double SQRT2 = 1.4142135623730951;</td>
+    <td> SQRT2 = 1.4142135623730951;</td>
   </tr>
   <tr>
     <td bgcolor="#00FFFF">&nbsp;</td>
@@ -356,31 +358,28 @@
     <td bgcolor="#CCCCCC"><strong>Math.cbrt</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploMathCbrt {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numero = 27.0;<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calcular a raiz c&uacute;bica de 27<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double raizCubica = Math.cbrt(numero);<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;Raiz c&uacute;bica de &quot; + numero + &quot; = &quot; + raizCubica);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; let numero: f64 = 27.0;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calcular a raiz cúbica<br>
+&nbsp;&nbsp;&nbsp; let raiz_cubica = numero.cbrt();<br>
+<br>
+&nbsp;&nbsp;&nbsp; println!("Raiz cúbica de {} = {}", numero,
+raiz_cubica);<br>
+}</td>
   </tr>
   <tr>
     <td bgcolor="#CCCCCC"><strong>Math.sign</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploMathSign {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numero = -5.5;<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Obtendo o sinal do n&uacute;mero<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int sinal = (int) Math.signum(numero);<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;Sinal de &quot; + numero + &quot; = &quot; + sinal);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; let numero: f64 = -5.5;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Obtendo o sinal do número (-1, 0 ou 1)<br>
+&nbsp;&nbsp;&nbsp; let sinal: i32 = numero.signum() as i32;<br>
+<br>
+&nbsp;&nbsp;&nbsp; println!("Sinal de {} = {}", numero, sinal);<br>
+}</td>
   </tr>
 </table>
 <h1 align="center">Fun&ccedil;&otilde;es trigonom&eacute;tricas</h1>
