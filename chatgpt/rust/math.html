@@ -171,21 +171,28 @@ numero_arredondado);<br>
     <td bgcolor="#CCCCCC"><strong>toLocaleString</strong></td>
   </tr>
   <tr>
-    <td> import java.text.NumberFormat;<br />
-      import java.util.Locale;<br />
-      <br />
-      public class ExemploFormatarNumeroBrasil {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numero = 1234567.89;<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Formatar o n&uacute;mero de acordo com a localidade do Brasil<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Locale localeBrasil = new Locale(&quot;pt&quot;, &quot;BR&quot;);<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NumberFormat formatoBrasil = NumberFormat.getInstance(localeBrasil);<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String numeroFormatadoBrasil = formatoBrasil.format(numero);<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;Brasil: &quot; + numeroFormatadoBrasil);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>use num_format::{Locale, ToFormattedString};<br>
+<br>
+fn main() {<br>
+&nbsp;&nbsp;&nbsp; let numero: f64  = 1234567.89; // parte inteira pode
+ter underscores, mas aqui mantive sem<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Separando parte inteira e decimal<br>
+&nbsp;&nbsp;&nbsp; let inteiro = numero.trunc() as u64;<br>
+&nbsp;&nbsp;&nbsp; let decimal = ((numero.fract() * 100.0).round()) as
+u8;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Formatando parte inteira no padrão brasileiro<br>
+&nbsp;&nbsp;&nbsp; let inteiro_formatado =
+inteiro.to_formatted_string(&amp;Locale::pt_BR);<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Montando a string final no formato "R$
+1.234.567,89"<br>
+&nbsp;&nbsp;&nbsp; let formato_brasileiro = format!("R$ {},{:02}",
+inteiro_formatado, decimal);<br>
+<br>
+&nbsp;&nbsp;&nbsp; println!("{}", formato_brasileiro);<br>
+}</td>
   </tr>
 </table>
 <h1 align="center">Fun&ccedil;&otilde;es matem&aacute;ticas comuns</h1>
