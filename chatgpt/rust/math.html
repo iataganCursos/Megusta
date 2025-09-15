@@ -677,35 +677,35 @@ raiz_cubica);<br>
     <td bgcolor="#CCCCCC"><strong>Math.log</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploLogaritmo {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // N&uacute;mero para o qual queremos calcular o logaritmo natural<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numero = 10.0;<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o logaritmo natural do n&uacute;mero<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double logaritmoNatural = Math.log(numero);<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O logaritmo natural de &quot; + numero + &quot; &eacute;: &quot; + logaritmoNatural);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Número para o qual queremos calcular o logaritmo
+natural<br>
+&nbsp;&nbsp;&nbsp; let numero: f64 = 10.0;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calculando o logaritmo natural<br>
+&nbsp;&nbsp;&nbsp; let logaritmo_natural = numero.ln();<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br>
+&nbsp;&nbsp;&nbsp; println!("O logaritmo natural de {} é: {}", numero,
+logaritmo_natural);<br>
+}</td>
   </tr>
   <tr>
     <td bgcolor="#CCCCCC"><strong>Math.log10</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploLogaritmoBase10 {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // N&uacute;mero para o qual queremos calcular o logaritmo na base 10<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numero = 1000.0;<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o logaritmo na base 10 do n&uacute;mero<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double logaritmoBase10 = Math.log10(numero);<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O logaritmo na base 10 de &quot; + numero + &quot; &eacute;: &quot; + logaritmoBase10);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Número para o qual queremos calcular o logaritmo
+na base 10<br>
+&nbsp;&nbsp;&nbsp; let numero: f64 = 1000.0;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calculando o logaritmo na base 10<br>
+&nbsp;&nbsp;&nbsp; let logaritmo_base10 = numero.log10();<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br>
+&nbsp;&nbsp;&nbsp; println!("O logaritmo na base 10 de {} é: {}",
+numero, logaritmo_base10);<br>
+}</td>
   </tr>
   <tr>
     <td bgcolor="#00FFFF">&nbsp;</td>
@@ -714,71 +714,67 @@ raiz_cubica);<br>
     <td bgcolor="#CCCCCC"><strong>Math.E</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploConstanteE {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Acesso &agrave; constante Math.E<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double constanteE = Math.E;<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o valor da constante E<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O valor da constante E &eacute;: &quot; + constanteE);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Acesso à constante f64::consts::E<br>
+&nbsp;&nbsp;&nbsp; let constante_e: f64 = std::f64::consts::E;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o valor da constante E<br>
+&nbsp;&nbsp;&nbsp; println!("O valor da constante E é: {}",
+constante_e);<br>
+}</td>
   </tr>
   <tr>
     <td bgcolor="#CCCCCC"><strong>Math.LN2</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploConstanteLN2 {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Acesso &agrave; constante Math.LN2<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double ln2 = Math.LN2;<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o valor do logaritmo natural de 2<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O valor do logaritmo natural de 2 &eacute;: &quot; + ln2);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Acesso à constante f64::consts::LN_2<br>
+&nbsp;&nbsp;&nbsp; let ln2: f64 = std::f64::consts::LN_2;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o valor do logaritmo natural de 2<br>
+&nbsp;&nbsp;&nbsp; println!("O valor do logaritmo natural de 2 é: {}",
+ln2);<br>
+}</td>
   </tr>
   <tr>
     <td bgcolor="#CCCCCC"><strong>Math.LOG2E</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploConstanteLOG2E {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Acesso &agrave; constante Math.LOG2E<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double log2e = Math.LOG2E;<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o valor do logaritmo natural de base 2 de e<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O valor do logaritmo natural de base 2 de e &eacute;: &quot; + log2e);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Acesso à constante f64::consts::LOG2_E<br>
+&nbsp;&nbsp;&nbsp; let log2e: f64 = std::f64::consts::LOG2_E;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o valor do logaritmo na base 2 de e<br>
+&nbsp;&nbsp;&nbsp; println!("O valor do logaritmo na base 2 de e é:
+{}", log2e);<br>
+}</td>
   </tr>
   <tr>
     <td bgcolor="#CCCCCC"><strong>Math.LN10</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploConstanteLN10 {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Acesso &agrave; constante Math.LN10<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double ln10 = Math.LN10;<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o valor do logaritmo natural de 10<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O valor do logaritmo natural de 10 &eacute;: &quot; + ln10);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Acesso à constante f64::consts::LN_10<br>
+&nbsp;&nbsp;&nbsp; let ln10: f64 = std::f64::consts::LN_10;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o valor do logaritmo natural de 10<br>
+&nbsp;&nbsp;&nbsp; println!("O valor do logaritmo natural de 10 é: {}",
+ln10);<br>
+}</td>
   </tr>
   <tr>
     <td bgcolor="#CCCCCC"><strong>Math.LOG10E</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploConstanteLOG10E {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Acesso &agrave; constante Math.LOG10E<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double log10e = Math.LOG10E;<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o valor do logaritmo natural de base 10 de e<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O valor do logaritmo natural de base 10 de e &eacute;: &quot; + log10e);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Acesso à constante f64::consts::LOG10_E<br>
+&nbsp;&nbsp;&nbsp; let log10e: f64 = std::f64::consts::LOG10_E;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o valor do logaritmo natural de base 10
+de e<br>
+&nbsp;&nbsp;&nbsp; println!("O valor do logaritmo natural de base 10 de
+e é: {}", log10e);<br>
+}</td>
   </tr>
   <tr>
     <td bgcolor="#00FFFF">&nbsp;</td>
@@ -787,35 +783,36 @@ raiz_cubica);<br>
     <td bgcolor="#CCCCCC"><strong>Math.exp</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploExponenciacao {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Expoente para o qual queremos calcular a exponencia&ccedil;&atilde;o<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double expoente = 2.0;<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando a exponencia&ccedil;&atilde;o de e elevado ao expoente<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double resultado = Math.exp(expoente);<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O resultado de e elevado a &quot; + expoente + &quot; &eacute;: &quot; + resultado);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Expoente para o qual queremos calcular a
+exponenciação<br>
+&nbsp;&nbsp;&nbsp; let expoente: f64 = 2.0;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calculando a exponenciação de e elevado ao
+expoente<br>
+&nbsp;&nbsp;&nbsp; let resultado = expoente.exp();<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br>
+&nbsp;&nbsp;&nbsp; println!("O resultado de e elevado a {} é: {}",
+expoente, resultado);<br>
+}</td>
   </tr>
   <tr>
     <td bgcolor="#CCCCCC"><strong>Math.log2</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploLog2 {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // N&uacute;mero para o qual queremos calcular o logaritmo de base 2<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double numero = 8.0;<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o logaritmo de base 2 do n&uacute;mero<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double log2 = Math.log(numero) / Math.log(2);<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O logaritmo de base 2 de &quot; + numero + &quot; &eacute;: &quot; + log2);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Número para o qual queremos calcular o logaritmo
+de base 2<br>
+&nbsp;&nbsp;&nbsp; let numero: f64 = 8.0;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calculando o logaritmo de base 2 do número<br>
+&nbsp;&nbsp;&nbsp; let log2 = numero.log2();<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br>
+&nbsp;&nbsp;&nbsp; println!("O logaritmo de base 2 de {} é: {}",
+numero, log2);<br>
+}</td>
   </tr>
   <tr>
     <td>log2(x) = ln(x) / ln(2)</td>
@@ -824,18 +821,18 @@ raiz_cubica);<br>
     <td bgcolor="#CCCCCC"><strong>Math.log1p</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploLog1p {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o logaritmo natural de 1 mais um<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double valor = 0.5;<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o logaritmo natural de 1 mais um<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double resultado = Math.log1p(valor);<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O logaritmo natural de 1 mais &quot; + valor + &quot; &eacute;: &quot; + resultado);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o logaritmo
+natural de 1 mais um<br>
+&nbsp;&nbsp;&nbsp; let valor: f64 = 0.5;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calculando o logaritmo natural de 1 mais o valor<br>
+&nbsp;&nbsp;&nbsp; let resultado = valor.ln_1p();<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br>
+&nbsp;&nbsp;&nbsp; println!("O logaritmo natural de 1 mais {} é: {}",
+valor, resultado);<br>
+}</td>
   </tr>
 </table>
 <p></p>
