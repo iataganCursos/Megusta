@@ -395,20 +395,19 @@ raiz_cubica);<br>
     <td bgcolor="#CCCCCC"><strong>Math.PI</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploPi {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Acesso &agrave; constante Math.PI<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double pi = Math.PI;<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o valor de pi<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O valor de pi &eacute;: &quot; + pi);<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exemplo de c&aacute;lculo usando pi<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double raio = 5.0;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double area = pi * raio * raio;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;A &aacute;rea de um c&iacute;rculo com raio &quot; + raio + &quot; &eacute;: &quot; + area);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Acesso à constante PI<br>
+&nbsp;&nbsp;&nbsp; let pi = std::f64::consts::PI;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o valor de pi<br>
+&nbsp;&nbsp;&nbsp; println!("O valor de pi é: {}", pi);<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exemplo de cálculo usando pi<br>
+&nbsp;&nbsp;&nbsp; let raio: f64 = 5.0;<br>
+&nbsp;&nbsp;&nbsp; let area = pi * raio * raio;<br>
+&nbsp;&nbsp;&nbsp; println!("A área de um círculo com raio {} é: {}",
+raio, area);<br>
+}</td>
   </tr>
   <tr>
     <td bgcolor="#000000"><span class="style1">function radianos(){<br />
@@ -416,19 +415,18 @@ raiz_cubica);<br>
     }</span></td>
   </tr>
   <tr>
-    <td> public class ConversorGrausRadianos {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double graus = 45.0;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double radianos = converterParaRadianos(graus);<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(graus + &quot; graus &eacute; equivalente a &quot; + radianos + &quot; radianos.&quot;);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-      <br />
-      &nbsp;&nbsp;&nbsp; // Fun&ccedil;&atilde;o para converter graus para radianos<br />
-      &nbsp;&nbsp;&nbsp; public static double converterParaRadianos(double graus) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return graus * (Math.PI / 180.0);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; let graus: f64 = 45.0;<br>
+&nbsp;&nbsp;&nbsp; let radianos = converter_para_radianos(graus);<br>
+<br>
+&nbsp;&nbsp;&nbsp; println!("{} graus é equivalente a {} radianos.",
+graus, radianos);<br>
+}<br>
+<br>
+// Função para converter graus para radianos<br>
+fn converter_para_radianos(graus: f64) -&gt; f64 {<br>
+&nbsp;&nbsp;&nbsp; graus * (std::f64::consts::PI / 180.0)<br>
+}</td>
   </tr>
   <tr>
     <td bgcolor="#00FFFF">&nbsp;</td>
@@ -437,52 +435,64 @@ raiz_cubica);<br>
     <td bgcolor="#CCCCCC"><strong>Math.sin</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploSeno {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // &Acirc;ngulo em radianos<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double anguloEmRadianos = Math.PI / 4.0;<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o seno do &acirc;ngulo<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double senoDoAngulo = Math.sin(anguloEmRadianos);<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O seno de &quot; + anguloEmRadianos + &quot; radianos &eacute;: &quot; + senoDoAngulo);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Ângulo em radianos<br>
+&nbsp;&nbsp;&nbsp; let angulo_em_radianos: f64 = std::f64::consts::PI /
+4.0;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calculando o seno do ângulo<br>
+&nbsp;&nbsp;&nbsp; let seno_do_angulo = angulo_em_radianos.sin();<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br>
+&nbsp;&nbsp;&nbsp; println!(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "O seno de {} radianos é:
+{}",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; angulo_em_radianos,
+seno_do_angulo<br>
+&nbsp;&nbsp;&nbsp; );<br>
+}</td>
   </tr>
   <tr>
     <td bgcolor="#CCCCCC"><strong>Math.cos</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploCosseno {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // &Acirc;ngulo em radianos<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double anguloEmRadianos = Math.PI / 3.0;<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o cosseno do &acirc;ngulo<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double cossenoDoAngulo = Math.cos(anguloEmRadianos);<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O cosseno de &quot; + anguloEmRadianos + &quot; radianos &eacute;: &quot; + cossenoDoAngulo);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Ângulo em radianos<br>
+&nbsp;&nbsp;&nbsp; let angulo_em_radianos: f64 = std::f64::consts::PI /
+3.0;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calculando o cosseno do ângulo<br>
+&nbsp;&nbsp;&nbsp; let cosseno_do_angulo = angulo_em_radianos.cos();<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br>
+&nbsp;&nbsp;&nbsp; println!(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "O cosseno de {} radianos é:
+{}",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; angulo_em_radianos,
+cosseno_do_angulo<br>
+&nbsp;&nbsp;&nbsp; );<br>
+}</td>
   </tr>
   <tr>
     <td bgcolor="#CCCCCC"><strong>Math.tan</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploTangente {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // &Acirc;ngulo em radianos<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double anguloEmRadianos = Math.PI / 6.0;<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando a tangente do &acirc;ngulo<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double tangenteDoAngulo = Math.tan(anguloEmRadianos);<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;A tangente de &quot; + anguloEmRadianos + &quot; radianos &eacute;: &quot; + tangenteDoAngulo);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Ângulo em radianos<br>
+&nbsp;&nbsp;&nbsp; let angulo_em_radianos: f64 = std::f64::consts::PI /
+6.0;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calculando a tangente do ângulo<br>
+&nbsp;&nbsp;&nbsp; let tangente_do_angulo = angulo_em_radianos.tan();<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br>
+&nbsp;&nbsp;&nbsp; println!(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "A tangente de {} radianos
+é: {}",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; angulo_em_radianos,
+tangente_do_angulo<br>
+&nbsp;&nbsp;&nbsp; );<br>
+}</td>
   </tr>
   <tr>
     <td bgcolor="#00FFFF">&nbsp;</td>
@@ -491,52 +501,59 @@ raiz_cubica);<br>
     <td bgcolor="#CCCCCC"><strong>Math.asin</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploArcoSeno {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o arco seno<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double valor = 0.5;<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o arco seno do valor<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double arcoSeno = Math.asin(valor);<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado em radianos<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O arco seno de &quot; + valor + &quot; &eacute;: &quot; + arcoSeno + &quot; radianos.&quot;);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o arco seno<br>
+&nbsp;&nbsp;&nbsp; let valor: f64 = 0.5;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calculando o arco seno do valor<br>
+&nbsp;&nbsp;&nbsp; let arco_seno = valor.asin();<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o resultado em radianos<br>
+&nbsp;&nbsp;&nbsp; println!(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "O arco seno de {} é: {}
+radianos.",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; valor, arco_seno<br>
+&nbsp;&nbsp;&nbsp; );<br>
+}</td>
   </tr>
   <tr>
     <td bgcolor="#CCCCCC"><strong>Math.acos</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploArcoCosseno {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o arco cosseno<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double valor = 0.5;<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o arco cosseno do valor<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double arcoCosseno = Math.acos(valor);<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado em radianos<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O arco cosseno de &quot; + valor + &quot; &eacute;: &quot; + arcoCosseno + &quot; radianos.&quot;);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o arco cosseno<br>
+&nbsp;&nbsp;&nbsp; let valor: f64 = 0.5;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calculando o arco cosseno do valor<br>
+&nbsp;&nbsp;&nbsp; let arco_cosseno = valor.acos();<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o resultado em radianos<br>
+&nbsp;&nbsp;&nbsp; println!(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "O arco cosseno de {} é: {}
+radianos.",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; valor, arco_cosseno<br>
+&nbsp;&nbsp;&nbsp; );<br>
+}</td>
   </tr>
   <tr>
     <td bgcolor="#CCCCCC"><strong>Math.atan</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploArcoTangente {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o arco tangente<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double valor = 0.5;<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o arco tangente do valor<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double arcoTangente = Math.atan(valor);<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado em radianos<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O arco tangente de &quot; + valor + &quot; &eacute;: &quot; + arcoTangente + &quot; radianos.&quot;);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o arco
+tangente<br>
+&nbsp;&nbsp;&nbsp; let valor: f64 = 0.5;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calculando o arco tangente do valor<br>
+&nbsp;&nbsp;&nbsp; let arco_tangente = valor.atan();<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o resultado em radianos<br>
+&nbsp;&nbsp;&nbsp; println!(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "O arco tangente de {} é: {}
+radianos.",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; valor, arco_tangente<br>
+&nbsp;&nbsp;&nbsp; );<br>
+}</td>
   </tr>
   <tr>
     <td bgcolor="#00FFFF">&nbsp;</td>
@@ -545,52 +562,61 @@ raiz_cubica);<br>
     <td bgcolor="#CCCCCC"><strong>Math.sinh</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploSenoHiperbolico {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o seno hiperb&oacute;lico<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double valor = 2.0;<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o seno hiperb&oacute;lico do valor<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double senoHiperbolico = Math.sinh(valor);<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O seno hiperb&oacute;lico de &quot; + valor + &quot; &eacute;: &quot; + senoHiperbolico);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o seno
+hiperbólico<br>
+&nbsp;&nbsp;&nbsp; let valor: f64 = 2.0;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calculando o seno hiperbólico do valor<br>
+&nbsp;&nbsp;&nbsp; let seno_hiperbolico = valor.sinh();<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br>
+&nbsp;&nbsp;&nbsp; println!(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "O seno hiperbólico de {} é:
+{}",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; valor, seno_hiperbolico<br>
+&nbsp;&nbsp;&nbsp; );<br>
+}</td>
   </tr>
   <tr>
     <td bgcolor="#CCCCCC"><strong>Math.cosh</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploCossenoHiperbolico {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o cosseno hiperb&oacute;lico<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double valor = 2.0;<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o cosseno hiperb&oacute;lico do valor<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double cossenoHiperbolico = Math.cosh(valor);<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O cosseno hiperb&oacute;lico de &quot; + valor + &quot; &eacute;: &quot; + cossenoHiperbolico);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o cosseno
+hiperbólico<br>
+&nbsp;&nbsp;&nbsp; let valor: f64 = 2.0;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calculando o cosseno hiperbólico do valor<br>
+&nbsp;&nbsp;&nbsp; let cosseno_hiperbolico = valor.cosh();<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br>
+&nbsp;&nbsp;&nbsp; println!(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "O cosseno hiperbólico de {}
+é: {}",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; valor, cosseno_hiperbolico<br>
+&nbsp;&nbsp;&nbsp; );<br>
+}</td>
   </tr>
   <tr>
     <td bgcolor="#CCCCCC"><strong>Math.tanh</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploTangenteHiperbolica {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular a tangente hiperb&oacute;lica<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double valor = 2.0;<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando a tangente hiperb&oacute;lica do valor<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double tangenteHiperbolica = Math.tanh(valor);<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;A tangente hiperb&oacute;lica de &quot; + valor + &quot; &eacute;: &quot; + tangenteHiperbolica);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular a tangente
+hiperbólica<br>
+&nbsp;&nbsp;&nbsp; let valor: f64 = 2.0;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calculando a tangente hiperbólica do valor<br>
+&nbsp;&nbsp;&nbsp; let tangente_hiperbolica = valor.tanh();<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br>
+&nbsp;&nbsp;&nbsp; println!(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "A tangente hiperbólica de
+{} é: {}",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; valor, tangente_hiperbolica<br>
+&nbsp;&nbsp;&nbsp; );<br>
+}</td>
   </tr>
   <tr>
     <td bgcolor="#00FFFF">&nbsp;</td>
@@ -599,23 +625,26 @@ raiz_cubica);<br>
     <td bgcolor="#CCCCCC"><strong>Math.asinh</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploArcoSenoHiperbolico {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o arco seno hiperb&oacute;lico<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double valor = 2.0;<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o arco seno hiperb&oacute;lico do valor<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double arcoSenoHiperbolico = asinh(valor);<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O arco seno hiperb&oacute;lico de &quot; + valor + &quot; &eacute;: &quot; + arcoSenoHiperbolico);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-      <br />
-      &nbsp;&nbsp;&nbsp; // Fun&ccedil;&atilde;o para calcular o arco seno hiperb&oacute;lico<br />
-      &nbsp;&nbsp;&nbsp; public static double asinh(double x) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return Math.log(x + Math.sqrt(x*x + 1));<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o arco seno
+hiperbólico<br>
+&nbsp;&nbsp;&nbsp; let valor: f64 = 2.0;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calculando o arco seno hiperbólico do valor<br>
+&nbsp;&nbsp;&nbsp; let arco_seno_hiperbolico = asinh(valor);<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br>
+&nbsp;&nbsp;&nbsp; println!(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "O arco seno hiperbólico de
+{} é: {}",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; valor, arco_seno_hiperbolico<br>
+&nbsp;&nbsp;&nbsp; );<br>
+}<br>
+<br>
+// Função para calcular o arco seno hiperbólico<br>
+fn asinh(x: f64) -&gt; f64 {<br>
+&nbsp;&nbsp;&nbsp; (x + (x * x + 1.0).sqrt()).ln()<br>
+}</td>
   </tr>
   <tr>
     <td>asinh(x) = ln(x + sqrt(x^2 + 1))</td>
@@ -624,23 +653,27 @@ raiz_cubica);<br>
     <td bgcolor="#CCCCCC"><strong>Math.acosh</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploArcoCossenoHiperbolico {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o arco cosseno hiperb&oacute;lico<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double valor = 2.0;<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o arco cosseno hiperb&oacute;lico do valor<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double arcoCossenoHiperbolico = acosh(valor);<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O arco cosseno hiperb&oacute;lico de &quot; + valor + &quot; &eacute;: &quot; + arcoCossenoHiperbolico);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-      <br />
-      &nbsp;&nbsp;&nbsp; // Fun&ccedil;&atilde;o para calcular o arco cosseno hiperb&oacute;lico<br />
-      &nbsp;&nbsp;&nbsp; public static double acosh(double x) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return Math.log(x + Math.sqrt(x*x - 1));<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o arco
+cosseno hiperbólico<br>
+&nbsp;&nbsp;&nbsp; let valor: f64 = 2.0;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calculando o arco cosseno hiperbólico do valor<br>
+&nbsp;&nbsp;&nbsp; let arco_cosseno_hiperbolico = acosh(valor);<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br>
+&nbsp;&nbsp;&nbsp; println!(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "O arco cosseno hiperbólico
+de {} é: {}",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; valor,
+arco_cosseno_hiperbolico<br>
+&nbsp;&nbsp;&nbsp; );<br>
+}<br>
+<br>
+// Função para calcular o arco cosseno hiperbólico<br>
+fn acosh(x: f64) -&gt; f64 {<br>
+&nbsp;&nbsp;&nbsp; (x + (x * x - 1.0).sqrt()).ln()<br>
+}</td>
   </tr>
   <tr>
     <td>acosh(x) = ln(x + sqrt(x^2 - 1))</td>
@@ -649,23 +682,27 @@ raiz_cubica);<br>
     <td bgcolor="#CCCCCC"><strong>Math.atanh</strong></td>
   </tr>
   <tr>
-    <td> public class ExemploArcoTangenteHiperbolico {<br />
-      &nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o arco tangente hiperb&oacute;lico<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double valor = 0.5;<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Calculando o arco tangente hiperb&oacute;lico do valor<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double arcoTangenteHiperbolico = atanh(valor);<br />
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;O arco tangente hiperb&oacute;lico de &quot; + valor + &quot; &eacute;: &quot; + arcoTangenteHiperbolico);<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-      <br />
-      &nbsp;&nbsp;&nbsp; // Fun&ccedil;&atilde;o para calcular o arco tangente hiperb&oacute;lico<br />
-      &nbsp;&nbsp;&nbsp; public static double atanh(double x) {<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 0.5 * Math.log((1 + x) / (1 - x));<br />
-      &nbsp;&nbsp;&nbsp; }<br />
-    }</td>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o arco
+tangente hiperbólico<br>
+&nbsp;&nbsp;&nbsp; let valor: f64 = 0.5;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calculando o arco tangente hiperbólico do valor<br>
+&nbsp;&nbsp;&nbsp; let arco_tangente_hiperbolico = atanh(valor);<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br>
+&nbsp;&nbsp;&nbsp; println!(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "O arco tangente hiperbólico
+de {} é: {}",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; valor,
+arco_tangente_hiperbolico<br>
+&nbsp;&nbsp;&nbsp; );<br>
+}<br>
+<br>
+// Função para calcular o arco tangente hiperbólico<br>
+fn atanh(x: f64) -&gt; f64 {<br>
+&nbsp;&nbsp;&nbsp; 0.5 * ((1.0 + x) / (1.0 - x)).ln()<br>
+}</td>
   </tr>
   <tr>
     <td>atanh(x) = 0.5 * ln((1 + x) / (1 - x))</td>
