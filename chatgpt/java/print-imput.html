@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Campo Print e Campo Input</title>
+</head>
+
+<body>
+<h1 align="center">Campo Print e Campo Input</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Arquivo: Exemplo.java </strong></td>
+  </tr>
+  <tr>
+    <td>public class Exemplo {<br>
+&nbsp;&nbsp;&nbsp; public static void x_print(String message) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.print(message);<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; public static void x_println(String message) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(message);<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; public static String x_input(String prompt) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.print(prompt);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; java.util.Scanner scanner =
+new java.util.Scanner(System.in);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return scanner.nextLine();<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x_print("Esta é uma mensagem
+de exemplo.");<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x_println("Esta é uma
+mensagem de exemplo.");<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String nome = x_input("Qual
+é o seu nome? ");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x_println("Olá, " + nome +
+"!");<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}</td>
+  </tr>
+</table>
+</body>
+</html>
