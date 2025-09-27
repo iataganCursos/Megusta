@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Campo Print e Campo Input</title>
+</head>
+
+<body>
+<h1 align="center">Campo Print e Campo Input</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Arquivo: Exemplo.c </strong></td>
+  </tr>
+  <tr>
+    <td>#include &lt;stdio.h&gt;<br>
+#include &lt;string.h&gt;<br>
+<br>
+void x_print(const char *message) {<br>
+&nbsp;&nbsp;&nbsp; printf("%s", message); // Sem quebra de linha<br>
+}<br>
+<br>
+void x_println(const char *message) {<br>
+&nbsp;&nbsp;&nbsp; printf("%s\n", message); // Com quebra de linha<br>
+}<br>
+<br>
+void x_input(const char *prompt, char *buffer, int size) {<br>
+&nbsp;&nbsp;&nbsp; x_print(prompt);<br>
+&nbsp;&nbsp;&nbsp; if (fgets(buffer, size, stdin) != NULL) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Remove o '\n' do final,
+se existir<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; buffer[strcspn(buffer,
+"\n")] = '\0';<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}<br>
+<br>
+int main() {<br>
+&nbsp;&nbsp;&nbsp; char nome[100]; // buffer para armazenar o nome do
+usuário<br>
+<br>
+&nbsp;&nbsp;&nbsp; x_print("Esta é uma mensagem de exemplo.");<br>
+<br>
+&nbsp;&nbsp;&nbsp; x_println("Esta é uma mensagem de exemplo.");<br>
+<br>
+&nbsp;&nbsp;&nbsp; x_input("Qual é o seu nome? ", nome, sizeof(nome));<br>
+<br>
+&nbsp;&nbsp;&nbsp; printf("Olá, %s!\n", nome);<br>
+<br>
+&nbsp;&nbsp;&nbsp; return 0;<br>
+}</td>
+  </tr>
+</table>
+</body>
+</html>
