@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Campo Print</title>
+</head>
+
+<body>
+<h1 align="center">Campo Print</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Arquivo: Exemplo.php</strong></td>
+  </tr>
+  <tr>
+    <td>&lt;?php header('Content-Type: text/html; charset=utf-8'); ?&gt;<br>
+&lt;!DOCTYPE html&gt;<br>
+&lt;html lang="pt-br"&gt;<br>
+&lt;head&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;meta charset="UTF-8"&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;meta name="viewport"
+content="width=device-width, initial-scale=1.0"&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;title&gt;Exemplo&lt;/title&gt;<br>
+&lt;/head&gt;<br>
+<br>
+&lt;body&gt;<br>
+&lt;?php<br>
+function x_print($message) {<br>
+&nbsp;&nbsp;&nbsp; echo $message; // Sem quebra de linha<br>
+}<br>
+<br>
+function x_println($message) {<br>
+&nbsp;&nbsp;&nbsp; echo $message . '&lt;br&gt;'. PHP_EOL; // Com quebra
+de linha<br>
+}<br>
+<br>
+x_print("Esta eh uma mensagem de exemplo.");<br>
+<br>
+x_println("Esta eh uma mensagem de exemplo.");<br>
+?&gt;<br>
+&lt;/body&gt;<br>
+&lt;/html&gt;</td>
+  </tr>
+</table>
+</body>
+</html>
