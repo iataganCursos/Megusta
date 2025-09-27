@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Campo Print e Campo Input</title>
+</head>
+
+<body>
+<h1 align="center">Campo Print e Campo Input</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Arquivo: Exemplo.py</strong></td>
+  </tr>
+  <tr>
+    <td>def x_print(message: str):<br>
+&nbsp;&nbsp;&nbsp; print(message, end="")&nbsp; # Sem quebra de linha<br>
+<br>
+def x_println(message: str):<br>
+&nbsp;&nbsp;&nbsp; print(message)&nbsp; # Com quebra de linha<br>
+<br>
+def x_input(prompt: str) -&gt; str:<br>
+&nbsp;&nbsp;&nbsp; return input(prompt)<br>
+<br>
+x_print("Esta é uma mensagem de exemplo.")<br>
+<br>
+x_println("Esta é uma mensagem de exemplo.")<br>
+<br>
+nome = x_input("Qual é o seu nome? ")<br>
+x_println("Olá, " + nome + "!")<br></td>
+  </tr>
+</table>
+</body>
+</html>
