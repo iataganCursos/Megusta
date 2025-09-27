@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Campo Print e Campo Input</title>
+</head>
+
+<body>
+<h1 align="center">Campo Print e Campo Input</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Arquivo: Exemplo.rs</strong></td>
+  </tr>
+  <tr>
+    <td>use std::io::{self, Write};<br>
+<br>
+fn x_print(message: &amp;str) {<br>
+&nbsp;&nbsp;&nbsp; print!("{}", message); // Sem quebra de linha<br>
+&nbsp;&nbsp;&nbsp; io::stdout().flush().unwrap(); // Garante que a
+saída seja exibida imediatamente<br>
+}<br>
+<br>
+fn x_println(message: &amp;str) {<br>
+&nbsp;&nbsp;&nbsp; println!("{}", message); // Com quebra de linha<br>
+}<br>
+<br>
+fn x_input(prompt: &amp;str) -&gt; String {<br>
+&nbsp;&nbsp;&nbsp; x_print(prompt);<br>
+&nbsp;&nbsp;&nbsp; let mut input = String::new();<br>
+&nbsp;&nbsp;&nbsp; io::stdin().read_line(&amp;mut input).unwrap();<br>
+&nbsp;&nbsp;&nbsp; input.trim().to_string() // remove o \n do final<br>
+}<br>
+<br>
+fn main() {<br>
+&nbsp;&nbsp;&nbsp; x_print("Esta é uma mensagem de exemplo.");<br>
+<br>
+&nbsp;&nbsp;&nbsp; x_println("Esta é uma mensagem de exemplo.");<br>
+<br>
+&nbsp;&nbsp;&nbsp; let nome = x_input("Qual é o seu nome? ");<br>
+&nbsp;&nbsp;&nbsp; x_println(&amp;format!("Olá, {}!", nome));<br>
+}</td>
+  </tr>
+</table>
+</body>
+</html>
