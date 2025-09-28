@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-br">
+ <head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Campo Print e Campo Input</title>
+</head>
+
+<body>
+<h1 align="center">Campo Print e Campo Input</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Arquivo: Exemplo.c </strong></td>
+  </tr>
+  <tr>
+    <td>FUNCTION Main()<br>
+<br>
+&nbsp;&nbsp; x_print( "Esta eh uma mensagem de exemplo." )<br>
+<br>
+&nbsp;&nbsp; x_println( "Esta eh uma mensagem de exemplo." )<br>
+<br>
+&nbsp;&nbsp; PRIVATE nome := x_input( "Qual eh o seu nome? " )<br>
+<br>
+&nbsp;&nbsp; x_println( "Olah, " + nome + "!" )<br>
+<br>
+RETURN NIL<br>
+<br>
+<br>
+FUNCTION x_print( cMessage )<br>
+&nbsp;&nbsp; ?? cMessage&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //
+Sem quebra de linha<br>
+RETURN NIL<br>
+<br>
+<br>
+FUNCTION x_println( cMessage )<br>
+&nbsp;&nbsp; ??
+cMessage&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Com quebra
+de linha<br>
+&nbsp;&nbsp; ? ""<br>
+RETURN NIL<br>
+<br>
+<br>
+FUNCTION x_input( cPrompt )<br>
+&nbsp;&nbsp; LOCAL cValue := ""<br>
+&nbsp;&nbsp; ?? cPrompt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// Exibe o prompt sem quebra de linha<br>
+&nbsp;&nbsp; ACCEPT TO cValue&nbsp;&nbsp; // Lê a entrada do usuário<br>
+&nbsp;&nbsp; ? ""<br>
+RETURN cValue</td>
+  </tr>
+</table>
+</body>
+</html>
