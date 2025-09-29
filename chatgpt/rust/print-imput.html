@@ -18,7 +18,7 @@
 fn x_print(message: &amp;str) {<br>
 &nbsp;&nbsp;&nbsp; print!("{}", message); // Sem quebra de linha<br>
 &nbsp;&nbsp;&nbsp; io::stdout().flush().unwrap(); // Garante que a
-saída seja exibida imediatamente<br>
+saida seja exibida imediatamente<br>
 }<br>
 <br>
 fn x_println(message: &amp;str) {<br>
@@ -33,14 +33,15 @@ fn x_input(prompt: &amp;str) -&gt; String {<br>
 }<br>
 <br>
 fn main() {<br>
-&nbsp;&nbsp;&nbsp; x_print("Esta é uma mensagem de exemplo.");<br>
+&nbsp;&nbsp;&nbsp; x_print("Esta eh uma mensagem de exemplo.");<br>
 <br>
-&nbsp;&nbsp;&nbsp; x_println("Esta é uma mensagem de exemplo.");<br>
+&nbsp;&nbsp;&nbsp; x_println("Esta eh uma mensagem de exemplo.");<br>
 <br>
-&nbsp;&nbsp;&nbsp; let nome = x_input("Qual é o seu nome? ");<br>
-&nbsp;&nbsp;&nbsp; x_println(&amp;format!("Olá, {}!", nome));<br>
+&nbsp;&nbsp;&nbsp; let nome = x_input("Qual eh o seu nome? ");<br>
+&nbsp;&nbsp;&nbsp; x_println(&amp;format!("Olah, {}!", nome));<br>
 }</td>
   </tr>
 </table>
 </body>
 </html>
+
