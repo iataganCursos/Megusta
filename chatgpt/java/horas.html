@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Vendo as Horas</title>
+<style type="text/css">
+<!--
+.style1 {color: #FFFFFF}
+-->
+</style>
+</head>
+
+<body>
+<h1 align="center">Vendo as Horas</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Arquivo: ExemploJava.java</strong></td>
+  </tr>
+  <tr>
+    <td>import java.util.Calendar;<br>
+<br>
+public class ExemploJava {<br>
+<br>
+&nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String Texto;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto = "";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Nome do arquivo:
+semana.txt<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Calendar rel =
+Calendar.getInstance();<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int hora =
+rel.get(Calendar.HOUR_OF_DAY);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int minuto =
+rel.get(Calendar.MINUTE);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int segundo =
+rel.get(Calendar.SECOND);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String temp = "" + hora;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; temp += ((minuto &lt; 10) ?
+":0" : ":") + minuto;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; temp += ((segundo &lt; 10) ?
+":0" : ":") + segundo;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto += "Sao exatamente: "
++ temp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(Texto);<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Resultado:</strong></td>
+  </tr>
+  <tr>
+    <td bgcolor="#000000"><p class="style1">      C:\&gt;java ExemploJava<br />
+      Sao exatamente: 15:43:53</p>
+    <p class="style1">C:\&gt;</p></td>
+  </tr>
+</table>
+</body>
+</html>

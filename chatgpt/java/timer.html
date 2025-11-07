@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Cron&ocirc;metro - Timer</title>
+</head>
+
+<body>
+<h1 align="center">Cron&ocirc;metro - Timer</h1>
+<p align="center"><img src="cronometro.jpg" width="449" height="99" /></p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Arquivo: JavaTeste.java</strong></td>
+  </tr>
+  <tr>
+    <td>import javax.swing.*;<br>
+import java.awt.*;<br>
+import java.awt.event.*;<br>
+<br>
+public class JavaTeste extends JFrame {<br>
+<br>
+&nbsp;&nbsp; private JLabel maximo;<br>
+&nbsp;&nbsp; private JTextField posicao;<br>
+&nbsp;&nbsp; private JButton play_pause;<br>
+&nbsp;&nbsp; private JButton stop;<br>
+&nbsp;&nbsp; private JButton alterar;<br>
+<br>
+&nbsp;&nbsp; int pos = 0;<br>
+&nbsp;&nbsp; int max = 100;<br>
+&nbsp;&nbsp; int tempo = 1000;<br>
+&nbsp;&nbsp; boolean Xplay_pause = false;<br>
+&nbsp;&nbsp; String play_pause_text = "Play";<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public JavaTeste() {<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; super("Formulario");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this.setSize(400,200);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this.setLocation(50, 100);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Container ct = this.getContentPane();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ct.setLayout(null);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; play_pause = new JButton("Play");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; play_pause.setBounds(0,0,100,25);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ct.add(play_pause);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stop = new JButton("stop");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stop.setBounds(101,0,100,25);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ct.add(stop);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; posicao = new JTextField("0");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; posicao.setBounds(202,0,100,25);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ct.add(posicao);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; maximo = new JLabel("Limite maximo:
+"+max);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; maximo.setBounds(303,0,300,25);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ct.add(maximo);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; alterar = new JButton("Alterar");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; alterar.setBounds(0,26,100,25);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ct.add(alterar);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Image Icone =
+Toolkit.getDefaultToolkit().getImage("icon.gif"); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; setIconImage(Icone);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this.setVisible(true);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; alterar.addActionListener(new
+ActionListener() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void
+actionPerformed(ActionEvent e) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+xStop();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+String _maximo = JOptionPane.showInputDialog("Limite máximo: "+max);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+if(!(_maximo.equals("") || _maximo.equals(null))){<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; int xMax = xMaximo(Integer.parseInt(_maximo));<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; maximo.setText("Limite maximo: "+xMax);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+String _posicao = JOptionPane.showInputDialog("posição: "+pos);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+if(!(_posicao.equals("") || _posicao.equals(null))){<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; int xPos = xPosicao(Integer.parseInt(_posicao));<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; posicao.setText(""+xPos);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+String _tempo = JOptionPane.showInputDialog("tempo: "+tempo);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; if(!(_tempo.equals("") || _tempo.equals(null))){<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; xTempo(Integer.parseInt(_tempo));<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }});<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stop.addActionListener(new
+ActionListener() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void
+actionPerformed(ActionEvent e) {<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int
+xPos = xStop();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+posicao.setText(""+xPos);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }});<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; play_pause.addActionListener(new
+ActionListener() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void
+actionPerformed(ActionEvent e) {<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+play_pause.setText(getPlayPause());<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }});<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this.addWindowListener(new
+WindowAdapter() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void
+windowClosing(WindowEvent e) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+System.exit(0);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }});<br>
+<br>
+&nbsp;&nbsp; }<br>
+&nbsp;&nbsp; public static void main(String[] args) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; new JavaTeste();<br>
+&nbsp;&nbsp; }<br>
+public int xStop(){<br>
+&nbsp;&nbsp;&nbsp; pos = 0;<br>
+&nbsp;&nbsp;&nbsp; Xplay_pause = false;<br>
+&nbsp;&nbsp;&nbsp; play_pause.setText("Play");<br>
+&nbsp;&nbsp;&nbsp; return pos;<br>
+}<br>
+<br>
+public int xMaximo(int x){<br>
+&nbsp;&nbsp;&nbsp; max = x;<br>
+&nbsp;&nbsp;&nbsp; return max;<br>
+}<br>
+<br>
+public int xPosicao(int x){<br>
+&nbsp;&nbsp;&nbsp; pos = x;<br>
+&nbsp;&nbsp;&nbsp; return pos;<br>
+}<br>
+<br>
+public int xTempo(int x){<br>
+&nbsp;&nbsp;&nbsp; tempo = x;<br>
+&nbsp;&nbsp;&nbsp; return tempo;<br>
+}<br>
+<br>
+public String getPlayPause(){<br>
+&nbsp;&nbsp;&nbsp; if(Xplay_pause == false){<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Xplay_pause = true;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; getPlay();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; play_pause_text = "Pause";<br>
+&nbsp;&nbsp;&nbsp; } else {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Xplay_pause = false;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; play_pause_text = "Play";<br>
+&nbsp;&nbsp;&nbsp; }<br>
+<br>
+&nbsp;&nbsp;&nbsp; return play_pause_text;<br>
+<br>
+}<br>
+<br>
+public void getPlay(){<br>
+&nbsp;&nbsp;&nbsp; Thread runner = new Thread(new Runnable() { <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; public void run() {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+while(Xplay_pause == true) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; pos = pos + 1;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; try {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Thread.sleep(tempo);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; } catch (Exception ex) {}<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; if(pos &gt; max){<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Xplay_pause = false;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; pos = 0;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; posicao.setText(""+pos);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }});<br>
+&nbsp;&nbsp;&nbsp; runner.start();<br>
+}<br>
+<br>
+}</td>
+  </tr>
+</table>
+</body>
+</html>
