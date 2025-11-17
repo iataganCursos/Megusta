@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Rel&oacute;gio</title>
+</head>
+
+<body>
+<h1 align="center">Rel&oacute;gio</h1>
+<p align="center"><img src="relogio.png" width="306" height="231" /></p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Arquivo: Relogio.java</strong></td>
+  </tr>
+  <tr>
+    <td>import javax.swing.*;<br>
+import java.awt.*;<br>
+import java.awt.event.*;<br>
+<br>
+import java.util.Calendar;<br>
+<br>
+public class Relogio extends JFrame {<br>
+<br>
+&nbsp;&nbsp; public JLabel horas;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public Relogio() {<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; super("Relogio");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this.setSize(300+20,200+38);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this.setLocation(50, 100);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Container ct = this.getContentPane();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ct.setLayout(null);<br>
+<br>
+horas = new JLabel("00:00:00");<br>
+<br>
+horas.setBounds(0,0,200,200);<br>
+<br>
+horas.setText(Horas());<br>
+<br>
+ct.add(horas);<br>
+<br>
+xTimer();<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Image Icone =
+Toolkit.getDefaultToolkit().getImage("icon.gif"); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; setIconImage(Icone);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Deixa a janela visível<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this.setVisible(true);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this.addWindowListener(new
+WindowAdapter() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void
+windowClosing(WindowEvent e) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+System.exit(0);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }});<br>
+<br>
+&nbsp;&nbsp; }<br>
+&nbsp;&nbsp; public static void main(String[] args) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; new Relogio();<br>
+&nbsp;&nbsp; }<br>
+// ===========================================<br>
+&nbsp;&nbsp; public String Horas(){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String Texto;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto = "";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Nome do arquivo:
+semana.txt<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Calendar rel =
+Calendar.getInstance();<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int hora =
+rel.get(Calendar.HOUR_OF_DAY);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int minuto =
+rel.get(Calendar.MINUTE);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int segundo =
+rel.get(Calendar.SECOND);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String temp = "" + hora;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; temp += ((minuto &lt; 10) ?
+":0" : ":") + minuto;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; temp += ((segundo &lt; 10) ?
+":0" : ":") + segundo;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto += "Sao exatamente: "
++ temp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return Texto;<br>
+&nbsp;&nbsp; }<br>
+&nbsp;&nbsp; public void xTimer(){<br>
+&nbsp;&nbsp;&nbsp; Thread runner = new Thread(new Runnable() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void run() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+while(true){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+try {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Thread.sleep(200);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+} catch (Exception ex) {}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+horas.setText(Horas());<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }});<br>
+&nbsp;&nbsp;&nbsp; runner.start();<br>
+&nbsp;&nbsp; }<br>
+}</td>
+  </tr>
+</table>
+</body>
+</html>
