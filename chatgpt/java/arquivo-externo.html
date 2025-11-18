@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Arquivo Externo</title>
+<style type="text/css">
+<!--
+.style1 {color: #FF0000}
+.style2 {color: #0000FF}
+.style3 {color: #FFFFFF}
+-->
+</style>
+</head>
+
+<body>
+<h1 align="center">Arquivo Externo</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Arquivo: ExemploJava.java</strong></td>
+  </tr>
+  <tr>
+    <td>import pastaexterna.arquivoexterno;<br>
+<br>
+// ExemploJava.java<br>
+<br>
+public class ExemploJava {<br>
+&nbsp;&nbsp;&nbsp; public static void main(String[] args) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; arquivoexterno f = new
+arquivoexterno();<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+System.out.println(f.arquivo());<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><p><strong>Arquivo: arquivoexterno.java</strong></p>
+    <h1 class="style1">Observa&ccedil;&atilde;o: deixe <span class="style2">arquivoexterno.java</span> dentro da pasta <span class="style2">pastaexterna</span></h1></td>
+  </tr>
+  <tr>
+    <td>package pastaexterna;<br>
+<br>
+// arquivoesterno.java<br>
+<br>
+public class arquivoexterno {<br>
+<br>
+&nbsp;&nbsp;&nbsp; public String arquivo() {<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String Texto;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto = "";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto += "Testando um
+arquivo externo. ";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto += "Bom dia ";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto += "Boa tarde e ";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto += "Boa noite. ";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texto += "Fim do arquivo
+externo.";<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return Texto;<br>
+<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Resultado:</strong></td>
+  </tr>
+  <tr>
+    <td bgcolor="#000000"><p class="style3">C:\&gt;javac ExemploJava.java</p>
+    <p class="style3">C:\&gt;java ExemploJava<br />
+      Testando um arquivo externo. Bom dia Boa tarde e Boa noite. Fim do arquivo externo.</p>
+    <p class="style3">C:\&gt;</p></td>
+  </tr>
+</table>
+</body>
+</html>
