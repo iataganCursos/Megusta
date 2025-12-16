@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Cronometro</title>
+</head>
+
+<body>
+<h1 align="center">Cronometro</h1>
+<p align="center"><img src="cronometro2.png" width="386" height="193" /></p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Arquivo: ExemploJava.java</strong></td>
+  </tr>
+  <tr>
+    <td>import javax.swing.*;<br>
+import java.awt.*;<br>
+import java.awt.event.*;<br>
+<br>
+public class ExemploJava extends JFrame {<br>
+<br>
+&nbsp;&nbsp; private JTextField posicao;<br>
+&nbsp;&nbsp; private JButton play_pause;<br>
+&nbsp;&nbsp; private JButton stop;<br>
+<br>
+&nbsp;&nbsp; int pos = 0;<br>
+&nbsp;&nbsp; int tempo = 1000;<br>
+&nbsp;&nbsp; boolean Xplay_pause = false;<br>
+&nbsp;&nbsp; String play_pause_text = "Play";<br>
+<br>
+&nbsp;&nbsp; Long k = (365 * 24 * 60 * 60) * 1L;<br>
+<br>
+&nbsp;&nbsp; Long z = 0L;<br>
+&nbsp;&nbsp; String s = "";<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public ExemploJava() {<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; super("Formulario");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this.setSize(400,200);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this.setLocation(50, 100);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Container ct = this.getContentPane();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ct.setLayout(null);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; play_pause = new JButton("Play");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; play_pause.setBounds(0,0,100,25);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ct.add(play_pause);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stop = new JButton("stop");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stop.setBounds(101,0,100,25);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ct.add(stop);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; posicao = new JTextField("0y 0d
+00:00:00");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; posicao.setBounds(207,0,120,25);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ct.add(posicao);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Image Icone =
+Toolkit.getDefaultToolkit().getImage("icon.gif");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; setIconImage(Icone);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this.setVisible(true);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stop.addActionListener(new
+ActionListener() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void
+actionPerformed(ActionEvent e) {<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int
+xPos = xStop();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+posicao.setText("0y 0d 00:00:00");<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }});<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; play_pause.addActionListener(new
+ActionListener() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void
+actionPerformed(ActionEvent e) {<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+play_pause.setText(getPlayPause());<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }});<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this.addWindowListener(new
+WindowAdapter() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void
+windowClosing(WindowEvent e) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+System.exit(0);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }});<br>
+<br>
+&nbsp;&nbsp; }<br>
+&nbsp;&nbsp; public static void main(String[] args) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; new ExemploJava();<br>
+&nbsp;&nbsp; }<br>
+public int xStop(){<br>
+&nbsp;&nbsp;&nbsp; pos = 0;<br>
+&nbsp;&nbsp;&nbsp; Xplay_pause = false;<br>
+&nbsp;&nbsp;&nbsp; play_pause.setText("Play");<br>
+&nbsp;&nbsp;&nbsp; return pos;<br>
+}<br>
+<br>
+public int xPosicao(int x){<br>
+&nbsp;&nbsp;&nbsp; pos = x;<br>
+&nbsp;&nbsp;&nbsp; return pos;<br>
+}<br>
+<br>
+public int xTempo(int x){<br>
+&nbsp;&nbsp;&nbsp; tempo = x;<br>
+&nbsp;&nbsp;&nbsp; return tempo;<br>
+}<br>
+<br>
+public String getPlayPause(){<br>
+&nbsp;&nbsp;&nbsp; if(Xplay_pause == false){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Xplay_pause = true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; getPlay();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; play_pause_text = "Pause";<br>
+&nbsp;&nbsp;&nbsp; } else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Xplay_pause = false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; play_pause_text = "Play";<br>
+&nbsp;&nbsp;&nbsp; }<br>
+<br>
+&nbsp;&nbsp;&nbsp; return play_pause_text;<br>
+<br>
+}<br>
+<br>
+public void getPlay(){<br>
+&nbsp;&nbsp;&nbsp; Thread runner = new Thread(new Runnable() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void run() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+while(Xplay_pause == true) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+pos = pos + 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+try {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Thread.sleep(tempo);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+} catch (Exception ex) {}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+k = pos * 1L;<br>
+<br>
+&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; z =
+Long.parseLong(""+(k/(365 * 24 * 60 * 60)));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; s = ""+z+"y ";<br>
+&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; k =
+k % (365 * 24 * 60 * 60);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; z = Long.parseLong(""+(k/(24 * 60 * 60)));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; s = ""+s+z+"d ";<br>
+&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; k =
+k % (24 * 60 * 60);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; z = Long.parseLong(""+(k/(60 * 60)));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; s = ""+s+ ((z &lt; 10) ? "0" : "") +z+":";<br>
+&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; k =
+k % (60 * 60);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; z = Long.parseLong(""+(k/(60)));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; s = ""+s+ ((z &lt; 10) ? "0" : "") +z+":";<br>
+&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; k =
+k % (60);<br>
+<br>
+&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; z =
+k % 60;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; s = ""+s+ ((z &lt; 10) ? "0" : "") +z;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+posicao.setText(""+s);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }});<br>
+&nbsp;&nbsp;&nbsp; runner.start();<br>
+}</td>
+  </tr>
+</table>
+</body>
+</html>
