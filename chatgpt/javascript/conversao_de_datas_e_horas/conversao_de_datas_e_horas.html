@@ -1,0 +1,151 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<title>Manipulando datas</title>
+<style type="text/css">
+<!--
+.style1 {
+	color: #FF0000;
+	font-weight: bold;
+}
+-->
+</style>
+<script language="javascript" src="js/data.js"></script></head>
+
+<body>
+<form name="form1">
+  <h1 align="center">Manipulando datas </h1>
+  <p>Obs: para usar as funções tipo data insira este código:</p>
+  <p class="style1" align="center"> &lt;script language="javascript" src="data.js"&gt;&lt;/script&gt;</p>
+  <h2>Definindo o dia da semana</h2>
+<p>Sintaxe:</p>
+<p>dia_da_semana(data) // retorno: semana</p>
+<p>Exemplo:</p>
+<p>dia_da_semana("31/07/2009") // resultado: "Sexta" </p>
+<p>Teste:</p>
+<p>
+  dia_da_semana(
+  <input value="31/07/2009" name="a1" type="text">
+  );<br>
+  <input value="Resultado" onClick="document.form1.b1.value = dia_da_semana(document.form1.a1.value);" type="button">
+  <input name="b1" type="text">
+
+</p>
+<h2>Data atual</h2>
+<p>Sintaxe:</p>
+<p>data_atual() // retorno: hoje </p>
+<p>Exemplo:</p>
+<p>data_atual() // resultado: "31/07/2009" </p>
+<p>Teste:</p>
+<p>data_atual(); // Resultado: 
+  <input value="29/05/2012" name="b2" type="text">
+<script language="javascript">document.form1.b2.value = data_atual();</script>
+</p>
+<h2>Hora atual</h2>
+<p>Sintaxe:</p>
+<p>hora_atual() // retorno: hoje</p>
+<p>Exemplo:</p>
+<p>hora_atual() // resultado: "17:30:45" </p>
+<p>Teste:</p>
+<p>hora_atual(); // Resultado: <input value="21:04:02" name="b3" type="text"> </p>
+<script language="javascript">document.form1.b3.value = hora_atual();</script>
+<h2>Confere se a hora está certa</h2>
+<p>Sintaxe</p>
+<p>hora_erro(hora) // retorno true ou false</p>
+<p>Exemplo:</p>
+<p>hora_erro("12:20:36") // resultado true  </p>
+<p>Teste:</p>
+<p>hora_erro(<input name="a5" value="12:20:36" type="text"><br>
+<input value="Resultado -&gt;" onClick="document.form1.b5.value = hora_erro(document.form1.a5.value)" type="button"><input name="b5" type="text"></p>
+<h2>Confere se a data está certa</h2>
+<p>Sintaxe:</p>
+<p>data_erro(data) // retorno true ou false </p>
+<p>Exemplo: </p>
+<p>data_erro("02/12/1950") // resultado true </p>
+<p>Teste:</p>
+<p>data_erro(<input name="a4" value="02/12/1950" type="text">)<br>
+<input value="Resultado -&gt;" onClick="document.form1.b4.value = data_erro(document.form1.a4.value)" type="button"><input name="b4" type="text"></p>
+<h2>Convertendo horas para segundos</h2>
+<p>Sintaxe:</p>
+<p>hora_p_seg(horas) // retorno: segundos. </p>
+<p>Exemplo: </p>
+<p>hora_p_seg("02:20:25"); // resultado </p>
+<p>Teste:</p>
+<p>hora_p_seg(
+  <input name="a6" value="02:20:25" type="text">)<br>
+<input value="Resultado -&gt;" onClick="document.form1.b6.value = hora_p_seg(document.form1.a6.value)" type="button"><input name="b6" type="text"></p>
+<h2>Convertendo segundos em horas</h2>
+<p>Sintaxe:</p>
+<p>seg_p_hora(segundos) // retorno: Array(dias, horas)</p>
+<p>Exemplo:</p>
+<p>seg_p_hora(13479) // resultado: Array(0, "3:44:39")</p>
+<p>Teste</p>
+<p>seg_p_hora(<input name="a7" value="13479" type="text">)<br>
+<input value="Resultado -&gt;" onClick="document.form1.b7.value = seg_p_hora(document.form1.a7.value)" type="button">
+Array(
+<input name="b7" type="text">
+)</p>
+<h2>Conta quantos dias tem uma data qualquer </h2>
+<p>Sintaxe:</p>
+<p>data_p_dia(data) // retorno: dias</p>
+<p>Exemplo:</p>
+<p>data_p_dia("14/11/2006") // resultado: 318 </p>
+<p>Teste:</p>
+<p>data_p_dia(<input name="a8" value="14/11/2006" type="text">)<br>
+<input value="Resultado -&gt;" onClick="document.form1.b8.value = data_p_dia(document.form1.a8.value)" type="button"><input name="b8" type="text"></p>
+<h2>Converte o nº de dias em data </h2>
+<p>Sintaxe:</p>
+<p>dia_p_data(dias, ano) // retorno: data </p>
+<p>Exemplo:</p>
+<p>dia_p_data(318, 2009) // resultado: "14/11/2009"</p>
+<p>Teste</p>
+<p>dia_p_data(<input name="a9" value="318" type="text">, <input name="c9" value="2009" type="text">)<br>
+<input value="Resultado -&gt;" onClick="document.form1.b9.value = dia_p_data(document.form1.a9.value , document.form1.c9.value)" type="button"><input name="b9" type="text"></p>
+<h2>Conta quantos dias tem um ou mais anos </h2>
+<p>Sitaxe:</p>
+<p>anos_p_dias(ano1, ano2_menos_1) // retorno: dias</p>
+<p>Exemplo:</p>
+<p>anos_p_dias(2006, 2009) //  2009 - 1 = 2008. resultado: </p>
+<p>Teste:</p>
+<p>anos_p_dias(<input name="a10" value="2006" type="text">, <input name="c10" value="2009" type="text">)<br>
+<input value="Resultado -&gt;" onClick="document.form1.b10.value = anos_p_dias(document.form1.a10.value , document.form1.c10.value)" type="button"><input name="b10" type="text"></p>
+<h2>Soma a data </h2>
+<p>Sintaxe:</p>
+<p>soma_data(data, dias) // retorno: data </p>
+<p>Exemplo:</p>
+<p>soma_data("14/11/2009", +10)  
+// resultado: "24/11/2009"</p>
+<p>Teste</p>
+<p>soma_data(<input name="a11" value="14/11/2009" type="text">, <input name="c11" value="+10" type="text">)<br>
+<input value="Resultado -&gt;" onClick="document.form1.b11.value = soma_data(document.form1.a11.value , document.form1.c11.value)" type="button"><input name="b11" type="text"></p>
+<h2>Soma a hora </h2>
+<p>Sintaxe:</p>
+<p>soma_hora(dias, horas, segundos) // retorno: Array(dias, horas) </p>
+<p>Exemplo:</p>
+<p>soma_hora(3, "20:30:25", +30) // resultado: Array(3, 20:30:55)</p>
+<p>Teste:</p>
+<p>soma_hora(<input name="a12" value="3" type="text">, <input name="c12" value="20:30:25" type="text">, <input name="d12" value="+30" type="text">)<br>
+<input value="Resultado -&gt;" onClick="document.form1.b12.value = soma_hora(document.form1.a12.value, document.form1.c12.value, document.form1.d12.value)" type="button">
+Array(
+<input name="b12" type="text">
+)</p>
+<h2>Contar quantos dias de uma data para outra </h2>
+<p>Sintaxe:</p>
+<p>data_p_data(data_menor, data_maior) // retorno: dias </p>
+<p>Exemplo:</p>
+<p>data_p_data("14/11/2006", "14/10/2009") 
+// resultado: 1075</p>
+<p>Teste</p>
+<p>data_p_data(<input name="a13" value="4/11/2006" type="text">, <input name="c13" value="14/10/2009" type="text">)<br>
+<input value="Resultado -&gt;" onClick="document.form1.b13.value = data_p_data(document.form1.a13.value, document.form1.c13.value)" type="button"><input name="b13" type="text"></p>
+<h2>Conta quantos segundos tem de uma hora para outra hora </h2>
+<p>Sintaxe:</p>
+<p>hora_p_hora(dias_menor, hora_menor, dias_maior, hora_maior) // retorno: segundos. </p>
+<p>Exemplo:</p>
+<p>hora_p_hora(2, "11:30:58", 5, "20:30:25") // resultado: </p>
+<p>Teste:</p>
+<p>hora_p_hora(<input name="a14" value="2" type="text">, <input name="c14" value="11:30:58" type="text">, <input name="d14" value="5" type="text">, <input name="e14" value="20:30:25" type="text">)<br>
+<input value="Resultado -&gt;" onClick="document.form1.b14.value = hora_p_hora(document.form1.a14.value, document.form1.c14.value, document.form1.d14.value, document.form1.e14.value)" type="button"><input name="b14" type="text"></p>
+</form>
+
+
+</body></html>
