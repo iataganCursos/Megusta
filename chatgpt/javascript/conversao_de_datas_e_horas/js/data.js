@@ -15,7 +15,7 @@ Dia_da_semana=DataToda.getDay();
 semana = Array(6);
 semana[0]="Domingo";
 semana[1]="Segunda";
-semana[2]="Terça";
+semana[2]="TerÃ§a";
 semana[3]="Quarta";
 semana[4]="Quinta";
 semana[5]="Sexta";
@@ -60,27 +60,27 @@ var minutos = parseInt(cronometro.substring(crono+1, crono+3));
 var segundos = parseInt(cronometro.substring(crono+4, crono+7));
 
 if(cronometro.length != 8) {
-alert("Erro: hora inválida!");
+alert("Erro: hora invÃ¡lida!");
 return false; 
 }
 if(cronometro.indexOf(":") != 2){
-alert("Erro: hora inválida!");
+alert("Erro: hora invÃ¡lida!");
 return false; 
 }
 if(cronometro.indexOf(":", 3) != 5){
-alert("Erro: hora inválida!");
+alert("Erro: hora invÃ¡lida!");
 return false; 
 }
 if(horas < 0 || horas > 24) {
-alert("Erro: hora inválida!");
+alert("Erro: hora invÃ¡lida!");
 return false; 
 }
 if(minutos < 0 || minutos > 60) {
-alert("Erro: hora inválida!");
+alert("Erro: hora invÃ¡lida!");
 return false; 
 }
 if(segundos < 0 || segundos > 60) {
-alert("Erro: hora inválida!");
+alert("Erro: hora invÃ¡lida!");
 return false; 
 }
 return true;
@@ -94,28 +94,28 @@ var mes = parseInt(cronometro.substring(crono+1, crono+3));
 var ano = parseInt(cronometro.substring(crono+4, crono+9));
 
 if(cronometro.length != 10) {
-alert("Erro: data inválida!");
+alert("Erro: data invÃ¡lida!");
 return false; 
 }
 if(cronometro.indexOf("/") != 2){
-alert("Erro: data inválida!");
+alert("Erro: data invÃ¡lida!");
 return false; 
 }
 if(cronometro.indexOf("/", 3) != 5){
-alert("Erro: data inválida!");
+alert("Erro: data invÃ¡lida!");
 return false; 
 }
 
 if(dia <= 0 || dia > 31) {
-alert("Erro: data inválida!");
+alert("Erro: data invÃ¡lida!");
 return false; 
 }
 if(mes <= 0 || mes > 12) {
-alert("Erro: data inválida!");
+alert("Erro: data invÃ¡lida!");
 return false; 
 }
 if(ano <= 1700 || ano >= 2900){
-alert("Erro: data inválida!");
+alert("Erro: data invÃ¡lida!");
 return false; 
 }
 return true;
