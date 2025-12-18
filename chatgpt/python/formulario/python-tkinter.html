@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Python (Tkinter)</title>
+</head>
+
+<body>
+<h1 align="center">Python (Tkinter)</h1>
+<h1 align="center"><img src="python-tkinter.png" width="602" height="532" /></h1>
+<table width="100%%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Arquivo: formulario.py </strong></td>
+  </tr>
+  <tr>
+    <td>from tkinter import *<br>
+from tkinter import messagebox<br>
+from tkinter import simpledialog<br>
+root = Tk()<br>
+root.geometry('600x500+100+100')<br>
+root.title("Registro")<br>
+<br>
+root.state("zoomed")<br>
+root.state("iconic")<br>
+<br>
+root.iconbitmap("icone.ico")<br>
+<br>
+root['bg']= '#0000FF'<br>
+<br>
+Nome = StringVar()<br>
+Email = StringVar()<br>
+Sexo = IntVar()<br>
+Pais = StringVar()<br>
+Prog_java = IntVar()<br>
+Prog_python = IntVar()<br>
+<br>
+def Enviar():<br>
+<br>
+&nbsp;&nbsp;&nbsp; resposta = simpledialog.askstring("Hello Python",
+"Qual é o seu nome?")<br>
+&nbsp;&nbsp;&nbsp; var_texto.set(resposta)<br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; nome=Nome.get()<br>
+&nbsp;&nbsp;&nbsp; messagebox.showinfo("Hello Python", f"Nome: {nome}")<br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; email=Email.get()<br>
+&nbsp;&nbsp;&nbsp; messagebox.showinfo("Hello Python", f"E-mail:
+{email}")<br>
+<br>
+&nbsp;&nbsp;&nbsp; sexo=Sexo.get()<br>
+&nbsp;&nbsp;&nbsp; xSexo = "Masculino" if sexo == 1 else "Feminino"<br>
+&nbsp;&nbsp;&nbsp; messagebox.showinfo("Hello Python", f"Sexo: {xSexo}")<br>
+<br>
+&nbsp;&nbsp;&nbsp; pais=Pais.get()<br>
+&nbsp;&nbsp;&nbsp; xPais = "" if pais == 'Selecione seu pais' else pais<br>
+&nbsp;&nbsp;&nbsp; messagebox.showinfo("Hello Python", f"País: {xPais}")<br>
+<br>
+&nbsp;&nbsp;&nbsp; prog_java=Prog_java.get()<br>
+&nbsp;&nbsp;&nbsp; xProg_java = "Não" if prog_java == 0 else "Sim"<br>
+&nbsp;&nbsp;&nbsp; messagebox.showinfo("Hello Python", f"Programa em
+Java? {xProg_java}")<br>
+<br>
+&nbsp;&nbsp;&nbsp; prog_python=Prog_python.get()<br>
+&nbsp;&nbsp;&nbsp; xProg_python = "Não" if prog_python == 0 else "Sim"<br>
+&nbsp;&nbsp;&nbsp; messagebox.showinfo("Hello Python", f"Programa em
+Python? {xProg_python}")<br>
+<br>
+&nbsp;&nbsp;&nbsp; selecionados = lstbox.curselection()<br>
+&nbsp;&nbsp;&nbsp; lista = [lstbox.get(i) for i in selecionados]<br>
+&nbsp;&nbsp;&nbsp; x = ""<br>
+&nbsp;&nbsp;&nbsp; for l in lista:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x += f", {l}"<br>
+&nbsp;&nbsp;&nbsp; messagebox.showinfo("Hello Python", f"Itens
+selecionados{x}")<br>
+<br>
+&nbsp;&nbsp;&nbsp; xTextArea = inputtxt.get("1.0", "end-1c")<br>
+&nbsp;&nbsp;&nbsp; messagebox.showinfo("Hello Python", f"Área de Texto:
+{xTextArea}")<br>
+<br>
+<br>
+label_0 = Label(root, text="Registro", width=20, font=("bold", 20))<br>
+label_0.place(x=90,y=53)<br>
+<br>
+var_texto = StringVar()<br>
+lbl_texto = Label(root, textvariable=var_texto, width=20, font=("bold",
+10))<br>
+var_texto.set("Inserindo um nome aqui...")<br>
+lbl_texto.place(x=400,y=70)<br>
+<br>
+label_1 = Label(root, text="Nome", width=20, font=("bold", 10))<br>
+label_1.place(x=80,y=130)<br>
+<br>
+entry_1 = Entry(root,textvar=Nome)<br>
+entry_1.place(x=240,y=130)<br>
+Nome.set("Alexandre")<br>
+<br>
+label_2 = Label(root, text="E-Mail", width=20, font=("bold", 10))<br>
+label_2.place(x=68,y=180)<br>
+<br>
+entry_2= Entry(root,textvar=Email)<br>
+entry_2.place(x=240,y=180)<br>
+Email.set("email@meusite.com.br")<br>
+<br>
+label_3 = Label(root, text="Sexo", width=20, font=("bold", 10))<br>
+label_3.place(x=70,y=230)<br>
+<br>
+Radiobutton(root, text="Masculino",variable=Sexo,
+value=1).place(x=235,y=230)<br>
+Radiobutton(root, text="Feminino",variable=Sexo,
+value=2).place(x=290,y=230) <br>
+Sexo.set(1)<br>
+<br>
+label_4 = Label(root, text="País", width=20, font=("bold", 10))<br>
+label_4.place(x=70,y=280)<br>
+<br>
+list1 =['Brasil', 'coreia', 'EUA', 'Canada','argentina', 'china']<br>
+<br>
+droplist=OptionMenu(root,Pais, *list1)<br>
+droplist.config(width=15)<br>
+Pais.set('Selecione seu pais')<br>
+droplist.place(x=240,y=280)<br>
+<br>
+label_4 = Label(root, text="Programa", width=20, font=("bold", 10))<br>
+label_4.place(x=70,y=330)<br>
+<br>
+Checkbutton(root, text="Java",variable=Prog_java).place(x=235,y=330)<br>
+Prog_java.set(1)<br>
+<br>
+Checkbutton(root, text="Python",variable=Prog_python).place(x=290,y=330)<br>
+Prog_python.set(0)<br>
+<br>
+Button(root, text='Enviar',width=20,bg='brown',fg=
+'white',command=Enviar).place(x=180,y=380)<br>
+<br>
+lstbox = Listbox(root, selectmode=MULTIPLE)<br>
+<br>
+lstbox.insert(1, "Python")<br>
+lstbox.insert(2, "C")<br>
+lstbox.insert(3, "PHP")<br>
+lstbox.insert(4, "HTML")<br>
+lstbox.insert(5, "CSS")<br>
+lstbox.insert(6, "Javascript")<br>
+lstbox.insert(7, "Java")<br>
+lstbox.insert(8, "MySQL")<br>
+lstbox.insert(9, "SVG")<br>
+lstbox.insert(10, "WebGL")<br>
+lstbox.insert(11, "Ajax")<br>
+lstbox.place(x=400, y=100)<br>
+<br>
+inputtxt = Text(root, height = 10, width = 15)<br>
+inputtxt.insert(END, 'Insira um Texto aqui...')<br>
+inputtxt.place(x=400, y=300)<br>
+<br>
+root.mainloop()</td>
+  </tr>
+</table>
+</body>
+</html>
