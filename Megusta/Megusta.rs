@@ -1,3 +1,10 @@
+// Cargo.toml
+/*
+[dependencies]
+chrono = "0.4"
+rand = "0.8"
+*/
+
 use std::io::{self, Write};
 use std::fs;
 use std::process::Command;
