@@ -19,10 +19,10 @@ public class Megusta {
 
     // Program
 
-    public void rPrint(String message) {
+    public void rPrint(Object message) {
         System.out.print(message);
     }
-    public void rPrintln(String message) {
+    public void rPrintln(Object message) {
         System.out.println(message);
     }
     public void rPrintln() {
