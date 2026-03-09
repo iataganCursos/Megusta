@@ -1,3 +1,33 @@
+/*
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Megusta JS</title>
+</head>
+
+<body>
+
+<script src="megusta.js"></script>
+
+<script>
+
+let r = new Megusta();
+
+r.rPrintln("Olá Mundo!");
+
+let nome = r.rInput("Qual é o seu nome?");
+r.rPrintln("Olá " + nome);
+
+let soma = r.mathPow(2,3);
+r.rPrintln("2^3 = " + soma);
+
+</script>
+
+</body>
+</html>
+*/
+
 class Megusta {
 
     // Program

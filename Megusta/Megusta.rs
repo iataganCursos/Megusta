@@ -1,16 +1,16 @@
-// Cargo.toml
-/*
-[dependencies]
-chrono = "0.4"
-rand = "0.8"
-*/
-
 use std::io::{self, Write};
 use std::fs;
 use std::process::Command;
 use chrono::{Local, Datelike, Timelike};
 use rand::Rng;
 use std::f64::consts::{PI, E, LN_2, LN_10, LOG2_E, LOG10_E};
+
+// Cargo.toml
+/*
+[dependencies]
+chrono = "0.4"
+rand = "0.8"
+*/
 
 pub struct Megusta;
 

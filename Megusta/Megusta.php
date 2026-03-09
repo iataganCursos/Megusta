@@ -1,4 +1,20 @@
 <?php
+/*
+<?php
+
+require "Megusta.php";
+
+$r = new Megusta();
+
+$r->rPrintln("Teste da biblioteca");
+
+$nome = $r->rInput("Digite seu nome: ");
+$r->rPrintln("Olá ".$nome);
+
+echo $r->mathPow(2,8);
+*/
+?>
+<?php
 
 class Megusta {
 

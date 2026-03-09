@@ -4,7 +4,21 @@ import datetime
 import locale
 import subprocess
 
+"""
+from megusta import Megusta   # supondo que sua classe esteja em megusta.py
 
+
+def main():
+    r = Megusta()
+
+    r.rPrint("Esta eh uma mensagem de exemplo.")
+    r.rPrintln("Esta eh uma mensagem de exemplo.")
+    r.rPrintln()
+
+    nome = r.rInput("Qual eh o seu nome? ")
+    r.rPrintln("Olah, " + nome + "!")
+    print()
+"""
 class Megusta:
 
     # -------------------------

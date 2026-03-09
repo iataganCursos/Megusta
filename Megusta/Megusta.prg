@@ -1,3 +1,19 @@
+/*
+PROCEDURE Main
+
+LOCAL x := 1.2
+
+? "sin:", mathSin(x)
+? "cos:", mathCos(x)
+? "tan:", mathTan(x)
+
+? "log:", mathLog(10)
+? "log2:", mathLog2(8)
+
+? "exp:", mathExp(2)
+
+RETURN
+*/
 /* Megusta.prg */
 
 #include "hbclass.ch"
