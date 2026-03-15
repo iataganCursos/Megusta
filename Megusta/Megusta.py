@@ -110,13 +110,13 @@ class Megusta:
         return self.dateNow().weekday() + 1
 
     def dateMonth(self):
-        return self.dateNow().month - 1
+        return self.dateNow().month
 
     def dateYear(self):
         return self.dateNow().year
 
     def dateSetWeekDay(self, ano, mes, dia):
-        return datetime.date(ano, mes + 1, dia).weekday() + 1
+        return datetime.date(ano, mes, dia).weekday() + 1
 
     def dateHour24(self):
         return self.dateNow().hour
@@ -291,12 +291,3 @@ class Megusta:
 
     def mathLog1p(self, v):
         return math.log1p(v)
-
-
-# -------------------------
-# Main
-# -------------------------
-
-if __name__ == "__main__":
-    r = Megusta()
-    r.rPrintln("Megusta Python funcionando corretamente.")
