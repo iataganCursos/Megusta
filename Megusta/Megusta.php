@@ -43,7 +43,7 @@ class Megusta {
     }
 
     public function rPrintln($message=""){
-        echo $message . PHP_EOL;
+        echo $message . "<br />" . PHP_EOL;
     }
 
     public function rInput($prompt){
@@ -359,3 +359,4 @@ class Megusta {
     }
 
 }
+?>
