@@ -1,3 +1,4 @@
+<?php header('Content-Type: text/html; charset=utf-8'); ?>
 <?php
 /*
 <?php
@@ -46,9 +47,10 @@ class Megusta {
         echo $message . "<br />" . PHP_EOL;
     }
 
-    public function rInput($prompt){
-        echo $prompt;
-        return trim(fgets(STDIN));
+    public function rInput($promptText){
+        echo '<p>'.$promptText;
+        echo " It doesn't exist.</p>";
+        return "It doesn't exist.";
     }
 
     public function rSaveFile($nomeArquivo, $conteudo){
@@ -68,7 +70,11 @@ class Megusta {
     }
 
     public function rOpenProgram($nomePrograma){
-        exec($nomePrograma);
+		try {
+			shell_exec($nomePrograma);
+		} catch (Exception $e) {
+			echo '';
+		}
     }
 
     // String
