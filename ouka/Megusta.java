@@ -1,4 +1,4 @@
-package Megusta;
+package ouka;
 
 import java.io.BufferedWriter;
 import java.io.File;
