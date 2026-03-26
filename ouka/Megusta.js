@@ -8,7 +8,7 @@
 
 <body>
 
-<script src="megusta.js"></script>
+<script src="ouka/megusta.js"></script>
 
 <script>
 

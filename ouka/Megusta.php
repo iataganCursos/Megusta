@@ -3,7 +3,7 @@
 /*
 <?php
 
-require "Megusta.php";
+require "ouka/oMegusta.php";
 
 $r = new Megusta();
 
