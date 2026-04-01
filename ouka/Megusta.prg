@@ -16,7 +16,6 @@ RETURN
 */
 /* Megusta.prg */
 
-#include "hbclass.ch"
 
 /* =========================
    PRINT / INPUT
@@ -36,8 +35,9 @@ RETURN NIL
 
 FUNCTION rInput( cPrompt )
    LOCAL cValue := ""
-   ?? cPrompt
-   INPUT cValue
+   ?? cPrompt         // Exibe o prompt sem quebra de linha
+   ACCEPT TO cValue   // Lê a entrada do usuário
+   ? ""
 RETURN cValue
 
 
@@ -78,7 +78,9 @@ FUNCTION rOpenProgram( cPrograma )
    RUN ( cPrograma )
 RETURN NIL
 
-
+FUNCTION rOpenFileWeb( cUrl )
+    RUN('cmd /c powershell -Command "Invoke-WebRequest -Uri ' + cUrl + ' -OutFile x.txt"')
+RETURN NIL
 /* =========================
    STRING
    ========================= */
@@ -216,6 +218,21 @@ RETURN Int(n) + IIF( n > Int(n), 1, 0 )
 FUNCTION mathRound( n )
 RETURN Round( n, 0 )
 
+FUNCTION mathDecimalFormat( nNumero, cMascara )
+   LOCAL nDec := 0
+
+   IF At(".", cMascara) > 0
+      nDec := Len(cMascara) - At(".", cMascara)
+   ENDIF
+
+   RETURN Str( nNumero, 0, nDec )
+
+FUNCTION mathNumberFormat( nNumero, cLocale, cCountry )
+   LOCAL cForm := Str( nNumero, 15, 2 )
+   cForm := Trim(cForm)
+   cForm := StrTran(cForm, ".", ",")
+   RETURN cForm
+
 FUNCTION mathRandom()
 RETURN HB_Random()
 
@@ -336,17 +353,76 @@ RETURN Exp( nExpoente )
    CONSTANTES
    ========================= */
 
-FUNCTION mathE()
-RETURN 2.718281828459045
-
 FUNCTION mathLN2()
 RETURN Log(2.0)
 
 FUNCTION mathLOG2E()
 RETURN Log(2.0) / Log( Exp(1.0) )
 
-FUNCTION mathLN10()
-RETURN Log(10.0)
+FUNCTION mathConvertToRadians( nGraus )
+RETURN nGraus * ( mathPI() / 180.0 )
 
-FUNCTION mathLOG10E()
-RETURN 1.0 / Log(10.0)
+FUNCTION mathAsin( n )
+RETURN ASin( n )
+
+FUNCTION mathAcos( n )
+RETURN ACos( n )
+
+FUNCTION mathAtan( n )
+RETURN ATan( n )
+
+FUNCTION mathSinh( n )
+RETURN Sinh( n )
+
+FUNCTION mathCosh( n )
+RETURN Cosh( n )
+
+FUNCTION mathTanh( n )
+RETURN Tanh( n )
+
+FUNCTION mathAsinh( n )
+   // asinh(x) = ln(x + sqrt(x^2 + 1))
+RETURN Log( n + Sqrt( n^2 + 1 ) )
+
+FUNCTION mathAcosh( n )
+   // acosh(x) = ln(x + sqrt(x^2 - 1))
+RETURN Log( n + Sqrt( n^2 - 1 ) )
+
+FUNCTION mathAtanh( n )
+   // atanh(x) = 0.5 * ln((1 + x) / (1 - x))
+RETURN 0.5 * Log( (1 + n) / (1 - n) )
+
+FUNCTION mathLog1p( n )
+RETURN Log( 1 + n )
+
+FUNCTION mathLog2( n )
+RETURN Log( n ) / Log( 2 )
+
+FUNCTION mathLog10( n )
+RETURN Log( n ) / Log( 10 )
+
+FUNCTION mathSQRT1_2()
+RETURN Sqrt( 0.5 )
+
+FUNCTION mathSQRT2()
+RETURN Sqrt( 2 )
+
+FUNCTION mathMaxArr( ... )
+   LOCAL nMax := -999999999
+   LOCAL i
+   FOR i := 1 TO PCount()
+      IF PValue(i) > nMax
+         nMax := PValue(i)
+      ENDIF
+   NEXT
+RETURN nMax
+
+FUNCTION mathMinArr( ... )
+   LOCAL nMin := 999999999
+   LOCAL i
+   FOR i := 1 TO PCount()
+      IF PValue(i) < nMin
+         nMin := PValue(i)
+      ENDIF
+   NEXT
+RETURN nMin

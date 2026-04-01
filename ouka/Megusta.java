@@ -5,6 +5,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.Calendar;
 import java.util.Scanner;
 import java.text.DecimalFormat;
@@ -18,6 +22,21 @@ public class Megusta {
     }
 
     // Program
+
+    public String rOpenFileWeb(String VarURL) throws Exception {
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(VarURL))
+                .header("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36")
+                .GET()
+                .build();
+        
+        HttpResponse<String> response = client.send(request, 
+                HttpResponse.BodyHandlers.ofString());
+        
+        System.out.println("Status: " + response.statusCode());
+        return response.body();
+    }
 
     public void rPrint(Object message) {
         System.out.print(message);

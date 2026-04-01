@@ -28,6 +28,44 @@ class Megusta {
     public $mathLN10;
     public $mathLOG10E;
 
+    // -------------------------
+    // Program
+    // -------------------------
+
+    public function rOpenFileWeb($var_url) {
+        try {
+            // Criar contexto com header
+            $options = [
+                "http" => [
+                    "header" => "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36\r\n"
+                ]
+            ];
+
+            $context = stream_context_create($options);
+
+            // Enviar requisição
+            $response = @file_get_contents($var_url, false, $context);
+
+            if ($response === false) {
+                throw new Exception("Falha na requisição");
+            }
+
+            // Capturar status HTTP
+            $status = null;
+            if (isset($http_response_header)) {
+                preg_match('{HTTP\/\S*\s(\d{3})}', $http_response_header[0], $match);
+                $status = $match[1] ?? null;
+            }
+
+            echo "Status: " . $status . PHP_EOL;
+            return $response . PHP_EOL;
+
+        } catch (Exception $error) {
+            echo "A URL não Funcionou" . PHP_EOL;
+            echo $error->getMessage() . PHP_EOL;
+        }
+    }
+
     public function __construct(){
         $this->mathPI = pi();
         $this->mathE = exp(1);

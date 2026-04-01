@@ -3,6 +3,7 @@ import random
 import datetime
 import locale
 import subprocess
+import urllib.request
 
 """
 import sys
@@ -23,6 +24,28 @@ class Megusta:
     # -------------------------
     # Program
     # -------------------------
+
+    def rOpenFileWeb(self, var_url):
+        try:
+            # Criar requisição com header
+            request = urllib.request.Request(
+                var_url,
+                headers={
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+                }
+            )
+
+            # Enviar requisição
+            with urllib.request.urlopen(request) as response:
+                status = response.status
+                body = response.read().decode('utf-8')
+
+                print("Status:", status)
+                return body
+
+        except Exception as error:
+            print("A URL não Funcionou")
+            print(str(error))
 
     def rPrint(self, message):
         print(message, end="")
