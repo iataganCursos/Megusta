@@ -26,11 +26,12 @@ FUNCTION rPrint( cMessage )
 RETURN NIL
 
 FUNCTION rPrintln( cMessage )
-   ? cMessage
-RETURN NIL
-
-FUNCTION rPrintln2()
-   ?
+   IF cMessage != NIL
+      ?? cMessage         // Com quebra de linha
+      ? ""
+   ELSE 
+      ? ""
+   ENDIF
 RETURN NIL
 
 FUNCTION rInput( cPrompt )
@@ -39,7 +40,6 @@ FUNCTION rInput( cPrompt )
    ACCEPT TO cValue   // Lê a entrada do usuário
    ? ""
 RETURN cValue
-
 
 /* =========================
    FILE
@@ -59,7 +59,6 @@ FUNCTION rSaveFile( cArquivo, cConteudo )
    ? "Arquivo", cArquivo, "salvo com sucesso."
 RETURN NIL
 
-
 FUNCTION rOpenFile( cArquivo )
    LOCAL cConteudo := ""
    LOCAL cLinha
@@ -72,7 +71,6 @@ FUNCTION rOpenFile( cArquivo )
    cConteudo := MemoRead( cArquivo )
 
 RETURN cConteudo
-
 
 FUNCTION rOpenProgram( cPrograma )
    RUN ( cPrograma )
@@ -97,11 +95,35 @@ RETURN SubStr( cString, nInicio + 1, nFim - nInicio )
 FUNCTION strCharAt( cString, nPos )
 RETURN SubStr( cString, nPos + 1, 1 )
 
-FUNCTION strIndexOf( cString, cBusca )
-RETURN At( cBusca, cString ) - 1
+FUNCTION strIndexOf(cadeia, subcadeia)
+LOCAL pos
+LOCAL len_cadeia, len_subcadeia
 
-FUNCTION strLastIndexOf( cString, cBusca )
-RETURN RAt( cBusca, cString ) - 1
+len_cadeia = LEN(cadeia)
+len_subcadeia = LEN(subcadeia)
+
+FOR pos = 1 TO len_cadeia - len_subcadeia + 1
+IF SUBSTR(cadeia, pos, len_subcadeia) == subcadeia
+RETURN pos
+ENDIF
+NEXT
+
+RETURN 0 // Retorna 0 se a subcadeia não for encontrada
+
+FUNCTION strLastIndexOf(cadeia, subcadeia)
+LOCAL pos
+LOCAL len_cadeia, len_subcadeia
+
+len_cadeia = LEN(cadeia)
+len_subcadeia = LEN(subcadeia)
+
+FOR pos = len_cadeia TO 1 STEP -1
+IF SUBSTR(cadeia, pos, len_subcadeia) == subcadeia
+RETURN pos
+ENDIF
+NEXT
+
+RETURN 0 // Retorna 0 se a subcadeia não for encontrada
 
 FUNCTION strToLowerCase( cString )
 RETURN Lower( cString )
@@ -115,7 +137,31 @@ RETURN c1 == c2
 FUNCTION strEqualsIgnoreCase( c1, c2 )
 RETURN Upper(c1) == Upper(c2)
 
+FUNCTION strCompareTo(cadeia1, cadeia2)
+IF cadeia1 == cadeia2
+RETURN 0 // As cadeias são iguais
+ELSE
+IF cadeia1 < cadeia2
+RETURN -1 // cadeia1 é menor que cadeia2
+ELSE
+RETURN 1 // cadeia1 é maior que cadeia2
+ENDIF
+ENDIF
 
+FUNCTION strCompareToIgnoreCase(cadeia1, cadeia2)
+LOCAL lowerCadeia1, lowerCadeia2
+lowerCadeia1 = LOWER(cadeia1)
+lowerCadeia2 = LOWER(cadeia2)
+
+IF lowerCadeia1 == lowerCadeia2
+RETURN 0 // As cadeias são iguais sem distinção entre maiúsculas e minúsculas
+ELSE
+IF lowerCadeia1 < lowerCadeia2
+RETURN -1 // cadeia1 é menor que cadeia2 sem distinção entre maiúsculas e minúsculas
+ELSE
+RETURN 1 // cadeia1 é maior que cadeia2 sem distinção entre maiúsculas e minúsculas
+ENDIF
+ENDIF
 /* =========================
    DATE / TIME
    ========================= */
@@ -124,7 +170,7 @@ FUNCTION dateDay()
 RETURN Day( Date() )
 
 FUNCTION dateWeekDay()
-RETURN Dow( Date() )
+RETURN Dow( Date() ) + 1
 
 FUNCTION dateMonth()
 RETURN Month( Date() )
@@ -143,7 +189,6 @@ RETURN Val( SubStr( Time(),4,2 ) )
 
 FUNCTION dateSecond()
 RETURN Val( SubStr( Time(),7,2 ) )
-
 
 /* =========================
    ARRAY
@@ -194,7 +239,6 @@ FUNCTION arrLastIndexOf( aLista, xValor )
       ENDIF
    NEXT
 RETURN 0
-
 
 /* =========================
    MATH
@@ -262,56 +306,94 @@ FUNCTION mathSignum( n )
    ENDIF
 RETURN 0
 
-
 /* CONSTANTES */
 
 FUNCTION mathPI()
 RETURN 3.141592653589793
-
-FUNCTION mathE()
-RETURN 2.718281828459045
-
 
 /* TRIGONOMETRIA */
 
 FUNCTION mathConvertToRadians( graus )
 RETURN graus * ( mathPI() / 180 )
 
-/* =========================
-   TRIGONOMETRIA
-   ========================= */
+// =========================
+//   TRIGONOMETRIA
+//   =========================
+// Aproximação do Seno
+FUNCTION MySin( x )
+RETURN x - (x^3/6) + (x^5/120) - (x^7/5040)
+
+// Aproximação do Cosseno
+FUNCTION MyCos( x )
+RETURN 1 - (x^2/2) + (x^4/24) - (x^6/720)
+
+// Tangente
+FUNCTION MyTan( x )
+LOCAL nC := MyCos(x)
+RETURN if( nC == 0, 0, MySin(x) / nC )
 
 FUNCTION mathSin( nAngulo )
-RETURN Sin( nAngulo )
+RETURN MySin( nAngulo )
 
 FUNCTION mathCos( nAngulo )
-RETURN Cos( nAngulo )
+RETURN MyCos( nAngulo )
 
 FUNCTION mathTan( nAngulo )
-RETURN Tan( nAngulo )
+RETURN MyTan( nAngulo )
 
-FUNCTION mathAsin( nValor )
-RETURN ASin( nValor )
+FUNCTION mathAsin(x)
+   LOCAL n, term, sum
 
-FUNCTION mathAcos( nValor )
-RETURN ACos( nValor )
+   sum  := x
+   term := x
 
-FUNCTION mathAtan( nValor )
-RETURN ATan( nValor )
+   FOR n := 1 TO 20
+      term := term * ( (2*n - 1)*(2*n - 1) * x * x ) / ( (2*n)*(2*n + 1) )
+      sum  += term
+   NEXT
+
+RETURN sum
+
+FUNCTION mathAcos(x)
+   LOCAL pi
+   pi := 3.141592653589793
+
+RETURN pi/2 - mathAsin(x)
+
+FUNCTION mathAtan(x)
+   LOCAL n, term, sum, xx, sign, pi
+
+   pi := 3.141592653589793
+
+   // Redução de domínio
+   IF ABS(x) > 1
+      IF x > 0
+         RETURN pi/2 - mathAtan(1/x)
+      ELSE
+         RETURN -pi/2 - mathAtan(1/x)
+      ENDIF
+   ENDIF
+
+   sum  := 0
+   term := x
+   xx   := x * x
+   sign := 1
+
+   FOR n := 1 TO 25 STEP 1
+      sum  += sign * term / (2*n - 1)
+      term *= xx
+      sign := -sign
+   NEXT
+
+RETURN sum
 
 FUNCTION mathSinh( nValor )
-RETURN Sinh( nValor )
-
+RETURN (Exp(nValor) - Exp(-nValor)) / 2
 FUNCTION mathCosh( nValor )
-RETURN Cosh( nValor )
+RETURN (Exp(nValor) + Exp(-nValor)) / 2
 
 FUNCTION mathTanh( nValor )
-RETURN Tanh( nValor )
-
-
-/* =========================
-   HIPERBÓLICAS INVERSAS
-   ========================= */
+RETURN (Exp(nValor) - Exp(-nValor)) / (Exp(nValor) + Exp(-nValor))
 
 FUNCTION mathAsinh( x )
 RETURN Log( x + Sqrt( x*x + 1 ) )
@@ -322,84 +404,39 @@ RETURN Log( x + Sqrt( x*x - 1 ) )
 FUNCTION mathAtanh( x )
 RETURN 0.5 * Log( (1 + x) / (1 - x) )
 
-
 /* =========================
-   LOGARITMOS
+   EXPONENCIAL
    ========================= */
 
 FUNCTION mathLog( nNumero )
 RETURN Log( nNumero )
 
 FUNCTION mathLog10( nNumero )
-RETURN Log10( nNumero )
+RETURN Log( nNumero ) / Log( 10 )
 
 FUNCTION mathLog2( nNumero )
 RETURN Log( nNumero ) / Log( 2 )
 
-
-FUNCTION mathLog1p( nValor )
-RETURN Log( 1 + nValor )
-
-
-/* =========================
-   EXPONENCIAL
-   ========================= */
-
 FUNCTION mathExp( nExpoente )
 RETURN Exp( nExpoente )
-
-
-/* =========================
-   CONSTANTES
-   ========================= */
-
-FUNCTION mathLN2()
-RETURN Log(2.0)
-
-FUNCTION mathLOG2E()
-RETURN Log(2.0) / Log( Exp(1.0) )
-
-FUNCTION mathConvertToRadians( nGraus )
-RETURN nGraus * ( mathPI() / 180.0 )
-
-FUNCTION mathAsin( n )
-RETURN ASin( n )
-
-FUNCTION mathAcos( n )
-RETURN ACos( n )
-
-FUNCTION mathAtan( n )
-RETURN ATan( n )
-
-FUNCTION mathSinh( n )
-RETURN Sinh( n )
-
-FUNCTION mathCosh( n )
-RETURN Cosh( n )
-
-FUNCTION mathTanh( n )
-RETURN Tanh( n )
-
-FUNCTION mathAsinh( n )
-   // asinh(x) = ln(x + sqrt(x^2 + 1))
-RETURN Log( n + Sqrt( n^2 + 1 ) )
-
-FUNCTION mathAcosh( n )
-   // acosh(x) = ln(x + sqrt(x^2 - 1))
-RETURN Log( n + Sqrt( n^2 - 1 ) )
-
-FUNCTION mathAtanh( n )
-   // atanh(x) = 0.5 * ln((1 + x) / (1 - x))
-RETURN 0.5 * Log( (1 + n) / (1 - n) )
 
 FUNCTION mathLog1p( n )
 RETURN Log( 1 + n )
 
-FUNCTION mathLog2( n )
-RETURN Log( n ) / Log( 2 )
+FUNCTION mathE()
+RETURN exp(1)
 
-FUNCTION mathLog10( n )
-RETURN Log( n ) / Log( 10 )
+FUNCTION mathLN2()
+RETURN log(2)
+
+FUNCTION mathLOG2E()
+RETURN log(2) / log(exp(1))
+
+FUNCTION mathLN10()
+RETURN log(10)
+
+FUNCTION mathLOG10E()
+RETURN 1 / log(10);
 
 FUNCTION mathSQRT1_2()
 RETURN Sqrt( 0.5 )
