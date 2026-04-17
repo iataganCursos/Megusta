@@ -76,9 +76,16 @@ FUNCTION rOpenProgram( cPrograma )
    RUN ( cPrograma )
 RETURN NIL
 
-FUNCTION rOpenFileWeb( cUrl )
-    RUN('cmd /c powershell -Command "Invoke-WebRequest -Uri ' + cUrl + ' -OutFile x.txt"')
-RETURN NIL
+FUNCTION rOpenFileWeb( cArquivo )
+   SISTEMA_OPERACIONAL = os()
+      IF strIndexOf(SISTEMA_OPERACIONAL, "Windows") >= 1
+            RUN ('cmd /c powershell -Command "Invoke-WebRequest -Uri ' + cArquivo + ' -OutFile x0001.txt"')
+      ELSEIF strIndexOf(SISTEMA_OPERACIONAL, "Linux") >= 1
+            RUN ("wget -O x0001.txt " + cArquivo)
+      ENDIF
+      arquivo := rOpenFile("x0001.txt")
+      ERASE "x0001.txt"
+RETURN arquivo
 /* =========================
    STRING
    ========================= */
@@ -319,27 +326,78 @@ RETURN graus * ( mathPI() / 180 )
 // =========================
 //   TRIGONOMETRIA
 //   =========================
-// Aproximação do Seno
-FUNCTION MySin( x )
-RETURN x - (x^3/6) + (x^5/120) - (x^7/5040)
+// Quero implementar manualmente o sin, cos, tan (Série de Taylor) 
+// sem precisar de biblioteca externa. Preciso "ensinar" ao CLIPPER 
+// o sin, o cos e tan usando aproximações matemáticas.
+// Implementações usando séries de Taylor para precisão razoável
 
-// Aproximação do Cosseno
-FUNCTION MyCos( x )
-RETURN 1 - (x^2/2) + (x^4/24) - (x^6/720)
+#define PI 3.14159265358979323846
+#define TWO_PI (2 * PI)
 
-// Tangente
-FUNCTION MyTan( x )
-LOCAL nC := MyCos(x)
-RETURN if( nC == 0, 0, MySin(x) / nC )
+FUNCTION normalizeAngle(x)
+   // reduz para [-PI, PI]
+   x := x % TWO_PI
 
-FUNCTION mathSin( nAngulo )
-RETURN MySin( nAngulo )
+   IF x > PI
+      x := x - TWO_PI
+   ELSEIF x < -PI
+      x := x + TWO_PI
+   ENDIF
 
-FUNCTION mathCos( nAngulo )
-RETURN MyCos( nAngulo )
+RETURN x
 
-FUNCTION mathTan( nAngulo )
-RETURN MyTan( nAngulo )
+FUNCTION mathSin(x)
+   LOCAL term, sum, n
+
+   x := normalizeAngle(x)
+
+   term := x
+   sum  := x
+
+   FOR n := 1 TO 10
+      term := -term * x * x / ((2*n) * (2*n+1))
+      sum  += term
+   NEXT
+
+RETURN sum
+
+FUNCTION mathCos(x)
+   LOCAL term, sum, n
+
+   x := normalizeAngle(x)
+
+   term := 1
+   sum  := 1
+
+   FOR n := 1 TO 10
+      term := -term * x * x / ((2*n-1) * (2*n))
+      sum  += term
+   NEXT
+
+RETURN sum
+
+FUNCTION mathTan(x)
+   LOCAL s, c
+
+   // normaliza para [-PI, PI]
+   x := normalizeAngle(x)
+
+   // redução para [-PI/2, PI/2]
+   IF x > PI/2
+      x := x - PI
+   ELSEIF x < -PI/2
+      x := x + PI
+   ENDIF
+
+   // tratamento exato da singularidade
+   IF x == PI/2 .OR. x == -PI/2
+      RETURN NIL
+   ENDIF
+
+   c := mathCos(x)
+   s := mathSin(x)
+
+RETURN s / c
 
 FUNCTION mathAsin(x)
    LOCAL n, term, sum
@@ -387,22 +445,114 @@ FUNCTION mathAtan(x)
 
 RETURN sum
 
-FUNCTION mathSinh( nValor )
-RETURN (Exp(nValor) - Exp(-nValor)) / 2
-FUNCTION mathCosh( nValor )
-RETURN (Exp(nValor) + Exp(-nValor)) / 2
+FUNCTION mathSinh(x)
+   LOCAL term := x
+   LOCAL sum  := x
+   LOCAL n    := 1
+   LOCAL maxIter := 20  // ajuste conforme precisão desejada
 
-FUNCTION mathTanh( nValor )
-RETURN (Exp(nValor) - Exp(-nValor)) / (Exp(nValor) + Exp(-nValor))
+   DO WHILE n <= maxIter
+      term := term * (x * x) / ((2*n) * (2*n + 1))
+      sum  := sum + term
+      n++
+   ENDDO
 
-FUNCTION mathAsinh( x )
-RETURN Log( x + Sqrt( x*x + 1 ) )
+RETURN sum
 
-FUNCTION mathAcosh( x )
-RETURN Log( x + Sqrt( x*x - 1 ) )
+FUNCTION mathCosh(x)
+   LOCAL term := 1
+   LOCAL sum  := 1
+   LOCAL n    := 1
+   LOCAL maxIter := 20
 
-FUNCTION mathAtanh( x )
-RETURN 0.5 * Log( (1 + x) / (1 - x) )
+   DO WHILE n <= maxIter
+      term := term * (x * x) / ((2*n - 1) * (2*n))
+      sum  := sum + term
+      n++
+   ENDDO
+
+RETURN sum
+
+FUNCTION mathTanh(x)
+   LOCAL s := mathSinh(x)
+   LOCAL c := mathCosh(x)
+
+   IF c == 0
+      RETURN 0
+   ENDIF
+
+RETURN s / c
+
+FUNCTION mathAsinh(x)
+   LOCAL ax, x2, term, sum, n
+
+   ax := ABS(x)
+
+   // Usa Taylor para |x| pequeno
+   IF ax < 0.5
+      term := x
+      sum  := x
+      x2   := x * x
+
+      FOR n := 1 TO 10
+         term := -term * x2 * (2*n-1) / (2*n*(2*n+1))
+         sum  += term
+      NEXT
+
+      RETURN sum
+   ENDIF
+
+   // Fórmula geral
+   RETURN mathLog(x + mathSqrt(x*x + 1))
+
+FUNCTION mathAcosh(x)
+   LOCAL t, term, sum, n
+
+   IF x < 1
+      RETURN NIL
+   ENDIF
+
+   t := x - 1
+
+   // Série perto de 1
+   IF t < 0.5
+      term := 1
+      sum  := 1
+
+      FOR n := 1 TO 10
+         term := term * t
+         sum  += term * ( (n=1)/12 - (n=2)*3/160 ) // simplificado
+      NEXT
+
+      RETURN mathSqrt(2*t) * sum
+   ENDIF
+
+   // Fórmula geral
+   RETURN mathLog(x + mathSqrt(x*x - 1))
+
+FUNCTION mathAtanh(x)
+   LOCAL term, sum, x2, n
+
+   IF ABS(x) >= 1
+      RETURN NIL // fora do domínio
+   ENDIF
+
+   // Taylor
+   IF ABS(x) < 0.5
+      term := x
+      sum  := x
+      x2   := x * x
+
+      FOR n := 1 TO 20
+         term := term * x2
+         sum  += term / (2*n + 1)
+      NEXT
+
+      RETURN sum
+   ENDIF
+
+   // Fórmula log
+   RETURN 0.5 * mathLog((1+x)/(1-x))
 
 /* =========================
    EXPONENCIAL
