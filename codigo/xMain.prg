@@ -24,8 +24,8 @@ PROCEDURE Main()
         rPrintln()
         rOpenProgram("c:/java/jdk-23/bin/java.exe -jar /MeuApp/WindowJAR.jar")
 
-        // rOpenFileWeb salva em x.txt via PowerShell; não retorna conteúdo diretamente
-        //rOpenFileWeb("https://www.ouka.com.br/meu_arquivo.txt")
+        // rOpenFileWeb salva em x0001.txt via PowerShell; retorna conteúdo diretamente
+        rPrintln(rOpenFileWeb("https://www.ouka.com.br/meu_arquivo.txt"))
 
 
         // strReplace
