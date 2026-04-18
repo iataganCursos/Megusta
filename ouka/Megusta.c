@@ -287,6 +287,21 @@ void arrInit(StringList *list){
     list->capacity=10;
     list->data=malloc(sizeof(char*)*list->capacity);
 }
+void arrAddAll(StringList *list,...){
+    va_list args;
+    va_start(args, list);
+    while(1){
+        char *valor = va_arg(args, char*);
+        if(valor == NULL) break;
+        if(list->size >= list->capacity){
+            list->capacity *= 2;
+            list->data = realloc(list->data, sizeof(char*) * list->capacity);
+        }
+        list->data[list->size] = strdup(valor);
+        list->size++;
+    }
+    va_end(args);
+}
 
 void arrAdd(StringList *list,const char *valor){
 
@@ -520,4 +535,18 @@ double mathLog2(double x){
 
 double mathLog1p(double x){
     return log1p(x);
+}
+
+void arrInsert(StringList *list, int index, const char *valor){
+    if(index < 0) index = 0;
+    if(index > list->size) index = list->size;
+    if(list->size >= list->capacity){
+        list->capacity *= 2;
+        list->data = realloc(list->data, sizeof(char*) * list->capacity);
+    }
+    for(int j = list->size; j > index; j--){
+        list->data[j] = list->data[j - 1];
+    }
+    list->data[index] = strdup(valor);
+    list->size++;
 }

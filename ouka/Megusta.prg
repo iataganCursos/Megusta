@@ -204,6 +204,12 @@ RETURN Val( SubStr( Time(),7,2 ) )
 FUNCTION xArrLength( aLista )
 RETURN Len( aLista )
 
+FUNCTION arrAddAll( aLista, ... )
+   FOR i := 1 TO PCount()
+      AAdd( aLista, PValue( i ) )
+   ENDFOR
+RETURN NIL
+
 FUNCTION arrAdd( aLista, xValor )
    AAdd( aLista, xValor )
 RETURN NIL
