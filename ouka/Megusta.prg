@@ -77,10 +77,10 @@ FUNCTION rOpenProgram( cPrograma )
 RETURN NIL
 
 FUNCTION rOpenFileWeb( cArquivo )
-   SISTEMA_OPERACIONAL = os()
-      IF strIndexOf(SISTEMA_OPERACIONAL, "Windows") >= 1
+   SISTEMA_OPERACIONAL = lower(os())
+      IF strIndexOf(SISTEMA_OPERACIONAL, "windows") >= 1
             RUN ('cmd /c powershell -Command "Invoke-WebRequest -Uri ' + cArquivo + ' -OutFile x0001.txt"')
-      ELSEIF strIndexOf(SISTEMA_OPERACIONAL, "Linux") >= 1
+      ELSEIF strIndexOf(SISTEMA_OPERACIONAL, "linux") >= 1
             RUN ("wget -O x0001.txt " + cArquivo)
       ENDIF
       arquivo := rOpenFile("x0001.txt")
