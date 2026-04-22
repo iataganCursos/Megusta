@@ -30,7 +30,7 @@ int main(){
         rOpenProgram("c:/java/jdk-23/bin/java.exe -jar /MeuApp/WindowJAR.jar");
 
         rPrintlnEmpty();
-        rPrintln(rURLConnection("https://www.ouka.com.br/meu_arquivo.txt"));
+        rPrintln(rOpenFileWeb("https://www.ouka.com.br/meu_arquivo.txt"));
 
         rPrintlnEmpty();
         // strReplace
