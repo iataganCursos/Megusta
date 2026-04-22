@@ -29,6 +29,10 @@ int main(){
         rPrintlnEmpty();
         rOpenProgram("c:/java/jdk-23/bin/java.exe -jar /MeuApp/WindowJAR.jar");
 
+        rPrintlnEmpty();
+        rPrintln(rURLConnection("https://www.ouka.com.br/meu_arquivo.txt"));
+
+        rPrintlnEmpty();
         // strReplace
         char *original = "Hoje é um lindo dia!";
         char *substituida = strReplace(original, "lindo", "maravilhoso");
