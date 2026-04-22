@@ -8,18 +8,19 @@
 #include <stdarg.h>
 #include <curl/curl.h>
 
-//typedef enum {false=0, true=1} boolean;
-
-#define MAX_INPUT 1024
-
 /* =========================
    PROGRAM
 ========================= */
 /*
+Usando o gcc do MSYS2 no Windows.
 Instale
 pacman -S mingw-w64-ucrt-x86_64-curl
 ou
 pacman -S mingw-w64-x86_64-curl
+
+Usando o gcc do Terminal no Linux.
+Instale
+sudo apt install libcurl4-openssl-dev
 
 Para compilar:
 
@@ -36,6 +37,11 @@ int main(){
     rPrintln("Hello World");
 }
 */
+
+//typedef enum {false=0, true=1} boolean;
+
+#define MAX_INPUT 1024
+
 void rPrint(const char *message, ...){
   if(message == NULL) {
     printf("\n");
