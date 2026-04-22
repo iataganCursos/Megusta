@@ -141,7 +141,7 @@ size_t write_callback(void *contents, size_t size, size_t nmemb, void *userp) {
     return total_size;
 }
 
-char *rURLConnection(const char *url) {
+char *rOpenFileWeb(const char *url) {
     CURL *curl;
     CURLcode res;
     char *conteudo = NULL;
