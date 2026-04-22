@@ -6,6 +6,7 @@
 #include <ctype.h>
 #include <stdbool.h>
 #include <stdarg.h>
+#include <curl/curl.h>
 
 //typedef enum {false=0, true=1} boolean;
 
@@ -15,15 +16,21 @@
    PROGRAM
 ========================= */
 /*
+Instale
+pacman -S mingw-w64-ucrt-x86_64-curl
+ou
+pacman -S mingw-w64-x86_64-curl
+
 Para compilar:
 
-gcc megusta.c -o megusta -lm
+gcc xMain.c -o xMain.exe -lm -lcurl
 
 -lm é necessário para usar math.h.
+-lcurl é necessário para usar a biblioteca curl.
 
 */
 /*
-#include "megusta.h"
+#include "ouka/Megusta.c"
 
 int main(){
     rPrintln("Hello World");
@@ -108,6 +115,76 @@ char *rOpenFile(const char *arquivo){
 
 void rOpenProgram(const char *programa){
     system(programa);
+}
+
+struct Memory {
+    char *data;
+    size_t size;
+};
+
+// Callback para capturar o corpo da resposta
+size_t write_callback(void *contents, size_t size, size_t nmemb, void *userp) {
+    size_t total_size = size * nmemb;
+    struct Memory *mem = (struct Memory *)userp;
+
+    char *ptr = realloc(mem->data, mem->size + total_size + 1);
+    if(ptr == NULL) {
+        printf("Erro de memória\n");
+        return 0;
+    }
+
+    mem->data = ptr;
+    memcpy(&(mem->data[mem->size]), contents, total_size);
+    mem->size += total_size;
+    mem->data[mem->size] = '\0';
+
+    return total_size;
+}
+
+char *rURLConnection(const char *url) {
+    CURL *curl;
+    CURLcode res;
+    char *conteudo = NULL;
+
+    struct Memory chunk;
+    chunk.data = malloc(1);  // inicializa vazio
+    chunk.size = 0;
+
+    curl_global_init(CURL_GLOBAL_DEFAULT);
+    curl = curl_easy_init();
+
+    if(curl) {
+        curl_easy_setopt(curl, CURLOPT_URL, url);
+
+        // Header User-Agent
+        curl_easy_setopt(curl, CURLOPT_USERAGENT,
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36");
+
+        // Callback para capturar resposta
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback);
+        curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *)&chunk);
+
+        // Executa requisição
+        res = curl_easy_perform(curl);
+
+        if(res != CURLE_OK) {
+            fprintf(stderr, "Erro: %s\n", curl_easy_strerror(res));
+        } else {
+            long status;
+            curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &status);
+
+            printf("Status: %ld\n", status);
+            //printf("%s\n", chunk.data);
+            char *conteudox = chunk.data;
+            conteudo = strdup(conteudox);
+        }
+
+        curl_easy_cleanup(curl);
+    }
+
+    free(chunk.data);
+    curl_global_cleanup();
+    return conteudo;
 }
 
 /* =========================
