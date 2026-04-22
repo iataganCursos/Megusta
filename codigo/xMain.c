@@ -1,4 +1,4 @@
-#include "ouka/megusta.c"
+#include "ouka/Megusta.c"
 
 int main(){
         rPrint("Esta eh uma mensagem de exemplo.");
