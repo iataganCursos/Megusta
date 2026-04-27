@@ -7,8 +7,7 @@
 #include <cstdarg>
 #include <string>
 #include <fstream>
-#include <windows.h>
-#include <wininet.h>
+#include <curl/curl.h>
 
 /* =========================
    PROGRAM
@@ -22,10 +21,10 @@ Para Linux, instale libcurl ou use uma implementação alternativa.
 
 Para compilar:
 
-g++ xMain.cpp -o xMain.exe -lm -lwininet
+g++ xMain.cpp -o xMain.exe -lm -lcurl
 
 -lm é necessário para usar math.h.
--lwininet é necessário para usar a biblioteca WinINet.
+-lcurl é necessário para usar a biblioteca libcurl.
 
 */
 /*
@@ -118,33 +117,31 @@ void rOpenProgram(const char *programa){
     system(programa);
 }
 
-char *rOpenFileWeb(const char *url) {
-    const char* agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36";
-    HINTERNET hInternet = InternetOpenA(agent, INTERNET_OPEN_TYPE_DIRECT, NULL, NULL, 0);
-    if (!hInternet) {
+size_t WriteCallback(void* contents, size_t size, size_t nmemb, void* userp) {
+    ((std::string*)userp)->append((char*)contents, size * nmemb);
+    return size * nmemb;
+}
+
+char* rOpenFileWeb(const char* url) {
+    CURL* curl = curl_easy_init();
+    if (!curl) return NULL;
+
+    std::string buffer;
+
+    curl_easy_setopt(curl, CURLOPT_URL, url);
+    curl_easy_setopt(curl, CURLOPT_USERAGENT, "Mozilla/5.0");
+    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
+    curl_easy_setopt(curl, CURLOPT_WRITEDATA, &buffer);
+
+    CURLcode res = curl_easy_perform(curl);
+    curl_easy_cleanup(curl);
+
+    if (res != CURLE_OK || buffer.empty()) {
         return NULL;
     }
-    HINTERNET hUrl = InternetOpenUrlA(hInternet, url, NULL, 0, INTERNET_FLAG_RELOAD, 0);
-    if (!hUrl) {
-        InternetCloseHandle(hInternet);
-        return NULL;
-    }
-    char buffer[1024];
-    DWORD bytesRead;
-    std::string content;
-    while (InternetReadFile(hUrl, buffer, sizeof(buffer), &bytesRead) && bytesRead > 0) {
-        content.append(buffer, bytesRead);
-    }
-    InternetCloseHandle(hUrl);
-    InternetCloseHandle(hInternet);
-    if (content.empty()) {
-        return NULL;
-    }
-    char* result = (char*)malloc(content.size() + 1);
-    if (!result) {
-        return NULL;
-    }
-    strcpy(result, content.c_str());
+
+    char* result = (char*)malloc(buffer.size() + 1);
+    strcpy(result, buffer.c_str());
     printf("200 OK\n");
     return result;
 }
@@ -206,7 +203,7 @@ char *strToLowerCase(char *s){
         s[i]=tolower(s[i]);
     return s;
 }
-    
+   
 char *strReplace(const char *original, const char *old, const char *new_str){
     char *result;
     int i, cnt = 0;
