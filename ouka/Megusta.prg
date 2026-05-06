@@ -169,6 +169,109 @@ ELSE
 RETURN 1 // cadeia1 é maior que cadeia2 sem distinção entre maiúsculas e minúsculas
 ENDIF
 ENDIF
+
+// =========================
+// Concatenação de strings (array de strings)
+FUNCTION strConcat( ... )
+   LOCAL cResultado := ""
+   LOCAL i
+   LOCAL nParams := PCount()
+
+   FOR i := 1 TO nParams
+      cResultado += HB_PValue(i)
+   NEXT
+
+   RETURN cResultado
+
+
+// StartsWith
+FUNCTION strStartsWith( cString, cPrefix )
+   RETURN Left( cString, Len( cPrefix ) ) == cPrefix
+
+
+// EndsWith
+FUNCTION strEndsWith( cString, cSuffix )
+   RETURN Right( cString, Len( cSuffix ) ) == cSuffix
+
+
+// Includes (contains)
+FUNCTION strIncludes( cString, cSub )
+   RETURN At( cSub, cString ) > 0
+
+
+// Split (retorna array)
+FUNCTION strSplit( cString, cDelimiter )
+   LOCAL aResult := {}
+   LOCAL nPos
+   LOCAL i
+
+   // Se delimitador é vazio, divide em caracteres individuais
+   IF Empty( cDelimiter )
+      FOR i := 1 TO Len( cString )
+         AAdd( aResult, SubStr( cString, i, 1 ) )
+      NEXT
+      RETURN aResult
+   ENDIF
+
+   DO WHILE .T.
+      nPos := At( cDelimiter, cString )
+      IF nPos == 0
+         AAdd( aResult, cString )
+         EXIT
+      ENDIF
+
+      AAdd( aResult, Left( cString, nPos - 1 ) )
+      cString := SubStr( cString, nPos + Len( cDelimiter ) )
+   ENDDO
+
+   RETURN aResult
+
+
+// PadStart
+FUNCTION strPadStart( cString, nLen, cPad )
+   LOCAL cFill := Replicate( cPad, nLen )
+
+   RETURN Right( cFill + cString, nLen )
+
+
+// PadEnd
+FUNCTION strPadEnd( cString, nLen, cPad )
+   LOCAL cFill := Replicate( cPad, nLen )
+
+   RETURN Left( cString + cFill, nLen )
+
+
+// Repeat
+FUNCTION strRepeat( cString, nTimes )
+   RETURN Replicate( cString, nTimes )
+
+
+// Search (indexOf)
+FUNCTION strSearch( cString, cSub )
+   LOCAL nPos := At( cSub, cString )
+   RETURN iif( nPos > 0, nPos - 1, -1 )  // Java é 0-based
+
+
+// Trim (ambos lados)
+FUNCTION strTrim( cString )
+   RETURN AllTrim( cString )
+
+
+// TrimStart (LTrim)
+FUNCTION strTrimStart( cString )
+   RETURN LTrim( cString )
+
+
+// TrimEnd (RTrim)
+FUNCTION strTrimEnd( cString )
+   RETURN RTrim( cString )
+
+
+// Slice (substring)
+FUNCTION strSlice( cString, nStart, nEnd )
+   // Java é 0-based; Harbour é 1-based
+   RETURN SubStr( cString, nStart + 1, nEnd - nStart )
+// =========================
 /* =========================
    DATE / TIME
    ========================= */
