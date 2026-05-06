@@ -127,6 +127,32 @@ public class xMain {
 
         r.rPrintln();
 
+r.rPrintln(r.strCharAt("Hello", 4));           // o
+r.rPrintln(r.strConcat("Hello", " ", "world")); // Hello world
+r.rPrintln(r.strStartsWith("Hello", "H"));     // true
+r.rPrintln(r.strEndsWith("Hello", "o"));       // true
+r.rPrintln(r.strIncludes("Hello", "x"));       // false
+r.rPrintln(r.strIndexOf("Hello", "l"));        // 2
+r.rPrintln(r.strLastIndexOf("Hello", "l"));    // 3
+r.rPrintln(r.strPadStart("Hello", 6, "?"));    // ?Hello
+r.rPrintln(r.strPadEnd("Hello", 6, "?"));      // Hello?
+r.rPrintln(r.strRepeat("Hello", 3));           // HelloHelloHello
+r.rPrintln(r.strReplace("Hello", "llo", "y")); // Hey
+r.rPrintln(r.strSearch("Hello", "e"));         // 1
+r.rPrintln(r.strSlice("Hello", 1, 3));         // el
+String v[] = r.strSplit("Hello", "");           // ['H','e','l','l','o']
+for(int i=0; i<r.xArrLength(v);i++) {
+        r.rPrintln(v[i]);
+}
+r.rPrintln(r.strSubstring("Hello", 2, 4));     // ll
+r.rPrintln(r.strToLowerCase("Hello"));       // hello
+r.rPrintln(r.strToUpperCase("Hello"));       // HELLO
+r.rPrintln(r.strTrim(" Hello "));            // Hello
+r.rPrintln(r.strTrimStart(" Hello "));       // "Hello "
+r.rPrintln(r.strTrimEnd(" Hello "));         // " Hello"
+
+        r.rPrintln();
+
         String Texto;
         Texto = "";
 

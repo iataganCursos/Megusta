@@ -136,6 +136,32 @@ let r = new Megusta();
 
         r.rPrintln();
 
+r.rPrintln(r.strCharAt("Hello", 4));           // o
+r.rPrintln(r.strConcat("Hello", " ", "world")); // Hello world
+r.rPrintln(r.strStartsWith("Hello", "H"));     // true
+r.rPrintln(r.strEndsWith("Hello", "o"));       // true
+r.rPrintln(r.strIncludes("Hello", "x"));       // false
+r.rPrintln(r.strIndexOf("Hello", "l"));        // 2
+r.rPrintln(r.strLastIndexOf("Hello", "l"));    // 3
+r.rPrintln(r.strPadStart("Hello", 6, "?"));    // ?Hello
+r.rPrintln(r.strPadEnd("Hello", 6, "?"));      // Hello?
+r.rPrintln(r.strRepeat("Hello", 3));           // HelloHelloHello
+r.rPrintln(r.strReplace("Hello", "llo", "y")); // Hey
+r.rPrintln(r.strSearch("Hello", "e"));         // 1
+r.rPrintln(r.strSlice("Hello", 1, 3));         // el
+v = r.strSplit("Hello", "");           // ['H','e','l','l','o']
+for(i=0; i<r.xArrLength(v);i++) {
+        r.rPrintln(v[i]);
+}
+r.rPrintln(r.strSubstring("Hello", 2, 4));     // ll
+r.rPrintln(r.strToLowerCase("Hello"));       // hello
+r.rPrintln(r.strToUpperCase("Hello"));       // HELLO
+r.rPrintln(r.strTrim(" Hello "));            // Hello
+r.rPrintln(r.strTrimStart(" Hello "));       // "Hello "
+r.rPrintln(r.strTrimEnd(" Hello "));         // " Hello"
+
+        r.rPrintln();
+
         let Texto = "";
 
         Dia_do_mes = r.dateDay();
@@ -148,7 +174,7 @@ let r = new Megusta();
         Minutos = r.dateMinute();
         Segundos = r.dateSecond();
         // ---------------------------------------
-        let semana = [];
+        let semana = Array();
         semana[0] = "";
         semana[1] = "Domingo";
         semana[2] = "Segunda";
@@ -157,9 +183,9 @@ let r = new Megusta();
         semana[5] = "Quinta";
         semana[6] = "Sexta";
         semana[7] = "Sabado";
-        Semana_atual = semana[Dia_da_semana];
+        let Semana_atualx = semana[Dia_da_semana];
         //-------------------------
-        let Mes2 = [];
+        let Mes2 = Array();
         Mes2[0] = "Janeiro";
         Mes2[1] = "Fevereiro";
         Mes2[2] = "Março";
@@ -172,8 +198,8 @@ let r = new Megusta();
         Mes2[9] = "Outubro";
         Mes2[10] = "Novembro";
         Mes2[11] = "Dezembro";
-        Mes_atual = Mes2[Mes];
-        Texto += Semana_atual + ", " + Dia_do_mes + " de " + Mes_atual + " de " + Ano;
+        let Mes_atual = Mes2[Mes];
+        Texto += Semana_atualx + ", " + Dia_do_mes + " de " + Mes_atual + " de " + Ano;
         Texto += "\n";
         Texto += "São: " + Horas + " horas, " + Minutos + " minutos e " + Segundos + " segundos.";
 
@@ -191,7 +217,7 @@ let r = new Megusta();
         Mes = x_mes;
         Ano = x_ano;
 
-        semana = [];
+        semana = Array();
         semana[0] = "";
         semana[1] = "Domingo";
         semana[2] = "Segunda";
@@ -200,9 +226,9 @@ let r = new Megusta();
         semana[5] = "Quinta";
         semana[6] = "Sexta";
         semana[7] = "Sabado";
-        Semana_atual = semana[Dia_da_semana];
+        let Semana_atual = semana[Dia_da_semana];
         //-------------------------
-        Mes2 = [];
+        Mes2 = Array();
         Mes2[0] = "Janeiro";
         Mes2[1] = "Fevereiro";
         Mes2[2] = "Março";

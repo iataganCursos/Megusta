@@ -45,15 +45,15 @@
         // strLength
         $minhaString = "Olá, mundo!";
         $tamanho = $r->strLength($minhaString);
-        $r->rPrintln("O tamanho da é: " . $tamanho); // Saída: "O tamanho da é: 12"
+        $r->rPrintln("O tamanho da string é: " . $tamanho); // Saída: "O tamanho da string é: 12"
  
         // strSubstring
         $original2 = "Isso é uma de exemplo.";
         $sub = $r->strSubstring($original2, 8, 13);
-        $r->rPrintln($sub); // Saída: "uma S"
+        $r->rPrintln($sub); // Saída: "uma d"
 
         // strCharAt
-        $minhaString2 = "Ola, mundo!";
+        $minhaString2 = "Olá, mundo!";
         $primeiroCaractere = $r->strCharAt($minhaString2,0); // Obtém o primeiro caractere 'O'
         $quartoCaractere = $r->strCharAt($minhaString2, 3); // Obtém o quarto caractere ','
 
@@ -63,7 +63,7 @@
         // strIndexOf
         $minhaString3 = "Isso é um exemplo de indexOf em Java.";
         $indice = $r->strIndexOf($minhaString3, "exemplo");
-        $r->rPrintln("A substring 'exemplo' começa no índice: " . $indice); // Saída: "A substring 'exemplo' começa no índice: 13"
+        $r->rPrintln("A substring 'exemplo' começa no índice: " . $indice); // Saída: "A substring 'exemplo' começa no índice: 10"
 
         // strLastIndexOf
         $minhaString4 = "Isso é um exemplo de lastIndexOf em Java. lastIndexOf é útil para encontrar a última ocorrência de uma substring.";
@@ -130,6 +130,32 @@
 
         $r->rPrintln();
 
+$r->rPrintln($r->strCharAt("Hello", 4));           // o
+$r->rPrintln($r->strConcat("Hello", " ", "world")); // Hello world
+$r->rPrintln($r->strStartsWith("Hello", "H"));     // true
+$r->rPrintln($r->strEndsWith("Hello", "o"));       // true
+$r->rPrintln($r->strIncludes("Hello", "x"));       // false
+$r->rPrintln($r->strIndexOf("Hello", "l"));        // 2
+$r->rPrintln($r->strLastIndexOf("Hello", "l"));    // 3
+$r->rPrintln($r->strPadStart("Hello", 6, "?"));    // ?Hello
+$r->rPrintln($r->strPadEnd("Hello", 6, "?"));      // Hello?
+$r->rPrintln($r->strRepeat("Hello", 3));           // HelloHelloHello
+$r->rPrintln($r->strReplace("Hello", "llo", "y")); // Hey
+$r->rPrintln($r->strSearch("Hello", "e"));         // 1
+$r->rPrintln($r->strSlice("Hello", 1, 3));         // el
+$v = $r->strSplit("Hello", "");           // ['H','e','l','l','o']
+for($i=0; $i<$r->xArrLength($v);$i++) {
+        $r->rPrintln($v[$i]);
+}
+$r->rPrintln($r->strSubstring("Hello", 2, 4));     // ll
+$r->rPrintln($r->strToLowerCase("Hello"));       // hello
+$r->rPrintln($r->strToUpperCase("Hello"));       // HELLO
+$r->rPrintln($r->strTrim(" Hello "));            // Hello
+$r->rPrintln($r->strTrimStart(" Hello "));       // "Hello "
+$r->rPrintln($r->strTrimEnd(" Hello "));         // " Hello"
+
+        $r->rPrintln();
+
         $Texto;
         $Texto = "";
 
@@ -144,29 +170,28 @@
         $Segundos = $r->dateSecond();
         // ---------------------------------------
         $semana = array();
-        $semana[0] = "";
-        $semana[1] = "Domingo";
-        $semana[2] = "Segunda";
-        $semana[3] = "Terça";
-        $semana[4] = "Quarta";
-        $semana[5] = "Quinta";
-        $semana[6] = "Sexta";
-        $semana[7] = "Sabado";
+        $semana[0] = "Domingo";
+        $semana[1] = "Segunda";
+        $semana[2] = "Terça";
+        $semana[3] = "Quarta";
+        $semana[4] = "Quinta";
+        $semana[5] = "Sexta";
+        $semana[6] = "Sábado";
         $Semana_atual = $semana[$Dia_da_semana];
         //-------------------------
         $Mes2 = array();
-        $Mes2[0] = "Janeiro";
-        $Mes2[1] = "Fevereiro";
-        $Mes2[2] = "Março";
-        $Mes2[3] = "Abril";
-        $Mes2[4] = "Maio";
-        $Mes2[5] = "Junho";
-        $Mes2[6] = "Julho";
-        $Mes2[7] = "Agosto";
-        $Mes2[8] = "Setembro";
-        $Mes2[9] = "Outubro";
-        $Mes2[10] = "Novembro";
-        $Mes2[11] = "Desembro";
+        $Mes2[1] = "Janeiro";
+        $Mes2[2] = "Fevereiro";
+        $Mes2[3] = "Março";
+        $Mes2[4] = "Abril";
+        $Mes2[5] = "Maio";
+        $Mes2[6] = "Junho";
+        $Mes2[7] = "Julho";
+        $Mes2[8] = "Agosto";
+        $Mes2[9] = "Setembro";
+        $Mes2[10] = "Outubro";
+        $Mes2[11] = "Novembro";
+        $Mes2[12] = "Dezembro";
         $Mes_atual = $Mes2[$Mes];
         $Texto .= $Semana_atual . ", " . $Dia_do_mes . " de " . $Mes_atual . " de " . $Ano;
         $Texto .= "\n";
@@ -186,28 +211,27 @@
         $Mes = $x_mes;
         $Ano = $x_ano;
 
-        $semana[0] = "";
-        $semana[1] = "Domingo";
-        $semana[2] = "Segunda";
-        $semana[3] = "Terça";
-        $semana[4] = "Quarta";
-        $semana[5] = "Quinta";
-        $semana[6] = "Sexta";
-        $semana[7] = "Sabado";
+        $semana[0] = "Domingo";
+        $semana[1] = "Segunda";
+        $semana[2] = "Terça";
+        $semana[3] = "Quarta";
+        $semana[4] = "Quinta";
+        $semana[5] = "Sexta";
+        $semana[6] = "Sábado";
         $Semana_atual = $semana[$Dia_da_semana];
         //-------------------------
-        $Mes2[0] = "Janeiro";
-        $Mes2[1] = "Fevereiro";
-        $Mes2[2] = "Março";
-        $Mes2[3] = "Abril";
-        $Mes2[4] = "Maio";
-        $Mes2[5] = "Junho";
-        $Mes2[6] = "Julho";
-        $Mes2[7] = "Agosto";
-        $Mes2[8] = "Setembro";
-        $Mes2[9] = "Outubro";
-        $Mes2[10] = "Novembro";
-        $Mes2[11] = "Desembro";
+        $Mes2[1] = "Janeiro";
+        $Mes2[2] = "Fevereiro";
+        $Mes2[3] = "Março";
+        $Mes2[4] = "Abril";
+        $Mes2[5] = "Maio";
+        $Mes2[6] = "Junho";
+        $Mes2[7] = "Julho";
+        $Mes2[8] = "Agosto";
+        $Mes2[9] = "Setembro";
+        $Mes2[10] = "Outubro";
+        $Mes2[11] = "Novembro";
+        $Mes2[12] = "Dezembro";
         $Mes_atual = $Mes2[$Mes];
         $Texto .= $Semana_atual . ", " . $Dia_do_mes . " de " . $Mes_atual . " de " . $Ano;
 

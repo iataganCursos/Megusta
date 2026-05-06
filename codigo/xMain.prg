@@ -172,10 +172,7 @@ PROCEDURE Main()
         // Array usando funções Harbour (arrAdd/arrGet/arrSize)
 
         frutasx := {}
-        arrAdd(frutasx, "Banana")
-        arrAdd(frutasx, "Melão")
-        arrAdd(frutasx, "Goiaba")
-        arrAdd(frutasx, "Morango")
+        arrAddAll(frutasx, "Banana", "Melão", "Goiaba", "Morango")
 
         for i := 1 to arrSize(frutasx)
                 rPrintln(arrGet(frutasx, i))
