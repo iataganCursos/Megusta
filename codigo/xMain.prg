@@ -24,7 +24,7 @@ PROCEDURE Main()
         rPrintln()
         rOpenProgram("c:/java/jdk-23/bin/java.exe -jar /MeuApp/WindowJAR.jar")
 
-        // rOpenFileWeb salva em x0001.txt via PowerShell; retorna conteúdo diretamente
+        // rOpenFileWeb salva em x0001.txt via PowerShell retorna conteúdo diretamente
         rPrintln(rOpenFileWeb("https://www.ouka.com.br/meu_arquivo.txt"))
 
 
@@ -393,8 +393,8 @@ PROCEDURE Main()
 
         rPrintln("Número aleatório: " + str(numeroAleatorio))
 
-        //double numeroAleatorioNoIntervalo := Math.random() * (max - min), min;
-        //double numeroAleatorioIntervalo := Math.random() * (10.0 - 5.0), 5.0;
+        //double numeroAleatorioNoIntervalo := Math.random() * (max - min), min
+        //double numeroAleatorioIntervalo := Math.random() * (10.0 - 5.0), 5.0
         //rPrintln("Número aleatório no intervalo: ", numeroAleatorioIntervalo)
 //Math.abs
 
@@ -468,7 +468,7 @@ PROCEDURE Main()
 //Math.SQRT1_2
         // Utilizando a constante Math.SQRT1_2
 
-        //double mathSQRT1_2 := 0.7071067811865476;
+        //double mathSQRT1_2 := 0.7071067811865476
 
         raizQuadradaDeUmMeio := mathSQRT1_2()
 
@@ -477,7 +477,7 @@ PROCEDURE Main()
 //Math.SQRT2
         // Utilizando a constante Math.SQRT2
 
-        //double mathSQRT2 := 1.4142135623730951;
+        //double mathSQRT2 := 1.4142135623730951
 
         raizQuadradaDeDois := mathSQRT2()
 
@@ -739,4 +739,32 @@ return Math.PI/180
         // Exibindo o resultado
         rPrintln("O logaritmo natural de 1 mais " + str(valor) + " é: " + str(resultado4))
 
+        rPrintln()
+
+rPrintln(strCharAt("Hello", 4))           // o
+rPrintln(strConcat("Hello", " ", "world")) // Hello world
+rPrintln(strStartsWith("Hello", "H"))     // true
+rPrintln(strEndsWith("Hello", "o"))       // true
+rPrintln(strIncludes("Hello", "x"))       // false
+rPrintln(strIndexOf("Hello", "l"))        // 2
+rPrintln(strLastIndexOf("Hello", "l"))    // 3
+rPrintln(strPadStart("Hello", 6, "?"))    // ?Hello
+rPrintln(strPadEnd("Hello", 6, "?"))      // Hello?
+rPrintln(strRepeat("Hello", 3))           // HelloHelloHello
+rPrintln(strReplace("Hello", "llo", "y")) // Hey
+rPrintln(strSearch("Hello", "e"))         // 1
+rPrintln(strSlice("Hello", 1, 3))         // el
+
+v := strSplit("Hello", "")          // ['H','e','l','l','o']
+
+FOR i := 1 TO Len(v)
+    rPrintln(v[i])
+NEXT
+
+rPrintln(strSubstring("Hello", 2, 4))     // ll
+rPrintln(strToLowerCase("Hello"))       // hello
+rPrintln(strToUpperCase("Hello"))       // HELLO
+rPrintln(strTrim(" Hello "))            // Hello
+rPrintln(strTrimStart(" Hello "))       // "Hello "
+rPrintln(strTrimEnd(" Hello "))         // " Hello"
 RETURN NIL
