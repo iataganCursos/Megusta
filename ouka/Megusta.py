@@ -2,6 +2,7 @@ import math
 import random
 import datetime
 import locale
+import re
 import subprocess
 import urllib.request
 
@@ -117,7 +118,49 @@ class Megusta:
 
     def strEqualsIgnoreCase(self, s1, s2):
         return s1.lower() == s2.lower()
+# ========================
+    def strConcat(self, *strings):
+        return ''.join(strings)
 
+    def strStartsWith(self, minhaString, var1):
+        return minhaString.startswith(var1)
+
+    def strEndsWith(self, minhaString, var1):
+        return minhaString.endswith(var1)
+
+    def strIncludes(self, minhaString, var1):
+        return var1 in minhaString
+
+    def strSplit(self, minhaString, var1):
+        if var1 == "":
+            return list(minhaString)
+        else:
+            return minhaString.split(var1)
+
+    def strPadStart(self, minhaString, var1, var2):
+        return minhaString.rjust(var1, var2[0])
+
+    def strPadEnd(self, minhaString, var1, var2):
+        return minhaString.ljust(var1, var2[0])
+
+    def strRepeat(self, minhaString, var1):
+        return minhaString * var1
+
+    def strSearch(self, minhaString, regex):
+        return minhaString.find(regex)
+
+    def strTrim(self, minhaString):
+        return minhaString.strip()
+
+    def strTrimStart(self, minhaString):
+        return re.sub(r'^\s+', '', minhaString)
+
+    def strTrimEnd(self, minhaString):
+        return re.sub(r'\s+$', '', minhaString)
+
+    def strSlice(self, minhaString, var1, var2):
+        return minhaString[var1:var2]
+# ========================
     # -------------------------
     # Date
     # -------------------------
@@ -170,6 +213,9 @@ class Megusta:
 
     def arrSize(self, lista):
         return len(lista)
+
+    def xArrLength(self, arr):
+        return len(arr)
 
     def arrRemove(self, lista, i):
         lista.pop(i)

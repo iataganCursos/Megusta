@@ -164,7 +164,69 @@ class Megusta {
     public function strEqualsIgnoreCase($string1,$string2){
         return strtolower($string1) === strtolower($string2);
     }
+// =========================
 
+    function strConcat(...$strings) {
+        $resultado = "";
+        foreach ($strings as $str) {
+            $resultado .= $str;
+        }
+        return $resultado;
+    }
+
+    function strStartsWith($minhaString, $var1) {
+        return str_starts_with($minhaString, $var1);
+    }
+
+    function strEndsWith($minhaString, $var1) {
+        return str_ends_with($minhaString, $var1);
+    }
+
+    function strIncludes($minhaString, $var1) {
+        return str_contains($minhaString, $var1);
+    }
+
+    function strSplit($minhaString, $var1) {
+        if ($var1 === "") {
+            return str_split($minhaString);
+        } else {
+            return explode($var1, $minhaString);
+        }
+    }
+
+    function strPadStart($minhaString, $var1, $var2) {
+        return str_pad($minhaString, $var1, $var2[0], STR_PAD_LEFT);
+    }
+
+    function strPadEnd($minhaString, $var1, $var2) {
+        return str_pad($minhaString, $var1, $var2[0], STR_PAD_RIGHT);
+    }
+
+    function strRepeat($minhaString, $var1) {
+        return str_repeat($minhaString, $var1);
+    }
+
+    function strSearch($minhaString, $regex) {
+        return strpos($minhaString, $regex);
+    }
+
+    function strTrim($minhaString) {
+        return trim($minhaString);
+    }
+
+    function strTrimStart($minhaString) {
+        return ltrim($minhaString);
+    }
+
+    function strTrimEnd($minhaString) {
+        return rtrim($minhaString);
+    }
+
+    function strSlice($minhaString, $var1, $var2) {
+        return substr($minhaString, $var1, $var2 - $var1);
+    }
+
+// =========================
     // Date
 
     public function dateDay(){

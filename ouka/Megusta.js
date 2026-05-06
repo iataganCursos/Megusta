@@ -94,7 +94,59 @@ class Megusta {
     strEqualsIgnoreCase(string1, string2){
         return string1.toLowerCase() === string2.toLowerCase();
     }
+// =========================
+    strConcat(...strings) {
+        return strings.join('');
+    }
 
+    strStartsWith(minhaString, var1) {
+        return minhaString.startsWith(var1);
+    }
+
+    strEndsWith(minhaString, var1) {
+        return minhaString.endsWith(var1);
+    }
+
+    strIncludes(minhaString, var1) {
+        return minhaString.includes(var1);
+    }
+
+    strSplit(minhaString, var1) {
+        return minhaString.split(var1);
+    }
+
+    strPadStart(minhaString, var1, var2) {
+        return minhaString.padStart(var1, var2.charAt(0));
+    }
+
+    strPadEnd(minhaString, var1, var2) {
+        return minhaString.padEnd(var1, var2.charAt(0));
+    }
+
+    strRepeat(minhaString, var1) {
+        return minhaString.repeat(var1);
+    }
+
+    strSearch(minhaString, regex) {
+        return minhaString.indexOf(regex);
+    }
+
+    strTrim(minhaString) {
+        return minhaString.trim();
+    }
+
+    strTrimStart(minhaString) {
+        return minhaString.replace(/^\s+/, '');
+    }
+
+    strTrimEnd(minhaString) {
+        return minhaString.replace(/\s+$/, '');
+    }
+
+    strSlice(minhaString, var1, var2) {
+        return minhaString.slice(var1, var2);
+    }
+// =========================
     // Date
 
     dateDay(){
@@ -102,7 +154,7 @@ class Megusta {
     }
 
     dateWeekDay(){
-        return new Date().getDay();
+        return new Date().getDay() + 1;
     }
 
     dateMouth(){

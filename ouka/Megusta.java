@@ -131,7 +131,51 @@ public class Megusta {
     public boolean strEqualsIgnoreCase(String string1, String string2){
         return string1.equalsIgnoreCase(string2);
     }
-
+// =============================
+    public String strConcat(String ... strings){
+        StringBuilder resultado = new StringBuilder();
+        for (String str : strings) {
+            resultado.append(str);
+        }
+        return resultado.toString();
+    }
+    public boolean strStartsWith(String minhaString, String var1){
+        return minhaString.startsWith(var1);
+    }
+    public boolean strEndsWith(String minhaString, String var1){
+        return minhaString.endsWith(var1);
+    }
+    public boolean strIncludes(String minhaString, String var1){
+        return minhaString.contains(var1);
+    }
+    public String[] strSplit(String minhaString, String var1){
+        return minhaString.split(var1);
+    }
+    public String strPadStart(String minhaString, int var1, String var2){
+        return String.format("%" + var1 + "s", minhaString).replace(' ', var2.charAt(0));
+    }
+    public String strPadEnd(String minhaString, int var1, String var2){
+        return String.format("%-" + var1 + "s", minhaString).replace(' ', var2.charAt(0));
+    }
+    public String strRepeat(String minhaString, int var1){
+        return minhaString.repeat(var1);
+    }
+    public int strSearch(String minhaString, String regex){
+        return minhaString.indexOf(regex);
+    }
+    public String strTrim(String minhaString){
+        return minhaString.trim();
+    }
+    public String strTrimStart(String minhaString){
+        return minhaString.replaceAll("^\\s+", "");
+    }
+    public String strTrimEnd(String minhaString){
+        return minhaString.replaceAll("\\s+$", "");
+    }
+    public String strSlice(String minhaString, int var1, int var2){
+        return minhaString.substring(var1, var2);
+    }
+// =============================
     // Date
 
     public int dateDay(){
