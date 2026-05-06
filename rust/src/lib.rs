@@ -64,7 +64,7 @@ impl Megusta {
     }
 
     // Program
-    pub fn r_open_file_web(url: &str) -> Result<(), Box<dyn Error>> {
+    pub fn r_open_file_web(&self, url: &str) -> Result<(), Box<dyn Error>> {
         let client = Client::new();
 
         let response = client
@@ -198,7 +198,79 @@ impl Megusta {
     pub fn str_to_upper_case(&self, s: &str) -> String {
         s.to_uppercase()
     }
+// ===========================
+    pub fn str_concat(&self, strings: &[&str]) -> String {
+        strings.concat()
+    }
 
+    pub fn str_starts_with(&self, minha_string: &str, var1: &str) -> bool {
+        minha_string.starts_with(var1)
+    }
+
+    pub fn str_ends_with(&self, minha_string: &str, var1: &str) -> bool {
+        minha_string.ends_with(var1)
+    }
+
+    pub fn str_includes(&self, minha_string: &str, var1: &str) -> bool {
+        minha_string.contains(var1)
+    }
+
+    pub fn str_split(&self, minha_string: &str, var1: &str) -> Vec<String> {
+        minha_string.split(var1).map(|s| s.to_string()).collect()
+    }
+
+    pub fn str_pad_start(&self, minha_string: &str, tamanho: usize, pad: &str) -> String {
+        let pad_char = pad.chars().next().unwrap_or(' ');
+        if minha_string.len() >= tamanho {
+            return minha_string.to_string();
+        }
+        let padding = tamanho - minha_string.len();
+        std::iter::repeat(pad_char).take(padding).collect::<String>() + minha_string
+    }
+
+    pub fn str_pad_end(&self, minha_string: &str, tamanho: usize, pad: &str) -> String {
+        let pad_char = pad.chars().next().unwrap_or(' ');
+        if minha_string.len() >= tamanho {
+            return minha_string.to_string();
+        }
+        let padding = tamanho - minha_string.len();
+        let mut result = minha_string.to_string();
+        result.push_str(&std::iter::repeat(pad_char).take(padding).collect::<String>());
+        result
+    }
+
+    pub fn str_repeat(&self, minha_string: &str, vezes: usize) -> String {
+        minha_string.repeat(vezes)
+    }
+
+    pub fn str_search(&self, minha_string: &str, termo: &str) -> isize {
+        match minha_string.find(termo) {
+            Some(pos) => pos as isize,
+            None => -1
+        }
+    }
+
+    pub fn str_trim(&self, minha_string: &str) -> String {
+        minha_string.trim().to_string()
+    }
+
+    pub fn str_trim_start(&self, minha_string: &str) -> String {
+        minha_string.trim_start().to_string()
+    }
+
+    pub fn str_trim_end(&self, minha_string: &str) -> String {
+        minha_string.trim_end().to_string()
+    }
+
+    // Atenção: slicing seguro com UTF-8
+    pub fn str_slice(&self, minha_string: &str, inicio: usize, fim: usize) -> String {
+        minha_string
+            .chars()
+            .skip(inicio)
+            .take(fim - inicio)
+            .collect()
+    }
+// ===========================
     // Date
 
     pub fn date_day(&self) -> i64 {
