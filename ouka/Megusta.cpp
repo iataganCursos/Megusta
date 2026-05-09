@@ -9,6 +9,24 @@
 #include <fstream>
 #include <curl/curl.h>
 
+static void* xmalloc(size_t size) {
+    void* ptr = malloc(size);
+    if (!ptr) {
+        fprintf(stderr, "Erro: falha na alocacao de memoria.\n");
+        exit(EXIT_FAILURE);
+    }
+    return ptr;
+}
+
+static void* xrealloc(void* ptr, size_t size) {
+    void* newPtr = realloc(ptr, size);
+    if (!newPtr) {
+        fprintf(stderr, "Erro: falha na realocacao de memoria.\n");
+        exit(EXIT_FAILURE);
+    }
+    return newPtr;
+}
+
 /* =========================
    PROGRAM
 ========================= */
@@ -103,11 +121,7 @@ char *rOpenFile(const char *arquivo){
 
     std::string content((std::istreambuf_iterator<char>(f)), std::istreambuf_iterator<char>());
 
-    char *buffer = (char*)malloc(content.size() + 1);
-    if (!buffer) {
-        printf("Erro: falha na alocacao de memoria.\n");
-        return NULL;
-    }
+    char *buffer = (char*)xmalloc(content.size() + 1);
     strcpy(buffer, content.c_str());
 
     return buffer;
@@ -140,7 +154,7 @@ char* rOpenFileWeb(const char* url) {
         return NULL;
     }
 
-    char* result = (char*)malloc(buffer.size() + 1);
+    char* result = (char*)xmalloc(buffer.size() + 1);
     strcpy(result, buffer.c_str());
     printf("200 OK\n");
     return result;
@@ -156,8 +170,8 @@ int strLength(const char *s){
 
 char *strSubstring(const char *s,int inicio,int fim){
     int len = fim - inicio;
-    char *sub = (char*)malloc(len+1);
-    strncpy(sub,s+inicio,len);
+    char *sub = (char*)xmalloc(len + 1);
+    strncpy(sub, s + inicio, len);
     sub[len] = '\0';
     return sub;
 }
@@ -192,16 +206,24 @@ int strCompareTo(const char *a,const char *b){
     return strcmp(a,b);
 }
 
-char *strToUpperCase(char *s){
-    for(int i=0;s[i];i++)
-        s[i]=toupper(s[i]);
-    return s;
+char *strToUpperCase(const char *s){
+    int len = strlen(s);
+    char *result = (char*)xmalloc(len + 1);
+    for (int i = 0; i < len; i++) {
+        result[i] = (char)toupper((unsigned char)s[i]);
+    }
+    result[len] = '\0';
+    return result;
 }
 
-char *strToLowerCase(char *s){
-    for(int i=0;s[i];i++)
-        s[i]=tolower(s[i]);
-    return s;
+char *strToLowerCase(const char *s){
+    int len = strlen(s);
+    char *result = (char*)xmalloc(len + 1);
+    for (int i = 0; i < len; i++) {
+        result[i] = (char)tolower((unsigned char)s[i]);
+    }
+    result[len] = '\0';
+    return result;
 }
    
 char *strReplace(const char *original, const char *old, const char *new_str){
@@ -217,7 +239,7 @@ char *strReplace(const char *original, const char *old, const char *new_str){
         }
     }
 
-    result = (char *)malloc(i + cnt * (new_len - old_len) + 1);
+    result = (char *)xmalloc(i + cnt * (new_len - old_len) + 1);
     i = 0;
     const char *orig = original;
     while (*orig) {
@@ -248,7 +270,216 @@ int strCompareToIgnoreCase(const char *a, const char *b){
 int strEqualsIgnoreCase(const char *a, const char *b){
     return strCompareToIgnoreCase(a, b) == 0;
 }
+// =========================
+/* Concatena múltiplas strings */
+char* strConcat(int count, ...) {
+    va_list args;
+    int total = 0;
 
+    va_start(args, count);
+    for (int i = 0; i < count; i++) {
+        char* str = va_arg(args, char*);
+        total += strlen(str);
+    }
+    va_end(args);
+
+    char* resultado = (char*)xmalloc(total + 1);
+    resultado[0] = '\0';
+
+    va_start(args, count);
+    for (int i = 0; i < count; i++) {
+        strcat(resultado, va_arg(args, char*));
+    }
+    va_end(args);
+
+    return resultado;
+}
+
+/* Verifica se começa com */
+bool strStartsWith(const char* minhaString, const char* var1) {
+    return strncmp(minhaString, var1, strlen(var1)) == 0;
+}
+
+/* Verifica se termina com */
+bool strEndsWith(const char* minhaString, const char* var1) {
+    int lenStr = strlen(minhaString);
+    int lenVar = strlen(var1);
+
+    if (lenVar > lenStr)
+        return false;
+
+    return strcmp(minhaString + lenStr - lenVar, var1) == 0;
+}
+
+/* Verifica se contém */
+bool strIncludes(const char* minhaString, const char* var1) {
+    return strstr(minhaString, var1) != NULL;
+}
+
+/* Divide string */
+char** strSplit(const char* minhaString, const char* delimitador, int* totalPartes) {
+    int capacidade = 10;
+    char** resultado = (char**)xmalloc(capacidade * sizeof(char*));
+    *totalPartes = 0;
+
+    // Caso especial: delimitador vazio divide em caracteres individuais
+    if (strlen(delimitador) == 0) {
+        int len = strlen(minhaString);
+        for (int i = 0; i < len; i++) {
+            if (*totalPartes >= capacidade) {
+                capacidade *= 2;
+                resultado = (char**)xrealloc(resultado, capacidade * sizeof(char*));
+            }
+            char temp[2] = {minhaString[i], '\0'};
+            resultado[*totalPartes] = strdup(temp);
+            (*totalPartes)++;
+        }
+    } else {
+        // Caso normal: usa strtok com delimitador
+        char* copia = strdup(minhaString);
+        char* token = strtok(copia, delimitador);
+
+        while (token != NULL) {
+            if (*totalPartes >= capacidade) {
+                capacidade *= 2;
+                resultado = (char**)xrealloc(resultado, capacidade * sizeof(char*));
+            }
+
+            resultado[*totalPartes] = strdup(token);
+            (*totalPartes)++;
+
+            token = strtok(NULL, delimitador);
+        }
+
+        free(copia);
+    }
+
+    return resultado;
+}
+
+/* PadStart */
+char* strPadStart(const char* minhaString, int tamanho, const char* var2) {
+    int len = strlen(minhaString);
+
+    if (len >= tamanho)
+        return strdup(minhaString);
+
+    int diff = tamanho - len;
+
+    char* resultado = (char*)xmalloc(tamanho + 1);
+
+    for (int i = 0; i < diff; i++)
+        resultado[i] = var2[0];
+
+    strcpy(resultado + diff, minhaString);
+
+    return resultado;
+}
+
+/* PadEnd */
+char* strPadEnd(const char* minhaString, int tamanho, const char* var2) {
+    int len = strlen(minhaString);
+
+    if (len >= tamanho)
+        return strdup(minhaString);
+
+    char* resultado = (char*)xmalloc(tamanho + 1);
+
+    strcpy(resultado, minhaString);
+
+    for (int i = len; i < tamanho; i++)
+        resultado[i] = var2[0];
+
+    resultado[tamanho] = '\0';
+
+    return resultado;
+}
+
+/* Repetir string */
+char* strRepeat(const char* minhaString, int vezes) {
+    int len = strlen(minhaString);
+
+    char* resultado = (char*)xmalloc((len * vezes) + 1);
+    resultado[0] = '\0';
+
+    for (int i = 0; i < vezes; i++)
+        strcat(resultado, minhaString);
+
+    return resultado;
+}
+
+/* Buscar substring */
+int strSearch(const char* minhaString, const char* regex) {
+    char* pos = strstr(minhaString, regex);
+
+    if (pos == NULL)
+        return -1;
+
+    return pos - minhaString;
+}
+
+/* Trim */
+char* strTrim(const char* minhaString) {
+    while (isspace((unsigned char)*minhaString))
+        minhaString++;
+
+    if (*minhaString == 0)
+        return strdup("");
+
+    const char* fim = minhaString + strlen(minhaString) - 1;
+
+    while (fim > minhaString && isspace((unsigned char)*fim))
+        fim--;
+
+    int len = fim - minhaString + 1;
+
+    char* resultado = (char*)xmalloc(len + 1);
+
+    strncpy(resultado, minhaString, len);
+    resultado[len] = '\0';
+
+    return resultado;
+}
+
+/* TrimStart */
+char* strTrimStart(const char* minhaString) {
+    while (isspace((unsigned char)*minhaString))
+        minhaString++;
+
+    return strdup(minhaString);
+}
+
+/* TrimEnd */
+char* strTrimEnd(const char* minhaString) {
+    char* resultado = strdup(minhaString);
+
+    int len = strlen(resultado);
+
+    while (len > 0 && isspace((unsigned char)resultado[len - 1])) {
+        resultado[len - 1] = '\0';
+        len--;
+    }
+
+    return resultado;
+}
+
+/* Slice */
+char* strSlice(const char* minhaString, int inicio, int fim) {
+    if (inicio < 0 || fim < inicio || fim > strlen(minhaString))
+        return NULL;
+
+    int len = fim - inicio;
+
+    char* resultado = (char*)xmalloc(len + 1);
+
+    strncpy(resultado, minhaString + inicio, len);
+
+    resultado[len] = '\0';
+
+    return resultado;
+}
+
+// =========================
 /* =========================
    DATE
 ========================= */
@@ -317,7 +548,7 @@ typedef struct{
 void arrInit(StringList *list){
     list->size=0;
     list->capacity=10;
-    list->data=(char**)malloc(sizeof(char*)*list->capacity);
+    list->data=(char**)xmalloc(sizeof(char*)*list->capacity);
 }
 void arrAddAll(StringList *list,...){
     va_list args;
@@ -327,7 +558,7 @@ void arrAddAll(StringList *list,...){
         if(valor == NULL) break;
         if(list->size >= list->capacity){
             list->capacity *= 2;
-            list->data = (char**)realloc(list->data, sizeof(char*) * list->capacity);
+            list->data = (char**)xrealloc(list->data, sizeof(char*) * list->capacity);
         }
         list->data[list->size] = strdup(valor);
         list->size++;
@@ -339,7 +570,7 @@ void arrAdd(StringList *list,const char *valor){
 
     if(list->size>=list->capacity){
         list->capacity*=2;
-        list->data = (char**)realloc(list->data, sizeof(char*) * list->capacity);
+        list->data = (char**)xrealloc(list->data, sizeof(char*) * list->capacity);
     }
 
     list->data[list->size]=strdup(valor);
@@ -573,7 +804,7 @@ void arrInsert(StringList *list, int index, const char *valor){
     if(index > list->size) index = list->size;
     if(list->size >= list->capacity){
         list->capacity *= 2;
-        list->data = (char**)realloc(list->data, sizeof(char*) * list->capacity);
+        list->data = (char**)xrealloc(list->data, sizeof(char*) * list->capacity);
     }
     for(int j = list->size; j > index; j--){
         list->data[j] = list->data[j - 1];

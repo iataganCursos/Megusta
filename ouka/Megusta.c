@@ -241,15 +241,17 @@ int strCompareTo(const char *a,const char *b){
 }
 
 char *strToUpperCase(char *s){
-    for(int i=0;s[i];i++)
-        s[i]=toupper(s[i]);
-    return s;
+    char *result = strdup(s);
+    for(int i=0; result[i]; i++)
+        result[i] = toupper(result[i]);
+    return result;
 }
 
 char *strToLowerCase(char *s){
-    for(int i=0;s[i];i++)
-        s[i]=tolower(s[i]);
-    return s;
+    char *result = strdup(s);
+    for(int i=0; result[i]; i++)
+        result[i] = tolower(result[i]);
+    return result;
 }
 
 char *strReplace(const char *original, const char *old, const char *new_str){
@@ -297,7 +299,216 @@ int strCompareToIgnoreCase(const char *a, const char *b){
 int strEqualsIgnoreCase(const char *a, const char *b){
     return strCompareToIgnoreCase(a, b) == 0;
 }
+// =========================
 
+/* Concatena múltiplas strings */
+char* strConcat(int count, ...) {
+    va_list args;
+    int total = 0;
+
+    va_start(args, count);
+    for (int i = 0; i < count; i++) {
+        char* str = va_arg(args, char*);
+        total += strlen(str);
+    }
+    va_end(args);
+
+    char* resultado = (char*) malloc(total + 1);
+    resultado[0] = '\0';
+
+    va_start(args, count);
+    for (int i = 0; i < count; i++) {
+        strcat(resultado, va_arg(args, char*));
+    }
+    va_end(args);
+
+    return resultado;
+}
+
+/* Verifica se começa com */
+bool strStartsWith(const char* minhaString, const char* var1) {
+    return strncmp(minhaString, var1, strlen(var1)) == 0;
+}
+
+/* Verifica se termina com */
+bool strEndsWith(const char* minhaString, const char* var1) {
+    int lenStr = strlen(minhaString);
+    int lenVar = strlen(var1);
+
+    if (lenVar > lenStr)
+        return false;
+
+    return strcmp(minhaString + lenStr - lenVar, var1) == 0;
+}
+
+/* Verifica se contém */
+bool strIncludes(const char* minhaString, const char* var1) {
+    return strstr(minhaString, var1) != NULL;
+}
+
+/* Divide string */
+char** strSplit(const char* minhaString, const char* delimitador, int* totalPartes) {
+    int capacidade = 10;
+    char** resultado = malloc(capacidade * sizeof(char*));
+    *totalPartes = 0;
+
+    // Caso especial: delimitador vazio divide em caracteres individuais
+    if (strlen(delimitador) == 0) {
+        int len = strlen(minhaString);
+        for (int i = 0; i < len; i++) {
+            if (*totalPartes >= capacidade) {
+                capacidade *= 2;
+                resultado = realloc(resultado, capacidade * sizeof(char*));
+            }
+            char temp[2] = {minhaString[i], '\0'};
+            resultado[*totalPartes] = strdup(temp);
+            (*totalPartes)++;
+        }
+    } else {
+        // Caso normal: usa strtok com delimitador
+        char* copia = strdup(minhaString);
+        char* token = strtok(copia, delimitador);
+
+        while (token != NULL) {
+            if (*totalPartes >= capacidade) {
+                capacidade *= 2;
+                resultado = realloc(resultado, capacidade * sizeof(char*));
+            }
+
+            resultado[*totalPartes] = strdup(token);
+            (*totalPartes)++;
+
+            token = strtok(NULL, delimitador);
+        }
+
+        free(copia);
+    }
+
+    return resultado;
+}
+
+/* PadStart */
+char* strPadStart(const char* minhaString, int tamanho, const char* var2) {
+    int len = strlen(minhaString);
+
+    if (len >= tamanho)
+        return strdup(minhaString);
+
+    int diff = tamanho - len;
+
+    char* resultado = malloc(tamanho + 1);
+
+    for (int i = 0; i < diff; i++)
+        resultado[i] = var2[0];
+
+    strcpy(resultado + diff, minhaString);
+
+    return resultado;
+}
+
+/* PadEnd */
+char* strPadEnd(const char* minhaString, int tamanho, const char* var2) {
+    int len = strlen(minhaString);
+
+    if (len >= tamanho)
+        return strdup(minhaString);
+
+    char* resultado = malloc(tamanho + 1);
+
+    strcpy(resultado, minhaString);
+
+    for (int i = len; i < tamanho; i++)
+        resultado[i] = var2[0];
+
+    resultado[tamanho] = '\0';
+
+    return resultado;
+}
+
+/* Repetir string */
+char* strRepeat(const char* minhaString, int vezes) {
+    int len = strlen(minhaString);
+
+    char* resultado = malloc((len * vezes) + 1);
+    resultado[0] = '\0';
+
+    for (int i = 0; i < vezes; i++)
+        strcat(resultado, minhaString);
+
+    return resultado;
+}
+
+/* Buscar substring */
+int strSearch(const char* minhaString, const char* regex) {
+    char* pos = strstr(minhaString, regex);
+
+    if (pos == NULL)
+        return -1;
+
+    return pos - minhaString;
+}
+
+/* Trim */
+char* strTrim(const char* minhaString) {
+    while (isspace((unsigned char)*minhaString))
+        minhaString++;
+
+    if (*minhaString == 0)
+        return strdup("");
+
+    const char* fim = minhaString + strlen(minhaString) - 1;
+
+    while (fim > minhaString && isspace((unsigned char)*fim))
+        fim--;
+
+    int len = fim - minhaString + 1;
+
+    char* resultado = malloc(len + 1);
+
+    strncpy(resultado, minhaString, len);
+    resultado[len] = '\0';
+
+    return resultado;
+}
+
+/* TrimStart */
+char* strTrimStart(const char* minhaString) {
+    while (isspace((unsigned char)*minhaString))
+        minhaString++;
+
+    return strdup(minhaString);
+}
+
+/* TrimEnd */
+char* strTrimEnd(const char* minhaString) {
+    char* resultado = strdup(minhaString);
+
+    int len = strlen(resultado);
+
+    while (len > 0 && isspace((unsigned char)resultado[len - 1])) {
+        resultado[len - 1] = '\0';
+        len--;
+    }
+
+    return resultado;
+}
+
+/* Slice */
+char* strSlice(const char* minhaString, int inicio, int fim) {
+    if (inicio < 0 || fim < inicio || fim > strlen(minhaString))
+        return NULL;
+
+    int len = fim - inicio;
+
+    char* resultado = malloc(len + 1);
+
+    strncpy(resultado, minhaString + inicio, len);
+
+    resultado[len] = '\0';
+
+    return resultado;
+}
+// =========================
 /* =========================
    DATE
 ========================= */
