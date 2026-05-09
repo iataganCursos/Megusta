@@ -124,6 +124,34 @@ int main(){
 
         rPrintln(saoIguais ? "true" : "false");
 
+
+        rPrintlnEmpty();
+
+rPrintln("%c", strCharAt("Hello", 4));           // o
+rPrintln("%s", strConcat(3, "Hello", " ", "world")); // Hello world
+rPrintln("%s", strStartsWith("Hello", "H") ? "true" : "false");     // true
+rPrintln("%s", strEndsWith("Hello", "o") ? "true" : "false");       // true
+rPrintln("%s", strIncludes("Hello", "x") ? "true" : "false");       // false
+rPrintln("%d", strIndexOf("Hello", "l"));        // 2
+rPrintln("%d", strLastIndexOf("Hello", "l"));    // 3
+rPrintln("%s", strPadStart("Hello", 6, "?"));    // ?Hello
+rPrintln("%s", strPadEnd("Hello", 6, "?"));      // Hello?
+rPrintln("%s", strRepeat("Hello", 3));           // HelloHelloHello
+rPrintln("%s", strReplace("Hello", "llo", "y")); // Hey
+rPrintln("%d", strSearch("Hello", "e"));         // 1
+rPrintln("%s", strSlice("Hello", 1, 3));         // el
+int totalPartes;
+char **v = strSplit("Hello", "", &totalPartes);  // ['H','e','l','l','o']
+for(int i=0; i<totalPartes; i++) {
+        rPrintln("%s", v[i]);
+}
+rPrintln("%s", strSubstring("Hello", 2, 4));     // ll
+rPrintln("%s", strToLowerCase("Hello"));       // hello
+rPrintln("%s", strToUpperCase("Hello"));       // HELLO
+rPrintln("%s", strTrim(" Hello "));            // Hello
+rPrintln("%s", strTrimStart(" Hello "));       // "Hello "
+rPrintln("%s", strTrimEnd(" Hello "));         // " Hello"
+
         rPrintlnEmpty();
 
         char Texto[500] = "";
