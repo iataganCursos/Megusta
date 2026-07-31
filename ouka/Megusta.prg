@@ -1,3 +1,110 @@
+#include "hbclass.ch"
+
+CLASS Megusta
+   METHOD New() CONSTRUCTOR
+
+   METHOD rPrint( cMessage )
+   METHOD rPrintln( cMessage )
+   METHOD rInput( cPrompt )
+   METHOD rSaveFile( cArquivo, cConteudo )
+   METHOD rOpenFile( cArquivo )
+   METHOD rOpenProgram( cPrograma )
+   METHOD rOpenFileWeb( cArquivo )
+   METHOD strReplace( cOriginal, cVar1, cVar2 )
+   METHOD strLength( cString )
+   METHOD strSubstring( cString, nInicio, nFim )
+   METHOD strCharAt( cString, nPos )
+   METHOD strIndexOf(cadeia, subcadeia)
+   METHOD strLastIndexOf(cadeia, subcadeia)
+   METHOD strToLowerCase( cString )
+   METHOD strToUpperCase( cString )
+   METHOD strEquals( c1, c2 )
+   METHOD strEqualsIgnoreCase( c1, c2 )
+   METHOD strCompareTo(cadeia1, cadeia2)
+   METHOD strCompareToIgnoreCase(cadeia1, cadeia2)
+   METHOD strConcat( ... )
+   METHOD strStartsWith( cString, cPrefix )
+   METHOD strEndsWith( cString, cSuffix )
+   METHOD strIncludes( cString, cSub )
+   METHOD strSplit( cString, cDelimiter )
+   METHOD strPadStart( cString, nLen, cPad )
+   METHOD strPadEnd( cString, nLen, cPad )
+   METHOD strRepeat( cString, nTimes )
+   METHOD strSearch( cString, cSub )
+   METHOD strTrim( cString )
+   METHOD strTrimStart( cString )
+   METHOD strTrimEnd( cString )
+   METHOD strSlice( cString, nStart, nEnd )
+   METHOD dateDay()
+   METHOD dateWeekDay()
+   METHOD dateMonth()
+   METHOD dateYear()
+   METHOD dateSetWeekDay( nAno, nMes, nDia )
+   METHOD dateHour24()
+   METHOD dateMinute()
+   METHOD dateSecond()
+   METHOD xArrLength( aLista )
+   METHOD arrAddAll( aLista, ... )
+   METHOD arrAdd( aLista, xValor )
+   METHOD arrAddPos( aLista, nPos, xValor )
+   METHOD arrSet( aLista, nPos, xValor )
+   METHOD arrGet( aLista, nPos )
+   METHOD arrSize( aLista )
+   METHOD arrRemove( aLista, nPos )
+   METHOD arrClear( aLista )
+   METHOD arrContains( aLista, xValor )
+   METHOD arrIndexOf( aLista, xValor )
+   METHOD arrLastIndexOf( aLista, xValor )
+   METHOD mathInt( cNumero )
+   METHOD mathNum( cNumero )
+   METHOD mathBool( cValor )
+   METHOD mathFloor( n )
+   METHOD mathCeil( n )
+   METHOD mathRound( n )
+   METHOD mathDecimalFormat( nNumero, cMascara )
+   METHOD mathNumberFormat( nNumero, cLocale, cCountry )
+   METHOD mathRandom()
+   METHOD mathAbs( n )
+   METHOD mathMax( n1, n2 )
+   METHOD mathMin( n1, n2 )
+   METHOD mathPow( base, expo )
+   METHOD mathSqrt( n )
+   METHOD mathCbrt( n )
+   METHOD mathSignum( n )
+   METHOD mathPI()
+   METHOD mathConvertToRadians( graus )
+   METHOD normalizeAngle(x)
+   METHOD mathSin(x)
+   METHOD mathCos(x)
+   METHOD mathTan(x)
+   METHOD mathAsin(x)
+   METHOD mathAcos(x)
+   METHOD mathAtan(x)
+   METHOD mathSinh(x)
+   METHOD mathCosh(x)
+   METHOD mathTanh(x)
+   METHOD mathAsinh(x)
+   METHOD mathAcosh(x)
+   METHOD mathAtanh(x)
+   METHOD mathLog( nNumero )
+   METHOD mathLog10( nNumero )
+   METHOD mathLog2( nNumero )
+   METHOD mathExp( nExpoente )
+   METHOD mathLog1p( n )
+   METHOD mathE()
+   METHOD mathLN2()
+   METHOD mathLOG2E()
+   METHOD mathLN10()
+   METHOD mathLOG10E()
+   METHOD mathSQRT1_2()
+   METHOD mathSQRT2()
+   METHOD mathMaxArr( ... )
+   METHOD mathMinArr( ... )
+ENDCLASS
+
+
+METHOD New() CLASS Megusta
+return Self
 /*
 PROCEDURE Main
 
@@ -21,11 +128,11 @@ RETURN
    PRINT / INPUT
    ========================= */
 
-FUNCTION rPrint( cMessage )
+METHOD rPrint( cMessage ) CLASS Megusta
    ?? cMessage
 RETURN NIL
 
-FUNCTION rPrintln( cMessage )
+METHOD rPrintln( cMessage ) CLASS Megusta
    IF cMessage != NIL
       ?? cMessage         // Com quebra de linha
       ? ""
@@ -34,7 +141,7 @@ FUNCTION rPrintln( cMessage )
    ENDIF
 RETURN NIL
 
-FUNCTION rInput( cPrompt )
+METHOD rInput( cPrompt ) CLASS Megusta
    LOCAL cValue := ""
    ?? cPrompt         // Exibe o prompt sem quebra de linha
    ACCEPT TO cValue   // Lê a entrada do usuário
@@ -45,7 +152,7 @@ RETURN cValue
    FILE
    ========================= */
 
-FUNCTION rSaveFile( cArquivo, cConteudo )
+METHOD rSaveFile( cArquivo, cConteudo ) CLASS Megusta
    LOCAL nHandle := FCreate( cArquivo )
 
    IF nHandle < 0
@@ -59,7 +166,7 @@ FUNCTION rSaveFile( cArquivo, cConteudo )
    ? "Arquivo", cArquivo, "salvo com sucesso."
 RETURN NIL
 
-FUNCTION rOpenFile( cArquivo )
+METHOD rOpenFile( cArquivo ) CLASS Megusta
    LOCAL cConteudo := ""
    LOCAL cLinha
 
@@ -72,37 +179,37 @@ FUNCTION rOpenFile( cArquivo )
 
 RETURN cConteudo
 
-FUNCTION rOpenProgram( cPrograma )
+METHOD rOpenProgram( cPrograma ) CLASS Megusta
    RUN ( cPrograma )
 RETURN NIL
 
-FUNCTION rOpenFileWeb( cArquivo )
+METHOD rOpenFileWeb( cArquivo ) CLASS Megusta
    SISTEMA_OPERACIONAL = lower(os())
-      IF strIndexOf(SISTEMA_OPERACIONAL, "windows") >= 1
+      IF ::strIndexOf(SISTEMA_OPERACIONAL, "windows") >= 1
             RUN ('cmd /c powershell -Command "Invoke-WebRequest -Uri ' + cArquivo + ' -OutFile x0001.txt"')
-      ELSEIF strIndexOf(SISTEMA_OPERACIONAL, "linux") >= 1
+      ELSEIF ::strIndexOf(SISTEMA_OPERACIONAL, "linux") >= 1
             RUN ("wget -O x0001.txt " + cArquivo)
       ENDIF
-      arquivo := rOpenFile("x0001.txt")
+      arquivo := ::rOpenFile("x0001.txt")
       ERASE "x0001.txt"
 RETURN arquivo
 /* =========================
    STRING
    ========================= */
 
-FUNCTION strReplace( cOriginal, cVar1, cVar2 )
+METHOD strReplace( cOriginal, cVar1, cVar2 ) CLASS Megusta
 RETURN StrTran( cOriginal, cVar1, cVar2 )
 
-FUNCTION strLength( cString )
+METHOD strLength( cString ) CLASS Megusta
 RETURN Len( cString )
 
-FUNCTION strSubstring( cString, nInicio, nFim )
+METHOD strSubstring( cString, nInicio, nFim ) CLASS Megusta
 RETURN SubStr( cString, nInicio + 1, nFim - nInicio )
 
-FUNCTION strCharAt( cString, nPos )
+METHOD strCharAt( cString, nPos ) CLASS Megusta
 RETURN SubStr( cString, nPos + 1, 1 )
 
-FUNCTION strIndexOf(cadeia, subcadeia)
+METHOD strIndexOf(cadeia, subcadeia) CLASS Megusta
 LOCAL pos
 LOCAL len_cadeia, len_subcadeia
 
@@ -117,7 +224,7 @@ NEXT
 
 RETURN 0 // Retorna 0 se a subcadeia não for encontrada
 
-FUNCTION strLastIndexOf(cadeia, subcadeia)
+METHOD strLastIndexOf(cadeia, subcadeia) CLASS Megusta
 LOCAL pos
 LOCAL len_cadeia, len_subcadeia
 
@@ -132,19 +239,19 @@ NEXT
 
 RETURN 0 // Retorna 0 se a subcadeia não for encontrada
 
-FUNCTION strToLowerCase( cString )
+METHOD strToLowerCase( cString ) CLASS Megusta
 RETURN Lower( cString )
 
-FUNCTION strToUpperCase( cString )
+METHOD strToUpperCase( cString )
 RETURN Upper( cString )
 
-FUNCTION strEquals( c1, c2 )
+METHOD strEquals( c1, c2 ) CLASS Megusta
 RETURN c1 == c2
 
-FUNCTION strEqualsIgnoreCase( c1, c2 )
+METHOD strEqualsIgnoreCase( c1, c2 ) CLASS Megusta
 RETURN Upper(c1) == Upper(c2)
 
-FUNCTION strCompareTo(cadeia1, cadeia2)
+METHOD strCompareTo(cadeia1, cadeia2) CLASS Megusta
 IF cadeia1 == cadeia2
 RETURN 0 // As cadeias são iguais
 ELSE
@@ -155,7 +262,7 @@ RETURN 1 // cadeia1 é maior que cadeia2
 ENDIF
 ENDIF
 
-FUNCTION strCompareToIgnoreCase(cadeia1, cadeia2)
+METHOD strCompareToIgnoreCase(cadeia1, cadeia2) CLASS Megusta
 LOCAL lowerCadeia1, lowerCadeia2
 lowerCadeia1 = LOWER(cadeia1)
 lowerCadeia2 = LOWER(cadeia2)
@@ -172,7 +279,7 @@ ENDIF
 
 // =========================
 // Concatenação de strings (array de strings)
-FUNCTION strConcat( ... )
+METHOD strConcat( ... ) CLASS Megusta
    LOCAL cResultado := ""
    LOCAL i
    LOCAL nParams := PCount()
@@ -185,22 +292,22 @@ FUNCTION strConcat( ... )
 
 
 // StartsWith
-FUNCTION strStartsWith( cString, cPrefix )
+METHOD strStartsWith( cString, cPrefix ) CLASS Megusta
    RETURN Left( cString, Len( cPrefix ) ) == cPrefix
 
 
 // EndsWith
-FUNCTION strEndsWith( cString, cSuffix )
+METHOD strEndsWith( cString, cSuffix ) CLASS Megusta
    RETURN Right( cString, Len( cSuffix ) ) == cSuffix
 
 
 // Includes (contains)
-FUNCTION strIncludes( cString, cSub )
+METHOD strIncludes( cString, cSub ) CLASS Megusta
    RETURN At( cSub, cString ) > 0
 
 
 // Split (retorna array)
-FUNCTION strSplit( cString, cDelimiter )
+METHOD strSplit( cString, cDelimiter ) CLASS Megusta
    LOCAL aResult := {}
    LOCAL nPos
    LOCAL i
@@ -228,47 +335,47 @@ FUNCTION strSplit( cString, cDelimiter )
 
 
 // PadStart
-FUNCTION strPadStart( cString, nLen, cPad )
+METHOD strPadStart( cString, nLen, cPad ) CLASS Megusta
    LOCAL cFill := Replicate( cPad, nLen )
 
    RETURN Right( cFill + cString, nLen )
 
 
 // PadEnd
-FUNCTION strPadEnd( cString, nLen, cPad )
+METHOD strPadEnd( cString, nLen, cPad ) CLASS Megusta
    LOCAL cFill := Replicate( cPad, nLen )
 
    RETURN Left( cString + cFill, nLen )
 
 
 // Repeat
-FUNCTION strRepeat( cString, nTimes )
+METHOD strRepeat( cString, nTimes ) CLASS Megusta
    RETURN Replicate( cString, nTimes )
 
 
 // Search (indexOf)
-FUNCTION strSearch( cString, cSub )
+METHOD strSearch( cString, cSub ) CLASS Megusta
    LOCAL nPos := At( cSub, cString )
    RETURN iif( nPos > 0, nPos - 1, -1 )  // Java é 0-based
 
 
 // Trim (ambos lados)
-FUNCTION strTrim( cString )
+METHOD strTrim( cString ) CLASS Megusta
    RETURN AllTrim( cString )
 
 
 // TrimStart (LTrim)
-FUNCTION strTrimStart( cString )
+METHOD strTrimStart( cString ) CLASS Megusta
    RETURN LTrim( cString )
 
 
 // TrimEnd (RTrim)
-FUNCTION strTrimEnd( cString )
+METHOD strTrimEnd( cString ) CLASS Megusta
    RETURN RTrim( cString )
 
 
 // Slice (substring)
-FUNCTION strSlice( cString, nStart, nEnd )
+METHOD strSlice( cString, nStart, nEnd ) CLASS Megusta
    // Java é 0-based; Harbour é 1-based
    RETURN SubStr( cString, nStart + 1, nEnd - nStart )
 // =========================
@@ -276,78 +383,78 @@ FUNCTION strSlice( cString, nStart, nEnd )
    DATE / TIME
    ========================= */
 
-FUNCTION dateDay()
+METHOD dateDay() CLASS Megusta
 RETURN Day( Date() )
 
-FUNCTION dateWeekDay()
+METHOD dateWeekDay() CLASS Megusta
 RETURN Dow( Date() ) + 1
 
-FUNCTION dateMonth()
+METHOD dateMonth() CLASS Megusta
 RETURN Month( Date() )
 
-FUNCTION dateYear()
+METHOD dateYear() CLASS Megusta
 RETURN Year( Date() )
 
-FUNCTION dateSetWeekDay( nAno, nMes, nDia )
+METHOD dateSetWeekDay( nAno, nMes, nDia ) CLASS Megusta
 RETURN Dow( STOD( Str(nAno,4) + StrZero(nMes,2) + StrZero(nDia,2) ) )
 
-FUNCTION dateHour24()
+METHOD dateHour24() CLASS Megusta
 RETURN Val( SubStr( Time(),1,2 ) )
 
-FUNCTION dateMinute()
+METHOD dateMinute() CLASS Megusta
 RETURN Val( SubStr( Time(),4,2 ) )
 
-FUNCTION dateSecond()
+METHOD dateSecond() CLASS Megusta
 RETURN Val( SubStr( Time(),7,2 ) )
 
 /* =========================
    ARRAY
    ========================= */
 
-FUNCTION xArrLength( aLista )
+METHOD xArrLength( aLista ) CLASS Megusta
 RETURN Len( aLista )
 
-FUNCTION arrAddAll( aLista, ... )
+METHOD arrAddAll( aLista, ... ) CLASS Megusta
    FOR i := 1 TO PCount()
       AAdd( aLista, PValue( i ) )
    ENDFOR
 RETURN NIL
 
-FUNCTION arrAdd( aLista, xValor )
+METHOD arrAdd( aLista, xValor ) CLASS Megusta
    AAdd( aLista, xValor )
 RETURN NIL
 
-FUNCTION arrAddPos( aLista, nPos, xValor )
+METHOD arrAddPos( aLista, nPos, xValor ) CLASS Megusta
    AIns( aLista, nPos )
    aLista[nPos] := xValor
 RETURN NIL
 
-FUNCTION arrSet( aLista, nPos, xValor )
+METHOD arrSet( aLista, nPos, xValor ) CLASS Megusta
    aLista[nPos] := xValor
 RETURN NIL
 
-FUNCTION arrGet( aLista, nPos )
+METHOD arrGet( aLista, nPos ) CLASS Megusta
 RETURN aLista[nPos]
 
-FUNCTION arrSize( aLista )
+METHOD arrSize( aLista ) CLASS Megusta
 RETURN Len( aLista )
 
-FUNCTION arrRemove( aLista, nPos )
+METHOD arrRemove( aLista, nPos ) CLASS Megusta
    ADel( aLista, nPos )
    ASize( aLista, Len(aLista)-1 )
 RETURN NIL
 
-FUNCTION arrClear( aLista )
+METHOD arrClear( aLista ) CLASS Megusta
    ASize( aLista,0 )
 RETURN NIL
 
-FUNCTION arrContains( aLista, xValor )
+METHOD arrContains( aLista, xValor ) CLASS Megusta
 RETURN ASCan( aLista, xValor ) > 0
 
-FUNCTION arrIndexOf( aLista, xValor )
+METHOD arrIndexOf( aLista, xValor ) CLASS Megusta
 RETURN ASCan( aLista, xValor )
 
-FUNCTION arrLastIndexOf( aLista, xValor )
+METHOD arrLastIndexOf( aLista, xValor ) CLASS Megusta
    LOCAL i
    FOR i := Len(aLista) TO 1 STEP -1
       IF aLista[i] == xValor
@@ -360,25 +467,25 @@ RETURN 0
    MATH
    ========================= */
 
-FUNCTION mathInt( cNumero )
+METHOD mathInt( cNumero ) CLASS Megusta
 RETURN Val( cNumero )
 
-FUNCTION mathNum( cNumero )
+METHOD mathNum( cNumero ) CLASS Megusta
 RETURN Val( cNumero )
 
-FUNCTION mathBool( cValor )
+METHOD mathBool( cValor ) CLASS Megusta
 RETURN Upper(cValor) == "TRUE"
 
-FUNCTION mathFloor( n )
+METHOD mathFloor( n ) CLASS Megusta
 RETURN Int( n )
 
-FUNCTION mathCeil( n )
+METHOD mathCeil( n ) CLASS Megusta
 RETURN Int(n) + IIF( n > Int(n), 1, 0 )
 
-FUNCTION mathRound( n )
+METHOD mathRound( n ) CLASS Megusta
 RETURN Round( n, 0 )
 
-FUNCTION mathDecimalFormat( nNumero, cMascara )
+METHOD mathDecimalFormat( nNumero, cMascara ) CLASS Megusta
    LOCAL nDec := 0
 
    IF At(".", cMascara) > 0
@@ -387,34 +494,34 @@ FUNCTION mathDecimalFormat( nNumero, cMascara )
 
    RETURN Str( nNumero, 0, nDec )
 
-FUNCTION mathNumberFormat( nNumero, cLocale, cCountry )
+METHOD mathNumberFormat( nNumero, cLocale, cCountry ) CLASS Megusta
    LOCAL cForm := Str( nNumero, 15, 2 )
    cForm := Trim(cForm)
    cForm := StrTran(cForm, ".", ",")
    RETURN cForm
 
-FUNCTION mathRandom()
+METHOD mathRandom() CLASS Megusta
 RETURN HB_Random()
 
-FUNCTION mathAbs( n )
+METHOD mathAbs( n ) CLASS Megusta
 RETURN Abs( n )
 
-FUNCTION mathMax( n1, n2 )
+METHOD mathMax( n1, n2 ) CLASS Megusta
 RETURN Max( n1, n2 )
 
-FUNCTION mathMin( n1, n2 )
+METHOD mathMin( n1, n2 ) CLASS Megusta
 RETURN Min( n1, n2 )
 
-FUNCTION mathPow( base, expo )
+METHOD mathPow( base, expo ) CLASS Megusta
 RETURN base ^ expo
 
-FUNCTION mathSqrt( n )
+METHOD mathSqrt( n ) CLASS Megusta
 RETURN Sqrt( n )
 
-FUNCTION mathCbrt( n )
+METHOD mathCbrt( n ) CLASS Megusta
 RETURN n ^ (1/3)
 
-FUNCTION mathSignum( n )
+METHOD mathSignum( n ) CLASS Megusta
    IF n > 0
       RETURN 1
    ELSEIF n < 0
@@ -424,13 +531,13 @@ RETURN 0
 
 /* CONSTANTES */
 
-FUNCTION mathPI()
+METHOD mathPI() CLASS Megusta
 RETURN 3.141592653589793
 
 /* TRIGONOMETRIA */
 
-FUNCTION mathConvertToRadians( graus )
-RETURN graus * ( mathPI() / 180 )
+METHOD mathConvertToRadians( graus ) CLASS Megusta
+RETURN graus * ( ::mathPI() / 180 )
 
 // =========================
 //   TRIGONOMETRIA
@@ -443,7 +550,7 @@ RETURN graus * ( mathPI() / 180 )
 #define PI 3.14159265358979323846
 #define TWO_PI (2 * PI)
 
-FUNCTION normalizeAngle(x)
+METHOD normalizeAngle(x) CLASS Megusta
    // reduz para [-PI, PI]
    x := x % TWO_PI
 
@@ -455,10 +562,10 @@ FUNCTION normalizeAngle(x)
 
 RETURN x
 
-FUNCTION mathSin(x)
+METHOD mathSin(x) CLASS Megusta
    LOCAL term, sum, n
 
-   x := normalizeAngle(x)
+   x := ::normalizeAngle(x)
 
    term := x
    sum  := x
@@ -470,10 +577,10 @@ FUNCTION mathSin(x)
 
 RETURN sum
 
-FUNCTION mathCos(x)
+METHOD mathCos(x) CLASS Megusta
    LOCAL term, sum, n
 
-   x := normalizeAngle(x)
+   x := ::normalizeAngle(x)
 
    term := 1
    sum  := 1
@@ -485,11 +592,11 @@ FUNCTION mathCos(x)
 
 RETURN sum
 
-FUNCTION mathTan(x)
+METHOD mathTan(x) CLASS Megusta
    LOCAL s, c
 
    // normaliza para [-PI, PI]
-   x := normalizeAngle(x)
+   x := ::normalizeAngle(x)
 
    // redução para [-PI/2, PI/2]
    IF x > PI/2
@@ -503,12 +610,12 @@ FUNCTION mathTan(x)
       RETURN NIL
    ENDIF
 
-   c := mathCos(x)
-   s := mathSin(x)
+   c := ::mathCos(x)
+   s := ::mathSin(x)
 
 RETURN s / c
 
-FUNCTION mathAsin(x)
+METHOD mathAsin(x) CLASS Megusta
    LOCAL n, term, sum
 
    sum  := x
@@ -521,13 +628,13 @@ FUNCTION mathAsin(x)
 
 RETURN sum
 
-FUNCTION mathAcos(x)
+METHOD mathAcos(x) CLASS Megusta
    LOCAL pi
    pi := 3.141592653589793
 
-RETURN pi/2 - mathAsin(x)
+RETURN pi/2 - ::mathAsin(x)
 
-FUNCTION mathAtan(x)
+METHOD mathAtan(x) CLASS Megusta
    LOCAL n, term, sum, xx, sign, pi
 
    pi := 3.141592653589793
@@ -535,9 +642,9 @@ FUNCTION mathAtan(x)
    // Redução de domínio
    IF ABS(x) > 1
       IF x > 0
-         RETURN pi/2 - mathAtan(1/x)
+         RETURN pi/2 - ::mathAtan(1/x)
       ELSE
-         RETURN -pi/2 - mathAtan(1/x)
+         RETURN -pi/2 - ::mathAtan(1/x)
       ENDIF
    ENDIF
 
@@ -554,7 +661,7 @@ FUNCTION mathAtan(x)
 
 RETURN sum
 
-FUNCTION mathSinh(x)
+METHOD mathSinh(x) CLASS Megusta
    LOCAL term := x
    LOCAL sum  := x
    LOCAL n    := 1
@@ -568,7 +675,7 @@ FUNCTION mathSinh(x)
 
 RETURN sum
 
-FUNCTION mathCosh(x)
+METHOD mathCosh(x) CLASS Megusta
    LOCAL term := 1
    LOCAL sum  := 1
    LOCAL n    := 1
@@ -582,9 +689,9 @@ FUNCTION mathCosh(x)
 
 RETURN sum
 
-FUNCTION mathTanh(x)
-   LOCAL s := mathSinh(x)
-   LOCAL c := mathCosh(x)
+METHOD mathTanh(x) CLASS Megusta
+   LOCAL s := ::mathSinh(x)
+   LOCAL c := ::mathCosh(x)
 
    IF c == 0
       RETURN 0
@@ -592,7 +699,7 @@ FUNCTION mathTanh(x)
 
 RETURN s / c
 
-FUNCTION mathAsinh(x)
+METHOD mathAsinh(x) CLASS Megusta
    LOCAL ax, x2, term, sum, n
 
    ax := ABS(x)
@@ -612,9 +719,9 @@ FUNCTION mathAsinh(x)
    ENDIF
 
    // Fórmula geral
-   RETURN mathLog(x + mathSqrt(x*x + 1))
+   RETURN ::mathLog(x + ::mathSqrt(x*x + 1))
 
-FUNCTION mathAcosh(x)
+METHOD mathAcosh(x) CLASS Megusta
    LOCAL t, term, sum, n
 
    IF x < 1
@@ -633,13 +740,13 @@ FUNCTION mathAcosh(x)
          sum  += term * ( (n=1)/12 - (n=2)*3/160 ) // simplificado
       NEXT
 
-      RETURN mathSqrt(2*t) * sum
+      RETURN ::mathSqrt(2*t) * sum
    ENDIF
 
    // Fórmula geral
-   RETURN mathLog(x + mathSqrt(x*x - 1))
+   RETURN ::mathLog(x + ::mathSqrt(x*x - 1))
 
-FUNCTION mathAtanh(x)
+METHOD mathAtanh(x) CLASS Megusta
    LOCAL term, sum, x2, n
 
    IF ABS(x) >= 1
@@ -661,49 +768,49 @@ FUNCTION mathAtanh(x)
    ENDIF
 
    // Fórmula log
-   RETURN 0.5 * mathLog((1+x)/(1-x))
+   RETURN 0.5 * ::mathLog((1+x)/(1-x))
 
 /* =========================
    EXPONENCIAL
    ========================= */
 
-FUNCTION mathLog( nNumero )
-RETURN Log( nNumero )
+METHOD mathLog( nNumero ) CLASS Megusta
+RETURN log( nNumero )
 
-FUNCTION mathLog10( nNumero )
-RETURN Log( nNumero ) / Log( 10 )
+METHOD mathLog10( nNumero ) CLASS Megusta
+RETURN ::mathLog( nNumero ) / ::mathLog( 10 )
 
-FUNCTION mathLog2( nNumero )
-RETURN Log( nNumero ) / Log( 2 )
+METHOD mathLog2( nNumero ) CLASS Megusta
+RETURN ::mathLog( nNumero ) / ::mathLog( 2 )
 
-FUNCTION mathExp( nExpoente )
-RETURN Exp( nExpoente )
+METHOD mathExp( nExpoente ) CLASS Megusta
+RETURN exp( nExpoente )
 
-FUNCTION mathLog1p( n )
-RETURN Log( 1 + n )
+METHOD mathLog1p( n ) CLASS Megusta
+RETURN ::mathLog( 1 + n )
 
-FUNCTION mathE()
-RETURN exp(1)
+METHOD mathE() CLASS Megusta
+RETURN ::mathExp(1)
 
-FUNCTION mathLN2()
-RETURN log(2)
+METHOD mathLN2() CLASS Megusta
+RETURN ::mathLog(2)
 
-FUNCTION mathLOG2E()
-RETURN log(2) / log(exp(1))
+METHOD mathLOG2E() CLASS Megusta
+RETURN ::mathLog(2) / ::mathLog(::mathExp(1))
 
-FUNCTION mathLN10()
-RETURN log(10)
+METHOD mathLN10() CLASS Megusta
+RETURN ::mathLog(10)
 
-FUNCTION mathLOG10E()
-RETURN 1 / log(10);
+METHOD mathLOG10E() CLASS Megusta
+RETURN 1 / ::mathLog(10);
 
-FUNCTION mathSQRT1_2()
-RETURN Sqrt( 0.5 )
+METHOD mathSQRT1_2() CLASS Megusta
+RETURN ::mathSqrt( 0.5 )
 
-FUNCTION mathSQRT2()
-RETURN Sqrt( 2 )
+METHOD mathSQRT2() CLASS Megusta
+RETURN ::mathSqrt( 2 )
 
-FUNCTION mathMaxArr( ... )
+METHOD mathMaxArr( ... ) CLASS Megusta
    LOCAL nMax := -999999999
    LOCAL i
    FOR i := 1 TO PCount()
@@ -713,7 +820,7 @@ FUNCTION mathMaxArr( ... )
    NEXT
 RETURN nMax
 
-FUNCTION mathMinArr( ... )
+METHOD mathMinArr( ... ) CLASS Megusta
    LOCAL nMin := 999999999
    LOCAL i
    FOR i := 1 TO PCount()

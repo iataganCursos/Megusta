@@ -9,6 +9,18 @@
 #include <fstream>
 #include <curl/curl.h>
 
+size_t WriteCallback(void* contents, size_t size, size_t nmemb, void* userp) {
+    ((std::string*)userp)->append((char*)contents, size * nmemb);
+    return size * nmemb;
+}
+
+typedef struct{
+    char **data;
+    int size;
+    int capacity;
+} StringList;
+
+struct Megusta{
 static void* xmalloc(size_t size) {
     void* ptr = malloc(size);
     if (!ptr) {
@@ -31,11 +43,21 @@ static void* xrealloc(void* ptr, size_t size) {
    PROGRAM
 ========================= */
 /*
-Usando o gcc do MSYS2 no Windows.
+Usando o g++ do MSYS2 no Windows.
 Nenhuma instalação adicional necessária, pois usa a API WinINet nativa do Windows.
 
-Usando o gcc do Terminal no Linux.
+Instale a biblioteca, provavelmente é isso:
+pacman -S mingw-w64-ucrt-x86_64-curl
+ou
+pacman -S mingw-w64-x86_64-curl
+
+Usando o g++ do Terminal no Linux.
 Para Linux, instale libcurl ou use uma implementação alternativa.
+
+Usando o g++ do Terminal no Linux.
+Instale
+sudo apt install libcurl4-openssl-dev
+
 
 Para compilar:
 
@@ -129,11 +151,6 @@ char *rOpenFile(const char *arquivo){
 
 void rOpenProgram(const char *programa){
     system(programa);
-}
-
-size_t WriteCallback(void* contents, size_t size, size_t nmemb, void* userp) {
-    ((std::string*)userp)->append((char*)contents, size * nmemb);
-    return size * nmemb;
 }
 
 char* rOpenFileWeb(const char* url) {
@@ -539,11 +556,7 @@ int dateSetWeekDay(int year, int month, int day){
 /* =========================
    ARRAY (Lista dinâmica)
 ========================= */
-typedef struct{
-    char **data;
-    int size;
-    int capacity;
-} StringList;
+
 
 void arrInit(StringList *list){
     list->size=0;
@@ -706,8 +719,8 @@ double mathMinArr(double a, double b, double c, double d){
     return fmin(fmin(a, b), fmin(c, d));
 }
 
-#define mathSQRT1_2 0.7071067811865476
-#define mathSQRT2 1.4142135623730951
+double mathSQRT1_2 = 0.7071067811865476;
+double mathSQRT2 = 1.4142135623730951;
 
 double mathCbrt(double x){
     return cbrt(x);
@@ -719,7 +732,7 @@ double mathSignum(double x){
     return 0.0;
 }
 
-#define mathPI 3.141592653589793
+double mathPI = 3.141592653589793;
 
 double mathConvertToRadians(double degrees){
     return degrees * mathPI / 180.0;
@@ -781,11 +794,11 @@ double mathLog10(double x){
     return log10(x);
 }
 
-#define mathE 2.718281828459045
-#define mathLN2 0.6931471805599453
-#define mathLOG2E 1.4426950408889634
-#define mathLN10 2.302585092994046
-#define mathLOG10E 0.4342944819032518
+double mathE = 2.718281828459045;
+double mathLN2 = 0.6931471805599453;
+double mathLOG2E = 1.4426950408889634;
+double mathLN10 = 2.302585092994046;
+double mathLOG10E = 0.4342944819032518;
 
 double mathExp(double x){
     return exp(x);
@@ -811,4 +824,5 @@ void arrInsert(StringList *list, int index, const char *valor){
     }
     list->data[index] = strdup(valor);
     list->size++;
-}
+};
+};
