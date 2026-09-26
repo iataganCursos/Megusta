@@ -1,0 +1,389 @@
+import math
+import random
+import datetime
+import locale
+import re
+import subprocess
+import urllib.request
+
+"""
+import sys
+sys.path.append('ouka')
+import ouka.Megusta as mg
+r = mg.Megusta()   # supondo que sua classe esteja em megusta.py
+
+r.rPrint("Esta eh uma mensagem de exemplo.")
+r.rPrintln("Esta eh uma mensagem de exemplo.")
+r.rPrintln()
+
+nome = r.rInput("Qual eh o seu nome? ")
+r.rPrintln("Olah, " + nome + "!")
+print()
+"""
+class Megusta:
+
+    # -------------------------
+    # Program
+    # -------------------------
+
+    def rOpenFileWeb(self, var_url):
+        """Retorna o corpo da resposta. Use rOpenFileWebStatus() para o status HTTP."""
+        self._last_http_status = None
+        try:
+            request = urllib.request.Request(
+                var_url,
+                headers={
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+                }
+            )
+            with urllib.request.urlopen(request) as response:
+                self._last_http_status = response.status
+                return response.read().decode('utf-8')
+        except Exception as error:
+            self._last_http_status = None
+            raise RuntimeError(f"A URL não Funcionou: {error}")
+
+    def rOpenFileWebStatus(self):
+        """Retorna o código HTTP da última requisição rOpenFileWeb."""
+        return self._last_http_status
+
+    def rPrint(self, message):
+        print(message, end="")
+
+    def rPrintln(self, message=""):
+        print(message)
+
+    def rInput(self, prompt):
+        return input(prompt)
+
+    def rSaveFile(self, nomeArquivo, conteudo):
+        try:
+            with open(nomeArquivo, "w", encoding="utf-8") as f:
+                f.write(conteudo)
+            print(f"Arquivo {nomeArquivo} salvo com sucesso.")
+        except Exception as e:
+            print("Erro ao salvar o arquivo:", e)
+
+    def rOpenFile(self, arquivo):
+        try:
+            with open(arquivo, "r", encoding="utf-8") as f:
+                return f.read()
+        except FileNotFoundError:
+            print("Erro: O arquivo nao foi encontrado.")
+            return ""
+
+    def rOpenProgram(self, comando):
+        try:
+            subprocess.Popen(comando, shell=True)
+        except Exception as e:
+            print("Erro ao tentar abrir o Programa:", e)
+
+    # -------------------------
+    # String
+    # -------------------------
+
+    def strReplace(self, original, var1, var2):
+        return original.replace(var1, var2)
+
+    def strLength(self, s):
+        return len(s)
+
+    def strSubstring(self, original, v1, v2):
+        return original[v1:v2]
+
+    def strCharAt(self, s, i):
+        return s[i]
+
+    def strIndexOf(self, s, v):
+        return s.find(v)
+
+    def strLastIndexOf(self, s, v):
+        return s.rfind(v)
+
+    def strToLowerCase(self, s):
+        return s.lower()
+
+    def strToUpperCase(self, s):
+        return s.upper()
+
+    def strCompareTo(self, s1, s2):
+        return (s1 > s2) - (s1 < s2)
+
+    def strCompareToIgnoreCase(self, s1, s2):
+        return (s1.lower() > s2.lower()) - (s1.lower() < s2.lower())
+
+    def strEquals(self, s1, s2):
+        return s1 == s2
+
+    def strEqualsIgnoreCase(self, s1, s2):
+        return s1.lower() == s2.lower()
+
+    def strConcat(self, *strings):
+        return ''.join(strings)
+
+    def strStartsWith(self, minhaString, var1):
+        return minhaString.startswith(var1)
+
+    def strEndsWith(self, minhaString, var1):
+        return minhaString.endswith(var1)
+
+    def strIncludes(self, minhaString, var1):
+        return var1 in minhaString
+
+    def strSplit(self, minhaString, var1):
+        """Divide a string pelo separador. Comporra com Java: split("") lança exceção."""
+        if var1 == "":
+            raise ValueError("Empty string cannot be used as a delimiter")
+        return minhaString.split(var1)
+
+    def strPadStart(self, minhaString, var1, var2=" "):
+        """Preenche à esquerda com espaços (default) ou caractere especificado."""
+        return minhaString.rjust(var1, var2[0] if var2 else " ")
+
+    def strPadEnd(self, minhaString, var1, var2=" "):
+        """Preenche à direita com espaços (default) ou caractere especificado."""
+        return minhaString.ljust(var1, var2[0] if var2 else " ")
+
+    def strRepeat(self, minhaString, var1):
+        return minhaString * var1
+
+    def strSearch(self, minhaString, regex):
+        """Busca por regex e retorna o índice da primeira ocorrência, ou -1 se não encontrar."""
+        match = re.search(regex, minhaString)
+        return match.start() if match else -1
+
+    def strTrim(self, minhaString):
+        return minhaString.strip()
+
+    def strTrimStart(self, minhaString):
+        return re.sub(r'^\s+', '', minhaString)
+
+    def strTrimEnd(self, minhaString):
+        return re.sub(r'\s+$', '', minhaString)
+
+    def strSlice(self, minhaString, var1, var2):
+        return minhaString[var1:var2]
+
+    # -------------------------
+    # Date
+    # -------------------------
+
+    def dateNow(self):
+        return datetime.datetime.now()
+
+    def dateDay(self):
+        return self.dateNow().day
+
+    def dateWeekDay(self):
+        """Retorna 1=Domingo, 2=Segunda, ..., 7=Sábado (compatível com xMain.py)."""
+        # Python weekday(): 0=Monday .. 6=Sunday
+        # Queremos: 1=Domingo, 2=Segunda .. 7=Sábado
+        # Fórmula: (weekday + 1) % 7 + 1
+        return (self.dateNow().weekday() + 1) % 7 + 1
+
+    def dateMonth(self):
+        return self.dateNow().month
+
+    def dateYear(self):
+        return self.dateNow().year
+
+    def dateSetWeekDay(self, ano, mes, dia):
+        """Retorna 1=Domingo, 2=Segunda, ..., 7=Sábado."""
+        # Python weekday(): 0=Monday .. 6=Sunday
+        wd = datetime.date(ano, mes, dia).weekday()
+        return (wd + 1) % 7 + 1
+
+    def dateHour24(self):
+        return self.dateNow().hour
+
+    def dateMinute(self):
+        return self.dateNow().minute
+
+    def dateSecond(self):
+        return self.dateNow().second
+
+    # -------------------------
+    # Array (List)
+    # -------------------------
+
+    def arrAddAll(self, lista, *valores):
+        lista.extend(valores)
+
+    def arrAdd(self, lista, valor, index=None):
+        if index is None:
+            lista.append(valor)
+        else:
+            lista.insert(index, valor)
+
+    def arrSet(self, lista, i, valor):
+        lista[i] = valor
+
+    def arrGet(self, lista, i):
+        return lista[i]
+
+    def arrSize(self, lista):
+        return len(lista)
+
+    def xArrLength(self, arr):
+        return len(arr)
+
+    def arrRemove(self, lista, i):
+        lista.pop(i)
+
+    def arrClear(self, lista):
+        lista.clear()
+
+    def arrContains(self, lista, o):
+        return o in lista
+
+    def arrToArray(self, lista):
+        return list(lista)
+
+    def arrIndexOf(self, lista, o):
+        return lista.index(o)
+
+    def arrLastIndexOf(self, lista, o):
+        return len(lista) - 1 - lista[::-1].index(o)
+
+    # -------------------------
+    # Math
+    # -------------------------
+
+    def mathInt(self, s):
+        return int(s)
+
+    def mathNum(self, s):
+        return float(s)
+
+    def mathBool(self, s):
+        return s.lower() == "true"
+
+    def mathFloor(self, n):
+        return math.floor(n)
+
+    def mathCeil(self, n):
+        return math.ceil(n)
+
+    def mathRound(self, n):
+        return round(n)
+
+    def mathDecimalFormat(self, numero, pattern):
+        """Conta apenas os dígitos após o ponto decimal para determinar casas decimais."""
+        if "." in pattern:
+            # Conta dígitos (0 ou #) após o ponto decimal
+            after_dot = pattern.split(".")[1]
+            casas = after_dot.count("0") + after_dot.count("#")
+        else:
+            casas = 0
+        return f"{numero:.{casas}f}"
+
+    def mathNumberFormat(self, numero, language, country):
+        """Tenta usar a locale especificada, com fallback para locale padrão."""
+        try:
+            locale.setlocale(locale.LC_ALL, f"{language}_{country}.UTF-8")
+        except locale.Error:
+            try:
+                locale.setlocale(locale.LC_ALL, f"{language}_{country}")
+            except locale.Error:
+                # Fallback: usa a locale do sistema
+                pass
+        return locale.format_string("%f", numero, grouping=True)
+
+    def mathRandom(self):
+        return random.random()
+
+    def mathAbs(self, n):
+        return abs(n)
+
+    def mathMax(self, a, b):
+        return max(a, b)
+
+    def mathMin(self, a, b):
+        return min(a, b)
+
+    def mathMaxArr(self, *values):
+        if not values:
+            raise ValueError("mathMaxArr requires at least one argument")
+        return max(values)
+
+    def mathMinArr(self, *values):
+        if not values:
+            raise ValueError("mathMinArr requires at least one argument")
+        return min(values)
+
+    def mathPow(self, base, exp):
+        return math.pow(base, exp)
+
+    def mathSqrt(self, n):
+        return math.sqrt(n)
+
+    mathSQRT1_2 = math.sqrt(0.5)
+    mathSQRT2 = math.sqrt(2)
+
+    def mathCbrt(self, n):
+        return n ** (1/3)
+
+    def mathSignum(self, n):
+        return (n > 0) - (n < 0)
+
+    mathPI = math.pi
+
+    def mathConvertToRadians(self, graus):
+        return math.radians(graus)
+
+    def mathSin(self, a):
+        return math.sin(a)
+
+    def mathCos(self, a):
+        return math.cos(a)
+
+    def mathTan(self, a):
+        return math.tan(a)
+
+    def mathAsin(self, v):
+        return math.asin(v)
+
+    def mathAcos(self, v):
+        return math.acos(v)
+
+    def mathAtan(self, v):
+        return math.atan(v)
+
+    def mathSinh(self, v):
+        return math.sinh(v)
+
+    def mathCosh(self, v):
+        return math.cosh(v)
+
+    def mathTanh(self, v):
+        return math.tanh(v)
+
+    def mathAsinh(self, x):
+        return math.log(x + math.sqrt(x*x + 1))
+
+    def mathAcosh(self, x):
+        return math.log(x + math.sqrt(x*x - 1))
+
+    def mathAtanh(self, x):
+        return 0.5 * math.log((1 + x) / (1 - x))
+
+    def mathLog(self, n):
+        return math.log(n)
+
+    def mathLog10(self, n):
+        return math.log10(n)
+
+    mathE = math.e
+    mathLN2 = math.log(2)
+    mathLOG2E = math.log2(math.e)
+    mathLN10 = math.log(10)
+    mathLOG10E = math.log10(math.e)
+
+    def mathExp(self, exp):
+        return math.exp(exp)
+
+    def mathLog2(self, n):
+        return math.log2(n)
+
+    def mathLog1p(self, v):
+        return math.log1p(v)
