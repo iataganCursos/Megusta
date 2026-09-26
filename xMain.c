@@ -23,21 +23,25 @@ int main(){
         char *conteudoArquivo = rOpenFile(nomeArquivo);
         if (conteudoArquivo) {
             rPrintln(conteudoArquivo);
-            free(conteudoArquivo);
+            rFreeString(conteudoArquivo);
         }
 
         rPrintlnEmpty();
         rOpenProgram("c:/java/jdk-23/bin/java.exe -jar /MeuApp/WindowJAR.jar");
 
         rPrintlnEmpty();
-        rPrintln(rOpenFileWeb("https://www.ouka.com.br/meu_arquivo.txt"));
+        char *conteudoWeb = rOpenFileWeb("https://www.ouka.com.br/meu_arquivo.txt");
+        if (conteudoWeb) {
+            rPrintln(conteudoWeb);
+            rFreeString(conteudoWeb);
+        }
 
         rPrintlnEmpty();
         // strReplace
         char *original = "Hoje é um lindo dia!";
         char *substituida = strReplace(original, "lindo", "maravilhoso");
         rPrintln(substituida);
-        free(substituida); // Saída: "Hoje é um maravilhoso dia!"
+        rFreeString(substituida); // Saída: "Hoje é um maravilhoso dia!"
 
         // strLength
         char minhaString[] = "Olá, mundo!";
@@ -48,7 +52,7 @@ int main(){
         char *original2 = "Isso é uma char *de exemplo.";
         char *sub = strSubstring(original2, 8, 13);
         rPrintln(sub);
-        free(sub); // Saída: "uma c"
+        rFreeString(sub); // Saída: "uma c"
 
         // strCharAt
         char *minhaString2 = "Olá, mundo!";

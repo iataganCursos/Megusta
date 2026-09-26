@@ -105,18 +105,50 @@ char *rOpenFile(const char *arquivo){
         return NULL;
     }
 
-    char *buffer = malloc(100000);
+    // Conta o tamanho do arquivo para alocar exatamente o necessário
+    fseek(f, 0, SEEK_END);
+    long fileSize = ftell(f);
+    fseek(f, 0, SEEK_SET);
+
+    // Aloca tamanho + 1 para o terminador null, mínimo 1024 bytes
+    size_t allocSize = (fileSize > 0) ? (size_t)fileSize + 1 : 1024;
+    char *buffer = malloc(allocSize);
+    if(!buffer){
+        fclose(f);
+        printf("Erro: Falha ao alocar memória.\n");
+        return NULL;
+    }
     buffer[0] = '\0';
 
+    size_t currentSize = 0;
     char linha[1024];
 
     while(fgets(linha,sizeof(linha),f)){
-        strcat(buffer,linha);
+        size_t linhaLen = strlen(linha);
+        // Verifica se precisa realocar
+        if(currentSize + linhaLen + 1 > allocSize){
+            allocSize = allocSize * 2 + linhaLen + 1;
+            char *temp = realloc(buffer, allocSize);
+            if(!temp){
+                free(buffer);
+                fclose(f);
+                printf("Erro: Falha ao realocar memória.\n");
+                return NULL;
+            }
+            buffer = temp;
+        }
+        strcat(buffer, linha);
+        currentSize += linhaLen;
     }
 
     fclose(f);
-
     return buffer;
+}
+
+void rFreeString(char *str){
+    if(str != NULL){
+        free(str);
+    }
 }
 
 void rOpenProgram(const char *programa){
