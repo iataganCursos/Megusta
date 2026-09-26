@@ -184,15 +184,37 @@ METHOD rOpenProgram( cPrograma ) CLASS Megusta
 RETURN NIL
 
 METHOD rOpenFileWeb( cArquivo ) CLASS Megusta
-   SISTEMA_OPERACIONAL = lower(os())
-      IF ::strIndexOf(SISTEMA_OPERACIONAL, "windows") >= 1
-            RUN ('cmd /c powershell -Command "Invoke-WebRequest -Uri ' + cArquivo + ' -OutFile x0001.txt"')
-      ELSEIF ::strIndexOf(SISTEMA_OPERACIONAL, "linux") >= 1
-            RUN ("wget -O x0001.txt " + cArquivo)
+   // Usa HB_FetchURL() se disponível, senão tenta métodos alternativos
+   LOCAL cConteudo := ""
+   
+   // Harbour 3.x+ tem HB_FetchURL()
+   IF HB_Version() >= "3.0.0"
+      TRY
+         cConteudo := HB_FetchURL( cArquivo, { "User-Agent": "Mozilla/5.0" } )
+      CATCH
+         // Fallback para métodos manuais
+         cConteudo := ""
+      END
+   ENDIF
+   
+   // Se HB_FetchURL não funcionou, tenta com RUN (fallback)
+   IF Empty( cConteudo )
+      LOCAL cOS := Lower( OS() )
+      LOCAL cTempFile := "megusta_temp_" + StrTran(Time(), ":", "") + ".txt"
+      
+      IF At( "windows", cOS ) > 0
+         RUN ("powershell -Command \"(Invoke-WebRequest -Uri '" + cArquivo + "').Content > '" + cTempFile + "'\"")
+      ELSE
+         RUN ("wget -q -O '" + cTempFile + "' '" + cArquivo + "'")
       ENDIF
-      arquivo := ::rOpenFile("x0001.txt")
-      ERASE "x0001.txt"
-RETURN arquivo
+      
+      IF File( cTempFile )
+         cConteudo := MemoRead( cTempFile )
+         ERASE cTempFile
+      ENDIF
+   ENDIF
+   
+RETURN cConteudo
 /* =========================
    STRING
    ========================= */
@@ -218,11 +240,11 @@ len_subcadeia = LEN(subcadeia)
 
 FOR pos = 1 TO len_cadeia - len_subcadeia + 1
 IF SUBSTR(cadeia, pos, len_subcadeia) == subcadeia
-RETURN pos
+RETURN pos - 1  // Retorna índice 0-based
 ENDIF
 NEXT
 
-RETURN 0 // Retorna 0 se a subcadeia não for encontrada
+RETURN -1 // Retorna -1 se a subcadeia não for encontrada
 
 METHOD strLastIndexOf(cadeia, subcadeia) CLASS Megusta
 LOCAL pos
@@ -233,11 +255,11 @@ len_subcadeia = LEN(subcadeia)
 
 FOR pos = len_cadeia TO 1 STEP -1
 IF SUBSTR(cadeia, pos, len_subcadeia) == subcadeia
-RETURN pos
+RETURN pos - 1  // Retorna índice 0-based
 ENDIF
 NEXT
 
-RETURN 0 // Retorna 0 se a subcadeia não for encontrada
+RETURN -1 // Retorna -1 se a subcadeia não for encontrada
 
 METHOD strToLowerCase( cString ) CLASS Megusta
 RETURN Lower( cString )
@@ -312,12 +334,9 @@ METHOD strSplit( cString, cDelimiter ) CLASS Megusta
    LOCAL nPos
    LOCAL i
 
-   // Se delimitador é vazio, divide em caracteres individuais
+   // Se delimitador é vazio, lança exceção (consistente com Java/Python)
    IF Empty( cDelimiter )
-      FOR i := 1 TO Len( cString )
-         AAdd( aResult, SubStr( cString, i, 1 ) )
-      NEXT
-      RETURN aResult
+      THROW Exception{ "Empty string cannot be used as a delimiter" }
    ENDIF
 
    DO WHILE .T.
@@ -336,14 +355,14 @@ METHOD strSplit( cString, cDelimiter ) CLASS Megusta
 
 // PadStart
 METHOD strPadStart( cString, nLen, cPad ) CLASS Megusta
-   LOCAL cFill := Replicate( cPad, nLen )
+   LOCAL cFill := IIF( Empty(cPad), Replicate(" ", nLen), Replicate(cPad, nLen) )
 
    RETURN Right( cFill + cString, nLen )
 
 
 // PadEnd
 METHOD strPadEnd( cString, nLen, cPad ) CLASS Megusta
-   LOCAL cFill := Replicate( cPad, nLen )
+   LOCAL cFill := IIF( Empty(cPad), Replicate(" ", nLen), Replicate(cPad, nLen) )
 
    RETURN Left( cString + cFill, nLen )
 
@@ -387,7 +406,8 @@ METHOD dateDay() CLASS Megusta
 RETURN Day( Date() )
 
 METHOD dateWeekDay() CLASS Megusta
-RETURN Dow( Date() ) + 1
+// Harbour Dow(): 1=Domingo, 2=Segunda, ..., 7=Sábado - já está correto!
+RETURN Dow( Date() )
 
 METHOD dateMonth() CLASS Megusta
 RETURN Month( Date() )
@@ -811,9 +831,16 @@ METHOD mathSQRT2() CLASS Megusta
 RETURN ::mathSqrt( 2 )
 
 METHOD mathMaxArr( ... ) CLASS Megusta
-   LOCAL nMax := -999999999
+   LOCAL nMax
    LOCAL i
-   FOR i := 1 TO PCount()
+   LOCAL nCount := PCount()
+   
+   IF nCount == 0
+      THROW Exception{ "mathMaxArr requires at least one argument" }
+   ENDIF
+   
+   nMax := PValue(1)
+   FOR i := 2 TO nCount
       IF PValue(i) > nMax
          nMax := PValue(i)
       ENDIF
@@ -821,9 +848,16 @@ METHOD mathMaxArr( ... ) CLASS Megusta
 RETURN nMax
 
 METHOD mathMinArr( ... ) CLASS Megusta
-   LOCAL nMin := 999999999
+   LOCAL nMin
    LOCAL i
-   FOR i := 1 TO PCount()
+   LOCAL nCount := PCount()
+   
+   IF nCount == 0
+      THROW Exception{ "mathMinArr requires at least one argument" }
+   ENDIF
+   
+   nMin := PValue(1)
+   FOR i := 2 TO nCount
       IF PValue(i) < nMin
          nMin := PValue(i)
       ENDIF
