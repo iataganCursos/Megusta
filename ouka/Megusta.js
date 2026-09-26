@@ -69,6 +69,11 @@ class Megusta {
     rOpenFileWebStatus() {
         return this._lastHttpStatus;
     }
+    
+    // Alias para compatibilidade com código legado (mesmo que rOpenFileWebStatus)
+    rOpenFileWebStatusCode() {
+        return this._lastHttpStatus;
+    }
 
     // String
 
@@ -195,7 +200,15 @@ class Megusta {
         return new Date().getMonth() + 1;
     }
 
-    // Alias para compatibilidade
+    // dateMonth() é o método oficial (1-based: 1=Janeiro..12=Dezembro)
+    // dateMouth() mantido apenas para compatibilidade retroativa
+    dateMonth(){
+        // getMonth() retorna 0=Janeiro..11=Dezembro
+        // Queremos: 1=Janeiro..12=Dezembro
+        return new Date().getMonth() + 1;
+    }
+    
+    // Alias para compatibilidade com código legado
     dateMouth(){
         return this.dateMonth();
     }

@@ -184,8 +184,9 @@ METHOD rOpenProgram( cPrograma ) CLASS Megusta
 RETURN NIL
 
 METHOD rOpenFileWeb( cArquivo ) CLASS Megusta
-   // Usa HB_FetchURL() se disponível, senão tenta métodos alternativos
+   // Retorna o corpo da resposta. Use rOpenFileWebStatus() para o status HTTP.
    LOCAL cConteudo := ""
+   LOCAL nStatus := 0
    
    // Harbour 3.x+ tem HB_FetchURL()
    IF HB_Version() >= "3.0.0"
@@ -211,10 +212,17 @@ METHOD rOpenFileWeb( cArquivo ) CLASS Megusta
       IF File( cTempFile )
          cConteudo := MemoRead( cTempFile )
          ERASE cTempFile
+         nStatus := 1  // Assume sucesso se arquivo foi lido
       ENDIF
    ENDIF
    
+   // Armazena o status para acesso posterior
+   HB_SetValue("__megusta_last_http_status", nStatus)
+   
 RETURN cConteudo
+
+METHOD rOpenFileWebStatus() CLASS Megusta
+RETURN HB_GetValue("__megusta_last_http_status", -1)
 /* =========================
    STRING
    ========================= */

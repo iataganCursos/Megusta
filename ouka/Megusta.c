@@ -155,6 +155,13 @@ void rOpenProgram(const char *programa){
     system(programa);
 }
 
+// Variável global para armazenar o último status HTTP
+static int lastHttpStatus = -1;
+
+int rOpenFileWebStatus(){
+    return lastHttpStatus;
+}
+
 struct Memory {
     char *data;
     size_t size;
@@ -211,7 +218,7 @@ char *rOpenFileWeb(const char *url) {
             long status;
             curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &status);
 
-            printf("Status: %ld\n", status);
+            lastHttpStatus = (int)status;
             //printf("%s\n", chunk.data);
             char *conteudox = chunk.data;
             conteudo = strdup(conteudox);
