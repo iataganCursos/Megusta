@@ -194,21 +194,13 @@ class Megusta {
         return new Date().getDay() + 1;
     }
 
-    dateMonth(){
-        // getMonth() retorna 0=Janeiro..11=Dezembro
-        // Queremos: 1=Janeiro..12=Dezembro
-        return new Date().getMonth() + 1;
-    }
-
     // dateMonth() é o método oficial (1-based: 1=Janeiro..12=Dezembro)
-    // dateMouth() mantido apenas para compatibilidade retroativa
+    // getMonth() retorna 0=Janeiro..11=Dezembro, queremos 1=Janeiro..12=Dezembro
     dateMonth(){
-        // getMonth() retorna 0=Janeiro..11=Dezembro
-        // Queremos: 1=Janeiro..12=Dezembro
         return new Date().getMonth() + 1;
     }
     
-    // Alias para compatibilidade com código legado
+    // Alias para compatibilidade com código legado (mesmo que dateMonth)
     dateMouth(){
         return this.dateMonth();
     }
