@@ -287,7 +287,7 @@ def mathMinArr(self, *values):
 | `ouka/Megusta.js` | ~~B01, B02, B15~~ ✅ CORRIGIDO |
 | `ouka/Megusta.java` | ~~B01, B02, B15~~ ✅ CORRIGIDO |
 | `ouka/Megusta.php` | ~~B01, B02, B03, B08, B13, B14~~ ✅ CORRIGIDO |
-| `ouka/Megusta.prg` | Não analisado |
+| `ouka/Megusta.prg` | ~~Não analisado~~ ✅ CORRIGIDO |
 
 ---
 
@@ -312,7 +312,7 @@ def mathMinArr(self, *values):
 - ~~**C**: Memory leak em `rOpenFile()`~~ ✅ CORRIGIDO
 - ~~**JS/Java**: `dateMouth` → `dateMonth`, consistência weekday/month~~ ✅ CORRIGIDO
 - ~~**PHP**: `rInput()` não finalizado, `strpos()` false/-1, try/catch inútil~~ ✅ CORRIGIDO
-- **Clipper**: Não analisado
+- ~~**Clipper**: Bugs críticos~~ ✅ CORRIGIDO
 
 ---
 
