@@ -284,9 +284,9 @@ def mathMinArr(self, *values):
 | Arquivo | Bugs Pendentes |
 |---|---|
 | `ouka/Megusta.c` | ~~B12 - memory leak em `rOpenFile()`~~ ✅ CORRIGIDO |
-| `ouka/Megusta.js` | B01, B02, B15 - weekday/month inconsistency, `dateMouth` typo |
-| `ouka/Megusta.java` | B01, B02, B15 - weekday/month inconsistency, `dateMouth` typo |
-| `ouka/Megusta.php` | B01, B02, B03, B08, B13, B14 - múltiplos bugs |
+| `ouka/Megusta.js` | ~~B01, B02, B15~~ ✅ CORRIGIDO |
+| `ouka/Megusta.java` | ~~B01, B02, B15~~ ✅ CORRIGIDO |
+| `ouka/Megusta.php` | ~~B01, B02, B03, B08, B13, B14~~ ✅ CORRIGIDO |
 | `ouka/Megusta.prg` | Não analisado |
 
 ---
@@ -310,8 +310,9 @@ def mathMinArr(self, *values):
 
 ### Correções Pendentes (outras linguagens)
 - ~~**C**: Memory leak em `rOpenFile()`~~ ✅ CORRIGIDO
-- **JS/Java**: `dateMouth` → `dateMonth`, consistência weekday/month
-- **PHP**: `rInput()` não finalizado, `strpos()` false/-1, try/catch inútil
+- ~~**JS/Java**: `dateMouth` → `dateMonth`, consistência weekday/month~~ ✅ CORRIGIDO
+- ~~**PHP**: `rInput()` não finalizado, `strpos()` false/-1, try/catch inútil~~ ✅ CORRIGIDO
+- **Clipper**: Não analisado
 
 ---
 
