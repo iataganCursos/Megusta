@@ -30,6 +30,10 @@ r.rPrintln("2^3 = " + soma);
 
 class Megusta {
 
+    constructor() {
+        this._lastHttpStatus = null;
+    }
+
     // Program
 
     rPrint(message) {
@@ -43,6 +47,27 @@ class Megusta {
 
     rInput(promptText) {
         return prompt(promptText);
+    }
+
+    rOpenFileWeb(var_url) {
+        // Retorna o corpo da resposta. Use rOpenFileWebStatus() para o status HTTP.
+        this._lastHttpStatus = null;
+        // Nota: em JS puro no browser, não temos acesso direto a HTTP sem fetch/XMLHttpRequest
+        // Esta implementação usa fetch moderno
+        return fetch(var_url, {
+            headers: { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" }
+        })
+        .then(response => {
+            this._lastHttpStatus = response.status;
+            return response.text();
+        })
+        .catch(error => {
+            throw new Error("A URL não Funcionou: " + error.message);
+        });
+    }
+
+    rOpenFileWebStatus() {
+        return this._lastHttpStatus;
     }
 
     // String
@@ -112,14 +137,17 @@ class Megusta {
     }
 
     strSplit(minhaString, var1) {
+        if (var1 === "") {
+            throw new Error("Empty string cannot be used as a delimiter");
+        }
         return minhaString.split(var1);
     }
 
-    strPadStart(minhaString, var1, var2) {
+    strPadStart(minhaString, var1, var2 = " ") {
         return minhaString.padStart(var1, var2.charAt(0));
     }
 
-    strPadEnd(minhaString, var1, var2) {
+    strPadEnd(minhaString, var1, var2 = " ") {
         return minhaString.padEnd(var1, var2.charAt(0));
     }
 
@@ -128,7 +156,9 @@ class Megusta {
     }
 
     strSearch(minhaString, regex) {
-        return minhaString.indexOf(regex);
+        // Busca por regex e retorna o índice da primeira ocorrência
+        const match = minhaString.match(new RegExp(regex));
+        return match ? match.index : -1;
     }
 
     strTrim(minhaString) {
@@ -154,11 +184,20 @@ class Megusta {
     }
 
     dateWeekDay(){
+        // getDay() retorna 0=Domingo..6=Sábado
+        // Queremos: 1=Domingo..7=Sábado
         return new Date().getDay() + 1;
     }
 
+    dateMonth(){
+        // getMonth() retorna 0=Janeiro..11=Dezembro
+        // Queremos: 1=Janeiro..12=Dezembro
+        return new Date().getMonth() + 1;
+    }
+
+    // Alias para compatibilidade
     dateMouth(){
-        return new Date().getMonth();
+        return this.dateMonth();
     }
 
     dateYear(){
@@ -166,8 +205,8 @@ class Megusta {
     }
 
     dateSetWeekDay(x_ano, x_mes, x_dia){
-        let d = new Date(x_ano, x_mes, x_dia);
-        return d.getDay();
+        let d = new Date(x_ano, x_mes - 1, x_dia); // getMonth é 0-based
+        return d.getDay() + 1;
     }
 
     dateHour24(){
@@ -288,10 +327,16 @@ class Megusta {
     }
 
     mathMaxArr(...values){
+        if (values.length === 0) {
+            throw new Error("mathMaxArr requires at least one argument");
+        }
         return Math.max(...values);
     }
 
     mathMinArr(...values){
+        if (values.length === 0) {
+            throw new Error("mathMinArr requires at least one argument");
+        }
         return Math.min(...values);
     }
 
@@ -368,54 +413,5 @@ class Megusta {
 
     mathLog1p(x){
         return Math.log1p(x);
-    }
-}
-
-var req;
-
-function Ajax(url){
-    req = null;
-
-    if (window.XMLHttpRequest) {
-        req = new XMLHttpRequest();
-        req.onreadystatechange = processReqChange;
-        req.open("GET", url, true); 
-        req.send(null);
-
-    } else if (window.ActiveXObject) {
-        try {
-            req = new ActiveXObject("Msxml2.XMLHTTP.4.0");
-        } catch(e) {
-            try {
-                req = new ActiveXObject("Msxml2.XMLHTTP.3.0");
-            } catch(e) {
-                try {
-                    req = new ActiveXObject("Msxml2.XMLHTTP");
-                } catch(e) {
-                    try {
-                        req = new ActiveXObject("Microsoft.XMLHTTP");
-                    } catch(e) {
-                        req = false;
-                    }
-                }
-            }
-        }
-        if (req) {
-            req.onreadystatechange = processReqChange;
-            req.open("GET", url, true);
-            req.send();
-        }
-    }
-}
-
-function processReqChange(){
-    if (req.readyState == 4) {
-        if (req.status == 200) {
-            var textHTML = req.responseText;
-            rOpenFileWeb(textHTML);
-
-        } else {
-            alert("Houve um problema ao obter os dados:\n" + req.statusText);
-        }
     }
 }
