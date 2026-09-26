@@ -276,12 +276,14 @@ def mathMinArr(self, *values):
 |---|---|---|
 | `ouka/Megusta.py` | ~50 | 9 correções de bugs + 2 novas funcionalidades |
 | `xMain.py` | ~5 | Ajustes de compatibilidade com correções |
+| `ouka/Megusta.c` | ~40 | Alocação dinâmica em `rOpenFile()` + `rFreeString()` |
+| `xMain.c` | ~4 | Uso de `rFreeString()` em todas as liberações |
 
 ### Arquivos NÃO modificados (requerem correção futura)
 
 | Arquivo | Bugs Pendentes |
 |---|---|
-| `ouka/Megusta.c` | B12 - memory leak em `rOpenFile()` |
+| `ouka/Megusta.c` | ~~B12 - memory leak em `rOpenFile()`~~ ✅ CORRIGIDO |
 | `ouka/Megusta.js` | B01, B02, B15 - weekday/month inconsistency, `dateMouth` typo |
 | `ouka/Megusta.java` | B01, B02, B15 - weekday/month inconsistency, `dateMouth` typo |
 | `ouka/Megusta.php` | B01, B02, B03, B08, B13, B14 - múltiplos bugs |
@@ -304,9 +306,10 @@ def mathMinArr(self, *values):
 ### Correções Médias ✅
 - **B10**: `strPadStart/End` com espaço como default
 - **B11**: `mathMaxArr/MinArr` validam args vazios
+- **B12**: `rOpenFile()` alocação dinâmica + `rFreeString()` + fix em `rOpenFileWeb()`
 
 ### Correções Pendentes (outras linguagens)
-- **C**: Memory leak em `rOpenFile()`
+- ~~**C**: Memory leak em `rOpenFile()`~~ ✅ CORRIGIDO
 - **JS/Java**: `dateMouth` → `dateMonth`, consistência weekday/month
 - **PHP**: `rInput()` não finalizado, `strpos()` false/-1, try/catch inútil
 
