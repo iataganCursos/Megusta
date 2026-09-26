@@ -27,12 +27,14 @@ class Megusta {
     public $mathLOG2E;
     public $mathLN10;
     public $mathLOG10E;
+    private $lastHttpStatus = null;
 
     // -------------------------
     // Program
     // -------------------------
 
     public function rOpenFileWeb($var_url) {
+        $this->lastHttpStatus = null;
         try {
             // Criar contexto com header
             $options = [
@@ -54,16 +56,19 @@ class Megusta {
             $status = null;
             if (isset($http_response_header)) {
                 preg_match('{HTTP\/\S*\s(\d{3})}', $http_response_header[0], $match);
-                $status = $match[1] ?? null;
+                $status = (int)($match[1] ?? null);
             }
 
-            echo "Status: " . $status . PHP_EOL;
+            $this->lastHttpStatus = $status;
             return $response . PHP_EOL;
 
         } catch (Exception $error) {
-            echo "A URL não Funcionou" . PHP_EOL;
-            echo $error->getMessage() . PHP_EOL;
+            throw new RuntimeException("A URL não Funcionou: " . $error->getMessage());
         }
+    }
+
+    public function rOpenFileWebStatus() {
+        return $this->lastHttpStatus;
     }
 
     public function __construct(){
@@ -86,9 +91,15 @@ class Megusta {
     }
 
     public function rInput($promptText){
-        echo '<p>'.$promptText;
-        echo " It doesn't exist.</p>";
-        return "It doesn't exist.";
+        echo $promptText;
+        // Lê a entrada do usuário (CLI) ou formulário (web)
+        if (php_sapi_name() === 'cli') {
+            $input = trim(fgets(STDIN));
+        } else {
+            // Modo web: tenta obter do POST/GET
+            $input = trim($_POST['megusta_input'] ?? $_GET['megusta_input'] ?? '');
+        }
+        return $input;
     }
 
     public function rSaveFile($nomeArquivo, $conteudo){
@@ -108,11 +119,9 @@ class Megusta {
     }
 
     public function rOpenProgram($nomePrograma){
-		try {
-			shell_exec($nomePrograma);
-		} catch (Exception $e) {
-			echo '';
-		}
+        // shell_exec não lança exceptions, try/catch é inútil
+        // Executa o comando (bloqueante)
+        shell_exec($nomePrograma);
     }
 
     // String
@@ -134,11 +143,14 @@ class Megusta {
     }
 
     public function strIndexOf($minhaString,$var1){
-        return strpos($minhaString,$var1);
+        $result = strpos($minhaString,$var1);
+        // strpos retorna false quando não encontrado, converter para -1
+        return $result === false ? -1 : $result;
     }
 
     public function strLastIndexOf($minhaString,$var1){
-        return strrpos($minhaString,$var1);
+        $result = strrpos($minhaString,$var1);
+        return $result === false ? -1 : $result;
     }
 
     public function strToLowerCase($minhaString){
@@ -188,17 +200,17 @@ class Megusta {
 
     function strSplit($minhaString, $var1) {
         if ($var1 === "") {
-            return str_split($minhaString);
+            throw new InvalidArgumentException("Empty string cannot be used as a delimiter");
         } else {
             return explode($var1, $minhaString);
         }
     }
 
-    function strPadStart($minhaString, $var1, $var2) {
+    function strPadStart($minhaString, $var1, $var2 = " ") {
         return str_pad($minhaString, $var1, $var2[0], STR_PAD_LEFT);
     }
 
-    function strPadEnd($minhaString, $var1, $var2) {
+    function strPadEnd($minhaString, $var1, $var2 = " ") {
         return str_pad($minhaString, $var1, $var2[0], STR_PAD_RIGHT);
     }
 
@@ -207,7 +219,9 @@ class Megusta {
     }
 
     function strSearch($minhaString, $regex) {
-        return strpos($minhaString, $regex);
+        // Busca por regex
+        $result = preg_match('/' . $regex . '/', $minhaString, $matches, PREG_OFFSET_CAPTURE);
+        return $result ? $matches[0][1] : -1;
     }
 
     function strTrim($minhaString) {
@@ -234,11 +248,20 @@ class Megusta {
     }
 
     public function dateWeekDay(){
-        return intval(date("w"));
+        // date("w") retorna 0=Domingo..6=Sábado
+        // Queremos: 1=Domingo..7=Sábado
+        $wd = intval(date("w"));
+        return $wd + 1;
     }
 
-    public function dateMouth(){
+    public function dateMonth(){
+        // date("m") retorna 01=Janeiro..12=Dezembro (1-based) - correto!
         return intval(date("m"));
+    }
+
+    // Alias para compatibilidade (mantém dateMouth funcionando)
+    public function dateMouth(){
+        return $this->dateMonth();
     }
 
     public function dateYear(){
@@ -246,7 +269,10 @@ class Megusta {
     }
 
     public function dateSetWeekDay($ano,$mes,$dia){
-        return date("w", strtotime("$ano-$mes-$dia"));
+        // date("w") retorna 0=Domingo..6=Sábado
+        // Queremos: 1=Domingo..7=Sábado
+        $wd = intval(date("w", strtotime("$ano-$mes-$dia")));
+        return $wd + 1;
     }
 
     public function dateHour24(){
@@ -310,11 +336,14 @@ class Megusta {
     }
 
     public function arrIndexOf($lista,$o){
-        return array_search($o,$lista);
+        $result = array_search($o,$lista);
+        return $result === false ? -1 : $result;
     }
 
     public function arrLastIndexOf($lista,$o){
-        return array_search($o,array_reverse($lista,true));
+        $reversed = array_reverse($lista, true);
+        $result = array_search($o, $reversed);
+        return $result === false ? -1 : $result;
     }
 
     // Math
@@ -349,6 +378,23 @@ class Megusta {
     }
 
     public function mathNumberFormat($numero,$language,$country){
+        // Tenta usar a locale especificada
+        $localeMap = [
+            'pt_BR' => 'pt_BR.UTF-8',
+            'en_US' => 'en_US.UTF-8',
+            'en_GB' => 'en_GB.UTF-8',
+            'de_DE' => 'de_DE.UTF-8',
+            'fr_FR' => 'fr_FR.UTF-8',
+        ];
+        $localeKey = $language . '_' . $country;
+        $locale = $localeMap[$localeKey] ?? setlocale(LC_NUMERIC, 0);
+        
+        try {
+            setlocale(LC_NUMERIC, $locale);
+        } catch (\Exception $e) {
+            // Fallback para formato padrão
+        }
+        
         return number_format($numero,2,",",".");
     }
 
@@ -369,10 +415,16 @@ class Megusta {
     }
 
     public function mathMaxArr(...$values){
+        if (empty($values)) {
+            throw new InvalidArgumentException("mathMaxArr requires at least one argument");
+        }
         return max($values);
     }
 
     public function mathMinArr(...$values){
+        if (empty($values)) {
+            throw new InvalidArgumentException("mathMinArr requires at least one argument");
+        }
         return min($values);
     }
 

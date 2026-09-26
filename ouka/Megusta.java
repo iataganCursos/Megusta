@@ -16,14 +16,20 @@ import java.text.NumberFormat;
 import java.util.Locale;
 import java.util.List;
 import java.util.Collections;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 public class Megusta {
+    private Integer lastHttpStatus = null;
+
     public Megusta(){
     }
 
     // Program
 
     public String rOpenFileWeb(String VarURL) throws Exception {
+        // Retorna o corpo da resposta. Use rOpenFileWebStatus() para o status HTTP.
+        this.lastHttpStatus = null;
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(VarURL))
@@ -34,8 +40,12 @@ public class Megusta {
         HttpResponse<String> response = client.send(request, 
                 HttpResponse.BodyHandlers.ofString());
         
-        System.out.println("Status: " + response.statusCode());
+        this.lastHttpStatus = response.statusCode();
         return response.body();
+    }
+
+    public Integer rOpenFileWebStatus() {
+        return this.lastHttpStatus;
     }
 
     public void rPrint(Object message) {
@@ -149,19 +159,35 @@ public class Megusta {
         return minhaString.contains(var1);
     }
     public String[] strSplit(String minhaString, String var1){
+        if (var1 == null || var1.isEmpty()) {
+            throw new IllegalArgumentException("Empty string cannot be used as a delimiter");
+        }
         return minhaString.split(var1);
     }
     public String strPadStart(String minhaString, int var1, String var2){
-        return String.format("%" + var1 + "s", minhaString).replace(' ', var2.charAt(0));
+        String fillChar = (var2 != null && !var2.isEmpty()) ? var2 : " ";
+        return String.format("%" + var1 + "s", minhaString).replace(' ', fillChar.charAt(0));
     }
     public String strPadEnd(String minhaString, int var1, String var2){
-        return String.format("%-" + var1 + "s", minhaString).replace(' ', var2.charAt(0));
+        String fillChar = (var2 != null && !var2.isEmpty()) ? var2 : " ";
+        return String.format("%-" + var1 + "s", minhaString).replace(' ', fillChar.charAt(0));
     }
     public String strRepeat(String minhaString, int var1){
         return minhaString.repeat(var1);
     }
     public int strSearch(String minhaString, String regex){
-        return minhaString.indexOf(regex);
+        // Busca por regex e retorna o índice da primeira ocorrência
+        try {
+            Pattern pattern = Pattern.compile(regex);
+            Matcher matcher = pattern.matcher(minhaString);
+            if (matcher.find()) {
+                return matcher.start();
+            }
+        } catch (Exception e) {
+            // Se não for regex válido, faz busca literal
+            return minhaString.indexOf(regex);
+        }
+        return -1;
     }
     public String strTrim(String minhaString){
         return minhaString.trim();
@@ -183,20 +209,27 @@ public class Megusta {
         return DataToda.get(Calendar.DATE);
     }
     public int dateWeekDay(){
+        // DAY_OF_WEEK retorna 1=Domingo..7=Sábado - já está correto!
         Calendar DataToda = Calendar.getInstance();
         return DataToda.get(Calendar.DAY_OF_WEEK);
     }
-    public int dateMouth(){
+    public int dateMonth(){
+        // MONTH retorna 0=Janeiro..11=Dezembro, queremos 1=Janeiro..12=Dezembro
         Calendar DataToda = Calendar.getInstance();
-        return DataToda.get(Calendar.MONTH);
+        return DataToda.get(Calendar.MONTH) + 1;
+    }
+    // Alias para compatibilidade
+    public int dateMouth(){
+        return this.dateMonth();
     }
     public int dateYear(){
         Calendar DataToda = Calendar.getInstance();
         return  DataToda.get(Calendar.YEAR);
     }
     public int dateSetWeekDay(int x_ano, int x_mes, int x_dia){
+        // DAY_OF_WEEK retorna 1=Domingo..7=Sábado - já está correto!
         Calendar DataToda = Calendar.getInstance();
-        DataToda.set(x_ano, x_mes, x_dia);
+        DataToda.set(x_ano, x_mes - 1, x_dia); // MONTH é 0-based
         return DataToda.get(Calendar.DAY_OF_WEEK);
     }
     public int dateHour24(){
@@ -277,17 +310,20 @@ public class Megusta {
     public String mathDecimalFormat(double numero, String pattern){
         // Criar um objeto DecimalFormat
         DecimalFormat formato = new DecimalFormat(pattern);
-
-        // Formatar o número com 3 casas decimais
         String numeroFormatado = formato.format(numero);
         return numeroFormatado;
     }
     public String mathNumberFormat(double numero,  String language, String country){
-        // Formatar o número de acordo com a localidade do Brasil
-        Locale locale = new Locale(language, country);
-        NumberFormat formato = NumberFormat.getInstance(locale);
-        String numeroFormatado = formato.format(numero);
-        return numeroFormatado;
+        // Formatar o número de acordo com a localidade
+        try {
+            Locale locale = new Locale(language, country);
+            NumberFormat formato = NumberFormat.getInstance(locale);
+            String numeroFormatado = formato.format(numero);
+            return numeroFormatado;
+        } catch (Exception e) {
+            // Fallback para formato padrão
+            return String.format("%.2f", numero).replace('.', ',');
+        }
     }
     public double mathRandom(){
         return Math.random();
@@ -302,6 +338,9 @@ public class Megusta {
         return Math.min(numero1, numero2);
     }
     public double mathMaxArr(double ... values) {
+        if (values.length == 0) {
+            throw new IllegalArgumentException("mathMaxArr requires at least one argument");
+        }
         double max = values[0];
         for (int i = 1; i < values.length; i++) {
             if (values[i] > max) {
@@ -311,6 +350,9 @@ public class Megusta {
         return max;
     }
     public double mathMinArr(double ... values) {
+        if (values.length == 0) {
+            throw new IllegalArgumentException("mathMinArr requires at least one argument");
+        }
         double min = values[0];
         for (int i = 1; i < values.length; i++) {
             if (values[i] < min) {
