@@ -1,0 +1,24 @@
+# Arquivos compactados originais
+compact.zip
+megusta-corrigido.tar.gz
+megusta-corrigido-completo.tar.gz
+
+# Diretórios de build/compilação
+target/
+__pycache__/
+*.pyc
+*.pyo
+*.class
+*.o
+*.exe
+
+# Sistemas de arquivos
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+git.jpeg

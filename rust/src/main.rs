@@ -28,7 +28,11 @@ fn main() {
 
         r.r_println_empty();
 
+<<<<<<< HEAD
         match Megusta::r_open_file_web("https://www.ouka.com.br/meu_arquivo.txt") {
+=======
+        match r.r_open_file_web("https://www.ouka.com.br/meu_arquivo.txt") {
+>>>>>>> b2d0025dae7b302f1c51b5ee81ccf508cf0047b4
                 Ok(_) => {}
                 Err(e) => {
                 println!("A URL não Funcionou");
@@ -131,11 +135,44 @@ fn main() {
 
         r.r_println_empty();
 
+<<<<<<< HEAD
+=======
+r.r_println(&format!("{}", r.str_char_at("Hello", 4)));           // o
+r.r_println(&format!("{}", r.str_concat(&["Hello", " ", "world"]))); // Hello world
+r.r_println(&format!("{}", r.str_starts_with("Hello", "H")));     // true
+r.r_println(&format!("{}", r.str_ends_with("Hello", "o")));       // true
+r.r_println(&format!("{}", r.str_includes("Hello", "x")));       // false
+r.r_println(&format!("{}", r.str_index_of("Hello", "l")));        // 2
+r.r_println(&format!("{}", r.str_last_index_of("Hello", "l")));    // 3
+r.r_println(&format!("{}", r.str_pad_start("Hello", 6, "?")));    // ?Hello
+r.r_println(&format!("{}", r.str_pad_end("Hello", 6, "?")));      // Hello?
+r.r_println(&format!("{}", r.str_repeat("Hello", 3)));           // HelloHelloHello
+r.r_println(&format!("{}", r.str_replace("Hello", "llo", "y"))); // Hey
+r.r_println(&format!("{}", r.str_search("Hello", "e")));         // 1
+r.r_println(&format!("{}", r.str_slice("Hello", 1, 3)));         // el
+let v = r.str_split("Hello", "");           // ['H','e','l','l','o']
+for i in 0..v.len() {
+        r.r_println(&format!("{}", v[i]));
+}
+r.r_println(&format!("{}", r.str_substring("Hello", 2, 4)));     // ll
+r.r_println(&format!("{}", r.str_to_lower_case("Hello")));       // hello
+r.r_println(&format!("{}", r.str_to_upper_case("Hello")));       // HELLO
+r.r_println(&format!("{}", r.str_trim(" Hello ")));            // Hello
+r.r_println(&format!("{}", r.str_trim_start(" Hello ")));       // "Hello "
+r.r_println(&format!("{}", r.str_trim_end(" Hello ")));         // " Hello"
+
+        r.r_println_empty();
+
+>>>>>>> b2d0025dae7b302f1c51b5ee81ccf508cf0047b4
         let mut texto = String::new();
 
         let dia_do_mes: i64 = r.date_day();
         let dia_da_semana: i64 = r.date_week_day();
+<<<<<<< HEAD
         let mes: i64 = r.date_mouth();
+=======
+        let mes: i64 = r.date_month();
+>>>>>>> b2d0025dae7b302f1c51b5ee81ccf508cf0047b4
         let ano: i64 = r.date_year();
 
         // ---------------------------------------
@@ -151,14 +188,22 @@ fn main() {
         semana.push("Quinta");
         semana.push("Sexta");
         semana.push("Sabado");
+<<<<<<< HEAD
         let semena_atual = semana[dia_da_semana as usize];
+=======
+        let mut semana_atual = semana[dia_da_semana as usize];
+>>>>>>> b2d0025dae7b302f1c51b5ee81ccf508cf0047b4
         //-------------------------
         let mes2: Vec<&str> = vec![
             "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
             "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Desembro"
         ];
         let mes_atual = mes2.get((mes - 1) as usize).unwrap_or(&"");
+<<<<<<< HEAD
         texto.push_str(&format!("{}, {} de {} de {}\n", semena_atual, dia_do_mes, mes_atual, ano));
+=======
+        texto.push_str(&format!("{}, {} de {} de {}\n", semana_atual, dia_do_mes, mes_atual, ano));
+>>>>>>> b2d0025dae7b302f1c51b5ee81ccf508cf0047b4
         texto.push_str(&format!("São: {} horas, {} minutos e {} segundos.", horas, minutos, segundos));
 
         r.r_println(&texto);
@@ -183,11 +228,19 @@ fn main() {
         semana[5] = "Quinta";
         semana[6] = "Sexta";
         semana[7] = "Sabado";
+<<<<<<< HEAD
         let semena_atual = semana[dia_da_semana as usize];
         //-------------------------
 
         let mes_atual = mes2.get((mes - 1) as usize).unwrap_or(&"");
         r.r_println(format!("{}, {} de {} de {}", semena_atual, dia_do_mes, mes_atual, ano));
+=======
+        semana_atual = semana[dia_da_semana as usize];
+        //-------------------------
+
+        let mes_atual = mes2.get((mes - 1) as usize).unwrap_or(&"");
+        r.r_println(format!("{}, {} de {} de {}", semana_atual, dia_do_mes, mes_atual, ano));
+>>>>>>> b2d0025dae7b302f1c51b5ee81ccf508cf0047b4
 
         r.r_println_empty();
 
