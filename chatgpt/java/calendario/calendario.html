@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<h1 align="center">Calendario</h1>
+<p align="center"><img src="calendario.png" width="235" height="260" /></p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Arquivo: JavaTeste.java </strong></td>
+  </tr>
+  <tr>
+    <td> import javax.swing.*;<br />
+      import java.awt.*;<br />
+      import java.awt.event.*;<br />
+      import thiagoventurelli.dateutils.dateedit.*;<br />
+      <br />
+      public class JavaTeste extends JFrame {<br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public JavaTeste() {<br />
+      &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;JFrame frame = new JFrame(&quot;DateUtils - 0.9&quot;); <br />
+      &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;frame.setLocation(500, 200); <br />
+      <br />
+      // ----------------<br />
+      // Calendario<br />
+      // ----------------<br />
+      &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;DateEdit dateEdit = new DateEdit( frame ); <br />
+      // ----------------<br />
+      <br />
+      &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;frame.setContentPane( dateEdit ); <br />
+      &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;frame.pack(); <br />
+      &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;frame.setVisible( true ); <br />
+      &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );<br />
+      &nbsp;&nbsp; &nbsp;}<br />
+      &nbsp;&nbsp; public static void main(String[] args) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; new JavaTeste();<br />
+      &nbsp;&nbsp; }<br />
+    } </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Arquivo: dateutils-0.9.jar</strong></td>
+  </tr>
+  <tr>
+    <td><a href="dateutils-0.9.jar" target="_blank">&lt;&lt;dateutils-0.9.jar&gt;&gt;</a></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Arquivo: java-comp.bat</strong></td>
+  </tr>
+  <tr>
+    <td>javac -classpath dateutils-0.9.jar; JavaTeste.java</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Arquivo: java-exec.bat</strong></td>
+  </tr>
+  <tr>
+    <td>java -classpath dateutils-0.9.jar; JavaTeste</td>
+  </tr>
+</table>
+<p>&nbsp; </p>
+</body>
+</html>

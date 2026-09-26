@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Data em Clipper</title>
+</head>
+
+<body>
+<h1 align="center">Data em Clipper </h1>
+<h1 align="center">Manipulando datas e horas</h1>
+<p>Existe apenas uma fun&ccedil;&atilde;o para que se possa obter a data e a hora. &Eacute; a fun&ccedil;&atilde;o&nbsp;<strong>Date()</strong>. Esta fun&atilde;o devolve data e hora no formanto: Dia da semana, Nome do m&ecirc;s, Dia do m&ecirc;s, Hora:Minuto:Segundo e Ano</p>
+<p>Para se obter os dados separadamente, existem os seguintes m&eacute;todos:</p>
+<ul>
+  <li>SET CENTURY ON<br />
+SET DATE BRITISH<br />
+DataToda=Date()<br />&nbsp;</li>
+  <li>Dia_do_mes=Day(DataToda) // Retorna o dia do m&ecirc;s (inteiro entre 1 e 31)<br />
+  </li>
+  <li>Dia_da_semana=Dow(DataToda) // Retorna o dia da semana (1=Domingo, 2=Segunda-feira,... , 7=S&aacute;bado)<br />
+  </li>
+  <li>Mes=Month(DataToda) // Retorna o m&ecirc;s (entre 0=Janeiro e 11=Dezembro)<br />&nbsp;    </li>
+  <li>SET CENTURY ON&nbsp;// resultado: DD/MM/AAAA<br />
+    Ano=Year(DataToda) // Retorna o ano com quatro d&iacute;gitos (o mais usado)<br />&nbsp;    </li>
+  <li>SET CENTURY OFF // resultado: DD/MM/AA<br />
+    Ano=Year(DataToda) // Retorna o ano com 2 d&iacute;gitos.</li>
+</ul>
+<hr />
+<ul>
+  <li>TIME( ) // Devolver a hora do sistema.<br />&nbsp;
+  </li>
+  <li>tempo = seconds() // Devolver a quantidade em segundos da hora atual do sistema.<br />
+&nbsp;  </li>
+  <li>Horas=int(tempo/(60*60)) // Retorna a hora do dia (entre 0 e 23)<br />
+    </li>
+  <li>Minutos=int(tempo/60)-(Horas*60) // Retorna os minutos dentro da hora (entre 0 e 59)<br />
+    </li>
+  <li>Segundos=int(tempo)-(Horas*60*60)-(Minutos*60) // Retorna os segundos (entre 0 e 59)</li>
+</ul>
+<hr />
+<p>No&nbsp;<strong>exemplo 1</strong>&nbsp;abaixo obteremos o dia da semana e as horas. Para tal, utilizaremos a vari&aacute;vel&nbsp;<strong>DataToda</strong>&nbsp;para armazenar data e hora.</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Exemplo 1</strong> </td>
+  </tr>
+  <tr>
+    <td><p>SET CENTURY ON<br />
+      SET DATE BRITISH<br />
+      DataToda=Date()<br />
+      Dia_do_mes=Day(DataToda)<br />
+      Dia_da_semana=Dow(DataToda)<br />
+      Mes=Month(DataToda)<br />
+      Ano=Year(DataToda)<br />
+      // ---------------------------------------<br />
+      tempo = seconds()<br />
+      Horas=int(tempo/(60*60))<br />
+      Minutos=int(tempo/60)-(Horas*60)<br />
+      Segundos=int(tempo)-(Horas*60*60)-(Minutos*60)<br />
+      // ---------------------------------------<br />
+      declare semana[7]<br />
+      semana[1]=&quot;Domingo&quot;<br />
+      semana[2]=&quot;Segunda&quot;<br />
+      semana[3]=&quot;Ter&ccedil;a&quot;<br />
+      semana[4]=&quot;Quarta&quot;<br />
+      semana[5]=&quot;Quinta&quot;<br />
+      semana[6]=&quot;Sexta&quot;<br />
+      semana[7]=&quot;Sabado&quot;<br />
+      Semana_atual=semana[Dia_da_semana]<br />
+      //-------------------------<br />
+      declare Mes2[12]<br />
+      Mes2[1]=&quot;Janeiro&quot;<br />
+      Mes2[2]=&quot;Fevereiro&quot;<br />
+      Mes2[3]=&quot;Mar&ccedil;o&quot;<br />
+      Mes2[4]=&quot;Abril&quot;<br />
+      Mes2[5]=&quot;Maio&quot;<br />
+      Mes2[6]=&quot;Junho&quot;<br />
+      Mes2[7]=&quot;Julho&quot;<br />
+      Mes2[8]=&quot;Agosto&quot;<br />
+      Mes2[9]=&quot;Setembro&quot;<br />
+      Mes2[10]=&quot;Outubro&quot;<br />
+      Mes2[11]=&quot;Novembro&quot;<br />
+      Mes2[12]=&quot;Desembro&quot;<br />
+      Mes_atual=Mes2[Mes]<br />
+      ? Semana_atual,&quot;, &quot;,Dia_do_mes,&quot; de &quot;,Mes_atual,&quot; de &quot;,Ano<br />
+      ? &quot;Sao: &quot;,Horas,&quot; horas, &quot;,Minutos,&quot; minutos e &quot;,Segundos,&quot; segundos.&quot;</p>
+    </td>
+  </tr>
+</table>
+<p><strong>exemplo 2: alterando a data</strong></p>
+<p>Para criar uma vari&aacute;vel tipo Date com o conte&uacute;do informado pela aplica&ccedil;&atilde;o. Os mas importantes s&atilde;o:</p>
+<ul>
+  <li>SET CENTURY ON<br />
+SET DATE BRITISH<br />
+DataToda=CTOD(&quot;28/04/1997&quot;)<br />
+&nbsp;
+<br />
+</li>
+  <li>Dia_do_mes=Day(DataToda) // Coloca o dia do m&ecirc;s (valor entre 1 e 31)<br />
+  </li>
+  <li>Dia_da_semana=Dow(DataToda)  // coloca o dia da semana (1=Domingo, 2=Segunda-feira,... , 7=S&aacute;bado)<br />
+  </li>
+  <li>Mes=Month(DataToda) // coloca o m&ecirc;s (valor entre 1 e 12)<br />
+    </li>
+  <li>Ano=Year(DataToda) // coloca os anos (Exemplo 1970)</li>
+</ul>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Exemplo 2 </strong></td>
+  </tr>
+  <tr>
+    <td>SET CENTURY ON<br />
+      SET DATE BRITISH<br />
+      DataToda=CTOD(&quot;28/04/1997&quot;)<br />
+      Dia_do_mes=Day(DataToda)<br />
+      Dia_da_semana=Dow(DataToda)<br />
+      Mes=Month(DataToda)<br />
+      Ano=Year(DataToda)<br />
+      // ---------------------------------------<br />
+      declare semana[7]<br />
+      semana[1]=&quot;Domingo&quot;<br />
+      semana[2]=&quot;Segunda&quot;<br />
+      semana[3]=&quot;Ter&ccedil;a&quot;<br />
+      semana[4]=&quot;Quarta&quot;<br />
+      semana[5]=&quot;Quinta&quot;<br />
+      semana[6]=&quot;Sexta&quot;<br />
+      semana[7]=&quot;Sabado&quot;<br />
+      Semana_atual=semana[Dia_da_semana]<br />
+      //-------------------------<br />
+      declare Mes2[12]<br />
+      Mes2[1]=&quot;Janeiro&quot;<br />
+      Mes2[2]=&quot;Fevereiro&quot;<br />
+      Mes2[3]=&quot;Mar&ccedil;o&quot;<br />
+      Mes2[4]=&quot;Abril&quot;<br />
+      Mes2[5]=&quot;Maio&quot;<br />
+      Mes2[6]=&quot;Junho&quot;<br />
+      Mes2[7]=&quot;Julho&quot;<br />
+      Mes2[8]=&quot;Agosto&quot;<br />
+      Mes2[9]=&quot;Setembro&quot;<br />
+      Mes2[10]=&quot;Outubro&quot;<br />
+      Mes2[11]=&quot;Novembro&quot;<br />
+      Mes2[12]=&quot;Desembro&quot;<br />
+      Mes_atual=Mes2[Mes]<br />
+    ? Semana_atual,&quot;, &quot;,Dia_do_mes,&quot; de &quot;,Mes_atual,&quot; de &quot;,Ano</td>
+  </tr>
+</table>
+</body>
+</html>

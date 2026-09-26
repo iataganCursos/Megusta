@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Array em PHP</title>
+</head>
+
+<body>
+<h1 align="center">Array em PHP </h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>add</strong></td>
+  </tr>
+  <tr>
+    <td><p>&lt;?php<br />
+      $frutas = array(&quot;ma&ccedil;&atilde;&quot;, &quot;banana&quot;, &quot;laranja&quot;);</p>
+      <p>// Adicionando um elemento usando array_push()<br />
+        array_push($frutas, &quot;morango&quot;);</p>
+      <p>// Exibindo o array atualizado<br />
+        print_r($frutas);<br />
+        ?&gt;<br />
+    </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>size</strong></td>
+  </tr>
+  <tr>
+    <td><p>&lt;?php<br />
+      $frutas = array(&quot;ma&ccedil;&atilde;&quot;, &quot;banana&quot;, &quot;laranja&quot;);</p>
+      <p>// Obtendo o n&uacute;mero de elementos no array usando count()<br />
+        $tamanho = count($frutas);</p>
+      <p>// Exibindo o tamanho do array<br />
+        echo &quot;O tamanho do array &eacute;: &quot; . $tamanho;<br />
+        ?&gt;<br />
+      </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>get</strong></td>
+  </tr>
+  <tr>
+    <td><p>&lt;?php<br />
+      $frutas = array(&quot;ma&ccedil;&atilde;&quot;, &quot;banana&quot;, &quot;laranja&quot;);</p>
+      <p>// Acessando o primeiro elemento do array<br />
+        $primeiroElemento = $frutas[0];</p>
+      <p>// Exibindo o primeiro elemento<br />
+        echo &quot;O primeiro elemento &eacute;: &quot; . $primeiroElemento;<br />
+        ?&gt;<br />
+      </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>set</strong></td>
+  </tr>
+  <tr>
+    <td><p>&lt;?php<br />
+      $frutas = array(&quot;ma&ccedil;&atilde;&quot;, &quot;banana&quot;, &quot;laranja&quot;);</p>
+      <p>// Definindo um novo valor para o segundo elemento do array<br />
+        $frutas[1] = &quot;uva&quot;;</p>
+      <p>// Exibindo o array atualizado<br />
+        print_r($frutas);<br />
+        ?&gt;<br />
+      </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>remove</strong></td>
+  </tr>
+  <tr>
+    <td><p>&lt;?php<br />
+      $frutas = array(&quot;ma&ccedil;&atilde;&quot;, &quot;banana&quot;, &quot;laranja&quot;);</p>
+      <p>// Removendo o segundo elemento do array por &iacute;ndice (&iacute;ndice 1)<br />
+        unset($frutas[1]);</p>
+      <p>// Reindexando o array se desejado<br />
+        $frutas = array_values($frutas);</p>
+      <p>// Exibindo o array atualizado<br />
+        print_r($frutas);<br />
+        ?&gt;<br />
+      </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>clear</strong></td>
+  </tr>
+  <tr>
+    <td><p>&lt;?php<br />
+      $frutas = array(&quot;ma&ccedil;&atilde;&quot;, &quot;banana&quot;, &quot;laranja&quot;);</p>
+      <p>// Atribuindo um array vazio para limpar o array<br />
+        $frutas = array();</p>
+      <p>// Exibindo o array (agora vazio)<br />
+        print_r($frutas);<br />
+        ?&gt;<br />
+      </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>contains</strong></td>
+  </tr>
+  <tr>
+    <td><p>&lt;?php<br />
+      $frutas = array(&quot;ma&ccedil;&atilde;&quot;, &quot;banana&quot;, &quot;laranja&quot;);</p>
+      <p>// Verificando se &quot;banana&quot; est&aacute; presente no array<br />
+        if (in_array(&quot;banana&quot;, $frutas)) {<br />
+        echo &quot;O array cont&eacute;m banana.&quot;;<br />
+        } else {<br />
+        echo &quot;O array n&atilde;o cont&eacute;m banana.&quot;;<br />
+        }<br />
+        ?&gt;<br />
+      </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>toArray</strong></td>
+  </tr>
+  <tr>
+    <td><p> &lt;?php<br />
+      class Pessoa {<br />
+      &nbsp;&nbsp;&nbsp; public $nome;<br />
+      &nbsp;&nbsp;&nbsp; public $idade;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; public function __construct($nome, $idade) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $this-&gt;nome = $nome;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $this-&gt;idade = $idade;<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+      }<br />
+      <br />
+      $pessoa = new Pessoa(&quot;Jo&atilde;o&quot;, 25);<br />
+      <br />
+      // Convertendo o objeto para um array usando get_object_vars()<br />
+      $arrayPessoa = get_object_vars($pessoa);<br />
+      <br />
+      // Exibindo o array resultante<br />
+      print_r($arrayPessoa);<br />
+      ?&gt;<br />
+</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>indexOf</strong></td>
+  </tr>
+  <tr>
+    <td><p>&lt;?php<br />
+      $frutas = array(&quot;ma&ccedil;&atilde;&quot;, &quot;banana&quot;, &quot;laranja&quot;);</p>
+      <p>// Encontrando o &iacute;ndice do valor &quot;banana&quot; no array<br />
+        $indice = array_search(&quot;banana&quot;, $frutas);</p>
+      <p>if ($indice !== false) {<br />
+        echo &quot;O &iacute;ndice de 'banana' no array &eacute;: &quot; . $indice;<br />
+        } else {<br />
+        echo &quot;'banana' n&atilde;o encontrado no array.&quot;;<br />
+        }<br />
+        ?&gt;<br />
+      </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>lastIndexOf&nbsp;</strong></td>
+  </tr>
+  <tr>
+    <td><p>&lt;?php<br />
+      $frutas = array(&quot;ma&ccedil;&atilde;&quot;, &quot;banana&quot;, &quot;laranja&quot;, &quot;banana&quot;, &quot;uva&quot;);</p>
+      <p>// Encontrando a &uacute;ltima ocorr&ecirc;ncia de &quot;banana&quot; no array<br />
+        $reversedArray = array_reverse($frutas, true); // Revertendo o array preservando as chaves<br />
+        $ultimaOcorrencia = array_search(&quot;banana&quot;, $reversedArray);</p>
+      <p>if ($ultimaOcorrencia !== false) {<br />
+        echo &quot;A &uacute;ltima ocorr&ecirc;ncia de 'banana' no array &eacute; no &iacute;ndice: &quot; . $ultimaOcorrencia;<br />
+        } else {<br />
+        echo &quot;'banana' n&atilde;o encontrado no array.&quot;;<br />
+        }<br />
+        ?&gt;<br />
+      </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+
+</html>

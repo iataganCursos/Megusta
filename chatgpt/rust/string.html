@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="pt-br">
+ <head>
+   <meta charset="utf-8">
+<title>Strings em Rust</title>
+</head>
+
+<body>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>replace</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; let original = "Hoje é um lindo dia!";<br>
+&nbsp;&nbsp;&nbsp; let substituida = original.replace("lindo",
+"maravilhoso");<br>
+<br>
+&nbsp;&nbsp;&nbsp; println!("{}", substituida); // Saída: "Hoje é um
+maravilhoso dia!"<br>
+}</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>length</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp; &nbsp;let minha_string = "Olá, mundo!";<br>
+&nbsp;&nbsp; &nbsp;let tamanho = minha_string.len(); <br>
+<br>
+&nbsp;&nbsp; &nbsp;println!("O tamanho da string é: {}", tamanho); //
+Saída: "O tamanho da string é: 12"<br>
+}</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>substring</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp; &nbsp;let original = "Isso é uma String de exemplo.";<br>
+&nbsp;&nbsp; &nbsp;// Usando chars() para contar corretamente os
+caracteres<br>
+&nbsp;&nbsp; &nbsp;let sub: String = original.chars().skip(8 -
+1).take(13 - 8).collect();<br>
+<br>
+&nbsp;&nbsp; &nbsp;println!("{}", sub); // Saída: "uma S"<br>
+}</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>charAt </strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp; &nbsp;let minha_string = "Olá, mundo!";<br>
+<br>
+&nbsp;&nbsp; &nbsp;let primeiro_caractere =
+minha_string.chars().nth(0).unwrap(); // 'O'<br>
+&nbsp;&nbsp; &nbsp;let quinto_caractere =
+minha_string.chars().nth(4).unwrap(); // ' '<br>
+<br>
+&nbsp;&nbsp; &nbsp;println!("Primeiro caractere: {}",
+primeiro_caractere);<br>
+&nbsp;&nbsp; &nbsp;println!("Quinto caractere: {}", quinto_caractere);<br>
+}</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>indexOf</strong></td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF"><strong>C&oacute;digo em Java como compara&ccedil;&atilde;o: </strong></td>
+  </tr>
+  <tr>
+    <td>String minhaString = &quot;Isso &eacute; um exemplo de indexOf em Java.&quot;;<br />
+      int indice = minhaString.indexOf(&quot;exemplo&quot;);<br />
+    System.out.println(&quot;A substring 'exemplo' come&ccedil;a no &iacute;ndice: &quot; + indice); // Sa&iacute;da: &quot;A substring 'exemplo' come&ccedil;a no &iacute;ndice: 13&quot;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF"><strong>C&oacute;digo Rust </strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp; &nbsp;let minha_string = "Isso é um exemplo de indexOf em
+Java.";<br>
+<br>
+&nbsp;&nbsp; &nbsp;// Retorna posição em bytes<br>
+&nbsp;&nbsp; &nbsp;if let Some(indice_bytes) =
+minha_string.find("exemplo") {<br>
+// Converte de bytes para índice em caracteres<br>
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;let indice =
+minha_string[..indice_bytes].chars().count();<br>
+<br>
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;println!("A substring 'exemplo'
+começa no índice: {}", indice); <br>
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;// Saída: "A substring 'exemplo'
+começa no índice: 10"<br>
+&nbsp;&nbsp; &nbsp;} else {<br>
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;println!("Substring não
+encontrada.");<br>
+&nbsp;&nbsp; &nbsp;}<br>
+}</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>lastIndexOf</strong></td>
+  </tr>
+  <tr>
+    <td><p>fn last_index_of(s: &amp;str, pat: &amp;str) -&gt; isize {<br>
+  &nbsp;&nbsp;&nbsp; if let Some(i) = s.rfind(pat) {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; s[..i].chars().count() as
+      isize<br>
+  &nbsp;&nbsp;&nbsp; } else {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -1<br>
+  &nbsp;&nbsp;&nbsp; }<br>
+      }<br>
+  <br>
+      fn main() {<br>
+  &nbsp;&nbsp;&nbsp; let minha_string = "Isso é um exemplo de lastIndexOf
+      em Java. lastIndexOf é útil para encontrar a última ocorrência de uma
+      substring.";<br>
+  &nbsp;&nbsp;&nbsp; let indice = last_index_of(minha_string,
+  "lastIndexOf");<br>
+  <br>
+  &nbsp;&nbsp;&nbsp; println!("A última ocorrência de 'lastIndexOf'
+      começa no índice: {}", indice);<br>
+      &nbsp;&nbsp;&nbsp; // A última ocorrência de 'lastIndexOf' começa no índice: 42<br>
+    }</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>toLowerCase</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp; &nbsp;let minha_string = "ISSO É UMA STRING DE EXEMPLO.";<br>
+<br>
+&nbsp;&nbsp; &nbsp;println!("{}", minha_string); // Saída: "ISSO É UMA
+STRING DE EXEMPLO."<br>
+<br>
+let em_minusculas = minha_string.to_lowercase();<br>
+<br>
+&nbsp;&nbsp; &nbsp;println!("{}", em_minusculas); // Saída: "isso é uma
+string de exemplo."<br>
+}</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>toUpperCase </strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp; &nbsp;let minha_string = "Isso É Uma String De Exemplo.";<br>
+<br>
+&nbsp;&nbsp; &nbsp;println!("{}", minha_string); // Saída: "Isso É Uma
+String De Exemplo."<br>
+<br>
+&nbsp;&nbsp; &nbsp;let minha_string = "Isso É Uma String De Exemplo.";<br>
+&nbsp;&nbsp; &nbsp;let em_maiusculas = minha_string.to_uppercase();<br>
+<br>
+&nbsp;&nbsp; &nbsp;println!("{}", em_maiusculas); // Saída: "ISSO É UMA
+STRING DE EXEMPLO."<br>
+}</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>compareTo </strong></td>
+  </tr>
+  <tr>
+    <td><p>use std::cmp::Ordering;</p>
+      <p>#[warn(unused_imports)]</p>
+            fn compare_to(a: &amp;str, b: &amp;str) -&gt; i32 {<br>
+&nbsp;&nbsp;&nbsp; match a.cmp(b) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ordering::Less =&gt; -1,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ordering::Equal =&gt; 0,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ordering::Greater =&gt; 1,<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}<br>
+<br>
+fn main() {<br>
+&nbsp;&nbsp;&nbsp; let string1 = "abacate";<br>
+&nbsp;&nbsp;&nbsp; let string2 = "banana";<br>
+<br>
+&nbsp;&nbsp;&nbsp; let resultado = compare_to(string1, string2);<br>
+<br>
+&nbsp;&nbsp;&nbsp; if resultado &lt; 0 {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; println!("string1 é menor
+que string2");<br>
+&nbsp;&nbsp;&nbsp; } else if resultado == 0 {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; println!("string1 é igual a
+string2");<br>
+&nbsp;&nbsp;&nbsp; } else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; println!("string1 é maior
+que string2");<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>compareToIgnoreCase </strong></td>
+  </tr>
+  <tr>
+    <td><p>use std::cmp::Ordering;</p>
+      <p>#[warn(unused_imports)]<br>      
+        fn compare_to_ignore_case(a: &amp;str, b: &amp;str) -&gt; i32 {<br>
+&nbsp;&nbsp;&nbsp; match a.to_lowercase().cmp(&amp;b.to_lowercase()) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ordering::Less =&gt; -1,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ordering::Equal =&gt; 0,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ordering::Greater =&gt; 1,<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}<br>
+<br>
+fn main() {<br>
+&nbsp;&nbsp;&nbsp; let string1 = "maçã";<br>
+&nbsp;&nbsp;&nbsp; let string2 = "MaÇÃ";<br>
+<br>
+&nbsp;&nbsp;&nbsp; let resultado = compare_to_ignore_case(string1,
+string2);<br>
+<br>
+&nbsp;&nbsp;&nbsp; if resultado &lt; 0 {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; println!("string1 é menor
+que string2 (ignorando a diferença entre maiúsculas e minúsculas)");<br>
+&nbsp;&nbsp;&nbsp; } else if resultado == 0 {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; println!("string1 é igual a
+string2 (ignorando a diferença entre maiúsculas e minúsculas)");<br>
+&nbsp;&nbsp;&nbsp; } else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; println!("string1 é maior
+que string2 (ignorando a diferença entre maiúsculas e minúsculas)");<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>equals</strong></td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF"><strong>C&oacute;digo em Java como compara&ccedil;&atilde;o: </strong></td>
+  </tr>
+  <tr>
+    <td><p>String string1 = &quot;Ol&aacute;, mundo!&quot;;<br />
+      String string2 = &quot;Ol&aacute;, mundo!&quot;;<br />
+      String string3 = &quot;OLÁ, MUNDO!&quot;;</p>
+      <p>boolean saoIguais1 = string1.equals(string2); // Retorna true<br />
+        boolean saoIguais2 = string1.equals(string3); // Retorna false<br />
+      </p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF"><strong>C&oacute;digo em Rust </strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp; &nbsp;let string1 = "Olá, mundo!";<br>
+&nbsp;&nbsp; &nbsp;let string2 = "Olá, mundo!";<br>
+&nbsp;&nbsp; &nbsp;let string3 = "OLÁ, MUNDO!";<br>
+<br>
+&nbsp;&nbsp; &nbsp;let sao_iguais1 = string1 == string2; // true<br>
+&nbsp;&nbsp; &nbsp;let sao_iguais2 = string1 == string3; // false<br>
+<br>
+&nbsp;&nbsp; &nbsp;println!("string1 é igual a string2? {}",
+sao_iguais1);<br>
+&nbsp;&nbsp; &nbsp;println!("string1 é igual a string3? {}",
+sao_iguais2);<br>
+}</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>equalsIgnoreCase </strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp; &nbsp;let string1 = "Olá, mundo!";<br>
+&nbsp;&nbsp; &nbsp;let string2 = "OLÁ, MUNDO!";<br>
+<br>
+&nbsp;&nbsp; &nbsp;// Comparação ignorando maiúsculas/minúsculas
+(Unicode)<br>
+&nbsp;&nbsp; &nbsp;let sao_iguais = string1.to_lowercase() ==
+string2.to_lowercase();<br>
+<br>
+&nbsp;&nbsp; &nbsp;println!("As strings são iguais (ignorando
+maiúsculas/minúsculas)? {}", sao_iguais);<br>
+}</td>
+  </tr>
+</table>
+</body>
+</html>

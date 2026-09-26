@@ -1,0 +1,376 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Array em C</title>
+</head>
+
+<body>
+<h1 align="center">Array em C </h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>add</strong></td>
+  </tr>
+  <tr>
+    <td> #include &lt;stdio.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; int array[5] = {1, 2, 3, 4, 5};<br />
+      &nbsp;&nbsp;&nbsp; int newSize = 6;&nbsp; // Tamanho da nova array<br />
+      &nbsp;&nbsp;&nbsp; int newValue = 10; // Valor a ser adicionado<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; // Criar uma nova array tempor&aacute;ria com o tamanho desejado<br />
+      &nbsp;&nbsp;&nbsp; int newArray[newSize];<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; // Copiar elementos da array original para a nova array<br />
+      &nbsp;&nbsp;&nbsp; for (int i = 0; i &lt; 5; i++) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; newArray[i] = array[i];<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; // Adicionar o novo valor &agrave; nova array<br />
+      &nbsp;&nbsp;&nbsp; newArray[newSize - 1] = newValue;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; // Atualizar a array original com a nova array<br />
+      &nbsp;&nbsp;&nbsp; for (int i = 0; i &lt; newSize; i++) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; array[i] = newArray[i];<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; // Exibir a array resultante<br />
+      &nbsp;&nbsp;&nbsp; for (int i = 0; i &lt; newSize; i++) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;%d &quot;, array[i]);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+    }</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>size</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+        <br />
+        int main() {<br />
+        &nbsp;&nbsp;&nbsp; int array[] = {1, 2, 3, 4, 5};<br />
+        &nbsp;&nbsp;&nbsp; <br />
+        &nbsp;&nbsp;&nbsp; // Calcular o tamanho da array<br />
+        &nbsp;&nbsp;&nbsp; int tamanho = sizeof(array) / sizeof(array[0]);<br />
+        <br />
+        &nbsp;&nbsp;&nbsp; // Exibir o tamanho da array<br />
+        &nbsp;&nbsp;&nbsp; printf(&quot;O tamanho da array &eacute;: %d\n&quot;, tamanho);<br />
+        <br />
+        &nbsp;&nbsp;&nbsp; return 0;<br />
+        }<br />
+        <br />
+</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>get</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+        <br />
+        int main() {<br />
+        &nbsp;&nbsp;&nbsp; int array[] = {10, 20, 30, 40, 50};<br />
+        <br />
+        &nbsp;&nbsp;&nbsp; // Obter o terceiro elemento (&iacute;ndice 2) da array<br />
+        &nbsp;&nbsp;&nbsp; int elemento = array[2];<br />
+        <br />
+        &nbsp;&nbsp;&nbsp; // Exibir o elemento obtido<br />
+        &nbsp;&nbsp;&nbsp; printf(&quot;O terceiro elemento da array &eacute;: %d\n&quot;, elemento);<br />
+        <br />
+        &nbsp;&nbsp;&nbsp; return 0;<br />
+        }<br />
+        <br />
+</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>set</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+        <br />
+        int main() {<br />
+        &nbsp;&nbsp;&nbsp; int array[] = {10, 20, 30, 40, 50};<br />
+        <br />
+        &nbsp;&nbsp;&nbsp; // Exibir os elementos da array antes de modificar<br />
+        &nbsp;&nbsp;&nbsp; printf(&quot;Elementos da array antes da modifica&ccedil;&atilde;o: &quot;);<br />
+        &nbsp;&nbsp;&nbsp; for (int i = 0; i &lt; 5; i++) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;%d &quot;, array[i]);<br />
+        &nbsp;&nbsp;&nbsp; }<br />
+        <br />
+        &nbsp;&nbsp;&nbsp; // Modificar elementos da array<br />
+        &nbsp;&nbsp;&nbsp; array[0] = 100;<br />
+        &nbsp;&nbsp;&nbsp; array[2] = 300;<br />
+        <br />
+        &nbsp;&nbsp;&nbsp; // Exibir os elementos da array ap&oacute;s a modifica&ccedil;&atilde;o<br />
+        &nbsp;&nbsp;&nbsp; printf(&quot;\nElementos da array ap&oacute;s a modifica&ccedil;&atilde;o: &quot;);<br />
+        &nbsp;&nbsp;&nbsp; for (int i = 0; i &lt; 5; i++) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;%d &quot;, array[i]);<br />
+        &nbsp;&nbsp;&nbsp; }<br />
+        <br />
+        &nbsp;&nbsp;&nbsp; return 0;<br />
+        }<br />
+        <br />
+</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>remove</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+        <br />
+        int main() {<br />
+        &nbsp;&nbsp;&nbsp; int array[] = {10, 20, 30, 40, 50};<br />
+        &nbsp;&nbsp;&nbsp; int tamanho_original = sizeof(array) / sizeof(array[0]);<br />
+        &nbsp;&nbsp;&nbsp; int posicao_a_remover = 2;&nbsp; // Posi&ccedil;&atilde;o do elemento a ser removido<br />
+        <br />
+        &nbsp;&nbsp;&nbsp; // Verificar se a posi&ccedil;&atilde;o &eacute; v&aacute;lida<br />
+        &nbsp;&nbsp;&nbsp; if (posicao_a_remover &gt;= 0 &amp;&amp; posicao_a_remover &lt; tamanho_original) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int nova_array[tamanho_original - 1];<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int j = 0;<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Copiar elementos da array original para a nova array, excluindo o elemento a ser removido<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for (int i = 0; i &lt; tamanho_original; i++) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (i != posicao_a_remover) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nova_array[j] = array[i];<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; j++;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Atualizar a array original com a nova array<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for (int i = 0; i &lt; tamanho_original - 1; i++) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; array[i] = nova_array[i];<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Exibir a array ap&oacute;s a remo&ccedil;&atilde;o<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;Elementos da array ap&oacute;s a remo&ccedil;&atilde;o: &quot;);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for (int i = 0; i &lt; tamanho_original - 1; i++) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;%d &quot;, array[i]);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />
+        &nbsp;&nbsp;&nbsp; } else {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;Posi&ccedil;&atilde;o inv&aacute;lida para remo&ccedil;&atilde;o.\n&quot;);<br />
+        &nbsp;&nbsp;&nbsp; }<br />
+        <br />
+        &nbsp;&nbsp;&nbsp; return 0;<br />
+        }<br />
+        <br />
+</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>clear</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+      #include &lt;string.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; int array[] = {10, 20, 30, 40, 50};<br />
+      &nbsp;&nbsp;&nbsp; int tamanho = sizeof(array) / sizeof(array[0]);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; // Exibir a array antes de limpar<br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;Elementos da array antes da limpeza: &quot;);<br />
+      &nbsp;&nbsp;&nbsp; for (int i = 0; i &lt; tamanho; i++) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;%d &quot;, array[i]);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; // Limpar a array<br />
+      &nbsp;&nbsp;&nbsp; memset(array, 0, sizeof(array));<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; // Exibir a array ap&oacute;s a limpeza<br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;\nElementos da array ap&oacute;s a limpeza: &quot;);<br />
+      &nbsp;&nbsp;&nbsp; for (int i = 0; i &lt; tamanho; i++) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;%d &quot;, array[i]);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }<br />
+      <br />
+</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>contains</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+        <br />
+        // Fun&ccedil;&atilde;o para verificar se um valor est&aacute; presente na array<br />
+        int contains(int array[], int tamanho, int valor) {<br />
+        &nbsp;&nbsp;&nbsp; for (int i = 0; i &lt; tamanho; i++) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (array[i] == valor) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 1;&nbsp; // Valor encontrado<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />
+        &nbsp;&nbsp;&nbsp; }<br />
+        &nbsp;&nbsp;&nbsp; return 0;&nbsp; // Valor n&atilde;o encontrado<br />
+        }<br />
+        <br />
+        int main() {<br />
+        &nbsp;&nbsp;&nbsp; int array[] = {10, 20, 30, 40, 50};<br />
+        &nbsp;&nbsp;&nbsp; int tamanho = sizeof(array) / sizeof(array[0]);<br />
+        &nbsp;&nbsp;&nbsp; int valor_procurado = 30;<br />
+        <br />
+        &nbsp;&nbsp;&nbsp; // Verificar se o valor est&aacute; presente na array<br />
+        &nbsp;&nbsp;&nbsp; if (contains(array, tamanho, valor_procurado)) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;O valor %d est&aacute; presente na array.\n&quot;, valor_procurado);<br />
+        &nbsp;&nbsp;&nbsp; } else {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;O valor %d n&atilde;o est&aacute; presente na array.\n&quot;, valor_procurado);<br />
+        &nbsp;&nbsp;&nbsp; }<br />
+        <br />
+        &nbsp;&nbsp;&nbsp; return 0;<br />
+        }<br />
+        <br />
+</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>toArray</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+      #include &lt;stdlib.h&gt;<br />
+      <br />
+      // Fun&ccedil;&atilde;o para converter uma array para um novo array din&acirc;mico<br />
+      int* toArray(int array[], int tamanho) {<br />
+      &nbsp;&nbsp;&nbsp; int* novoArray = (int*)malloc(tamanho * sizeof(int));<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; if (novoArray != NULL) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for (int i = 0; i &lt; tamanho; i++) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; novoArray[i] = array[i];<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return novoArray;<br />
+      }<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; int arrayOriginal[] = {10, 20, 30, 40, 50};<br />
+      &nbsp;&nbsp;&nbsp; int tamanhoOriginal = sizeof(arrayOriginal) / sizeof(arrayOriginal[0]);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; // Converter a array original para um novo array din&acirc;mico<br />
+      &nbsp;&nbsp;&nbsp; int* novoArray = toArray(arrayOriginal, tamanhoOriginal);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; // Exibir o novo array din&acirc;mico<br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;Novo array din&acirc;mico: &quot;);<br />
+      &nbsp;&nbsp;&nbsp; for (int i = 0; i &lt; tamanhoOriginal; i++) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;%d &quot;, novoArray[i]);<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; // Liberar a mem&oacute;ria alocada para o novo array din&acirc;mico<br />
+      &nbsp;&nbsp;&nbsp; free(novoArray);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }<br />
+      <br />
+</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>indexOf</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+        <br />
+        // Fun&ccedil;&atilde;o para encontrar o &iacute;ndice de um valor na array<br />
+        int indexOf(int array[], int tamanho, int valor) {<br />
+        &nbsp;&nbsp;&nbsp; for (int i = 0; i &lt; tamanho; i++) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (array[i] == valor) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return i;&nbsp; // Retorna o &iacute;ndice se o valor for encontrado<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />
+        &nbsp;&nbsp;&nbsp; }<br />
+        &nbsp;&nbsp;&nbsp; return -1;&nbsp; // Retorna -1 se o valor n&atilde;o for encontrado<br />
+        }<br />
+        <br />
+        int main() {<br />
+        &nbsp;&nbsp;&nbsp; int array[] = {10, 20, 30, 40, 50};<br />
+        &nbsp;&nbsp;&nbsp; int tamanho = sizeof(array) / sizeof(array[0]);<br />
+        &nbsp;&nbsp;&nbsp; int valor_procurado = 30;<br />
+        <br />
+        &nbsp;&nbsp;&nbsp; // Encontrar o &iacute;ndice do valor na array<br />
+        &nbsp;&nbsp;&nbsp; int indice = indexOf(array, tamanho, valor_procurado);<br />
+        <br />
+        &nbsp;&nbsp;&nbsp; // Verificar se o valor foi encontrado e exibir o &iacute;ndice<br />
+        &nbsp;&nbsp;&nbsp; if (indice != -1) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;O valor %d foi encontrado no &iacute;ndice %d.\n&quot;, valor_procurado, indice);<br />
+        &nbsp;&nbsp;&nbsp; } else {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;O valor %d n&atilde;o foi encontrado na array.\n&quot;, valor_procurado);<br />
+        &nbsp;&nbsp;&nbsp; }<br />
+        <br />
+        &nbsp;&nbsp;&nbsp; return 0;<br />
+        }<br />
+        <br />
+</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>lastIndexOf</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+        <br />
+        // Fun&ccedil;&atilde;o para encontrar o &iacute;ndice da &uacute;ltima ocorr&ecirc;ncia de um valor na array<br />
+        int lastIndexOf(int array[], int tamanho, int valor) {<br />
+        &nbsp;&nbsp;&nbsp; for (int i = tamanho - 1; i &gt;= 0; i--) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (array[i] == valor) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return i;&nbsp; // Retorna o &iacute;ndice se o valor for encontrado<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />
+        &nbsp;&nbsp;&nbsp; }<br />
+        &nbsp;&nbsp;&nbsp; return -1;&nbsp; // Retorna -1 se o valor n&atilde;o for encontrado<br />
+        }<br />
+        <br />
+        int main() {<br />
+        &nbsp;&nbsp;&nbsp; int array[] = {10, 20, 30, 40, 30, 50};<br />
+        &nbsp;&nbsp;&nbsp; int tamanho = sizeof(array) / sizeof(array[0]);<br />
+        &nbsp;&nbsp;&nbsp; int valor_procurado = 30;<br />
+        <br />
+        &nbsp;&nbsp;&nbsp; // Encontrar o &iacute;ndice da &uacute;ltima ocorr&ecirc;ncia do valor na array<br />
+        &nbsp;&nbsp;&nbsp; int indice = lastIndexOf(array, tamanho, valor_procurado);<br />
+        <br />
+        &nbsp;&nbsp;&nbsp; // Verificar se o valor foi encontrado e exibir o &iacute;ndice<br />
+        &nbsp;&nbsp;&nbsp; if (indice != -1) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;A &uacute;ltima ocorr&ecirc;ncia do valor %d foi encontrada no &iacute;ndice %d.\n&quot;, valor_procurado, indice);<br />
+        &nbsp;&nbsp;&nbsp; } else {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;O valor %d n&atilde;o foi encontrado na array.\n&quot;, valor_procurado);<br />
+        &nbsp;&nbsp;&nbsp; }<br />
+        <br />
+        &nbsp;&nbsp;&nbsp; return 0;<br />
+        }<br />
+        <br />
+</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+
+</html>

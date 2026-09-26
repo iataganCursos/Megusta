@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-br">
+ <head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Campo Print e Campo Input</title>
+</head>
+
+<body>
+<h1 align="center">Campo Print e Campo Input</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Arquivo: Exemplo.py</strong></td>
+  </tr>
+  <tr>
+    <td>def x_print(message: str):<br>
+&nbsp;&nbsp;&nbsp; print(message, end="")&nbsp; # Sem quebra de linha<br>
+<br>
+def x_println(message: str):<br>
+&nbsp;&nbsp;&nbsp; print(message)&nbsp; # Com quebra de linha<br>
+<br>
+def x_input(prompt: str) -&gt; str:<br>
+&nbsp;&nbsp;&nbsp; return input(prompt)<br>
+<br>
+x_print("Esta eh uma mensagem de exemplo.")<br>
+<br>
+x_println("Esta eh uma mensagem de exemplo.")<br>
+<br>
+nome = x_input("Qual eh o seu nome? ")<br>
+x_println("Olah, " + nome + "!")<br></td>
+  </tr>
+</table>
+</body>
+</html>
+

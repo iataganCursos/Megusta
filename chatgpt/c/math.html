@@ -1,0 +1,919 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Fun&ccedil;&otilde;es Matem&aacute;ticas em C</title>
+<style type="text/css">
+<!--
+.style1 {color: #FFFFFF}
+.style2 {
+	font-size: 50px;
+	font-weight: bold;
+}
+-->
+</style>
+</head>
+
+<body>
+<p align="center" class="style2">Fun&ccedil;&otilde;es Matem&aacute;ticas em C </p>
+<h1 align="center">Convertendo String para Num&eacute;rica</h1>
+<h1 align="center">N&uacute;meros Inteiros</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Long.parseLong</strong></td>
+  </tr>
+  <tr>
+    <td><p><br />
+      #include &lt;stdio.h&gt;<br />
+      #include &lt;stdlib.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; char numeroEmString[] = &quot;12345&quot;;<br />
+      &nbsp;&nbsp; &nbsp;<br />
+      &nbsp;&nbsp;&nbsp; // Convertendo a string para long<br />
+      &nbsp;&nbsp;&nbsp; long numeroEmLong = strtol(numeroEmString, NULL, 10);<br />
+      &nbsp;&nbsp; &nbsp;<br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;N&uacute;mero em long: %ld\n&quot;, numeroEmLong);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }</p>
+    </td>
+  </tr>
+</table>
+<h1 align="center">N&uacute;meros Reais</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Double.parseDouble</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+      #include &lt;stdlib.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; char numeroEmString[] = &quot;3.14&quot;;<br />
+      &nbsp;&nbsp;&nbsp; <br />
+      &nbsp;&nbsp;&nbsp; // Convertendo a string para double<br />
+      &nbsp;&nbsp;&nbsp; double numeroEmDouble = strtod(numeroEmString, NULL);<br />
+      &nbsp;&nbsp;&nbsp; <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;N&uacute;mero em double: %f\n&quot;, numeroEmDouble);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }</p>
+    </td>
+  </tr>
+</table>
+<h1 align="center">Boleanos</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Boolean.parseBoolean</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+      #include &lt;string.h&gt;<br />
+      #include &lt;stdbool.h&gt;<br />
+      <br />
+      bool parseBoolean(const char *str) {<br />
+      &nbsp;&nbsp;&nbsp; // Comparando a string com valores que representam verdadeiro<br />
+      &nbsp;&nbsp;&nbsp; // (case insensitive)<br />
+      &nbsp;&nbsp;&nbsp; return (strcasecmp(str, &quot;true&quot;) == 0 || strcmp(str, &quot;1&quot;) == 0);<br />
+      }<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; char boolStr[] = &quot;true&quot;;<br />
+      &nbsp;&nbsp;&nbsp; <br />
+      &nbsp;&nbsp;&nbsp; // Convertendo a string para booleano<br />
+      &nbsp;&nbsp;&nbsp; bool resultado = parseBoolean(boolStr);<br />
+      &nbsp;&nbsp;&nbsp; <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;Resultado: %s\n&quot;, resultado ? &quot;true&quot; : &quot;false&quot;);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }</p>
+    </td>
+  </tr>
+</table>
+<h1 align="center">Arredondando valores</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.floor</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+      #include &lt;math.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; double numero = 5.78;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; // Arredondando para baixo usando floor<br />
+      &nbsp;&nbsp;&nbsp; double numeroArredondado = floor(numero);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;N&uacute;mero original: %f\n&quot;, numero);<br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;N&uacute;mero arredondado para baixo: %f\n&quot;, numeroArredondado);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }</p>
+    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.ceil</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+      #include &lt;math.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; double numero = 5.78;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; // Arredondando para cima usando ceil<br />
+      &nbsp;&nbsp;&nbsp; double numeroArredondado = ceil(numero);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;N&uacute;mero original: %f\n&quot;, numero);<br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;N&uacute;mero arredondado para cima: %f\n&quot;, numeroArredondado);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }</p>
+    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.round</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+      #include &lt;math.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; double numero = 5.78;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; // Arredondando para o inteiro mais pr&oacute;ximo usando round<br />
+      &nbsp;&nbsp;&nbsp; double numeroArredondado = round(numero);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;N&uacute;mero original: %f\n&quot;, numero);<br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;N&uacute;mero arredondado para o inteiro mais pr&oacute;ximo: %f\n&quot;, numeroArredondado);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }</p>
+    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.trunc</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+      #include &lt;math.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; double numero = 5.78;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; // Truncando o n&uacute;mero para a parte inteira usando trunc<br />
+      &nbsp;&nbsp;&nbsp; double numeroTruncado = trunc(numero);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;N&uacute;mero original: %f\n&quot;, numero);<br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;N&uacute;mero truncado para a parte inteira: %f\n&quot;, numeroTruncado);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }</p>
+    </td>
+  </tr>
+  <tr></tr>
+</table>
+<h1 align="center">Digite um n&uacute;mero com 3 casas decimais</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC">&nbsp;</td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+        <br />
+        int main() {<br />
+        &nbsp;&nbsp;&nbsp; double numero = 5.789;<br />
+        <br />
+        &nbsp;&nbsp;&nbsp; // Imprimir o n&uacute;mero com tr&ecirc;s casas decimais<br />
+        &nbsp;&nbsp;&nbsp; printf(&quot;N&uacute;mero com tr&ecirc;s casas decimais: %.3f\n&quot;, numero);<br />
+        <br />
+        &nbsp;&nbsp;&nbsp; return 0;<br />
+        }</p>
+    </td>
+  </tr>
+</table>
+<h1 align="center">Formatar moeda</h1>
+<p align="center">Conversor de moeda em C n&atilde;o existe! </p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>toLocaleString</strong></td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF"><p> #include &lt;stdio.h&gt;<br />
+      #include &lt;locale.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; setlocale(LC_ALL, &quot;Portuguese_Brazil&quot;);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; double valor = 1234.56;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;Valor formatado: R$ %.2f\n&quot;, valor);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }</p>
+      </td>
+  </tr>
+</table>
+<h1 align="center">Fun&ccedil;&otilde;es matem&aacute;ticas comuns</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.random</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+      #include &lt;stdlib.h&gt;<br />
+      #include &lt;time.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; // Define a semente para a fun&ccedil;&atilde;o rand usando o tempo atual<br />
+      &nbsp;&nbsp;&nbsp; srand((unsigned int)time(NULL));<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; // Gera um n&uacute;mero aleat&oacute;rio no intervalo [0, 1)<br />
+      &nbsp;&nbsp;&nbsp; double numeroAleatorio = (double)rand() / RAND_MAX;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;N&uacute;mero aleat&oacute;rio: %f\n&quot;, numeroAleatorio);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }</p>    </td>
+  </tr>
+  <tr>
+    <td> double numeroAleatorioNoIntervalo(double min, double max) {<br />
+      &nbsp;&nbsp;&nbsp; return min + ((double)rand() / RAND_MAX) * (max - min);<br />
+    }</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.abs</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+      #include &lt;math.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; double numero = -5.67;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; // Valor absoluto para n&uacute;meros de ponto flutuante<br />
+      &nbsp;&nbsp;&nbsp; double absoluto = fabs(numero);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;O valor absoluto de %f &eacute; %f\n&quot;, numero, absoluto);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }</p>    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.max</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+      #include &lt;stdarg.h&gt;<br />
+      <br />
+      int maximo(int quantidade, ...) {<br />
+      &nbsp;&nbsp;&nbsp; va_list args;<br />
+      &nbsp;&nbsp;&nbsp; va_start(args, quantidade);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; int max = va_arg(args, int);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; for (int i = 1; i &lt; quantidade; ++i) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int valor = va_arg(args, int);<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (valor &gt; max) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; max = valor;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; va_end(args);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return max;<br />
+      }<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; int maximoValor = maximo(5, 10, 30, 5, 25, 15);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;O m&aacute;ximo &eacute;: %d\n&quot;, maximoValor);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }</p>      </td>
+  </tr>
+  <tr>
+    <td>int maximoEntreTres = Math.max(Math.max(numero1, numero2), numero3);</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.min</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+      #include &lt;stdarg.h&gt;<br />
+      <br />
+      int minimo(int quantidade, ...) {<br />
+      &nbsp;&nbsp;&nbsp; va_list args;<br />
+      &nbsp;&nbsp;&nbsp; va_start(args, quantidade);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; int min = va_arg(args, int);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; for (int i = 1; i &lt; quantidade; ++i) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int valor = va_arg(args, int);<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (valor &lt; min) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; min = valor;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; va_end(args);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return min;<br />
+      }<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; int minimoValor = minimo(5, 10, 30, 5, 25, 15);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;O m&iacute;nimo &eacute;: %d\n&quot;, minimoValor);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }</p>    </td>
+  </tr>
+  <tr>
+    <td> int minimoEntreTres = Math.min(Math.min(numero1, numero2), numero3);</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.pow</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+      #include &lt;math.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; double base = 2.0;<br />
+      &nbsp;&nbsp;&nbsp; double expoente = 3.0;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; // Calculando a pot&ecirc;ncia usando pow<br />
+      &nbsp;&nbsp;&nbsp; double resultado = pow(base, expoente);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;%f elevado a %f &eacute; igual a %f\n&quot;, base, expoente, resultado);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }</p>    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.sqrt</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+      #include &lt;math.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; double numero = 25.0;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; // Calculando a raiz quadrada usando sqrt<br />
+      &nbsp;&nbsp;&nbsp; double raizQuadrada = sqrt(numero);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;A raiz quadrada de %f &eacute; %f\n&quot;, numero, raizQuadrada);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }</p>        </td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.SQRT1_2</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+      #include &lt;math.h&gt;<br />
+      <br />
+      #define SQRT1_2 (sqrt(1.0 / 2.0))<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;A raiz quadrada de 1/2 &eacute; %f\n&quot;, SQRT1_2);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }</p>    </td>
+  </tr>
+  <tr>
+    <td>public static final double SQRT1_2 = 0.7071067811865476;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.SQRT2</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+      #include &lt;math.h&gt;<br />
+      <br />
+      #define SQRT2 (sqrt(2.0))<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;A raiz quadrada de 2 &eacute; %f\n&quot;, SQRT2);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }</p>    </td>
+  </tr>
+  <tr>
+    <td>public static final double SQRT2 = 1.4142135623730951;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.cbrt</strong></td>
+  </tr>
+  <tr>
+    <td> #include &lt;stdio.h&gt;<br />
+      #include &lt;math.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; double numero = 27.0;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; // Calculando a raiz c&uacute;bica usando cbrt<br />
+      &nbsp;&nbsp;&nbsp; double raizCubica = cbrt(numero);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;A raiz c&uacute;bica de %f &eacute; %f\n&quot;, numero, raizCubica);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+    }</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.sign</strong></td>
+  </tr>
+  <tr>
+    <td> #include &lt;stdio.h&gt;<br />
+      <br />
+      int sign(int numero) {<br />
+      &nbsp;&nbsp;&nbsp; if (numero &gt; 0) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 1;<br />
+      &nbsp;&nbsp;&nbsp; } else if (numero &lt; 0) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return -1;<br />
+      &nbsp;&nbsp;&nbsp; } else {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 0;<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+      }<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; int numero = -42;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; int sinal = sign(numero);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;O sinal de %d &eacute; %d\n&quot;, numero, sinal);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+    }</td>
+  </tr>
+</table>
+<h1 align="center">Fun&ccedil;&otilde;es trigonom&eacute;tricas</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.PI</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+      #include &lt;math.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; // Obtendo o valor de pi usando M_PI<br />
+      &nbsp;&nbsp;&nbsp; double pi = M_PI;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;O valor de pi &eacute; aproximadamente %f\n&quot;, pi);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }</p>    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#000000"><span class="style1">function radianos(){<br />
+      return Math.PI/180<br />
+    }</span></td>
+  </tr>
+  <tr>
+    <td> #include &lt;stdio.h&gt;<br />
+      #include &lt;math.h&gt;<br />
+      <br />
+      double radianos() {<br />
+      &nbsp;&nbsp;&nbsp; return M_PI / 180.0;<br />
+      }<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; // Utilizando a fun&ccedil;&atilde;o radianos para converter 45 graus para radianos<br />
+      &nbsp;&nbsp;&nbsp; double graus = 45.0;<br />
+      &nbsp;&nbsp;&nbsp; double radianos_valor = graus * radianos();<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;%f graus &eacute; aproximadamente %f radianos\n&quot;, graus, radianos_valor);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+    }</td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.sin</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+      #include &lt;math.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; // Calculando o seno de 45 graus (convertido para radianos)<br />
+      &nbsp;&nbsp;&nbsp; double angulo_em_graus = 45.0;<br />
+      &nbsp;&nbsp;&nbsp; double angulo_em_radianos = angulo_em_graus * (M_PI / 180.0);<br />
+      &nbsp;&nbsp;&nbsp; double resultado_seno = sin(angulo_em_radianos);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;O seno de %f graus &eacute; aproximadamente %f\n&quot;, angulo_em_graus, resultado_seno);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }</p>      </td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.cos</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+      #include &lt;math.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; // Calculando o cosseno de 60 graus (convertido para radianos)<br />
+      &nbsp;&nbsp;&nbsp; double angulo_em_graus = 60.0;<br />
+      &nbsp;&nbsp;&nbsp; double angulo_em_radianos = angulo_em_graus * (M_PI / 180.0);<br />
+      &nbsp;&nbsp;&nbsp; double resultado_cosseno = cos(angulo_em_radianos);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;O cosseno de %f graus &eacute; aproximadamente %f\n&quot;, angulo_em_graus, resultado_cosseno);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }</p>      </td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.tan</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+      #include &lt;math.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; // Calculando a tangente de 30 graus (convertido para radianos)<br />
+      &nbsp;&nbsp;&nbsp; double angulo_em_graus = 30.0;<br />
+      &nbsp;&nbsp;&nbsp; double angulo_em_radianos = angulo_em_graus * (M_PI / 180.0);<br />
+      &nbsp;&nbsp;&nbsp; double resultado_tangente = tan(angulo_em_radianos);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;A tangente de %f graus &eacute; aproximadamente %f\n&quot;, angulo_em_graus, resultado_tangente);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }</p>      </td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.asin</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+      #include &lt;math.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; // Calculando o arco seno de 0.5<br />
+      &nbsp;&nbsp;&nbsp; double valor = 0.5;<br />
+      &nbsp;&nbsp;&nbsp; double resultado_arco_seno = asin(valor);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;O arco seno de %f &eacute; aproximadamente %f radianos\n&quot;, valor, resultado_arco_seno);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }</p>      </td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.acos</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+      #include &lt;math.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; // Calculando o arco cosseno de 0.5<br />
+      &nbsp;&nbsp;&nbsp; double valor = 0.5;<br />
+      &nbsp;&nbsp;&nbsp; double resultado_arco_cosseno = acos(valor);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;O arco cosseno de %f &eacute; aproximadamente %f radianos\n&quot;, valor, resultado_arco_cosseno);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }</p>
+    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.atan</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+      #include &lt;math.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; // Calculando o arco tangente de 0.5<br />
+      &nbsp;&nbsp;&nbsp; double valor = 0.5;<br />
+      &nbsp;&nbsp;&nbsp; double resultado_arco_tangente = atan(valor);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;O arco tangente de %f &eacute; aproximadamente %f radianos\n&quot;, valor, resultado_arco_tangente);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }</p>
+      </td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.sinh</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+      #include &lt;math.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; // Calculando a fun&ccedil;&atilde;o hiperb&oacute;lica seno de 2.0<br />
+      &nbsp;&nbsp;&nbsp; double numero = 2.0;<br />
+      &nbsp;&nbsp;&nbsp; double resultado_sinh = sinh(numero);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;A fun&ccedil;&atilde;o hiperb&oacute;lica seno de %f &eacute; aproximadamente %f\n&quot;, numero, resultado_sinh);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }</p>
+      </td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.cosh</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+      #include &lt;math.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; // Calculando a fun&ccedil;&atilde;o hiperb&oacute;lica cosseno de 2.0<br />
+      &nbsp;&nbsp;&nbsp; double numero = 2.0;<br />
+      &nbsp;&nbsp;&nbsp; double resultado_cosh = cosh(numero);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;A fun&ccedil;&atilde;o hiperb&oacute;lica cosseno de %f &eacute; aproximadamente %f\n&quot;, numero, resultado_cosh);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }</p>
+      </td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.tanh</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+      #include &lt;math.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; // Calculando a fun&ccedil;&atilde;o hiperb&oacute;lica tangente de 2.0<br />
+      &nbsp;&nbsp;&nbsp; double numero = 2.0;<br />
+      &nbsp;&nbsp;&nbsp; double resultado_tanh = tanh(numero);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;A fun&ccedil;&atilde;o hiperb&oacute;lica tangente de %f &eacute; aproximadamente %f\n&quot;, numero, resultado_tanh);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }</p>
+      </td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.asinh</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+      #include &lt;math.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; // Calculando o arco seno hiperb&oacute;lico de 2.0<br />
+      &nbsp;&nbsp;&nbsp; double numero = 2.0;<br />
+      &nbsp;&nbsp;&nbsp; double resultado_asinh = asinh(numero);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;O arco seno hiperb&oacute;lico de %f &eacute; aproximadamente %f\n&quot;, numero, resultado_asinh);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }</p>
+      </td>
+  </tr>
+  <tr>
+    <td>asinh(x) = ln(x + sqrt(x^2 + 1))</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.acosh</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+      #include &lt;math.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; // Calculando o arco cosseno hiperb&oacute;lico de 2.0<br />
+      &nbsp;&nbsp;&nbsp; double numero = 2.0;<br />
+      &nbsp;&nbsp;&nbsp; double resultado_acosh = acosh(numero);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;O arco cosseno hiperb&oacute;lico de %f &eacute; aproximadamente %f\n&quot;, numero, resultado_acosh);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }</p>
+      </td>
+  </tr>
+  <tr>
+    <td>acosh(x) = ln(x + sqrt(x^2 - 1))</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.atanh</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+      #include &lt;math.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; // Calculando o arco tangente hiperb&oacute;lico de 0.5<br />
+      &nbsp;&nbsp;&nbsp; double numero = 0.5;<br />
+      &nbsp;&nbsp;&nbsp; double resultado_atanh = atanh(numero);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;O arco tangente hiperb&oacute;lico de %f &eacute; aproximadamente %f\n&quot;, numero, resultado_atanh);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }</p>
+      </td>
+  </tr>
+  <tr>
+    <td>atanh(x) = 0.5 * ln((1 + x) / (1 - x))</td>
+  </tr>
+</table>
+<h1 align="center">Logar&iacute;tmos</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.log</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+      #include &lt;math.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; double numero = 10.0;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; // Calculando o logaritmo natural usando log<br />
+      &nbsp;&nbsp;&nbsp; double resultadoLog = log(numero);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;O logaritmo natural de %f &eacute; %f\n&quot;, numero, resultadoLog);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }</p>    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.log10</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+      #include &lt;math.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; double numero = 100.0;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; // Calculando o logaritmo na base 10 usando log10<br />
+      &nbsp;&nbsp;&nbsp; double resultadoLog10 = log10(numero);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;O logaritmo na base 10 de %f &eacute; %f\n&quot;, numero, resultadoLog10);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }</p>
+    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.E</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+      #include &lt;math.h&gt;<br />
+      <br />
+      #define CONSTANTE_E exp(1.0)<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;A constante e &eacute; aproximadamente %f\n&quot;, CONSTANTE_E);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }</p>
+    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.LN2</strong></td>
+  </tr>
+  <tr>
+    <td> #include &lt;stdio.h&gt;<br />
+      #include &lt;math.h&gt;<br />
+      <br />
+      #define LN2 log(2.0)<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;O logaritmo natural de 2 &eacute; aproximadamente %f\n&quot;, LN2);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+    }</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.LOG2E</strong></td>
+  </tr>
+  <tr>
+    <td> #include &lt;stdio.h&gt;<br />
+      #include &lt;math.h&gt;<br />
+      <br />
+      #define LOG2E (log(2.0) / log(exp(1.0)))<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;A constante LOG2E &eacute; aproximadamente %f\n&quot;, LOG2E);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+    }</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.LN10</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+      #include &lt;math.h&gt;<br />
+      <br />
+      #define LN10 log10(10.0)<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;O logaritmo natural de 10 &eacute; aproximadamente %f\n&quot;, LN10);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }<br />
+      <br />
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.LOG10E</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+      #include &lt;math.h&gt;<br />
+      <br />
+      #define LOG10E (1.0 / log(10.0))<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;A constante LOG10E &eacute; aproximadamente %f\n&quot;, LOG10E);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }</p>
+    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.exp</strong></td>
+  </tr>
+  <tr>
+    <td> #include &lt;stdio.h&gt;<br />
+      #include &lt;math.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; double exponente = 2.0;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; // Calculando a exponencia&ccedil;&atilde;o usando exp<br />
+      &nbsp;&nbsp;&nbsp; double resultadoExponencial = exp(exponente);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;e elevado a %f &eacute; aproximadamente %f\n&quot;, exponente, resultadoExponencial);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+    }</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.log2</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+      #include &lt;math.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; double numero = 8.0;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; // Calculando o logaritmo na base 2 usando log2<br />
+      &nbsp;&nbsp;&nbsp; double resultadoLog2 = log2(numero);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;O logaritmo na base 2 de %f &eacute; aproximadamente %f\n&quot;, numero, resultadoLog2);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }</p>
+    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.log1p</strong></td>
+  </tr>
+  <tr>
+    <td><p> #include &lt;stdio.h&gt;<br />
+      #include &lt;math.h&gt;<br />
+      <br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp; double numero = 0.5;<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; // Calculando o logaritmo natural de 1 + n&uacute;mero usando log1p<br />
+      &nbsp;&nbsp;&nbsp; double resultadoLog1p = log1p(numero);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; printf(&quot;O logaritmo natural de 1 + %f &eacute; aproximadamente %f\n&quot;, numero, resultadoLog1p);<br />
+      <br />
+      &nbsp;&nbsp;&nbsp; return 0;<br />
+      }</p>
+    </td>
+  </tr>
+</table>
+<p></p>
+</body>
+</html>

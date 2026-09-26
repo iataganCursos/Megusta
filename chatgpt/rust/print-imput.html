@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-br">
+ <head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Campo Print e Campo Input</title>
+</head>
+
+<body>
+<h1 align="center">Campo Print e Campo Input</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Arquivo: Exemplo.rs</strong></td>
+  </tr>
+  <tr>
+    <td>use std::io::{self, Write};<br>
+<br>
+fn x_print(message: &amp;str) {<br>
+&nbsp;&nbsp;&nbsp; print!("{}", message); // Sem quebra de linha<br>
+&nbsp;&nbsp;&nbsp; io::stdout().flush().unwrap(); // Garante que a
+saida seja exibida imediatamente<br>
+}<br>
+<br>
+fn x_println(message: &amp;str) {<br>
+&nbsp;&nbsp;&nbsp; println!("{}", message); // Com quebra de linha<br>
+}<br>
+<br>
+fn x_input(prompt: &amp;str) -&gt; String {<br>
+&nbsp;&nbsp;&nbsp; x_print(prompt);<br>
+&nbsp;&nbsp;&nbsp; let mut input = String::new();<br>
+&nbsp;&nbsp;&nbsp; io::stdin().read_line(&amp;mut input).unwrap();<br>
+&nbsp;&nbsp;&nbsp; input.trim().to_string() // remove o \n do final<br>
+}<br>
+<br>
+fn main() {<br>
+&nbsp;&nbsp;&nbsp; x_print("Esta eh uma mensagem de exemplo.");<br>
+<br>
+&nbsp;&nbsp;&nbsp; x_println("Esta eh uma mensagem de exemplo.");<br>
+<br>
+&nbsp;&nbsp;&nbsp; let nome = x_input("Qual eh o seu nome? ");<br>
+&nbsp;&nbsp;&nbsp; x_println(&amp;format!("Olah, {}!", nome));<br>
+}</td>
+  </tr>
+</table>
+</body>
+</html>
+

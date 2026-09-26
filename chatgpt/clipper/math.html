@@ -1,0 +1,668 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Fun&ccedil;&otilde;es Matem&aacute;ticas em Clipper</title>
+<style type="text/css">
+<!--
+.style1 {color: #FFFFFF}
+.style2 {
+	font-size: 50px;
+	font-weight: bold;
+}
+-->
+</style>
+</head>
+
+<body>
+<p align="center" class="style2">Fun&ccedil;&otilde;es Matem&aacute;ticas em Clipper </p>
+<h1 align="center">Convertendo String para Num&eacute;rica</h1>
+<h1 align="center">N&uacute;meros Inteiros</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Long.parseLong</strong></td>
+  </tr>
+  <tr>
+    <td><p>numeroDecimal = 15.75<br />
+      parteInteira = Int(numeroDecimal)   // parteInteira receber&aacute; 15</p>
+    </td>
+  </tr>
+</table>
+<h1 align="center">N&uacute;meros Reais</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Double.parseDouble</strong></td>
+  </tr>
+  <tr>
+    <td><p>stringNumero = &quot;123.45&quot;<br />
+      numeroReal = Val(stringNumero)   // numeroReal receber&aacute; 123.45</p>
+    </td>
+  </tr>
+</table>
+<h1 align="center">Boleanos</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Boolean.parseBoolean</strong></td>
+  </tr>
+  <tr>
+    <td><p>// Fun&ccedil;&atilde;o para converter string em booleano<br />
+      FUNCTION StringToBoolean(cString)<br />
+LOCAL lResult</p>
+      <p> // Verifica se a string representa verdadeiro<br />
+        IF UPPER(cString) == &quot;T&quot;<br />
+        lResult = .T.   // Verdadeiro<br />
+        // Verifica se a string representa falso<br />
+        ELSEIF UPPER(cString) == &quot;F&quot;<br />
+        lResult = .F.   // Falso<br />
+        // Caso contr&aacute;rio, a string n&atilde;o &eacute; reconhecida como booleana<br />
+        ELSE<br />
+        lResult = .F.<br />
+        ENDIF</p>
+      <p> RETURN lResult</p></td>
+  </tr>
+  <tr>
+    <td><p>cStringVerdadeira = &quot;T&quot;<br />
+      cStringFalsa = &quot;F&quot;</p>
+      <p>lBooleanVerdadeiro = StringToBoolean(cStringVerdadeira)   // lBooleanVerdadeiro receber&aacute; .T.<br />
+    lBooleanFalso = StringToBoolean(cStringFalsa)             // lBooleanFalso receber&aacute; .F.</p></td>
+  </tr>
+</table>
+<h1 align="center">Arredondando valores</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.floor</strong></td>
+  </tr>
+  <tr>
+    <td><p>// Fun&ccedil;&atilde;o para arredondar para baixo (equivalente a Math.floor)<br />
+      FUNCTION Floor(nNumero)<br />
+RETURN Int(nNumero)</p>    </td>
+  </tr>
+  <tr>
+    <td>nNumeroOriginal = 10.75<br />
+    nNumeroArredondado = Floor(nNumeroOriginal)   // nNumeroArredondado receber&aacute; 10</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.ceil</strong></td>
+  </tr>
+  <tr>
+    <td><p>// Fun&ccedil;&atilde;o para arredondar para cima (equivalente a Math.ceil)<br />
+      FUNCTION Ceil(nNumero)<br />
+IF nNumero &gt; 0<br />
+RETURN Int(nNumero) + IIF(Frac(nNumero) &gt; 0, 1, 0)<br />
+ELSE<br />
+RETURN Int(nNumero)<br />
+ENDIF<br />
+<br />
+      </p>      </td>
+  </tr>
+  <tr>
+    <td>nNumeroOriginal = 10.25<br />
+    nNumeroArredondado = Ceil(nNumeroOriginal)   // nNumeroArredondado receber&aacute; 11</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.round</strong></td>
+  </tr>
+  <tr>
+    <td><p>// Fun&ccedil;&atilde;o para arredondamento (equivalente a Math.round)<br />
+      FUNCTION Round(nNumero)<br />
+LOCAL nDecimal</p>
+      <p> nDecimal = Frac(nNumero)</p>
+      <p> // Se a parte decimal for maior ou igual a 0.5, arredonda para cima<br />
+        IF nDecimal &gt;= 0.5<br />
+        RETURN Int(nNumero) + 1<br />
+        // Caso contr&aacute;rio, arredonda para baixo<br />
+        ELSE<br />
+        RETURN Int(nNumero)<br />
+        ENDIF</p>      </td>
+  </tr>
+  <tr>
+    <td>nNumeroOriginal = 10.75<br />
+    nNumeroArredondado = Round(nNumeroOriginal)   // nNumeroArredondado receber&aacute; 11</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.trunc</strong></td>
+  </tr>
+  <tr>
+    <td><p>// Fun&ccedil;&atilde;o para truncar (equivalente a Math.trunc)<br />
+      FUNCTION Trunc(nNumero)<br />
+RETURN Int(nNumero)<br />
+<br />
+      </p>      </td>
+  </tr>
+  <tr>
+    <td>nNumeroOriginal = 10.75<br />
+    nNumeroTruncado = Trunc(nNumeroOriginal)   // nNumeroTruncado receber&aacute; 10</td>
+  </tr>
+  <tr></tr>
+</table>
+<h1 align="center">Digite um n&uacute;mero com 3 casas decimais</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC">&nbsp;</td>
+  </tr>
+  <tr>
+    <td><p>// Fun&ccedil;&atilde;o para formatar n&uacute;mero com 3 casas decimais<br />
+      FUNCTION FormatNumero(nNumero)<br />
+LOCAL cNumeroFormatado</p>
+        <p> // Converte o n&uacute;mero em uma string<br />
+          cNumeroFormatado = Str(nNumero, 15, 3)</p>
+        <p> RETURN cNumeroFormatado</p>
+        <p>// Neste exemplo, Str(nNumero, 15, 3) converte o n&uacute;mero em uma string com no m&aacute;ximo 15 caracteres, incluindo 3 casas decimais. Este &eacute; apenas um exemplo b&aacute;sico, e voc&ecirc; pode precisar ajustar a fun&ccedil;&atilde;o conforme necess&aacute;rio, dependendo das suas necessidades espec&iacute;ficas.</p></td>
+  </tr>
+  <tr>
+    <td>nNumeroOriginal = 10.12345<br />
+    cNumeroFormatado = FormatNumero(nNumeroOriginal)   // cNumeroFormatado receber&aacute; &quot;   10.123&quot;</td>
+  </tr>
+</table>
+<h1 align="center">Formatar moeda</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>toLocaleString</strong></td>
+  </tr>
+  <tr>
+    <td><p>// Fun&ccedil;&atilde;o para formatar moeda brasileira<br />
+      FUNCTION FormatarMoeda(nValor)<br />
+LOCAL cMoedaFormatada</p>
+      <p> // Converte o n&uacute;mero em uma string formatada como moeda<br />
+        cMoedaFormatada = &quot;$ &quot; + LTrim(Str(nValor, 12, 2))</p>
+      <p> RETURN cMoedaFormatada</p>      </td>
+  </tr>
+  <tr>
+    <td>nValorOriginal = 1234.56<br />
+    cMoedaFormatada = FormatarMoeda(nValorOriginal)   // cMoedaFormatada receber&aacute; &quot;$     1,234.56&quot;</td>
+  </tr>
+</table>
+<h1 align="center">Fun&ccedil;&otilde;es matem&aacute;ticas comuns</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.random</strong></td>
+  </tr>
+  <tr>
+    <td><p>// Fun&ccedil;&atilde;o para gerar n&uacute;mero aleat&oacute;rio entre 0 e 1<br />
+      FUNCTION Random()<br />
+RETURN Rand() / 32767.0</p></td>
+  </tr>
+  <tr>
+    <td>nNumeroAleatorio = Random()  // nNumeroAleatorio receber&aacute; um valor entre 0 e 1</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.abs</strong></td>
+  </tr>
+  <tr>
+    <td><p>// Fun&ccedil;&atilde;o para calcular o valor absoluto<br />
+      FUNCTION Abs(nNumero)<br />
+IF nNumero &gt;= 0<br />
+RETURN nNumero<br />
+ELSE<br />
+RETURN -nNumero<br />
+ENDIF</p></td>
+  </tr>
+  <tr>
+    <td>nNumeroOriginal = -5<br />
+    nValorAbsoluto = Abs(nNumeroOriginal)  // nValorAbsoluto receber&aacute; 5</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.max</strong></td>
+  </tr>
+  <tr>
+    <td><p>// Fun&ccedil;&atilde;o para encontrar o valor m&aacute;ximo entre dois n&uacute;meros<br />
+      FUNCTION Max(nNumero1, nNumero2)<br />
+IF nNumero1 &gt; nNumero2<br />
+RETURN nNumero1<br />
+ELSE<br />
+RETURN nNumero2<br />
+ENDIF</p>      </td>
+  </tr>
+  <tr>
+    <td>nValor1 = 10<br />
+      nValor2 = 15<br />
+    nMaximo = Max(nValor1, nValor2)  // nMaximo receber&aacute; 15</td>
+  </tr>
+  <tr>
+    <td>int maximoEntreTres = Math.max(Math.max(numero1, numero2), numero3);</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.min</strong></td>
+  </tr>
+  <tr>
+    <td><p>// Fun&ccedil;&atilde;o para encontrar o valor m&iacute;nimo entre dois n&uacute;meros<br />
+      FUNCTION Min(nNumero1, nNumero2)<br />
+IF nNumero1 &lt; nNumero2<br />
+RETURN nNumero1<br />
+ELSE<br />
+RETURN nNumero2<br />
+ENDIF<br />
+<br />
+    </p>    </td>
+  </tr>
+  <tr>
+    <td>nValor1 = 10<br />
+      nValor2 = 15<br />
+    nMinimo = Min(nValor1, nValor2)  // nMinimo receber&aacute; 10</td>
+  </tr>
+  <tr>
+    <td> int minimoEntreTres = Math.min(Math.min(numero1, numero2), numero3);</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.pow</strong></td>
+  </tr>
+  <tr>
+    <td><p>// Fun&ccedil;&atilde;o para calcular pot&ecirc;ncia<br />
+      FUNCTION Pow(nBase, nExpoente)<br />
+LOCAL nResultado</p>
+      <p> nResultado = 1</p>
+      <p> FOR i = 1 TO nExpoente<br />
+        nResultado *= nBase<br />
+        NEXT i</p>
+      <p> RETURN nResultado</p>    </td>
+  </tr>
+  <tr>
+    <td>nBase = 2<br />
+      nExpoente = 3<br />
+    nResultado = Pow(nBase, nExpoente)  // nResultado receber&aacute; 8</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.sqrt</strong></td>
+  </tr>
+  <tr>
+    <td><p>// Fun&ccedil;&atilde;o para calcular a raiz quadrada<br />
+      FUNCTION Sqrt(nNumero)<br />
+RETURN nNumero ^ 0.5</p>        </td>
+  </tr>
+  <tr>
+    <td><p>nNumeroOriginal = 25<br />
+      nRaizQuadrada = Sqrt(nNumeroOriginal)  // nRaizQuadrada receber&aacute; 5</p>    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.SQRT1_2</strong></td>
+  </tr>
+  <tr>
+    <td><p>// Definindo a constante Math.SQRT1_2<br />
+      #DEFINE Math_SQRT1_2 0.7071067811865476</p>    </td>
+  </tr>
+  <tr>
+    <td>public static final double SQRT1_2 = 0.7071067811865476;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.SQRT2</strong></td>
+  </tr>
+  <tr>
+    <td><p>// Definindo a constante Math.SQRT2<br />
+      #DEFINE Math_SQRT2 1.414213562373095<br />
+      <br />
+    </p>    </td>
+  </tr>
+  <tr>
+    <td>public static final double SQRT2 = 1.4142135623730951;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.cbrt</strong></td>
+  </tr>
+  <tr>
+    <td><p>// Fun&ccedil;&atilde;o para calcular a raiz c&uacute;bica<br />
+      FUNCTION Cbrt(nNumero)<br />
+RETURN nNumero ^ (1.0 / 3.0)</p>    </td>
+  </tr>
+  <tr>
+    <td><p>nNumeroOriginal = 27<br />
+      nRaizCubica = Cbrt(nNumeroOriginal)  // nRaizCubica receber&aacute; 3</p>    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.sign</strong></td>
+  </tr>
+  <tr>
+    <td>// Fun&ccedil;&atilde;o para determinar o sinal de um n&uacute;mero<br />
+      FUNCTION Sign(nNumero)<br />
+IF nNumero &gt; 0<br />
+RETURN 1  // N&uacute;mero positivo<br />
+ELSEIF nNumero &lt; 0<br />
+RETURN -1  // N&uacute;mero negativo<br />
+ELSE<br />
+RETURN 0  // N&uacute;mero zero<br />
+ENDIF</td>
+  </tr>
+  <tr>
+    <td>nNumeroOriginal = -5<br />
+    nSinal = Sign(nNumeroOriginal)  // nSinal receber&aacute; -1</td>
+  </tr>
+</table>
+<h1 align="center">Fun&ccedil;&otilde;es trigonom&eacute;tricas</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.PI</strong></td>
+  </tr>
+  <tr>
+    <td><p>// Definindo a constante Math.PI<br />
+      #DEFINE Math_PI 3.141592653589793</p>    </td>
+  </tr>
+  <tr>
+    <td><p>import math</p>
+    <p>circunferencia = 2 * math.pi * raio</p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#000000"><span class="style1">function radianos(){<br />
+      return Math.PI/180<br />
+    }</span></td>
+  </tr>
+  <tr>
+    <td>// Fun&ccedil;&atilde;o para converter graus para radianos<br />
+      FUNCTION Radianos()<br />
+RETURN Pi() / 180</td>
+  </tr>
+  <tr>
+    <td>nAnguloGraus = 90<br />
+    nAnguloRadianos = nAnguloGraus * Radianos()  // nAnguloRadianos receber&aacute; aproximadamente 1.5707963267948966</td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.sin</strong></td>
+  </tr>
+  <tr>
+    <td><p>// Fun&ccedil;&atilde;o para converter graus para radianos<br />
+      FUNCTION Radianos()<br />
+RETURN Pi() / 180</p>      </td>
+  </tr>
+  <tr>
+    <td>// Fun&ccedil;&atilde;o para calcular o seno de um &acirc;ngulo em graus<br />
+      FUNCTION SenoGraus(nAnguloGraus)<br />
+RETURN Sin(nAnguloGraus * Radianos())</td>
+  </tr>
+  <tr>
+    <td>nAnguloGraus = 30<br />
+    nSeno = SenoGraus(nAnguloGraus)  // nSeno receber&aacute; aproximadamente 0.5</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.cos</strong></td>
+  </tr>
+  <tr>
+    <td>// Fun&ccedil;&atilde;o para converter graus para radianos<br />
+      FUNCTION Radianos()<br />
+RETURN Pi() / 180</td>
+  </tr>
+  <tr>
+    <td>// Fun&ccedil;&atilde;o para calcular o cosseno de um &acirc;ngulo em graus<br />
+      FUNCTION CossenoGraus(nAnguloGraus)<br />
+RETURN Cos(nAnguloGraus * Radianos())</td>
+  </tr>
+  <tr>
+    <td><p>nAnguloGraus = 60<br />
+      nCosseno = CossenoGraus(nAnguloGraus)  // nCosseno receber&aacute; aproximadamente 0.5</p>      </td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.tan</strong></td>
+  </tr>
+  <tr>
+    <td>// Fun&ccedil;&atilde;o para converter graus para radianos<br />
+      FUNCTION Radianos()<br />
+RETURN Pi() / 180</td>
+  </tr>
+  <tr>
+    <td>// Fun&ccedil;&atilde;o para calcular a tangente de um &acirc;ngulo em graus<br />
+      FUNCTION TangenteGraus(nAnguloGraus)<br />
+RETURN Tan(nAnguloGraus * Radianos())</td>
+  </tr>
+  <tr>
+    <td><p>inAnguloGraus = 45<br />
+      nTangente = TangenteGraus(nAnguloGraus)  // nTangente receber&aacute; aproximadamente 1</p>      </td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.asin</strong></td>
+  </tr>
+  <tr>
+    <td><p>// Fun&ccedil;&atilde;o para calcular o arco seno de um valor<br />
+      FUNCTION ArcoSeno(nValor)<br />
+RETURN Arcsin(nValor)</p>      </td>
+  </tr>
+  <tr>
+    <td>nValor = 0.5<br />
+    nArcoSeno = ArcoSeno(nValor)  // nArcoSeno receber&aacute; aproximadamente 0.5235987755982988</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.acos</strong></td>
+  </tr>
+  <tr>
+    <td><p>// Fun&ccedil;&atilde;o para calcular o arco cosseno de um valor<br />
+      FUNCTION ArcoCosseno(nValor)<br />
+RETURN Arccos(nValor)</p>    </td>
+  </tr>
+  <tr>
+    <td>nValor = 0.5<br />
+    nArcoCosseno = ArcoCosseno(nValor)  // nArcoCosseno receber&aacute; aproximadamente 1.0471975511965979</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.atan</strong></td>
+  </tr>
+  <tr>
+    <td><p>// Fun&ccedil;&atilde;o para calcular a arco tangente de um valor<br />
+      FUNCTION ArcoTangente(nValor)<br />
+RETURN Arctan(nValor)</p>      </td>
+  </tr>
+  <tr>
+    <td>nValor = 1<br />
+    nArcoTangente = ArcoTangente(nValor)  // nArcoTangente receber&aacute; aproximadamente 0.7853981633974483</td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.sinh</strong></td>
+  </tr>
+  <tr>
+    <td><p>// Fun&ccedil;&atilde;o para calcular o seno hiperb&oacute;lico de um n&uacute;mero<br />
+      FUNCTION SenoHiperbolico(nNumero)<br />
+RETURN (Exp(nNumero) - Exp(-nNumero)) / 2</p>      </td>
+  </tr>
+  <tr>
+    <td>nNumeroOriginal = 2<br />
+    nSenoHiperbolico = SenoHiperbolico(nNumeroOriginal)  // nSenoHiperbolico receber&aacute; aproximadamente 3.6268604078470186</td>
+  </tr>
+  <tr>
+    <td>(e^x - e^(-x)) / 2</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.cosh</strong></td>
+  </tr>
+  <tr>
+    <td><p>// Fun&ccedil;&atilde;o para calcular o cosseno hiperb&oacute;lico de um n&uacute;mero<br />
+      FUNCTION CossenoHiperbolico(nNumero)<br />
+RETURN (Exp(nNumero) + Exp(-nNumero)) / 2</p>      </td>
+  </tr>
+  <tr>
+    <td>nNumeroOriginal = 2<br />
+    nCossenoHiperbolico = CossenoHiperbolico(nNumeroOriginal)  // nCossenoHiperbolico receber&aacute; aproximadamente 3.7621956910836314</td>
+  </tr>
+  <tr>
+    <td>(e^x + e^(-x)) / 2</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.tanh</strong></td>
+  </tr>
+  <tr>
+    <td>// Fun&ccedil;&atilde;o para calcular a tangente hiperb&oacute;lica de um n&uacute;mero<br />
+      FUNCTION TangenteHiperbolica(nNumero)<br />
+RETURN (Exp(nNumero) - Exp(-nNumero)) / (Exp(nNumero) + Exp(-nNumero))</td>
+  </tr>
+  <tr>
+    <td>nNumeroOriginal = 1<br />
+    nTangenteHiperbolica = TangenteHiperbolica(nNumeroOriginal)  // nTangenteHiperbolica receber&aacute; aproximadamente 0.7615941559557649</td>
+  </tr>
+  <tr>
+    <td>(e^x - e^(-x)) / (e^x + e^(-x))</td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.asinh</strong></td>
+  </tr>
+  <tr>
+    <td><p>// Fun&ccedil;&atilde;o para calcular o arco seno hiperb&oacute;lico inverso de um n&uacute;mero<br />
+      FUNCTION ArcoSenoHiperbolicoInverso(nNumero)<br />
+RETURN Log(nNumero + Sqrt(nNumero^2 + 1))</p>      </td>
+  </tr>
+  <tr>
+    <td>nNumeroOriginal = 1.5<br />
+      nArcoSenoHiperbolicoInverso = ArcoSenoHiperbolicoInverso(nNumeroOriginal)<br />
+    // nArcoSenoHiperbolicoInverso receber&aacute; aproximadamente 0.9624236501192069</td>
+  </tr>
+  <tr>
+    <td>asinh(x) = ln(x + sqrt(x^2 + 1))</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.acosh</strong></td>
+  </tr>
+  <tr>
+    <td><p>// Fun&ccedil;&atilde;o para calcular o arco cosseno hiperb&oacute;lico inverso de um n&uacute;mero<br />
+      FUNCTION ArcoCossenoHiperbolicoInverso(nNumero)<br />
+RETURN Log(nNumero + Sqrt(nNumero^2 - 1))</p>      </td>
+  </tr>
+  <tr>
+    <td>nNumeroOriginal = 2<br />
+      nArcoCossenoHiperbolicoInverso = ArcoCossenoHiperbolicoInverso(nNumeroOriginal)<br />
+    // nArcoCossenoHiperbolicoInverso receber&aacute; aproximadamente 1.3169578969248166</td>
+  </tr>
+  <tr>
+    <td>acosh(x) = ln(x + sqrt(x^2 - 1))</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.atanh</strong></td>
+  </tr>
+  <tr>
+    <td><p>// Fun&ccedil;&atilde;o para calcular o arco tangente hiperb&oacute;lico inverso de um n&uacute;mero<br />
+      FUNCTION ArcoTangenteHiperbolicoInverso(nNumero)<br />
+RETURN 0.5 * Log((1 + nNumero) / (1 - nNumero))</p>      </td>
+  </tr>
+  <tr>
+    <td>nNumeroOriginal = 0.8<br />
+      nArcoTangenteHiperbolicoInverso = ArcoTangenteHiperbolicoInverso(nNumeroOriginal)<br />
+    // nArcoTangenteHiperbolicoInverso receber&aacute; aproximadamente 1.0986122886681098</td>
+  </tr>
+  <tr>
+    <td>atanh(x) = 0.5 * ln((1 + x) / (1 - x))</td>
+  </tr>
+</table>
+<h1 align="center">Logar&iacute;tmos</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.log</strong></td>
+  </tr>
+  <tr>
+    <td><p>// Fun&ccedil;&atilde;o para calcular o logaritmo natural<br />
+      FUNCTION LogNatural(nNumero)<br />
+RETURN Log(nNumero)</p>    </td>
+  </tr>
+  <tr>
+    <td>nNumeroOriginal = 10<br />
+    nLogaritmoNatural = LogNatural(nNumeroOriginal)  // nLogaritmoNatural receber&aacute; 2.302585092994046</td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FF00">&nbsp;</td>
+  </tr>
+  <tr>
+    <td><p>// Fun&ccedil;&atilde;o para calcular o logaritmo em qualquer base<br />
+      FUNCTION LogBase(nNumero, nBase)<br />
+RETURN Log(nNumero) / Log(nBase)</p>      </td>
+  </tr>
+  <tr>
+    <td>nNumeroOriginal = 100<br />
+    nLogaritmoBase10 = LogBase(nNumeroOriginal, 10)  // nLogaritmoBase10 receber&aacute; 2</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.log10</strong></td>
+  </tr>
+  <tr>
+    <td><p>// Fun&ccedil;&atilde;o para calcular o logaritmo na base 10<br />
+      FUNCTION Log10(nNumero)<br />
+RETURN Log(nNumero) / Log(10)</p>    </td>
+  </tr>
+  <tr>
+    <td>nNumeroOriginal = 100<br />
+    nLogaritmoBase10 = Log10(nNumeroOriginal)  // nLogaritmoBase10 receber&aacute; 2</td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.E</strong></td>
+  </tr>
+  <tr>
+    <td><p>// Definindo a constante Math.E<br />
+      #DEFINE Math_E 2.718281828459045</p>    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.LN2</strong></td>
+  </tr>
+  <tr>
+    <td><p>// Definindo a constante Math.LN2<br />
+      #DEFINE Math_LN2 0.693147180559945</p>    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.LOG2E</strong></td>
+  </tr>
+  <tr>
+    <td><p>// Definindo a constante Math.LOG2E<br />
+      #DEFINE Math_LOG2E 1.442695040888963</p>    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.LN10</strong></td>
+  </tr>
+  <tr>
+    <td><p>i// Definindo a constante Math.LN10<br />
+      #DEFINE Math_LN10 2.302585092994046</p>    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.LOG10E</strong></td>
+  </tr>
+  <tr>
+    <td><p>// Definindo a constante Math.LOG10E<br />
+      #DEFINE Math_LOG10E 0.434294481903252</p>    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.exp</strong></td>
+  </tr>
+  <tr>
+    <td><p>nExpoente = 2<br />
+      nResultado = Exp(nExpoente)  // nResultado receber&aacute; o valor de e elevado &agrave; pot&ecirc;ncia de 2<br />
+    </p>    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.log2</strong></td>
+  </tr>
+  <tr>
+    <td><p>// Fun&ccedil;&atilde;o para calcular o logaritmo na base 2<br />
+      FUNCTION Log2(nNumero)<br />
+RETURN Log(nNumero) / Log(2)<br />
+<br />
+    </p>    </td>
+  </tr>
+  <tr>
+    <td>nNumeroOriginal = 8<br />
+    nLogaritmoBase2 = Log2(nNumeroOriginal)  // nLogaritmoBase2 receber&aacute; 3</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.log1p</strong></td>
+  </tr>
+  <tr>
+    <td><p>// Fun&ccedil;&atilde;o para calcular o logaritmo natural de 1 somado a um n&uacute;mero<br />
+      FUNCTION Log1p(nNumero)<br />
+RETURN Log(1 + nNumero)</p>    </td>
+  </tr>
+  <tr>
+    <td>nNumeroOriginal = 0.5<br />
+    nLog1p = Log1p(nNumeroOriginal)  // nLog1p receber&aacute; aproximadamente 0.4055</td>
+  </tr>
+</table>
+<p></p>
+</body>
+</html>

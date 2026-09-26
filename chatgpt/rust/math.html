@@ -1,0 +1,877 @@
+<!doctype html>
+<html lang="pt-br">
+ <head>
+   <meta charset="utf-8">
+<title>Fun&ccedil;&otilde;es Matem&aacute;ticas em Java</title>
+<style type="text/css">
+<!--
+.style1 {color: #FFFFFF}
+.style2 {
+	font-size: 50px;
+	font-weight: bold;
+}
+-->
+</style>
+</head>
+
+<body>
+<p align="center" class="style2">Fun&ccedil;&otilde;es Matem&aacute;ticas em Java</p>
+<h1 align="center">Convertendo String para Num&eacute;rica</h1>
+<h1 align="center">N&uacute;meros Inteiros</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Long.parseLong</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Exemplo simples<br>
+&nbsp;&nbsp;&nbsp; let numero_string = "123456";<br>
+&nbsp;&nbsp;&nbsp; match numero_string.parse::&lt;i64&gt;() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ok(numero_long) =&gt;
+println!("Número convertido: {}", numero_long),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Err(_) =&gt; println!("Erro:
+A string não é um número válido."),<br>
+&nbsp;&nbsp;&nbsp; }<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Tratamento de exceção para entrada inválida<br>
+&nbsp;&nbsp;&nbsp; let entrada_invalida = "abc";<br>
+&nbsp;&nbsp;&nbsp; match entrada_invalida.parse::&lt;i64&gt;() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ok(resultado) =&gt;
+println!("Número convertido: {}", resultado),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Err(_) =&gt; println!("Erro:
+A string não é um número válido."),<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}</td>
+  </tr>
+</table>
+<h1 align="center">N&uacute;meros Reais</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Double.parseDouble</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Exemplo simples<br>
+&nbsp;&nbsp;&nbsp; let numero_string = "123.456";<br>
+&nbsp;&nbsp;&nbsp; match numero_string.parse::&lt;f64&gt;() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ok(numero_double) =&gt;
+println!("Número convertido: {}", numero_double),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Err(_) =&gt; println!("Erro:
+A string não é um número válido."),<br>
+&nbsp;&nbsp;&nbsp; }<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Tratamento de exceção para entrada inválida<br>
+&nbsp;&nbsp;&nbsp; let entrada_invalida = "abc";<br>
+&nbsp;&nbsp;&nbsp; match entrada_invalida.parse::&lt;f64&gt;() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ok(resultado) =&gt;
+println!("Número convertido: {}", resultado),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Err(_) =&gt; println!("Erro:
+A string não é um número válido."),<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}</td>
+  </tr>
+</table>
+<h1 align="center">Boleanos</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Boolean.parseBoolean</strong></td>
+  </tr>
+  <tr>
+    <td>fn parse_boolean(input: &amp;str) -&gt; bool {<br>
+&nbsp;&nbsp;&nbsp; input.eq_ignore_ascii_case("true")<br>
+}<br>
+<br>
+fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Exemplos simples<br>
+&nbsp;&nbsp;&nbsp; let true_string = "true";<br>
+&nbsp;&nbsp;&nbsp; let boolean_true = parse_boolean(true_string);<br>
+&nbsp;&nbsp;&nbsp; println!("Valor booleano: {}", boolean_true);<br>
+<br>
+&nbsp;&nbsp;&nbsp; let false_string = "false";<br>
+&nbsp;&nbsp;&nbsp; let boolean_false = parse_boolean(false_string);<br>
+&nbsp;&nbsp;&nbsp; println!("Valor booleano: {}", boolean_false);<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Tratamento de entrada inválida<br>
+&nbsp;&nbsp;&nbsp; let entrada_invalida = "abc";<br>
+&nbsp;&nbsp;&nbsp; let resultado = parse_boolean(entrada_invalida);<br>
+&nbsp;&nbsp;&nbsp; println!("Valor booleano: {}", resultado);<br>
+&nbsp;&nbsp;&nbsp; // Como "abc" não é "true", o resultado será false<br>
+}</td>
+  </tr>
+</table>
+<h1 align="center">Arredondando valores</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.floor</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; let numero_original: f64 = 7.8;<br>
+&nbsp;&nbsp;&nbsp; let numero_arredondado = numero_original.floor();<br>
+<br>
+&nbsp;&nbsp;&nbsp; println!("Número original: {}", numero_original);<br>
+&nbsp;&nbsp;&nbsp; println!("Número arredondado para baixo: {}",
+numero_arredondado);<br>
+}</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.ceil</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; let numero_original: f64 = 7.2;<br>
+&nbsp;&nbsp;&nbsp; let numero_arredondado = numero_original.ceil();<br>
+<br>
+&nbsp;&nbsp;&nbsp; println!("Número original: {}", numero_original);<br>
+&nbsp;&nbsp;&nbsp; println!("Número arredondado para cima: {}",
+numero_arredondado);<br>
+}</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.round</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; let numero_original: f64 = 7.5;<br>
+&nbsp;&nbsp;&nbsp; let numero_arredondado: i64 =
+numero_original.round() as i64;<br>
+<br>
+&nbsp;&nbsp;&nbsp; println!("Número original: {}", numero_original);<br>
+&nbsp;&nbsp;&nbsp; println!("Número arredondado: {}",
+numero_arredondado);<br>
+}</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.trunc</strong></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr></tr>
+</table>
+<h1 align="center">Digite um n&uacute;mero com 3 casas decimais</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; let numero: f64 = 123.456789;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Formatar com 3 casas decimais<br>
+&nbsp;&nbsp;&nbsp; let numero_formatado = format!("{:.3}", numero);<br>
+<br>
+&nbsp;&nbsp;&nbsp; println!("{}", numero_formatado);<br>
+}</td>
+  </tr>
+</table>
+<h1 align="center">Formatar moeda</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>toLocaleString</strong></td>
+  </tr>
+  <tr>
+    <td>use num_format::{Locale, ToFormattedString};<br>
+<br>
+fn main() {<br>
+&nbsp;&nbsp;&nbsp; let numero: f64  = 1234567.89; // parte inteira pode
+ter underscores, mas aqui mantive sem<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Separando parte inteira e decimal<br>
+&nbsp;&nbsp;&nbsp; let inteiro = numero.trunc() as u64;<br>
+&nbsp;&nbsp;&nbsp; let decimal = ((numero.fract() * 100.0).round()) as
+u8;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Formatando parte inteira no padrão brasileiro<br>
+&nbsp;&nbsp;&nbsp; let inteiro_formatado =
+inteiro.to_formatted_string(&amp;Locale::pt_BR);<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Montando a string final no formato "R$
+1.234.567,89"<br>
+&nbsp;&nbsp;&nbsp; let formato_brasileiro = format!("R$ {},{:02}",
+inteiro_formatado, decimal);<br>
+<br>
+&nbsp;&nbsp;&nbsp; println!("{}", formato_brasileiro);<br>
+}</td>
+  </tr>
+</table>
+<h1 align="center">Fun&ccedil;&otilde;es matem&aacute;ticas comuns</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.random</strong></td>
+  </tr>
+  <tr>
+    <td>use rand::Rng;<br>
+<br>
+fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Gerar número aleatório no intervalo [0.0, 1.0)<br>
+&nbsp;&nbsp;&nbsp; let mut rng = rand::thread_rng();<br>
+&nbsp;&nbsp;&nbsp; let numero_aleatorio: f64 = rng.gen::&lt;f64&gt;();<br>
+<br>
+&nbsp;&nbsp;&nbsp; println!("Número aleatório: {}", numero_aleatorio);<br>
+}</td>
+  </tr>
+  <tr>
+    <td> let numero_aleatorio_no_intervalo: f64 = rng.gen::&lt;f64&gt;() * (max - min) + min;</td>
+  </tr>
+  <tr>
+    <td>use rand::Rng;<br>
+<br>
+fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Gerar número aleatório no intervalo [5.0, 10.0)<br>
+&nbsp;&nbsp;&nbsp; let mut rng = rand::thread_rng();<br>
+&nbsp;&nbsp;&nbsp; let numero_aleatorio_intervalo: f64 =
+rng.gen_range(5.0..10.0);<br>
+<br>
+&nbsp;&nbsp;&nbsp; println!("Número aleatório no intervalo: {}",
+numero_aleatorio_intervalo);<br>
+}</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.abs</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; let numero_inteiro: i32 = -5;<br>
+&nbsp;&nbsp;&nbsp; let numero_longo: i64 = -123456789;<br>
+&nbsp;&nbsp;&nbsp; let numero_float: f32 = -3.14;<br>
+&nbsp;&nbsp;&nbsp; let numero_double: f64 = -2.71828;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calcular o valor absoluto<br>
+&nbsp;&nbsp;&nbsp; let abs_int = numero_inteiro.abs();<br>
+&nbsp;&nbsp;&nbsp; let abs_long = numero_longo.abs();<br>
+&nbsp;&nbsp;&nbsp; let abs_float = numero_float.abs();<br>
+&nbsp;&nbsp;&nbsp; let abs_double = numero_double.abs();<br>
+<br>
+&nbsp;&nbsp;&nbsp; println!("Valor absoluto de {} = {}",
+numero_inteiro, abs_int);<br>
+&nbsp;&nbsp;&nbsp; println!("Valor absoluto de {} = {}", numero_longo,
+abs_long);<br>
+&nbsp;&nbsp;&nbsp; println!("Valor absoluto de {} = {}", numero_float,
+abs_float);<br>
+&nbsp;&nbsp;&nbsp; println!("Valor absoluto de {} = {}", numero_double,
+abs_double);<br>
+}</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.max</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Máximo entre inteiros<br>
+&nbsp;&nbsp;&nbsp; let numero1: i32 = 10;<br>
+&nbsp;&nbsp;&nbsp; let numero2: i32 = 20;<br>
+&nbsp;&nbsp;&nbsp; let maximo_int = numero1.max(numero2);<br>
+&nbsp;&nbsp;&nbsp; println!("Máximo entre {} e {} = {}", numero1,
+numero2, maximo_int);<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Máximo entre números de ponto flutuante<br>
+&nbsp;&nbsp;&nbsp; let numero3: f64 = 15.5;<br>
+&nbsp;&nbsp;&nbsp; let numero4: f64 = 12.3;<br>
+&nbsp;&nbsp;&nbsp; let maximo_double = numero3.max(numero4);<br>
+&nbsp;&nbsp;&nbsp; println!("Máximo entre {} e {} = {}", numero3,
+numero4, maximo_double);<br>
+}</td>
+  </tr>
+  <tr>
+    <td>int maximoEntreTres = Math.max(Math.max(numero1, numero2), numero3);</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.min</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Mínimo entre inteiros<br>
+&nbsp;&nbsp;&nbsp; let numero1: i32 = 10;<br>
+&nbsp;&nbsp;&nbsp; let numero2: i32 = 20;<br>
+&nbsp;&nbsp;&nbsp; let minimo_int = numero1.min(numero2);<br>
+&nbsp;&nbsp;&nbsp; println!("Mínimo entre {} e {} = {}", numero1,
+numero2, minimo_int);<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Mínimo entre números de ponto flutuante<br>
+&nbsp;&nbsp;&nbsp; let numero3: f64 = 15.5;<br>
+&nbsp;&nbsp;&nbsp; let numero4: f64 = 12.3;<br>
+&nbsp;&nbsp;&nbsp; let minimo_double = numero3.min(numero4);<br>
+&nbsp;&nbsp;&nbsp; println!("Mínimo entre {} e {} = {}", numero3,
+numero4, minimo_double);<br>
+}</td>
+  </tr>
+  <tr>
+    <td> int minimoEntreTres = Math.min(Math.min(numero1, numero2), numero3);</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.pow</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; let base: f64 = 2.0;<br>
+&nbsp;&nbsp;&nbsp; let expoente: f64 = 3.0;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calcular 2^3<br>
+&nbsp;&nbsp;&nbsp; let resultado = base.powf(expoente);<br>
+<br>
+&nbsp;&nbsp;&nbsp; println!("Resultado: {}", resultado);<br>
+}</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.sqrt</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; let numero: f64 = 25.0;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calcular a raiz quadrada<br>
+&nbsp;&nbsp;&nbsp; let raiz_quadrada = numero.sqrt();<br>
+<br>
+&nbsp;&nbsp;&nbsp; println!("Raiz quadrada de {} = {}", numero,
+raiz_quadrada);<br>
+}</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.SQRT1_2</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Raiz quadrada de 1/2<br>
+&nbsp;&nbsp;&nbsp; let raiz_quadrada_de_um_meio =
+f64::consts::FRAC_1_SQRT_2;<br>
+<br>
+&nbsp;&nbsp;&nbsp; println!("Raiz quadrada de 1/2: {}",
+raiz_quadrada_de_um_meio);<br>
+}</td>
+  </tr>
+  <tr>
+    <td> SQRT1_2 = 0.7071067811865476;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.SQRT2</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Raiz quadrada de 2<br>
+&nbsp;&nbsp;&nbsp; let raiz_quadrada_de_dois = f64::consts::SQRT_2;<br>
+<br>
+&nbsp;&nbsp;&nbsp; println!("Raiz quadrada de 2: {}",
+raiz_quadrada_de_dois);<br>
+}</td>
+  </tr>
+  <tr>
+    <td> SQRT2 = 1.4142135623730951;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.cbrt</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; let numero: f64 = 27.0;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calcular a raiz cúbica<br>
+&nbsp;&nbsp;&nbsp; let raiz_cubica = numero.cbrt();<br>
+<br>
+&nbsp;&nbsp;&nbsp; println!("Raiz cúbica de {} = {}", numero,
+raiz_cubica);<br>
+}</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.sign</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; let numero: f64 = -5.5;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Obtendo o sinal do número (-1, 0 ou 1)<br>
+&nbsp;&nbsp;&nbsp; let sinal: i32 = numero.signum() as i32;<br>
+<br>
+&nbsp;&nbsp;&nbsp; println!("Sinal de {} = {}", numero, sinal);<br>
+}</td>
+  </tr>
+</table>
+<h1 align="center">Fun&ccedil;&otilde;es trigonom&eacute;tricas</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.PI</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Acesso à constante PI<br>
+&nbsp;&nbsp;&nbsp; let pi = std::f64::consts::PI;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o valor de pi<br>
+&nbsp;&nbsp;&nbsp; println!("O valor de pi é: {}", pi);<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exemplo de cálculo usando pi<br>
+&nbsp;&nbsp;&nbsp; let raio: f64 = 5.0;<br>
+&nbsp;&nbsp;&nbsp; let area = pi * raio * raio;<br>
+&nbsp;&nbsp;&nbsp; println!("A área de um círculo com raio {} é: {}",
+raio, area);<br>
+}</td>
+  </tr>
+  <tr>
+    <td bgcolor="#000000"><span class="style1">function radianos(){<br />
+      return Math.PI/180<br />
+    }</span></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; let graus: f64 = 45.0;<br>
+&nbsp;&nbsp;&nbsp; let radianos = converter_para_radianos(graus);<br>
+<br>
+&nbsp;&nbsp;&nbsp; println!("{} graus é equivalente a {} radianos.",
+graus, radianos);<br>
+}<br>
+<br>
+// Função para converter graus para radianos<br>
+fn converter_para_radianos(graus: f64) -&gt; f64 {<br>
+&nbsp;&nbsp;&nbsp; graus * (std::f64::consts::PI / 180.0)<br>
+}</td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.sin</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Ângulo em radianos<br>
+&nbsp;&nbsp;&nbsp; let angulo_em_radianos: f64 = std::f64::consts::PI /
+4.0;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calculando o seno do ângulo<br>
+&nbsp;&nbsp;&nbsp; let seno_do_angulo = angulo_em_radianos.sin();<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br>
+&nbsp;&nbsp;&nbsp; println!(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "O seno de {} radianos é:
+{}",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; angulo_em_radianos,
+seno_do_angulo<br>
+&nbsp;&nbsp;&nbsp; );<br>
+}</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.cos</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Ângulo em radianos<br>
+&nbsp;&nbsp;&nbsp; let angulo_em_radianos: f64 = std::f64::consts::PI /
+3.0;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calculando o cosseno do ângulo<br>
+&nbsp;&nbsp;&nbsp; let cosseno_do_angulo = angulo_em_radianos.cos();<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br>
+&nbsp;&nbsp;&nbsp; println!(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "O cosseno de {} radianos é:
+{}",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; angulo_em_radianos,
+cosseno_do_angulo<br>
+&nbsp;&nbsp;&nbsp; );<br>
+}</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.tan</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Ângulo em radianos<br>
+&nbsp;&nbsp;&nbsp; let angulo_em_radianos: f64 = std::f64::consts::PI /
+6.0;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calculando a tangente do ângulo<br>
+&nbsp;&nbsp;&nbsp; let tangente_do_angulo = angulo_em_radianos.tan();<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br>
+&nbsp;&nbsp;&nbsp; println!(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "A tangente de {} radianos
+é: {}",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; angulo_em_radianos,
+tangente_do_angulo<br>
+&nbsp;&nbsp;&nbsp; );<br>
+}</td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.asin</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o arco seno<br>
+&nbsp;&nbsp;&nbsp; let valor: f64 = 0.5;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calculando o arco seno do valor<br>
+&nbsp;&nbsp;&nbsp; let arco_seno = valor.asin();<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o resultado em radianos<br>
+&nbsp;&nbsp;&nbsp; println!(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "O arco seno de {} é: {}
+radianos.",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; valor, arco_seno<br>
+&nbsp;&nbsp;&nbsp; );<br>
+}</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.acos</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o arco cosseno<br>
+&nbsp;&nbsp;&nbsp; let valor: f64 = 0.5;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calculando o arco cosseno do valor<br>
+&nbsp;&nbsp;&nbsp; let arco_cosseno = valor.acos();<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o resultado em radianos<br>
+&nbsp;&nbsp;&nbsp; println!(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "O arco cosseno de {} é: {}
+radianos.",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; valor, arco_cosseno<br>
+&nbsp;&nbsp;&nbsp; );<br>
+}</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.atan</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o arco
+tangente<br>
+&nbsp;&nbsp;&nbsp; let valor: f64 = 0.5;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calculando o arco tangente do valor<br>
+&nbsp;&nbsp;&nbsp; let arco_tangente = valor.atan();<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o resultado em radianos<br>
+&nbsp;&nbsp;&nbsp; println!(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "O arco tangente de {} é: {}
+radianos.",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; valor, arco_tangente<br>
+&nbsp;&nbsp;&nbsp; );<br>
+}</td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.sinh</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o seno
+hiperbólico<br>
+&nbsp;&nbsp;&nbsp; let valor: f64 = 2.0;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calculando o seno hiperbólico do valor<br>
+&nbsp;&nbsp;&nbsp; let seno_hiperbolico = valor.sinh();<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br>
+&nbsp;&nbsp;&nbsp; println!(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "O seno hiperbólico de {} é:
+{}",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; valor, seno_hiperbolico<br>
+&nbsp;&nbsp;&nbsp; );<br>
+}</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.cosh</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o cosseno
+hiperbólico<br>
+&nbsp;&nbsp;&nbsp; let valor: f64 = 2.0;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calculando o cosseno hiperbólico do valor<br>
+&nbsp;&nbsp;&nbsp; let cosseno_hiperbolico = valor.cosh();<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br>
+&nbsp;&nbsp;&nbsp; println!(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "O cosseno hiperbólico de {}
+é: {}",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; valor, cosseno_hiperbolico<br>
+&nbsp;&nbsp;&nbsp; );<br>
+}</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.tanh</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular a tangente
+hiperbólica<br>
+&nbsp;&nbsp;&nbsp; let valor: f64 = 2.0;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calculando a tangente hiperbólica do valor<br>
+&nbsp;&nbsp;&nbsp; let tangente_hiperbolica = valor.tanh();<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br>
+&nbsp;&nbsp;&nbsp; println!(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "A tangente hiperbólica de
+{} é: {}",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; valor, tangente_hiperbolica<br>
+&nbsp;&nbsp;&nbsp; );<br>
+}</td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.asinh</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o arco seno
+hiperbólico<br>
+&nbsp;&nbsp;&nbsp; let valor: f64 = 2.0;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calculando o arco seno hiperbólico do valor<br>
+&nbsp;&nbsp;&nbsp; let arco_seno_hiperbolico = asinh(valor);<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br>
+&nbsp;&nbsp;&nbsp; println!(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "O arco seno hiperbólico de
+{} é: {}",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; valor, arco_seno_hiperbolico<br>
+&nbsp;&nbsp;&nbsp; );<br>
+}<br>
+<br>
+// Função para calcular o arco seno hiperbólico<br>
+fn asinh(x: f64) -&gt; f64 {<br>
+&nbsp;&nbsp;&nbsp; (x + (x * x + 1.0).sqrt()).ln()<br>
+}</td>
+  </tr>
+  <tr>
+    <td>asinh(x) = ln(x + sqrt(x^2 + 1))</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.acosh</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o arco
+cosseno hiperbólico<br>
+&nbsp;&nbsp;&nbsp; let valor: f64 = 2.0;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calculando o arco cosseno hiperbólico do valor<br>
+&nbsp;&nbsp;&nbsp; let arco_cosseno_hiperbolico = acosh(valor);<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br>
+&nbsp;&nbsp;&nbsp; println!(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "O arco cosseno hiperbólico
+de {} é: {}",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; valor,
+arco_cosseno_hiperbolico<br>
+&nbsp;&nbsp;&nbsp; );<br>
+}<br>
+<br>
+// Função para calcular o arco cosseno hiperbólico<br>
+fn acosh(x: f64) -&gt; f64 {<br>
+&nbsp;&nbsp;&nbsp; (x + (x * x - 1.0).sqrt()).ln()<br>
+}</td>
+  </tr>
+  <tr>
+    <td>acosh(x) = ln(x + sqrt(x^2 - 1))</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.atanh</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o arco
+tangente hiperbólico<br>
+&nbsp;&nbsp;&nbsp; let valor: f64 = 0.5;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calculando o arco tangente hiperbólico do valor<br>
+&nbsp;&nbsp;&nbsp; let arco_tangente_hiperbolico = atanh(valor);<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br>
+&nbsp;&nbsp;&nbsp; println!(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "O arco tangente hiperbólico
+de {} é: {}",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; valor,
+arco_tangente_hiperbolico<br>
+&nbsp;&nbsp;&nbsp; );<br>
+}<br>
+<br>
+// Função para calcular o arco tangente hiperbólico<br>
+fn atanh(x: f64) -&gt; f64 {<br>
+&nbsp;&nbsp;&nbsp; 0.5 * ((1.0 + x) / (1.0 - x)).ln()<br>
+}</td>
+  </tr>
+  <tr>
+    <td>atanh(x) = 0.5 * ln((1 + x) / (1 - x))</td>
+  </tr>
+</table>
+<h1 align="center">Logar&iacute;tmos</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.log</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Número para o qual queremos calcular o logaritmo
+natural<br>
+&nbsp;&nbsp;&nbsp; let numero: f64 = 10.0;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calculando o logaritmo natural<br>
+&nbsp;&nbsp;&nbsp; let logaritmo_natural = numero.ln();<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br>
+&nbsp;&nbsp;&nbsp; println!("O logaritmo natural de {} é: {}", numero,
+logaritmo_natural);<br>
+}</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.log10</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Número para o qual queremos calcular o logaritmo
+na base 10<br>
+&nbsp;&nbsp;&nbsp; let numero: f64 = 1000.0;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calculando o logaritmo na base 10<br>
+&nbsp;&nbsp;&nbsp; let logaritmo_base10 = numero.log10();<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br>
+&nbsp;&nbsp;&nbsp; println!("O logaritmo na base 10 de {} é: {}",
+numero, logaritmo_base10);<br>
+}</td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.E</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Acesso à constante f64::consts::E<br>
+&nbsp;&nbsp;&nbsp; let constante_e: f64 = std::f64::consts::E;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o valor da constante E<br>
+&nbsp;&nbsp;&nbsp; println!("O valor da constante E é: {}",
+constante_e);<br>
+}</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.LN2</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Acesso à constante f64::consts::LN_2<br>
+&nbsp;&nbsp;&nbsp; let ln2: f64 = std::f64::consts::LN_2;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o valor do logaritmo natural de 2<br>
+&nbsp;&nbsp;&nbsp; println!("O valor do logaritmo natural de 2 é: {}",
+ln2);<br>
+}</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.LOG2E</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Acesso à constante f64::consts::LOG2_E<br>
+&nbsp;&nbsp;&nbsp; let log2e: f64 = std::f64::consts::LOG2_E;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o valor do logaritmo na base 2 de e<br>
+&nbsp;&nbsp;&nbsp; println!("O valor do logaritmo na base 2 de e é:
+{}", log2e);<br>
+}</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.LN10</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Acesso à constante f64::consts::LN_10<br>
+&nbsp;&nbsp;&nbsp; let ln10: f64 = std::f64::consts::LN_10;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o valor do logaritmo natural de 10<br>
+&nbsp;&nbsp;&nbsp; println!("O valor do logaritmo natural de 10 é: {}",
+ln10);<br>
+}</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.LOG10E</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Acesso à constante f64::consts::LOG10_E<br>
+&nbsp;&nbsp;&nbsp; let log10e: f64 = std::f64::consts::LOG10_E;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o valor do logaritmo natural de base 10
+de e<br>
+&nbsp;&nbsp;&nbsp; println!("O valor do logaritmo natural de base 10 de
+e é: {}", log10e);<br>
+}</td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.exp</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Expoente para o qual queremos calcular a
+exponenciação<br>
+&nbsp;&nbsp;&nbsp; let expoente: f64 = 2.0;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calculando a exponenciação de e elevado ao
+expoente<br>
+&nbsp;&nbsp;&nbsp; let resultado = expoente.exp();<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br>
+&nbsp;&nbsp;&nbsp; println!("O resultado de e elevado a {} é: {}",
+expoente, resultado);<br>
+}</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.log2</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Número para o qual queremos calcular o logaritmo
+de base 2<br>
+&nbsp;&nbsp;&nbsp; let numero: f64 = 8.0;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calculando o logaritmo de base 2 do número<br>
+&nbsp;&nbsp;&nbsp; let log2 = numero.log2();<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br>
+&nbsp;&nbsp;&nbsp; println!("O logaritmo de base 2 de {} é: {}",
+numero, log2);<br>
+}</td>
+  </tr>
+  <tr>
+    <td>log2(x) = ln(x) / ln(2)</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.log1p</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Valor para o qual queremos calcular o logaritmo
+natural de 1 mais um<br>
+&nbsp;&nbsp;&nbsp; let valor: f64 = 0.5;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Calculando o logaritmo natural de 1 mais o valor<br>
+&nbsp;&nbsp;&nbsp; let resultado = valor.ln_1p();<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br>
+&nbsp;&nbsp;&nbsp; println!("O logaritmo natural de 1 mais {} é: {}",
+valor, resultado);<br>
+}</td>
+  </tr>
+</table>
+<p></p>
+</body>
+</html>

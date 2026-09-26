@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Array em Python</title>
+</head>
+
+<body>
+<h1 align="center">Array em Python </h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>add</strong></td>
+  </tr>
+  <tr>
+    <td><p># Criando uma lista vazia<br />
+      my_list = []</p>
+      <p># Adicionando elementos &agrave; lista usando append()<br />
+        my_list.append(1)<br />
+        my_list.append(2)<br />
+        my_list.append(3)</p>
+      <p># A lista agora cont&eacute;m [1, 2, 3]<br />
+    print(my_list)</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>size</strong></td>
+  </tr>
+  <tr>
+    <td><p># Usando len para obter o n&uacute;mero de elementos em uma lista<br />
+      my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9]<br />
+      list_size = len(my_list)</p>
+      <p># Imprimindo o tamanho da lista<br />
+        print(list_size)<br />
+      </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>get</strong></td>
+  </tr>
+  <tr>
+    <td><p>my_list = [10, 20, 30, 40, 50]</p>
+      <p># Acessando o elemento na posi&ccedil;&atilde;o 2 (&iacute;ndice 1)<br />
+        element = my_list[1]</p>
+      <p># Imprimindo o elemento<br />
+        print(element)<br />
+      </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>set</strong></td>
+  </tr>
+  <tr>
+    <td><p>my_list = [10, 20, 30, 40, 50]</p>
+      <p># Atribuindo o valor 25 &agrave; posi&ccedil;&atilde;o 2 (&iacute;ndice 1) da lista<br />
+        my_list[1] = 25</p>
+      <p># Imprimindo a lista ap&oacute;s a modifica&ccedil;&atilde;o<br />
+        print(my_list)<br />
+      </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>remove</strong></td>
+  </tr>
+  <tr>
+    <td><p>my_list = [10, 20, 30, 40, 50]</p>
+      <p># Removendo o item na posi&ccedil;&atilde;o 2 (&iacute;ndice 1) usando pop()<br />
+        removed_item = my_list.pop(1)</p>
+      <p># Imprimindo a lista ap&oacute;s a remo&ccedil;&atilde;o<br />
+        print(my_list)</p>
+      <p># Imprimindo o item removido<br />
+        print(&quot;Item removido:&quot;, removed_item)<br />
+      </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>clear</strong></td>
+  </tr>
+  <tr>
+    <td><p>my_list = [10, 20, 30, 40, 50]</p>
+      <p># Limpando todos os elementos da lista<br />
+        my_list.clear()</p>
+      <p># Imprimindo a lista ap&oacute;s a limpeza<br />
+        print(my_list)<br />
+      </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>contains</strong></td>
+  </tr>
+  <tr>
+    <td><p> my_list = [10, 20, 30, 40, 50]<br />
+        <br />
+        # Verificando se o elemento 30 est&aacute; na lista<br />
+        if 30 in my_list:<br />
+        &nbsp;&nbsp;&nbsp; print(&quot;O elemento 30 est&aacute; na lista.&quot;)<br />
+        else:<br />
+        &nbsp;&nbsp;&nbsp; print(&quot;O elemento 30 n&atilde;o est&aacute; na lista.&quot;)<br />
+</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>toArray</strong></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>indexOf</strong></td>
+  </tr>
+  <tr>
+    <td><p>my_list = [10, 20, 30, 40, 50]</p>
+      <p># Encontrando o &iacute;ndice do elemento 30<br />
+        index = my_list.index(30)</p>
+      <p># Imprimindo o &iacute;ndice<br />
+        print(&quot;O &iacute;ndice do elemento 30 &eacute;:&quot;, index)<br />
+      </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>lastIndexOf</strong></td>
+  </tr>
+  <tr>
+    <td><p>my_list = [10, 20, 30, 40, 30, 50]</p>
+      <p># Invertendo a lista e encontrando o &iacute;ndice do elemento 30<br />
+        reversed_list = my_list[::-1]<br />
+        last_index = len(my_list) - reversed_list.index(30) - 1</p>
+      <p># Imprimindo o &uacute;ltimo &iacute;ndice do elemento 30<br />
+        print(&quot;O &uacute;ltimo &iacute;ndice do elemento 30 &eacute;:&quot;, last_index)<br />
+      </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+
+</html>

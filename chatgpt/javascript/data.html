@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Data em Javascript</title>
+</head>
+
+<body>
+<h1 align="center">Data em Javascript</h1>
+<h1 align="center">Manipulando datas e horas</h1>
+<p>Existe apenas uma fun&ccedil;&atilde;o para que se possa obter a data e a hora. &Eacute; a fun&ccedil;&atilde;o&nbsp;<strong>Date()</strong>. Esta fun&atilde;o devolve data e hora no formanto: Dia da semana, Nome do m&ecirc;s, Dia do m&ecirc;s, Hora:Minuto:Segundo e Ano</p>
+<p>Ex:</p>
+<p><strong>Fri May 24 16:58:02 1996</strong></p>
+<p>Para se obter os dados separadamente, existem os seguintes m&eacute;todos:</p>
+<ul>
+  <li>getDate() - Retorna o dia do m&ecirc;s (inteiro entre 1 e 31)</li>
+  <li>getDay() - Retorna o dia da semana (0=Domingo, 1=Segunda-feira,... , 6=S&aacute;bado)</li>
+  <li>getMonth() - Retorna o m&ecirc;s (entre 0=Janeiro e 11=Dezembro)</li>
+  <li>getFullYear() - Retorna o ano com quatro d&iacute;gitos (o mais usado)</li>
+  <li>getYear() - Retorna o ano com 2 d&iacute;gitos.</li>
+</ul>
+<hr />
+<ul>
+  <li>getHours() - Retorna a hora do dia (entre 0 e 23)</li>
+  <li>getMinutes() - Retorna os minutos dentro da hora (entre 0 e 59)</li>
+  <li>getSeconds() - Retorna os segundos (entre 0 e 59)</li>
+</ul>
+<hr />
+<p>No&nbsp;<strong>exemplo 1</strong>&nbsp;abaixo obteremos o dia da semana e as horas. Para tal, utilizaremos a vari&aacute;vel&nbsp;<strong>DataToda</strong>&nbsp;para armazenar data e hora.</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Exemplo 1</strong> </td>
+  </tr>
+  <tr>
+    <td><p>&lt;script language=&quot;javascript&quot;&gt;<br />
+      DataToda=new Date()<br />
+      Dia_do_mes=DataToda.getDate()<br />
+      Dia_da_semana=DataToda.getDay()<br />
+      Mes=DataToda.getMonth()<br />
+      Ano=DataToda.getFullYear()<br />
+      // ---------------------------------------<br />
+      Horas=DataToda.getHours()<br />
+      Minutos=DataToda.getMinutes()<br />
+      Segundos=DataToda.getSeconds()<br />
+      // ---------------------------------------<br />
+      semana = Array(6)<br />
+      semana[0]=&quot;Domingo&quot;<br />
+      semana[1]=&quot;Segunda&quot;<br />
+      semana[2]=&quot;Ter&ccedil;a&quot;<br />
+      semana[3]=&quot;Quarta&quot;<br />
+      semana[4]=&quot;Quinta&quot;<br />
+      semana[5]=&quot;Sexta&quot;<br />
+      semana[6]=&quot;Sabado&quot;<br />
+      Semana_atual=semana[Dia_da_semana]<br />
+      //-------------------------<br />
+      Mes2=Array(11)<br />
+      Mes2[0]=&quot;Janeiro&quot;<br />
+      Mes2[1]=&quot;Fevereiro&quot;<br />
+      Mes2[2]=&quot;Mar&ccedil;o&quot;<br />
+      Mes2[3]=&quot;Abril&quot;<br />
+      Mes2[4]=&quot;Maio&quot;<br />
+      Mes2[5]=&quot;Junho&quot;<br />
+      Mes2[6]=&quot;Julho&quot;<br />
+      Mes2[7]=&quot;Agosto&quot;<br />
+      Mes2[8]=&quot;Setembro&quot;<br />
+      Mes2[9]=&quot;Outubro&quot;<br />
+      Mes2[10]=&quot;Novembro&quot;<br />
+      Mes2[11]=&quot;Desembro&quot;<br />
+      Mes_atual=Mes2[Mes]<br />
+      document.write(Semana_atual+&quot;, &quot;+Dia_do_mes+&quot; de &quot;+Mes_atual+&quot; de &quot;+Ano)<br />
+      document.write(&quot;&lt;br&gt;&quot;)<br />
+      document.write(&quot;S&atilde;o: &quot;+Horas+&quot; horas, &quot;+Minutos+&quot; minutos e &quot;+Segundos+&quot; segundos.&quot;)<br />
+  &lt;/script&gt;</p>
+    </td>
+  </tr>
+</table>
+<p><strong>exemplo 2: alterando a data</strong></p>
+<p>Para criar uma vari&aacute;vel tipo Date com o conte&uacute;do informado pela aplica&ccedil;&atilde;o, existe o m&eacute;tido&nbsp;<strong>set</strong>. Assim temos os seguintes m&eacute;todos:&nbsp;<strong>setDate, setDay, setMonth, setYear, setHours, setMinutes e setSeconds</strong>. Os mas importantes s&atilde;o:</p>
+<ul>
+  <li>setDate(valor) - Coloca o dia do m&ecirc;s (valor entre 1 e 31)</li>
+  <li>setMonth(valor) - coloca o m&ecirc;s (valor entre 0 e 11)</li>
+  <li>setYear(valor) - coloca os anos (valor acima de 1970)</li>
+</ul>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Exemplo 2 </strong></td>
+  </tr>
+  <tr>
+    <td><p align="left">&lt;script language=&quot;javascript&quot;&gt;<br />
+      DataToda=new Date()<br />
+      DataToda.setDate(28)<br />
+      DataToda.setMonth(4)<br />
+      DataToda.setYear(1997)<br />
+      // ---------------------------------------<br />
+      Dia_do_mes=DataToda.getDate()<br />
+      Dia_da_semana=DataToda.getDay()<br />
+      Mes=DataToda.getMonth()<br />
+      Ano=DataToda.getFullYear()<br />
+      // ---------------------------------------<br />
+      semana = Array(6)<br />
+      semana[0]=&quot;Domingo&quot;<br />
+      semana[1]=&quot;Segunda&quot;<br />
+      semana[2]=&quot;Ter&ccedil;a&quot;<br />
+      semana[3]=&quot;Quarta&quot;<br />
+      semana[4]=&quot;Quinta&quot;<br />
+      semana[5]=&quot;Sexta&quot;<br />
+      semana[6]=&quot;Sabado&quot;<br />
+      Semana_atual=semana[Dia_da_semana]<br />
+      //-------------------------<br />
+      Mes2=Array(11)<br />
+      Mes2[0]=&quot;Janeiro&quot;<br />
+      Mes2[1]=&quot;Fevereiro&quot;<br />
+      Mes2[2]=&quot;Mar&ccedil;o&quot;<br />
+      Mes2[3]=&quot;Abril&quot;<br />
+      Mes2[4]=&quot;Maio&quot;<br />
+      Mes2[5]=&quot;Junho&quot;<br />
+      Mes2[6]=&quot;Julho&quot;<br />
+      Mes2[7]=&quot;Agosto&quot;<br />
+      Mes2[8]=&quot;Setembro&quot;<br />
+      Mes2[9]=&quot;Outubro&quot;<br />
+      Mes2[10]=&quot;Novembro&quot;<br />
+      Mes2[11]=&quot;Desembro&quot;<br />
+      Mes_atual=Mes2[Mes]<br />
+      document.write(Semana_atual+&quot;, &quot;+Dia_do_mes+&quot; de &quot;+Mes_atual+&quot; de &quot;+Ano)<br />
+  &lt;/script&gt;</p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

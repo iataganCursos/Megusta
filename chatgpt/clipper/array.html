@@ -1,0 +1,427 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Array em Clipper</title>
+</head>
+
+<body>
+<h1 align="center">Array em Clipper </h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>add</strong></td>
+  </tr>
+  <tr>
+    <td> PROCEDURE Main()<br />
+      <br />
+      &nbsp;&nbsp; LOCAL aLista := {}<br />
+      <br />
+      &nbsp;&nbsp; // Adiciona elementos &agrave; lista<br />
+      &nbsp;&nbsp; aLista := AddElement(aLista, &quot;Elemento 1&quot;)<br />
+      &nbsp;&nbsp; aLista := AddElement(aLista, &quot;Elemento 2&quot;)<br />
+      &nbsp;&nbsp; aLista := AddElement(aLista, &quot;Elemento 3&quot;)<br />
+      <br />
+      &nbsp;&nbsp; // Exibe a lista<br />
+      &nbsp;&nbsp; DisplayList(aLista)<br />
+      <br />
+      RETURN<br />
+      <br />
+      FUNCTION AddElement(aList, cElement)<br />
+      &nbsp;&nbsp; // Adiciona um elemento &agrave; lista<br />
+      &nbsp;&nbsp; aList := aList + { cElement }<br />
+    &nbsp;&nbsp; RETURN aList</td>
+  </tr>
+  <tr>
+    <td> FUNCTION DisplayList(aList)<br />
+      &nbsp;&nbsp; // Exibe os elementos da lista<br />
+      &nbsp;&nbsp; FOR i := 1 TO Len(aList)<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ? aList[i]<br />
+      &nbsp;&nbsp; NEXT i<br />
+    RETURN</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>size</strong></td>
+  </tr>
+  <tr>
+    <td><p> PROCEDURE Main()<br />
+        <br />
+        &nbsp;&nbsp; LOCAL aLista := {}<br />
+        <br />
+        &nbsp;&nbsp; // Adiciona elementos &agrave; lista<br />
+        &nbsp;&nbsp; aLista := AddElement(aLista, &quot;Elemento 1&quot;)<br />
+        &nbsp;&nbsp; aLista := AddElement(aLista, &quot;Elemento 2&quot;)<br />
+        &nbsp;&nbsp; aLista := AddElement(aLista, &quot;Elemento 3&quot;)<br />
+        <br />
+        &nbsp;&nbsp; // Exibe o tamanho da lista<br />
+        &nbsp;&nbsp; ? &quot;Tamanho da lista: &quot;, Len(aLista)<br />
+        <br />
+        RETURN<br />
+        <br />
+        FUNCTION AddElement(aList, cElement)<br />
+        &nbsp;&nbsp; // Adiciona um elemento &agrave; lista<br />
+        &nbsp;&nbsp; aList := aList + { cElement }<br />
+        &nbsp;&nbsp; RETURN aList<br />
+        <br />
+</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>get</strong></td>
+  </tr>
+  <tr>
+    <td><p> PROCEDURE Main()<br />
+        <br />
+        &nbsp;&nbsp; LOCAL aLista := {}<br />
+        <br />
+        &nbsp;&nbsp; // Adiciona elementos &agrave; lista<br />
+        &nbsp;&nbsp; aLista := AddElement(aLista, &quot;Elemento 1&quot;)<br />
+        &nbsp;&nbsp; aLista := AddElement(aLista, &quot;Elemento 2&quot;)<br />
+        &nbsp;&nbsp; aLista := AddElement(aLista, &quot;Elemento 3&quot;)<br />
+        <br />
+        &nbsp;&nbsp; // Obt&eacute;m e exibe o segundo elemento da lista<br />
+        &nbsp;&nbsp; ? &quot;Segundo elemento da lista: &quot;, GetElement(aLista, 2)<br />
+        <br />
+        RETURN<br />
+        <br />
+        FUNCTION AddElement(aList, cElement)<br />
+        &nbsp;&nbsp; // Adiciona um elemento &agrave; lista<br />
+        &nbsp;&nbsp; aList := aList + { cElement }<br />
+        &nbsp;&nbsp; RETURN aList<br />
+        <br />
+        FUNCTION GetElement(aList, nIndex)<br />
+        &nbsp;&nbsp; // Obt&eacute;m o elemento da lista pelo &iacute;ndice<br />
+        &nbsp;&nbsp; RETURN SubStr(aList, nIndex, 1)<br />
+        <br />
+</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>set</strong></td>
+  </tr>
+  <tr>
+    <td><p> PROCEDURE Main()<br />
+        <br />
+        &nbsp;&nbsp; LOCAL aLista := {}<br />
+        <br />
+        &nbsp;&nbsp; // Adiciona elementos &agrave; lista<br />
+        &nbsp;&nbsp; aLista := AddElement(aLista, &quot;Elemento 1&quot;)<br />
+        &nbsp;&nbsp; aLista := AddElement(aLista, &quot;Elemento 2&quot;)<br />
+        &nbsp;&nbsp; aLista := AddElement(aLista, &quot;Elemento 3&quot;)<br />
+        <br />
+        &nbsp;&nbsp; // Exibe a lista antes da modifica&ccedil;&atilde;o<br />
+        &nbsp;&nbsp; ? &quot;Lista antes da modifica&ccedil;&atilde;o:&quot;<br />
+        &nbsp;&nbsp; DisplayList(aLista)<br />
+        <br />
+        &nbsp;&nbsp; // Modifica o segundo elemento da lista<br />
+        &nbsp;&nbsp; aLista := SetElement(aLista, 2, &quot;Novo Elemento&quot;)<br />
+        <br />
+        &nbsp;&nbsp; // Exibe a lista ap&oacute;s a modifica&ccedil;&atilde;o<br />
+        &nbsp;&nbsp; ? &quot;Lista ap&oacute;s a modifica&ccedil;&atilde;o:&quot;<br />
+        &nbsp;&nbsp; DisplayList(aLista)<br />
+        <br />
+        RETURN<br />
+        <br />
+        FUNCTION AddElement(aList, cElement)<br />
+        &nbsp;&nbsp; // Adiciona um elemento &agrave; lista<br />
+        &nbsp;&nbsp; aList := aList + { cElement }<br />
+        &nbsp;&nbsp; RETURN aList<br />
+        <br />
+        FUNCTION SetElement(aList, nIndex, cNewElement)<br />
+        &nbsp;&nbsp; // Modifica um elemento na lista pelo &iacute;ndice<br />
+        &nbsp;&nbsp; StrPut(cNewElement, @aList[nIndex], 1)<br />
+        &nbsp;&nbsp; RETURN aList<br />
+        <br />
+        FUNCTION DisplayList(aList)<br />
+        &nbsp;&nbsp; // Exibe os elementos da lista<br />
+        &nbsp;&nbsp; FOR i := 1 TO Len(aList)<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ? aList[i]<br />
+        &nbsp;&nbsp; NEXT i<br />
+        <br />
+</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>remove</strong></td>
+  </tr>
+  <tr>
+    <td><p> PROCEDURE Main()<br />
+        <br />
+        &nbsp;&nbsp; LOCAL aLista := {}<br />
+        <br />
+        &nbsp;&nbsp; // Adiciona elementos &agrave; lista<br />
+        &nbsp;&nbsp; aLista := AddElement(aLista, &quot;Elemento 1&quot;)<br />
+        &nbsp;&nbsp; aLista := AddElement(aLista, &quot;Elemento 2&quot;)<br />
+        &nbsp;&nbsp; aLista := AddElement(aLista, &quot;Elemento 3&quot;)<br />
+        <br />
+        &nbsp;&nbsp; // Exibe a lista antes da remo&ccedil;&atilde;o<br />
+        &nbsp;&nbsp; ? &quot;Lista antes da remo&ccedil;&atilde;o:&quot;<br />
+        &nbsp;&nbsp; DisplayList(aLista)<br />
+        <br />
+        &nbsp;&nbsp; // Remove o segundo elemento da lista<br />
+        &nbsp;&nbsp; aLista := RemoveElement(aLista, 2)<br />
+        <br />
+        &nbsp;&nbsp; // Exibe a lista ap&oacute;s a remo&ccedil;&atilde;o<br />
+        &nbsp;&nbsp; ? &quot;Lista ap&oacute;s a remo&ccedil;&atilde;o:&quot;<br />
+        &nbsp;&nbsp; DisplayList(aLista)<br />
+        <br />
+        RETURN<br />
+        <br />
+        FUNCTION AddElement(aList, cElement)<br />
+        &nbsp;&nbsp; // Adiciona um elemento &agrave; lista<br />
+        &nbsp;&nbsp; aList := aList + { cElement }<br />
+        &nbsp;&nbsp; RETURN aList<br />
+        <br />
+        FUNCTION RemoveElement(aList, nIndex)<br />
+        &nbsp;&nbsp; // Remove um elemento da lista pelo &iacute;ndice<br />
+        &nbsp;&nbsp; aList := Left(aList, nIndex - 1) + SubStr(aList, nIndex + 1)<br />
+        &nbsp;&nbsp; RETURN aList<br />
+        <br />
+        FUNCTION DisplayList(aList)<br />
+        &nbsp;&nbsp; // Exibe os elementos da lista<br />
+        &nbsp;&nbsp; FOR i := 1 TO Len(aList)<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ? aList[i]<br />
+        &nbsp;&nbsp; NEXT i<br />
+        <br />
+</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>clear</strong></td>
+  </tr>
+  <tr>
+    <td><p> PROCEDURE Main()<br />
+        <br />
+        &nbsp;&nbsp; LOCAL aLista := {}<br />
+        <br />
+        &nbsp;&nbsp; // Adiciona elementos &agrave; lista<br />
+        &nbsp;&nbsp; aLista := AddElement(aLista, &quot;Elemento 1&quot;)<br />
+        &nbsp;&nbsp; aLista := AddElement(aLista, &quot;Elemento 2&quot;)<br />
+        &nbsp;&nbsp; aLista := AddElement(aLista, &quot;Elemento 3&quot;)<br />
+        <br />
+        &nbsp;&nbsp; // Exibe a lista antes da limpeza<br />
+        &nbsp;&nbsp; ? &quot;Lista antes da limpeza:&quot;<br />
+        &nbsp;&nbsp; DisplayList(aLista)<br />
+        <br />
+        &nbsp;&nbsp; // Limpa a lista<br />
+        &nbsp;&nbsp; aLista := ClearList(aLista)<br />
+        <br />
+        &nbsp;&nbsp; // Exibe a lista ap&oacute;s a limpeza<br />
+        &nbsp;&nbsp; ? &quot;Lista ap&oacute;s a limpeza:&quot;<br />
+        &nbsp;&nbsp; DisplayList(aLista)<br />
+        <br />
+        RETURN<br />
+        <br />
+        FUNCTION AddElement(aList, cElement)<br />
+        &nbsp;&nbsp; // Adiciona um elemento &agrave; lista<br />
+        &nbsp;&nbsp; aList := aList + { cElement }<br />
+        &nbsp;&nbsp; RETURN aList<br />
+        <br />
+        FUNCTION ClearList(aList)<br />
+        &nbsp;&nbsp; // Limpa todos os elementos da lista<br />
+        &nbsp;&nbsp; aList := &quot;&quot;<br />
+        &nbsp;&nbsp; RETURN aList<br />
+        <br />
+        FUNCTION DisplayList(aList)<br />
+        &nbsp;&nbsp; // Exibe os elementos da lista<br />
+        &nbsp;&nbsp; FOR i := 1 TO Len(aList)<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ? aList[i]<br />
+        &nbsp;&nbsp; NEXT i<br />
+        <br />
+</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>contains</strong></td>
+  </tr>
+  <tr>
+    <td><p> PROCEDURE Main()<br />
+        <br />
+        &nbsp;&nbsp; LOCAL aLista := {}<br />
+        <br />
+        &nbsp;&nbsp; // Adiciona elementos &agrave; lista<br />
+        &nbsp;&nbsp; aLista := AddElement(aLista, &quot;Elemento 1&quot;)<br />
+        &nbsp;&nbsp; aLista := AddElement(aLista, &quot;Elemento 2&quot;)<br />
+        &nbsp;&nbsp; aLista := AddElement(aLista, &quot;Elemento 3&quot;)<br />
+        <br />
+        &nbsp;&nbsp; // Verifica se a lista cont&eacute;m o elemento &quot;Elemento 2&quot;<br />
+        &nbsp;&nbsp; IF ContainsElement(aLista, &quot;Elemento 2&quot;)<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ? &quot;A lista cont&eacute;m o elemento 'Elemento 2'&quot;<br />
+        &nbsp;&nbsp; ELSE<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ? &quot;A lista n&atilde;o cont&eacute;m o elemento 'Elemento 2'&quot;<br />
+        &nbsp;&nbsp; ENDIF<br />
+        <br />
+        &nbsp;&nbsp; // Verifica se a lista cont&eacute;m o elemento &quot;Elemento 4&quot;<br />
+        &nbsp;&nbsp; IF ContainsElement(aLista, &quot;Elemento 4&quot;)<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ? &quot;A lista cont&eacute;m o elemento 'Elemento 4'&quot;<br />
+        &nbsp;&nbsp; ELSE<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ? &quot;A lista n&atilde;o cont&eacute;m o elemento 'Elemento 4'&quot;<br />
+        &nbsp;&nbsp; ENDIF<br />
+        <br />
+        RETURN<br />
+        <br />
+        FUNCTION AddElement(aList, cElement)<br />
+        &nbsp;&nbsp; // Adiciona um elemento &agrave; lista<br />
+        &nbsp;&nbsp; aList := aList + { cElement }<br />
+        &nbsp;&nbsp; RETURN aList<br />
+        <br />
+        FUNCTION ContainsElement(aList, cElement)<br />
+        &nbsp;&nbsp; // Verifica se a lista cont&eacute;m o elemento<br />
+        &nbsp;&nbsp; RETURN IIf(At(cElement, aList) &gt; 0, .T., .F.)<br />
+        <br />
+</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>toArray</strong></td>
+  </tr>
+  <tr>
+    <td><p> PROCEDURE Main()<br />
+        <br />
+        &nbsp;&nbsp; LOCAL aLista := {}<br />
+        <br />
+        &nbsp;&nbsp; // Adiciona elementos &agrave; lista<br />
+        &nbsp;&nbsp; aLista := AddElement(aLista, &quot;Elemento 1&quot;)<br />
+        &nbsp;&nbsp; aLista := AddElement(aLista, &quot;Elemento 2&quot;)<br />
+        &nbsp;&nbsp; aLista := AddElement(aLista, &quot;Elemento 3&quot;)<br />
+        <br />
+        &nbsp;&nbsp; // Converte a lista para um array<br />
+        &nbsp;&nbsp; LOCAL aArray := ToArray(aLista)<br />
+        <br />
+        &nbsp;&nbsp; // Exibe o array resultante<br />
+        &nbsp;&nbsp; ? &quot;Array resultante:&quot;<br />
+        &nbsp;&nbsp; DisplayArray(aArray)<br />
+        <br />
+        RETURN<br />
+        <br />
+        FUNCTION AddElement(aList, cElement)<br />
+        &nbsp;&nbsp; // Adiciona um elemento &agrave; lista<br />
+        &nbsp;&nbsp; aList := aList + { cElement }<br />
+        &nbsp;&nbsp; RETURN aList<br />
+        <br />
+        FUNCTION ToArray(aList)<br />
+        &nbsp;&nbsp; // Converte a lista para um array<br />
+        &nbsp;&nbsp; LOCAL aResult := {}<br />
+        &nbsp;&nbsp; FOR i := 1 TO Len(aList)<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; aResult[i] := SubStr(aList, i, 1)<br />
+        &nbsp;&nbsp; NEXT i<br />
+        &nbsp;&nbsp; RETURN aResult<br />
+        <br />
+        FUNCTION DisplayArray(aArray)<br />
+        &nbsp;&nbsp; // Exibe os elementos do array<br />
+        &nbsp;&nbsp; FOR i := 1 TO Len(aArray)<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ? aArray[i]<br />
+        &nbsp;&nbsp; NEXT i<br />
+        <br />
+</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>indexOf</strong></td>
+  </tr>
+  <tr>
+    <td><p> PROCEDURE Main()<br />
+        <br />
+        &nbsp;&nbsp; LOCAL aLista := {}<br />
+        <br />
+        &nbsp;&nbsp; // Adiciona elementos &agrave; lista<br />
+        &nbsp;&nbsp; aLista := AddElement(aLista, &quot;Elemento 1&quot;)<br />
+        &nbsp;&nbsp; aLista := AddElement(aLista, &quot;Elemento 2&quot;)<br />
+        &nbsp;&nbsp; aLista := AddElement(aLista, &quot;Elemento 3&quot;)<br />
+        <br />
+        &nbsp;&nbsp; // Encontra o &iacute;ndice do elemento &quot;Elemento 2&quot;<br />
+        &nbsp;&nbsp; LOCAL nIndex := IndexOfElement(aLista, &quot;Elemento 2&quot;)<br />
+        <br />
+        &nbsp;&nbsp; // Exibe o &iacute;ndice do elemento encontrado<br />
+        &nbsp;&nbsp; ? &quot;&Iacute;ndice do elemento 'Elemento 2':&quot;, nIndex<br />
+        <br />
+        RETURN<br />
+        <br />
+        FUNCTION AddElement(aList, cElement)<br />
+        &nbsp;&nbsp; // Adiciona um elemento &agrave; lista<br />
+        &nbsp;&nbsp; aList := aList + { cElement }<br />
+        &nbsp;&nbsp; RETURN aList<br />
+        <br />
+        FUNCTION IndexOfElement(aList, cElement)<br />
+        &nbsp;&nbsp; // Encontra o &iacute;ndice do elemento na lista<br />
+        &nbsp;&nbsp; LOCAL nIndex := At(cElement, aList)<br />
+        &nbsp;&nbsp; RETURN IIf(nIndex &gt; 0, nIndex, 0)<br />
+        <br />
+</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>lastIndexOf&nbsp;</strong></td>
+  </tr>
+  <tr>
+    <td><p> PROCEDURE Main()<br />
+        <br />
+        &nbsp;&nbsp; LOCAL aLista := {}<br />
+        <br />
+        &nbsp;&nbsp; // Adiciona elementos &agrave; lista<br />
+        &nbsp;&nbsp; aLista := AddElement(aLista, &quot;Elemento 1&quot;)<br />
+        &nbsp;&nbsp; aLista := AddElement(aLista, &quot;Elemento 2&quot;)<br />
+        &nbsp;&nbsp; aLista := AddElement(aLista, &quot;Elemento 2&quot;)<br />
+        &nbsp;&nbsp; aLista := AddElement(aLista, &quot;Elemento 3&quot;)<br />
+        <br />
+        &nbsp;&nbsp; // Encontra o &iacute;ndice da &uacute;ltima ocorr&ecirc;ncia do elemento &quot;Elemento 2&quot;<br />
+        &nbsp;&nbsp; LOCAL nIndex := LastIndexOfElement(aLista, &quot;Elemento 2&quot;)<br />
+        <br />
+        &nbsp;&nbsp; // Exibe o &iacute;ndice da &uacute;ltima ocorr&ecirc;ncia do elemento encontrado<br />
+        &nbsp;&nbsp; ? &quot;&Iacute;ndice da &uacute;ltima ocorr&ecirc;ncia do elemento 'Elemento 2':&quot;, nIndex<br />
+        <br />
+        RETURN<br />
+        <br />
+        FUNCTION AddElement(aList, cElement)<br />
+        &nbsp;&nbsp; // Adiciona um elemento &agrave; lista<br />
+        &nbsp;&nbsp; aList := aList + { cElement }<br />
+        &nbsp;&nbsp; RETURN aList<br />
+        <br />
+        FUNCTION LastIndexOfElement(aList, cElement)<br />
+        &nbsp;&nbsp; // Encontra o &iacute;ndice da &uacute;ltima ocorr&ecirc;ncia do elemento na lista<br />
+        &nbsp;&nbsp; LOCAL nIndex := 0<br />
+        &nbsp;&nbsp; LOCAL nTempIndex := 0<br />
+        <br />
+        &nbsp;&nbsp; DO WHILE nTempIndex &gt; 0<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nTempIndex := At(cElement, aList, nTempIndex + 1)<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IF nTempIndex &gt; 0<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nIndex := nTempIndex<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ENDIF<br />
+        &nbsp;&nbsp; ENDDO<br />
+        <br />
+        &nbsp;&nbsp; RETURN nIndex<br />
+        <br />
+</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+
+</html>

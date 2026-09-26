@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Data em Javascript</title>
+</head>
+
+<body>
+<h1 align="center">Data em Javascript</h1>
+<h1 align="center">Manipulando datas e horas</h1>
+<p>Para se obter os dados separadamente, existem os seguintes m&eacute;todos:</p>
+<ul>
+  <li>from datetime import date</li>
+  <li>DataToda=date.today()</li>
+  <li>DataToda.day - Retorna o dia do m&ecirc;s (inteiro entre 1 e 31)</li>
+  <li>DataToda.weekday() - Retorna o dia da semana (0=Segunda-feira,... , 5=S&aacute;bado, 6=Domingo)</li>
+  <li>DataToda.month - Retorna o m&ecirc;s (entre 1=Janeiro e 12=Dezembro)</li>
+  <li>DataToda.year - Retorna o ano com quatro d&iacute;gitos (o mais usado)</li>
+</ul>
+<hr />
+<ul>
+  <li>from datetime import datetime</li>
+  <li>now = datetime.now()</li>
+  <li>now.strftime(&quot;%H&quot;) - Retorna a hora do dia (entre 0 e 23)</li>
+  <li>now.strftime(&quot;%M&quot;) - Retorna os minutos dentro da hora (entre 0 e 59)</li>
+  <li>now.strftime(&quot;%S&quot;) - Retorna os segundos (entre 0 e 59)</li>
+</ul>
+<hr />
+<p>No&nbsp;<strong>exemplo 1</strong>&nbsp;abaixo obteremos o dia da semana e as horas. Para tal, utilizaremos a vari&aacute;vel&nbsp;<strong>DataToda</strong>&nbsp;para armazenar data e hora.</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Exemplo 1</strong> </td>
+  </tr>
+  <tr>
+    <td><p>from datetime import date<br />
+      from datetime import datetime</p>
+      <p>DataToda=date.today()</p>
+      <p>Dia_do_mes=DataToda.day<br />
+        Dia_da_semana=DataToda.weekday()<br />
+        Mes=DataToda.month<br />
+        Ano=DataToda.year<br />
+        # ---------------------------------------<br />
+        now = datetime.now()<br />
+        Horas=now.strftime(&quot;%H&quot;)<br />
+        Minutos=now.strftime(&quot;%M&quot;)<br />
+        Segundos=now.strftime(&quot;%S&quot;)<br />
+        # ---------------------------------------<br />
+        semana = (&quot;Segunda&quot;, &quot;Ter&ccedil;a&quot;, &quot;Quarta&quot;, &quot;Quinta&quot;, &quot;Sexta&quot;, &quot;Sabado&quot;, &quot;Domingo&quot;)<br />
+        Semana_atual=semana[Dia_da_semana]<br />
+        #-------------------------<br />
+        Mes2=(&quot;&quot;, &quot;Janeiro&quot;, &quot;Fevereiro&quot;, &quot;Mar&ccedil;o&quot;, &quot;Abril&quot;, &quot;Maio&quot;, &quot;Junho&quot;, &quot;Julho&quot;, &quot;Agosto&quot;, &quot;Setembro&quot;, &quot;Outubro&quot;, &quot;Novembro&quot;, &quot;Desembro&quot;)<br />
+        Mes_atual=Mes2[Mes]<br />
+        print(f&quot;{Semana_atual}, {Dia_do_mes} de {Mes_atual} de {Ano}&quot;)<br />
+        print(f&quot;S&atilde;o: {Horas} horas, {Minutos} minutos e {Segundos} segundos.&quot;)</p></td>
+  </tr>
+</table>
+<p><strong>exemplo 2: alterando a data</strong></p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Exemplo 2 </strong></td>
+  </tr>
+  <tr>
+    <td><p>import datetime<br />
+      <br />
+      # YYYY, MM, DD <br />
+      DataToda=datetime.datetime(2022, 12, 31)</p>
+      <p>Dia_do_mes=DataToda.day<br />
+        Dia_da_semana=DataToda.weekday()<br />
+        Mes=DataToda.month<br />
+        Ano=DataToda.year<br />
+        # ---------------------------------------<br />
+        semana = (&quot;Segunda&quot;, &quot;Ter&ccedil;a&quot;, &quot;Quarta&quot;, &quot;Quinta&quot;, &quot;Sexta&quot;, &quot;Sabado&quot;, &quot;Domingo&quot;)<br />
+        Semana_atual=semana[Dia_da_semana]<br />
+        #-------------------------<br />
+        Mes2=(&quot;&quot;, &quot;Janeiro&quot;, &quot;Fevereiro&quot;, &quot;Mar&ccedil;o&quot;, &quot;Abril&quot;, &quot;Maio&quot;, &quot;Junho&quot;, &quot;Julho&quot;, &quot;Agosto&quot;, &quot;Setembro&quot;, &quot;Outubro&quot;, &quot;Novembro&quot;, &quot;Desembro&quot;)<br />
+        Mes_atual=Mes2[Mes]<br />
+        print(f&quot;{Semana_atual}, {Dia_do_mes} de {Mes_atual} de {Ano}&quot;)</p>      
+    </td>
+  </tr>
+</table>
+</body>
+</html>

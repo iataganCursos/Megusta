@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="pt-br">
+ <head>
+   <meta charset="utf-8">
+<title>Array em Java</title>
+</head>
+
+<body>
+<h1 align="center">Array em Java</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>add</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Array original (como vetor dinâmico em Rust)<br>
+&nbsp;&nbsp;&nbsp; let mut minha_vec = vec![1, 2, 3, 4, 5];<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Novo elemento<br>
+&nbsp;&nbsp;&nbsp; let novo_elemento = 6;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Adicionar o novo elemento ao final<br>
+&nbsp;&nbsp;&nbsp; minha_vec.push(novo_elemento);<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Imprimir o novo vetor<br>
+&nbsp;&nbsp;&nbsp; println!("{:?}", minha_vec); // Saída: [1, 2, 3, 4,
+5, 6]<br>
+}</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>size</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Criando um array de inteiros com 5 elementos<br>
+&nbsp;&nbsp;&nbsp; let meu_array = [10, 20, 30, 40, 50];<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Obtendo o tamanho do array<br>
+&nbsp;&nbsp;&nbsp; let tamanho = meu_array.len();<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o tamanho do array<br>
+&nbsp;&nbsp;&nbsp; println!("O tamanho do array é: {}", tamanho);<br>
+}</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>get</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Criando um array de inteiros<br>
+&nbsp;&nbsp;&nbsp; let meu_array = [10, 20, 30, 40, 50];<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Acessando elementos do array usando colchetes<br>
+&nbsp;&nbsp;&nbsp; let primeiro_elemento = meu_array[0]; // índice 0<br>
+&nbsp;&nbsp;&nbsp; let terceiro_elemento = meu_array[2]; // índice 2<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo os elementos acessados<br>
+&nbsp;&nbsp;&nbsp; println!("Primeiro elemento: {}", primeiro_elemento);<br>
+&nbsp;&nbsp;&nbsp; println!("Terceiro elemento: {}", terceiro_elemento);<br>
+}</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>set</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Criando um array mutável de inteiros<br>
+&nbsp;&nbsp;&nbsp; let mut meu_array = [10, 20, 30, 40, 50];<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Alterando o valor do terceiro elemento (índice 2)<br>
+&nbsp;&nbsp;&nbsp; meu_array[2] = 35;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o array após a alteração<br>
+&nbsp;&nbsp;&nbsp; for i in 0..meu_array.len() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; println!("Elemento {}: {}",
+i, meu_array[i]);<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>remove</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Criando um vetor de inteiros<br>
+&nbsp;&nbsp;&nbsp; let mut meu_vec = vec![10, 20, 30, 40, 50];<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Definindo o índice do elemento que deseja remover
+(ex: 2 → valor 30)<br>
+&nbsp;&nbsp;&nbsp; let indice_para_remover = 2;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Verificando se o índice é válido<br>
+&nbsp;&nbsp;&nbsp; if indice_para_remover &lt; meu_vec.len() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Remove o elemento no
+índice<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+meu_vec.remove(indice_para_remover);<br>
+&nbsp;&nbsp;&nbsp; } else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; println!("Índice inválido
+para remoção.");<br>
+&nbsp;&nbsp;&nbsp; }<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o vetor após a remoção<br>
+&nbsp;&nbsp;&nbsp; for elemento in &amp;meu_vec {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; println!("Elemento: {}",
+elemento);<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>clear</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Criando um array mutável de inteiros<br>
+&nbsp;&nbsp;&nbsp; let mut meu_array = [10, 20, 30, 40, 50];<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Limpando o array atribuindo valores padrão (zero)
+a todos os elementos<br>
+&nbsp;&nbsp;&nbsp; for i in 0..meu_array.len() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; meu_array[i] = 0;<br>
+&nbsp;&nbsp;&nbsp; }<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o array após a limpeza<br>
+&nbsp;&nbsp;&nbsp; for elemento in &amp;meu_array {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; println!("Elemento: {}",
+elemento);<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>contains</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Criando um array de inteiros<br>
+&nbsp;&nbsp;&nbsp; let meu_array = [10, 20, 30, 40, 50];<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Valor que queremos verificar<br>
+&nbsp;&nbsp;&nbsp; let valor_procurado = 30;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Variável para rastrear se o valor foi encontrado<br>
+&nbsp;&nbsp;&nbsp; let mut encontrado = false;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Percorrendo o array e verificando se o valor está
+presente<br>
+&nbsp;&nbsp;&nbsp; for &amp;elemento in &amp;meu_array {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if elemento ==
+valor_procurado {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+encontrado = true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; }<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br>
+&nbsp;&nbsp;&nbsp; if encontrado {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; println!("O valor {} está
+presente no array.", valor_procurado);<br>
+&nbsp;&nbsp;&nbsp; } else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; println!("O valor {} não
+está presente no array.", valor_procurado);<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>toArray</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Criando um vetor de Strings<br>
+&nbsp;&nbsp;&nbsp; let lista = vec![<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String::from("Item 1"),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String::from("Item 2"),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String::from("Item 3"),<br>
+&nbsp;&nbsp;&nbsp; ];<br>
+<br>
+&nbsp;&nbsp;&nbsp; // "Convertendo" o Vec para um slice (equivalente ao
+array em Java)<br>
+&nbsp;&nbsp;&nbsp; let array: &amp;[String] = &amp;lista;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo os elementos do slice<br>
+&nbsp;&nbsp;&nbsp; for item in array {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; println!("{}", item);<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>indexOf</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Criando um array de inteiros<br>
+&nbsp;&nbsp;&nbsp; let meu_array = [10, 20, 30, 40, 50];<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Valor que queremos encontrar<br>
+&nbsp;&nbsp;&nbsp; let valor_procurado = 30;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Variável para armazenar o índice do valor
+encontrado<br>
+&nbsp;&nbsp;&nbsp; let mut indice: isize = -1; // -1 indica não
+encontrado<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Percorrendo o array para encontrar o índice<br>
+&nbsp;&nbsp;&nbsp; for i in 0..meu_array.len() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if meu_array[i] ==
+valor_procurado {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+indice = i as isize;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; }<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br>
+&nbsp;&nbsp;&nbsp; if indice != -1 {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; println!("O valor {} foi
+encontrado no índice {}", valor_procurado, indice);<br>
+&nbsp;&nbsp;&nbsp; } else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; println!("O valor {} não foi
+encontrado no array.", valor_procurado);<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>lastIndexOf&nbsp;</strong></td>
+  </tr>
+  <tr>
+    <td>fn main() {<br>
+&nbsp;&nbsp;&nbsp; // Criando um array de inteiros<br>
+&nbsp;&nbsp;&nbsp; let meu_array = [10, 20, 30, 40, 30];<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Valor que queremos encontrar<br>
+&nbsp;&nbsp;&nbsp; let valor_procurado = 30;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Variável para armazenar o índice do último valor
+encontrado<br>
+&nbsp;&nbsp;&nbsp; let mut ultimo_indice: isize = -1;<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Percorrendo o array<br>
+&nbsp;&nbsp;&nbsp; for i in 0..meu_array.len() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if meu_array[i] ==
+valor_procurado {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ultimo_indice = i as isize;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; }<br>
+<br>
+&nbsp;&nbsp;&nbsp; // Exibindo o resultado<br>
+&nbsp;&nbsp;&nbsp; if ultimo_indice != -1 {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; println!(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "O
+valor {} foi encontrado no último índice: {}",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+valor_procurado, ultimo_indice<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; );<br>
+&nbsp;&nbsp;&nbsp; } else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; println!("O valor {} não foi
+encontrado no array.", valor_procurado);<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+
+</html>

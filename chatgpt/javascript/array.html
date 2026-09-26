@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Array em Javascript</title>
+</head>
+
+<body>
+<h1 align="center">Array em Javascript</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>add</strong></td>
+  </tr>
+  <tr>
+    <td>const minhaArray = [1, 2, 3];<br />
+      minhaArray.push(4);<br />
+    // Agora, minhaArray &eacute; [1, 2, 3, 4]</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>size</strong></td>
+  </tr>
+  <tr>
+    <td><p>const minhaArray = [1, 2, 3, 4, 5];<br />
+      const tamanhoDaArray = minhaArray.length;</p>
+    <p>console.log(tamanhoDaArray); // Sa&iacute;da: 5</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>get</strong></td>
+  </tr>
+  <tr>
+    <td><p>const minhaArray = [10, 20, 30, 40, 50];</p>
+      <p>// Acessando o elemento no &iacute;ndice 2<br />
+        const elementoNoIndice2 = minhaArray[2];</p>
+    <p>console.log(elementoNoIndice2); // Sa&iacute;da: 30</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>set</strong></td>
+  </tr>
+  <tr>
+    <td><p>const minhaArray = [10, 20, 30, 40, 50];</p>
+      <p>// Modificando o elemento no &iacute;ndice 2<br />
+        minhaArray[2] = 35;</p>
+    <p>console.log(minhaArray); // Sa&iacute;da: [10, 20, 35, 40, 50]</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>remove</strong></td>
+  </tr>
+  <tr>
+    <td><p>const minhaArray = [1, 2, 3, 4, 5];</p>
+      <p>// Remover um elemento a partir do &iacute;ndice 2<br />
+        minhaArray.splice(2, 1);</p>
+    <p>console.log(minhaArray); // Sa&iacute;da: [1, 2, 4, 5]</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>clear</strong></td>
+  </tr>
+  <tr>
+    <td><p>let minhaArray = [1, 2, 3, 4, 5];</p>
+      <p>// Esvaziar a array<br />
+        minhaArray = [];</p>
+    <p>console.log(minhaArray); // Sa&iacute;da: []</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>contains</strong></td>
+  </tr>
+  <tr>
+    <td><p>const minhaArray = [1, 2, 3, 4, 5];<br />
+      const elemento = 3;</p>
+      <p>const contemElemento = minhaArray.includes(elemento);</p>
+    <p>console.log(contemElemento); // Sa&iacute;da: true</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>toArray</strong></td>
+  </tr>
+  <tr>
+    <td><p>const meuObjeto = { chave1: 'valor1', chave2: 'valor2', chave3: 'valor3' };<br />
+      const minhaArray = Object.values(meuObjeto);</p>
+    <p>console.log(minhaArray); // Sa&iacute;da: ['valor1', 'valor2', 'valor3']</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>indexOf</strong></td>
+  </tr>
+  <tr>
+    <td><p>const minhaArray = [10, 20, 30, 40, 50];</p>
+      <p>const indiceDoElemento30 = minhaArray.indexOf(30);<br />
+        console.log(indiceDoElemento30); // Sa&iacute;da: 2</p>
+      <p>const indiceDoElemento60 = minhaArray.indexOf(60);<br />
+    console.log(indiceDoElemento60); // Sa&iacute;da: -1</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>lastIndexOf&nbsp;</strong></td>
+  </tr>
+  <tr>
+    <td><p>const minhaArray = [10, 20, 30, 40, 30, 50];</p>
+      <p>const ultimoIndiceDoElemento30 = minhaArray.lastIndexOf(30);<br />
+        console.log(ultimoIndiceDoElemento30); // Sa&iacute;da: 4</p>
+      <p>const ultimoIndiceDoElemento60 = minhaArray.lastIndexOf(60);<br />
+    console.log(ultimoIndiceDoElemento60); // Sa&iacute;da: -1</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+
+</html>

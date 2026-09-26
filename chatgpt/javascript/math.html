@@ -1,0 +1,512 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Fun&ccedil;&otilde;es Matem&aacute;ticas em Javascript</title>
+<style type="text/css">
+<!--
+.style1 {color: #FFFFFF}
+.style2 {
+	font-size: 50px;
+	font-weight: bold;
+}
+-->
+</style>
+</head>
+
+<body>
+<p align="center" class="style2">Fun&ccedil;&otilde;es Matem&aacute;ticas em Javascript</p>
+<h1 align="center">Convertendo String para Num&eacute;rica</h1>
+<h1 align="center">N&uacute;meros Inteiros</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Long.parseLong</strong></td>
+  </tr>
+  <tr>
+    <td><p>var stringNumeroGrande = &quot;123456789012345678901234567890&quot;;<br />
+      var numeroGrande = BigInt(stringNumeroGrande);</p>
+    <p>console.log(numeroGrande); // Sa&iacute;da: 123456789012345678901234567890n</p></td>
+  </tr>
+</table>
+<h1 align="center">N&uacute;meros Reais</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Double.parseDouble</strong></td>
+  </tr>
+  <tr>
+    <td><p>var stringNumero = &quot;3.14&quot;;<br />
+      var numero = parseFloat(stringNumero);</p>
+    <p>console.log(numero); // Sa&iacute;da: 3.14</p></td>
+  </tr>
+</table>
+<h1 align="center">Boleanos</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Boolean.parseBoolean</strong></td>
+  </tr>
+  <tr>
+    <td><p>var valor = &quot;true&quot;;  // Pode ser qualquer valor</p>
+      <p>var booleano = Boolean(valor);</p>
+    <p>console.log(booleano);  // O resultado ser&aacute; true, a menos que 'valor' seja uma string vazia ou &quot;false&quot;</p></td>
+  </tr>
+</table>
+<h1 align="center">Arredondando valores</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.floor</strong></td>
+  </tr>
+  <tr>
+    <td>var numero = 7.8;<br />
+      var arredondadoParaBaixo = Math.floor(numero);
+    <p>console.log(arredondadoParaBaixo);  // Sa&iacute;da: 7</p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.ceil</strong></td>
+  </tr>
+  <tr>
+    <td><p>var numero = 7.2;<br />
+      var arredondadoParaCima = Math.ceil(numero);</p>
+    <p>console.log(arredondadoParaCima);  // Sa&iacute;da: 8</p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.round</strong></td>
+  </tr>
+  <tr>
+    <td><p>var numero1 = 7.2;<br />
+      var arredondado1 = Math.round(numero1);</p>
+      <p>console.log(arredondado1);  // Sa&iacute;da: 7</p>
+      <p>var numero2 = 7.8;<br />
+        var arredondado2 = Math.round(numero2);</p>
+    <p>console.log(arredondado2);  // Sa&iacute;da: 8</p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.trunc</strong></td>
+  </tr>
+  <tr>
+    <td><p>var numero1 = 7.8;<br />
+      var truncado1 = Math.trunc(numero1);</p>
+      <p>console.log(truncado1);  // Sa&iacute;da: 7</p>
+      <p>var numero2 = -4.5;<br />
+        var truncado2 = Math.trunc(numero2);</p>
+    <p>console.log(truncado2);  // Sa&iacute;da: -4</p></td>
+  </tr>
+  <tr></tr>
+</table>
+<h1 align="center">Digite um n&uacute;mero com 3 casas decimais</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC">&nbsp;</td>
+  </tr>
+  <tr>
+    <td><p>var numero = 123.456789;<br />
+      var numeroFormatado = numero.toFixed(3);</p>
+    <p>console.log(numeroFormatado);</p></td>
+  </tr>
+</table>
+<h1 align="center">Formatar moeda</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>toLocaleString</strong></td>
+  </tr>
+  <tr>
+    <td><p>var numero = 1234567.89;<br />
+      var formatoBrasileiro = numero.toLocaleString(&quot;pt-BR&quot;, { style: &quot;currency&quot;, currency: &quot;BRL&quot; });</p>
+    <p>console.log(formatoBrasileiro);  // Sa&iacute;da: R$ 1.234.567,89</p></td>
+  </tr>
+</table>
+<h1 align="center">Fun&ccedil;&otilde;es matem&aacute;ticas comuns</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.random</strong></td>
+  </tr>
+  <tr>
+    <td><p>var numeroAleatorio = Math.random();</p>
+    <p>console.log(numeroAleatorio);  // Sa&iacute;da: um n&uacute;mero decimal aleat&oacute;rio entre 0 (inclusive) e 1 (exclusive)</p></td>
+  </tr>
+  <tr>
+    <td> // Gera um n&uacute;mero aleat&oacute;rio no intervalo [min, max)<br />
+      function gerarNumeroAleatorio(min, max) {<br />
+      &nbsp; return Math.random() * (max - min) + min;<br />
+      }<br />
+      <br />
+      var numeroNoIntervalo = gerarNumeroAleatorio(5, 10);<br />
+    console.log(numeroNoIntervalo);&nbsp; // Sa&iacute;da: um n&uacute;mero aleat&oacute;rio entre 5 (inclusive) e 10 (exclusive)</td>
+  </tr>
+  <tr>
+    <td>double numeroAleatorioNoIntervalo = Math.random() * (max - min) + min;</td>
+  </tr>
+  <tr>
+    <td>double numeroAleatorioIntervalo = Math.random() * (10.0 - 5.0) + 5.0;<br />
+    System.out.println(&quot;N&uacute;mero aleat&oacute;rio no intervalo: &quot; + numeroAleatorioIntervalo);</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.abs</strong></td>
+  </tr>
+  <tr>
+    <td>var numeroNegativo = -5;<br />
+      var absoluto = Math.abs(numeroNegativo);
+    <p>console.log(absoluto);  // Sa&iacute;da: 5</p></td>
+  </tr>
+  <tr>
+    <td><p>var numeroPositivo = 3;<br />
+      var absolutoPositivo = Math.abs(numeroPositivo);</p>
+    <p>console.log(absolutoPositivo);  // Sa&iacute;da: 3</p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.max</strong></td>
+  </tr>
+  <tr>
+    <td>var maiorNumero = Math.max(5, 10, 3, 8, 1);
+      <p>console.log(maiorNumero);  // Sa&iacute;da: 10</p></td>
+  </tr>
+  <tr>
+    <td><p>var numeros = [5, 10, 3, 8, 1];<br />
+      var maiorNumero = Math.max(...numeros);</p>
+    <p>console.log(maiorNumero);  // Sa&iacute;da: 10</p></td>
+  </tr>
+  <tr>
+    <td>var nenhumNumero = Math.max();<br />
+    console.log(nenhumNumero);  // Sa&iacute;da: -Infinity</td>
+  </tr>
+  <tr>
+    <td>int maximoEntreTres = Math.max(Math.max(numero1, numero2), numero3);</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.min</strong></td>
+  </tr>
+  <tr>
+    <td><p>var menorNumero = Math.min(5, 10, 3, 8, 1);</p>
+    <p>console.log(menorNumero);  // Sa&iacute;da: 1</p></td>
+  </tr>
+  <tr>
+    <td><p>var numeros = [5, 10, 3, 8, 1];<br />
+      var menorNumero = Math.min(...numeros);</p>
+    <p>console.log(menorNumero);  // Sa&iacute;da: 1</p></td>
+  </tr>
+  <tr>
+    <td>var nenhumNumero = Math.min();<br />
+    console.log(nenhumNumero);  // Sa&iacute;da: Infinity</td>
+  </tr>
+  <tr>
+    <td> int minimoEntreTres = Math.min(Math.min(numero1, numero2), numero3);</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.pow</strong></td>
+  </tr>
+  <tr>
+    <td><p>var resultado = Math.pow(2, 3);</p>
+    <p>console.log(resultado);  // Sa&iacute;da: 8 (2 elevado &agrave; pot&ecirc;ncia de 3)</p></td>
+  </tr>
+  <tr>
+    <td><p>var resultado = 2 ** 3;</p>
+    <p>console.log(resultado);  // Sa&iacute;da: 8</p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.sqrt</strong></td>
+  </tr>
+  <tr>
+    <td><p>var numero = 9;<br />
+      var raizQuadrada = Math.sqrt(numero);</p>
+        <p>console.log(raizQuadrada);  // Sa&iacute;da: 3</p></td>
+  </tr>
+  <tr>
+    <td><p>var numeroInteiro = 16;<br />
+      var raizQuadradaInteira = numeroInteiro ** 0.5;</p>
+    <p>console.log(raizQuadradaInteira);  // Sa&iacute;da: 4</p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.SQRT1_2</strong></td>
+  </tr>
+  <tr>
+    <td> console.log(Math.SQRT1_2);  // Sa&iacute;da: ~0.7071067811865476</td>
+  </tr>
+  <tr>
+    <td>public static final double SQRT1_2 = 0.7071067811865476;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.SQRT2</strong></td>
+  </tr>
+  <tr>
+    <td>console.log(Math.SQRT2);  // Sa&iacute;da: ~1.4142135623730951</td>
+  </tr>
+  <tr>
+    <td>public static final double SQRT2 = 1.4142135623730951;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.cbrt</strong></td>
+  </tr>
+  <tr>
+    <td><p>var numero = 27;<br />
+      var raizCubica = Math.cbrt(numero);</p>
+    <p>console.log(raizCubica);  // Sa&iacute;da: 3</p></td>
+  </tr>
+  <tr>
+    <td><p>var numeroInteiro = 8;<br />
+      var raizCubicaInteira = numeroInteiro ** (1/3);</p>
+    <p>console.log(raizCubicaInteira);  // Sa&iacute;da: 2</p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.sign</strong></td>
+  </tr>
+  <tr>
+    <td>console.log(Math.sign(5));    // Sa&iacute;da: 1 (positivo)<br />
+      console.log(Math.sign(-3));   // Sa&iacute;da: -1 (negativo)<br />
+      console.log(Math.sign(0));    // Sa&iacute;da: 0 (zero)<br />
+      console.log(Math.sign(-0));   // Sa&iacute;da: -0 (zero tamb&eacute;m, mas com sinal negativo)<br />
+    console.log(Math.sign(NaN));  // Sa&iacute;da: NaN (n&atilde;o &eacute; um n&uacute;mero)</td>
+  </tr>
+</table>
+<h1 align="center">Fun&ccedil;&otilde;es trigonom&eacute;tricas</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.PI</strong></td>
+  </tr>
+  <tr>
+    <td>var raio = 5;<br />
+      var circunferencia = 2 * Math.PI * raio;
+    <p>console.log(circunferencia);  // Sa&iacute;da: ~31.41592653589793</p></td>
+  </tr>
+  <tr>
+    <td>console.log(Math.PI);  // Sa&iacute;da: ~3.141592653589793</td>
+  </tr>
+  <tr>
+    <td bgcolor="#000000"><span class="style1">function radianos(){<br />
+      return Math.PI/180<br />
+    }</span></td>
+  </tr>
+  <tr>
+    <td> function grausParaRadianos(graus) {<br />
+      &nbsp;&nbsp;&nbsp; return graus * (Math.PI / 180);<br />
+      }<br />
+      <br />
+      // Exemplo: converter 45 graus para radianos<br />
+      var resultado = grausParaRadianos(45);<br />
+    console.log(resultado);&nbsp; // Sa&iacute;da: ~0.7853981633974483</td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.sin</strong></td>
+  </tr>
+  <tr>
+    <td><p>var anguloEmRadianos = Math.PI / 4;  // Um &acirc;ngulo de 45 graus em radianos<br />
+      var senoDoAngulo = Math.sin(anguloEmRadianos);</p>
+    <p>console.log(senoDoAngulo);  // Sa&iacute;da: ~0.7071067811865475 (aproximadamente &radic;2/2)</p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.cos</strong></td>
+  </tr>
+  <tr>
+    <td><p>var anguloEmRadianos = Math.PI / 3;  // Um &acirc;ngulo de 60 graus em radianos<br />
+      var cossenoDoAngulo = Math.cos(anguloEmRadianos);</p>
+    <p>console.log(cossenoDoAngulo);  // Sa&iacute;da: 0.5</p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.tan</strong></td>
+  </tr>
+  <tr>
+    <td><p>var anguloEmRadianos = Math.PI / 6;  // Um &acirc;ngulo de 30 graus em radianos<br />
+      var tangenteDoAngulo = Math.tan(anguloEmRadianos);</p>
+    <p>console.log(tangenteDoAngulo);  // Sa&iacute;da: ~0.5773502691896257</p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.asin</strong></td>
+  </tr>
+  <tr>
+    <td><p>var numero = 0.5;<br />
+      var arcoSeno = Math.asin(numero);</p>
+    <p>console.log(arcoSeno);  // Sa&iacute;da: ~0.5235987755982988 (aproximadamente 30 graus em radianos)</p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.acos</strong></td>
+  </tr>
+  <tr>
+    <td>var numero = 0.5;<br />
+      var arcoCosseno = Math.acos(numero);
+    <p>console.log(arcoCosseno);  // Sa&iacute;da: ~1.0471975511965979 (aproximadamente 60 graus em radianos)</p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.atan</strong></td>
+  </tr>
+  <tr>
+    <td><p>var numero = 0.5;<br />
+      var arcoTangente = Math.atan(numero);</p>
+    <p>console.log(arcoTangente);  // Sa&iacute;da: ~0.4636476090008061 (aproximadamente 26.57 graus em radianos)</p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.sinh</strong></td>
+  </tr>
+  <tr>
+    <td><p>var numero = 2;<br />
+      var senoHiperbolico = Math.sinh(numero);</p>
+    <p>console.log(senoHiperbolico);  // Sa&iacute;da: ~3.6268604078470186</p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.cosh</strong></td>
+  </tr>
+  <tr>
+    <td><p>var numero = 2;<br />
+      var cossenoHiperbolico = Math.cosh(numero);</p>
+    <p>console.log(cossenoHiperbolico);  // Sa&iacute;da: ~3.7621956910836314</p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.tanh</strong></td>
+  </tr>
+  <tr>
+    <td><p>var numero = 2;<br />
+      var tangenteHiperbolica = Math.tanh(numero);</p>
+    <p>console.log(tangenteHiperbolica);  // Sa&iacute;da: ~0.9640275800758169</p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.asinh</strong></td>
+  </tr>
+  <tr>
+    <td><p>var numero = 2;<br />
+      var arcoSenoHiperbolico = Math.asinh(numero);</p>
+    <p>console.log(arcoSenoHiperbolico);  // Sa&iacute;da: ~1.4436354751788103</p></td>
+  </tr>
+  <tr>
+    <td>asinh(x) = ln(x + sqrt(x^2 + 1))</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.acosh</strong></td>
+  </tr>
+  <tr>
+    <td><p>var numero = 2;<br />
+      var arcoCossenoHiperbolico = Math.acosh(numero);</p>
+    <p>console.log(arcoCossenoHiperbolico);  // Sa&iacute;da: ~1.3169578969248166</p></td>
+  </tr>
+  <tr>
+    <td>acosh(x) = ln(x + sqrt(x^2 - 1))</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.atanh</strong></td>
+  </tr>
+  <tr>
+    <td><p>var numero = 0.5;<br />
+      var arcoTangenteHiperbolica = Math.atanh(numero);</p>
+    <p>console.log(arcoTangenteHiperbolica);  // Sa&iacute;da: ~0.5493061443340549</p></td>
+  </tr>
+  <tr>
+    <td>atanh(x) = 0.5 * ln((1 + x) / (1 - x))</td>
+  </tr>
+</table>
+<h1 align="center">Logar&iacute;tmos</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.log</strong></td>
+  </tr>
+  <tr>
+    <td><p>var numero = 4;<br />
+      var logaritmoNatural = Math.log(numero);</p>
+    <p>console.log(logaritmoNatural);  // Sa&iacute;da: 1.3862943611198906</p></td>
+  </tr>
+  <tr>
+    <td><p>var numero = 100;<br />
+      var logaritmoBase10 = Math.log(numero) / Math.LN10;</p>
+    <p>console.log(logaritmoBase10);  // Sa&iacute;da: 2</p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.log10</strong></td>
+  </tr>
+  <tr>
+    <td> function log10(x) {<br />
+      &nbsp; return Math.log(x) / Math.LN10;<br />
+      }<br />
+      <br />
+      var numero = 100;<br />
+      var logaritmoBase10 = log10(numero);<br />
+      <br />
+    console.log(logaritmoBase10);&nbsp; // Sa&iacute;da: 2</td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.E</strong></td>
+  </tr>
+  <tr>
+    <td>console.log(Math.E);  // Sa&iacute;da: ~2.718281828459045</td>
+  </tr>
+  <tr>
+    <td>var resultado = Math.exp(1);  // Equivalente a Math.E^1<br />
+    console.log(resultado);  // Sa&iacute;da: ~2.718281828459045</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.LN2</strong></td>
+  </tr>
+  <tr>
+    <td>console.log(Math.LN2);  // Sa&iacute;da: ~0.6931471805599453</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.LOG2E</strong></td>
+  </tr>
+  <tr>
+    <td>console.log(Math.LOG2E);  // Sa&iacute;da: ~1.4426950408889634</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.LN10</strong></td>
+  </tr>
+  <tr>
+    <td>console.log(Math.LN10);  // Sa&iacute;da: ~2.302585092994046</td>
+  </tr>
+  <tr>
+    <td><p>var numero = 100;<br />
+      var log10 = Math.log(numero) / Math.LN10;</p>
+    <p>console.log(log10);  // Sa&iacute;da: 2</p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.LOG10E</strong></td>
+  </tr>
+  <tr>
+    <td>console.log(Math.LOG10E);  // Sa&iacute;da: ~0.4342944819032518</td>
+  </tr>
+  <tr>
+    <td><p>var numero = 100;<br />
+      var log10 = Math.log(numero) * Math.LOG10E;</p>
+    <p>console.log(log10);  // Sa&iacute;da: 2</p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.exp</strong></td>
+  </tr>
+  <tr>
+    <td>var resultado = Math.exp(2);  // Equivalente a e^2<br />
+    console.log(resultado);  // Sa&iacute;da: ~7.3890560989306495</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.log2</strong></td>
+  </tr>
+  <tr>
+    <td>var resultado = Math.log2(8);  // Equivalente a log2(8)<br />
+    console.log(resultado);  // Sa&iacute;da: 3</td>
+  </tr>
+  <tr>
+    <td>log2(x) = ln(x) / ln(2)</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.log1p</strong></td>
+  </tr>
+  <tr>
+    <td>var resultado = Math.log1p(0.5);  // Equivalente a ln(1 + 0.5)<br />
+    console.log(resultado);  // Sa&iacute;da: ~0.4054651081081644</td>
+  </tr>
+</table>
+<p></p>
+</body>
+</html>

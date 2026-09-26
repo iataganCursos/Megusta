@@ -1,0 +1,584 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Fun&ccedil;&otilde;es Matem&aacute;ticas em Python</title>
+<style type="text/css">
+<!--
+.style1 {color: #FFFFFF}
+.style2 {
+	font-size: 50px;
+	font-weight: bold;
+}
+-->
+</style>
+</head>
+
+<body>
+<p align="center" class="style2">Fun&ccedil;&otilde;es Matem&aacute;ticas em Python </p>
+<h1 align="center">Convertendo String para Num&eacute;rica</h1>
+<h1 align="center">N&uacute;meros Inteiros</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Long.parseLong</strong></td>
+  </tr>
+  <tr>
+    <td><p># Exemplo em Python<br />
+      string_numero = &quot;12345&quot;<br />
+      numero_inteiro = int(string_numero)<br />
+      print(numero_inteiro)<br />
+    </p>
+    </td>
+  </tr>
+</table>
+<h1 align="center">N&uacute;meros Reais</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Double.parseDouble</strong></td>
+  </tr>
+  <tr>
+    <td><p># Exemplo em Python<br />
+      string_numero = &quot;3.14&quot;<br />
+      numero_ponto_flutuante = float(string_numero)<br />
+      print(numero_ponto_flutuante)<br />
+    </p>
+    </td>
+  </tr>
+</table>
+<h1 align="center">Boleanos</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Boolean.parseBoolean</strong></td>
+  </tr>
+  <tr>
+    <td><p># Exemplo em Python usando a fun&ccedil;&atilde;o bool<br />
+      string_booleana = &quot;True&quot;<br />
+      valor_booleano = bool(string_booleana)<br />
+      print(valor_booleano)
+    </p>
+    </td>
+  </tr>
+</table>
+<h1 align="center">Arredondando valores</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.floor</strong></td>
+  </tr>
+  <tr>
+    <td><p>import math</p>
+      <p>numero_ponto_flutuante = 4.8<br />
+        arredondado_para_baixo = math.floor(numero_ponto_flutuante)</p>
+      <p>print(arredondado_para_baixo)<br />
+      </p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.ceil</strong></td>
+  </tr>
+  <tr>
+    <td><p>import math</p>
+      <p>numero_ponto_flutuante = 4.2<br />
+        arredondado_para_cima = math.ceil(numero_ponto_flutuante)</p>
+      <p>print(arredondado_para_cima)<br />
+      </p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.round</strong></td>
+  </tr>
+  <tr>
+    <td><p>numero_ponto_flutuante = 4.5<br />
+      arredondado = round(numero_ponto_flutuante)</p>
+      <p>print(arredondado)<br />
+      </p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.trunc</strong></td>
+  </tr>
+  <tr>
+    <td><p>numero_ponto_flutuante = 4.8<br />
+      truncado = int(numero_ponto_flutuante)</p>
+      <p>print(truncado)<br />
+      </p></td>
+  </tr>
+  <tr></tr>
+</table>
+<h1 align="center">Digite um n&uacute;mero com 3 casas decimais</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC">&nbsp;</td>
+  </tr>
+  <tr>
+    <td><p>numero = 123.456789</p>
+        <p># Formatar o n&uacute;mero com 3 casas decimais<br />
+          numero_formatado = &quot;{:.3f}&quot;.format(numero)</p>
+        <p>print(numero_formatado)</p></td>
+  </tr>
+</table>
+<h1 align="center">Formatar moeda</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>toLocaleString</strong></td>
+  </tr>
+  <tr>
+    <td bgcolor="#000000"><span class="style1">pip install babel</span></td>
+  </tr>
+  <tr>
+    <td><p>from babel.numbers import format_currency<br />
+      from babel import Locale</p>
+      <p># Configurar a localiza&ccedil;&atilde;o para o Brasil (pt_BR)<br />
+        locale_br = Locale('pt_BR')</p>
+      <p># N&uacute;mero que voc&ecirc; deseja formatar como moeda brasileira<br />
+        numero = 1234567.89</p>
+      <p># Formatar o n&uacute;mero como moeda brasileira<br />
+        numero_formatado = format_currency(numero, 'BRL', locale='pt_BR')</p>
+      <p>print(numero_formatado)<br />
+      </p></td>
+  </tr>
+</table>
+<h1 align="center">Fun&ccedil;&otilde;es matem&aacute;ticas comuns</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.random</strong></td>
+  </tr>
+  <tr>
+    <td><p>import random</p>
+      <p># Gera um n&uacute;mero pseudoaleat&oacute;rio no intervalo [0.0, 1.0)<br />
+        numero_aleatorio = random.random()</p>
+      <p>print(numero_aleatorio)<br />
+      </p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.abs</strong></td>
+  </tr>
+  <tr>
+    <td><p>numero_ponto_flutuante = -7.5<br />
+      numero_absoluto_flutuante = abs(numero_ponto_flutuante)</p>
+      <p>print(numero_absoluto_flutuante)<br />
+    </p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.max</strong></td>
+  </tr>
+  <tr>
+    <td><p># Exemplo com n&uacute;meros inteiros<br />
+      maximo_inteiros = max(3, 8, 1, 6, 10)<br />
+      print(maximo_inteiros)  # Sa&iacute;da: 10</p>
+      <p># Exemplo com n&uacute;meros de ponto flutuante<br />
+        maximo_ponto_flutuante = max(3.5, 8.2, 1.7, 6.9, 10.1)<br />
+        print(maximo_ponto_flutuante)  # Sa&iacute;da: 10.1</p>
+      <p># Exemplo com uma lista de n&uacute;meros<br />
+        lista_numeros = [3, 8, 1, 6, 10]<br />
+        maximo_lista = max(lista_numeros)<br />
+      print(maximo_lista)  # Sa&iacute;da: 10</p>      </td>
+  </tr>
+  <tr>
+    <td>int maximoEntreTres = Math.max(Math.max(numero1, numero2), numero3);</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.min</strong></td>
+  </tr>
+  <tr>
+    <td><p># Exemplo com n&uacute;meros inteiros<br />
+      minimo_inteiros = min(3, 8, 1, 6, 10)<br />
+      print(minimo_inteiros)  # Sa&iacute;da: 1</p>
+      <p># Exemplo com n&uacute;meros de ponto flutuante<br />
+        minimo_ponto_flutuante = min(3.5, 8.2, 1.7, 6.9, 10.1)<br />
+        print(minimo_ponto_flutuante)  # Sa&iacute;da: 1.7</p>
+      <p># Exemplo com uma lista de n&uacute;meros<br />
+        lista_numeros = [3, 8, 1, 6, 10]<br />
+        minimo_lista = min(lista_numeros)<br />
+        print(minimo_lista)  # Sa&iacute;da: 1<br />
+    </p></td>
+  </tr>
+  <tr>
+    <td> int minimoEntreTres = Math.min(Math.min(numero1, numero2), numero3);</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.pow</strong></td>
+  </tr>
+  <tr>
+    <td><p># Exemplo com inteiros<br />
+      resultado_inteiro = 2 ** 3  # 2 elevado &agrave; pot&ecirc;ncia de 3<br />
+      print(resultado_inteiro)  # Sa&iacute;da: 8</p>
+      <p># Exemplo com ponto flutuante<br />
+        resultado_flutuante = 2.5 ** 2  # 2.5 elevado &agrave; pot&ecirc;ncia de 2<br />
+        print(resultado_flutuante)  # Sa&iacute;da: 6.25<br />
+    </p></td>
+  </tr>
+  <tr>
+    <td><p> def power(base, expoente):<br />
+      &nbsp;&nbsp;&nbsp; return base ** expoente<br />
+      <br />
+      resultado_personalizado = power(3, 4)<br />
+      print(resultado_personalizado)&nbsp; # Sa&iacute;da: 81<br />
+</p>    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.sqrt</strong></td>
+  </tr>
+  <tr>
+    <td><p>import math</p>
+        <p>numero = 25<br />
+          raiz_quadrada = math.sqrt(numero)</p>
+        <p>print(raiz_quadrada)  # Sa&iacute;da: 5.0<br />
+        </p></td>
+  </tr>
+  <tr>
+    <td><p>numero = 25<br />
+      raiz_quadrada = numero ** 0.5</p>
+      <p>print(raiz_quadrada)  # Sa&iacute;da: 5.0<br />
+    </p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.SQRT1_2</strong></td>
+  </tr>
+  <tr>
+    <td><p>import math</p>
+      <p>SQRT1_2 = math.sqrt(1/2)</p>
+      <p># Agora voc&ecirc; pode usar SQRT1_2 em seus c&aacute;lculos<br />
+        print(SQRT1_2)<br />
+    </p></td>
+  </tr>
+  <tr>
+    <td>public static final double SQRT1_2 = 0.7071067811865476;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.SQRT2</strong></td>
+  </tr>
+  <tr>
+    <td><p>import math</p>
+      <p>SQRT2 = math.sqrt(2)</p>
+      <p># Agora voc&ecirc; pode usar SQRT2 em seus c&aacute;lculos<br />
+        print(SQRT2)<br />
+    </p></td>
+  </tr>
+  <tr>
+    <td>public static final double SQRT2 = 1.4142135623730951;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.cbrt</strong></td>
+  </tr>
+  <tr>
+    <td><p>import math</p>
+      <p>numero = 27<br />
+        raiz_cubica = numero ** (1/3)</p>
+    <p>print(raiz_cubica)  # Sa&iacute;da: 3.0</p></td>
+  </tr>
+  <tr>
+    <td><p>import math</p>
+      <p>numero = 27<br />
+        raiz_cubica = math.pow(numero, 1/3)</p>
+      <p>print(raiz_cubica)  # Sa&iacute;da: 3.0<br />
+    </p></td>
+  </tr>
+  <tr>
+    <td> def cbrt(numero):<br />
+      &nbsp;&nbsp;&nbsp; return numero ** (1/3)<br />
+      <br />
+      resultado = cbrt(27)<br />
+    print(resultado)&nbsp; # Sa&iacute;da: 3.0</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.sign</strong></td>
+  </tr>
+  <tr>
+    <td> def sign(numero):<br />
+      &nbsp;&nbsp;&nbsp; if numero &gt; 0:<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 1<br />
+      &nbsp;&nbsp;&nbsp; elif numero &lt; 0:<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return -1<br />
+      &nbsp;&nbsp;&nbsp; else:<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 0<br />
+      <br />
+      # Exemplos de uso<br />
+      print(sign(5))&nbsp;&nbsp;&nbsp; # Sa&iacute;da: 1<br />
+      print(sign(-3.14)) # Sa&iacute;da: -1<br />
+    print(sign(0))&nbsp;&nbsp;&nbsp;&nbsp; # Sa&iacute;da: 0</td>
+  </tr>
+</table>
+<h1 align="center">Fun&ccedil;&otilde;es trigonom&eacute;tricas</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.PI</strong></td>
+  </tr>
+  <tr>
+    <td><p>import math</p>
+      <p>pi = math.pi</p>
+      <p>print(pi)  # Sa&iacute;da: 3.141592653589793</p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>import math</p>
+    <p>circunferencia = 2 * math.pi * raio</p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#000000"><span class="style1">function radianos(){<br />
+      return Math.PI/180<br />
+    }</span></td>
+  </tr>
+  <tr>
+    <td> import math<br />
+      <br />
+      def graus_para_radianos():<br />
+      &nbsp;&nbsp;&nbsp; return math.pi / 180<br />
+      <br />
+      # Exemplo de uso<br />
+      angulo_graus = 45<br />
+      angulo_radianos = angulo_graus * graus_para_radianos()<br />
+      <br />
+    print(angulo_radianos)&nbsp; # Sa&iacute;da: 0.7853981633974483</td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.sin</strong></td>
+  </tr>
+  <tr>
+    <td><p>import math</p>
+      <p>angulo_graus = 45<br />
+        angulo_radianos = math.radians(angulo_graus)<br />
+        seno_angulo = math.sin(angulo_radianos)</p>
+      <p>print(seno_angulo)  # Sa&iacute;da: 0.7071067811865475<br />
+      </p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.cos</strong></td>
+  </tr>
+  <tr>
+    <td><p>import math</p>
+      <p>angulo_graus = 60<br />
+        angulo_radianos = math.radians(angulo_graus)<br />
+        cosseno_angulo = math.cos(angulo_radianos)</p>
+      <p>print(cosseno_angulo)  # Sa&iacute;da: 0.5<br />
+      </p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.tan</strong></td>
+  </tr>
+  <tr>
+    <td><p>import math</p>
+      <p>angulo_graus = 30<br />
+        angulo_radianos = math.radians(angulo_graus)<br />
+        tangente_angulo = math.tan(angulo_radianos)</p>
+      <p>print(tangente_angulo)  # Sa&iacute;da: 0.5773502691896257<br />
+      </p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.asin</strong></td>
+  </tr>
+  <tr>
+    <td><p>import math</p>
+      <p>valor = 0.5<br />
+        arco_seno_valor = math.asin(valor)<br />
+        angulo_graus = math.degrees(arco_seno_valor)</p>
+      <p>print(angulo_graus)  # Sa&iacute;da: 30.0<br />
+      </p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.acos</strong></td>
+  </tr>
+  <tr>
+    <td><p>import math</p>
+      <p>valor = 0.5<br />
+        arco_cosseno_valor = math.acos(valor)<br />
+        angulo_graus = math.degrees(arco_cosseno_valor)</p>
+    <p>print(angulo_graus)  # Sa&iacute;da: 60.0</p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.atan</strong></td>
+  </tr>
+  <tr>
+    <td><p>import math</p>
+      <p>valor = 0.5<br />
+        arco_tangente_valor = math.atan(valor)<br />
+        angulo_graus = math.degrees(arco_tangente_valor)</p>
+      <p>print(angulo_graus)  # Sa&iacute;da: 26.56505117707799<br />
+      </p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.sinh</strong></td>
+  </tr>
+  <tr>
+    <td><p>import math</p>
+      <p>numero = 2<br />
+        seno_hiperbolico = math.sinh(numero)</p>
+      <p>print(seno_hiperbolico)  # Sa&iacute;da: 3.6268604078470186<br />
+      </p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.cosh</strong></td>
+  </tr>
+  <tr>
+    <td><p>import math</p>
+      <p>numero = 2<br />
+        cosseno_hiperbolico = math.cosh(numero)</p>
+      <p>print(cosseno_hiperbolico)  # Sa&iacute;da: 3.7621956910836314<br />
+      </p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.tanh</strong></td>
+  </tr>
+  <tr>
+    <td><p>import math</p>
+      <p>numero = 2<br />
+        tangente_hiperbolica = math.tanh(numero)</p>
+      <p>print(tangente_hiperbolica)  # Sa&iacute;da: 0.9640275800758169<br />
+      </p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.asinh</strong></td>
+  </tr>
+  <tr>
+    <td><p>import math</p>
+      <p>numero = 2<br />
+        arco_seno_hiperbolico = math.asinh(numero)</p>
+      <p>print(arco_seno_hiperbolico)  # Sa&iacute;da: 1.4436354751788103<br />
+      </p></td>
+  </tr>
+  <tr>
+    <td>asinh(x) = ln(x + sqrt(x^2 + 1))</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.acosh</strong></td>
+  </tr>
+  <tr>
+    <td><p>import math</p>
+      <p>numero = 2<br />
+        arco_cosseno_hiperbolico = math.acosh(numero)</p>
+      <p>print(arco_cosseno_hiperbolico)  # Sa&iacute;da: 1.3169578969248166<br />
+      </p></td>
+  </tr>
+  <tr>
+    <td>acosh(x) = ln(x + sqrt(x^2 - 1))</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.atanh</strong></td>
+  </tr>
+  <tr>
+    <td><p>import math</p>
+      <p>numero = 0.5<br />
+        arco_tangente_hiperbolico = math.atanh(numero)</p>
+      <p>print(arco_tangente_hiperbolico)  # Sa&iacute;da: 0.5493061443340549<br />
+      </p></td>
+  </tr>
+  <tr>
+    <td>atanh(x) = 0.5 * ln((1 + x) / (1 - x))</td>
+  </tr>
+</table>
+<h1 align="center">Logar&iacute;tmos</h1>
+<table width="100%" border="1">
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.log</strong></td>
+  </tr>
+  <tr>
+    <td><p>import math</p>
+      <p>numero = 10<br />
+        logaritmo_natural = math.log(numero)</p>
+      <p>print(logaritmo_natural)  # Sa&iacute;da: 2.302585092994046<br />
+      </p></td>
+  </tr>
+  <tr>
+    <td><p>import math</p>
+      <p>numero = 100<br />
+        base_logaritmo = 10<br />
+        logaritmo_base_10 = math.log(numero, base_logaritmo)</p>
+      <p>print(logaritmo_base_10)  # Sa&iacute;da: 2.0<br />
+      </p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.log10</strong></td>
+  </tr>
+  <tr>
+    <td><p>import math</p>
+      <p>numero = 100<br />
+        logaritmo_base_10 = math.log10(numero)</p>
+    <p>print(logaritmo_base_10)  # Sa&iacute;da: 2.0</p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.E</strong></td>
+  </tr>
+  <tr>
+    <td><p>import math</p>
+      <p>euler_number = math.e</p>
+    <p>print(euler_number)  # Sa&iacute;da: 2.718281828459045</p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.LN2</strong></td>
+  </tr>
+  <tr>
+    <td><p>import math</p>
+      <p>ln2 = math.log(2)</p>
+    <p>print(ln2)  # Sa&iacute;da: 0.6931471805599453</p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.LOG2E</strong></td>
+  </tr>
+  <tr>
+    <td><p>import math</p>
+      <p>log2e = 1 / math.log(2)</p>
+    <p>print(log2e)  # Sa&iacute;da: 1.4426950408889634</p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.LN10</strong></td>
+  </tr>
+  <tr>
+    <td><p>import math</p>
+      <p>ln10 = math.log(10)</p>
+    <p>print(ln10)  # Sa&iacute;da: 2.302585092994046</p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.LOG10E</strong></td>
+  </tr>
+  <tr>
+    <td><p>import math</p>
+      <p>log10e = 1 / math.log(10)</p>
+      <p>print(log10e)  # Sa&iacute;da: 0.4342944819032518<br />
+    </p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.exp</strong></td>
+  </tr>
+  <tr>
+    <td><p>import math</p>
+      <p>resultado = math.exp(3)  # Calcula e^3</p>
+    <p>print(resultado)  # Sa&iacute;da: 20.085536923187668</p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.log2</strong></td>
+  </tr>
+  <tr>
+    <td><p>import math</p>
+      <p>resultado = math.log2(16)  # Calcula log&#8322;(16)</p>
+      <p>print(resultado)  # Sa&iacute;da: 4.0<br />
+    </p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>Math.log1p</strong></td>
+  </tr>
+  <tr>
+    <td><p>import math</p>
+      <p>resultado = math.log1p(0.5)</p>
+    <p>print(resultado)  # Sa&iacute;da: 0.4054651081081644</p></td>
+  </tr>
+</table>
+<p></p>
+</body>
+</html>
