@@ -1,575 +1,456 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tutorial Megusta - Linguagem Multi-Linguagem</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        .container {
-            max-width: 900px;
-            margin: auto;
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #2c3e50;
-            text-align: center;
-            border-bottom: 3px solid #3498db;
-            padding-bottom: 10px;
-        }
-        h2 {
-            color: #34495e;
-            margin-top: 30px;
-            border-left: 5px solid #3498db;
-            padding-left: 15px;
-        }
-        h3 {
-            color: #2c3e50;
-        }
-        .code {
-            background-color: #2c3e50;
-            color: #ecf0f1;
-            padding: 15px;
-            border-radius: 5px;
-            overflow-x: auto;
-            font-family: 'Courier New', Courier, monospace;
-        }
-        .output {
-            background-color: #27ae60;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-        .note {
-            background-color: #f39c12;
-            color: white;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 20px 0;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }
-        th {
-            background-color: #3498db;
-            color: white;
-        }
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        .language-badge {
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 3px;
-            font-size: 12px;
-            font-weight: bold;
-            margin-left: 10px;
-        }
-        .python { background-color: #3776AB; color: white; }
-        .javascript { background-color: #F7DF1E; color: black; }
-        .java { background-color: #007396; color: white; }
-        .php { background-color: #777BB4; color: white; }
-        .c { background-color: #00599C; color: white; }
-        .clipper { background-color: #008080; color: white; }
-    </style>
+<meta charset="UTF-8">
+<title>Tutorial Megusta - Java</title>
 </head>
+
 <body>
-<div class="container">
 
-<h1>🚀 Tutorial Megusta</h1>
-<p style="text-align: center; color: #7f8c8d;">Aprenda a escrever código uma vez e executar em múltiplas linguagens</p>
+<h1 align="center">Tutorial Megusta - Biblioteca de Funções</h1>
+<p align="center">Uni&atilde;o das linguagens: Java, Javascript, Typescript, Node.js, PHP, Python, Clipper, Rust, C/C++, ASSEMBLY e WebAssembly.</p>
 
-<div class="note">
-<strong>📌 O que é Megusta?</strong><br>
-Megusta é uma linguagem de programação e transpilador que permite escrever código em uma sintaxe única e depois "transpilar" para diversas linguagens: Python, JavaScript, Java, PHP, C, Clipper/Harbour, Rust, e outras.
-</div>
+<hr>
 
-<h2>📦 Instalação</h2>
+<h2>1. Introdução</h2>
+<p>Megusta &eacute; uma linguagem de programa&ccedil;&atilde;o e transpilador que permite escrever c&oacute;digo em uma sintaxe &uacute;nica e depois "transpilar" para diversas linguagens.</p>
 
-<h3>Python</h3>
-<div class="code">
-import sys
-sys.path.append('ouka')
-import ouka.Megusta as mg
+<h2>2. Primeiro Programa em Java</h2>
 
-r = mg.Megusta()
-</div>
-
-<h3>JavaScript</h3>
-<div class="code">
-&lt;script src="ouka/Megusta.js">&lt;/script>
-&lt;script>
-let r = new Megusta();
-&lt;/script>
-</div>
-
-<h3>Java</h3>
-<div class="code">
+<h3>Arquivo: Main.java</h3>
+<pre class="code">
 import ouka.Megusta;
 
 public class Main {
     public static void main(String[] args) {
         Megusta r = new Megusta();
+        
+        r.rPrintln("Ol&aacute;, Mundo!");
     }
 }
-</div>
+</pre>
 
-<h3>PHP</h3>
-<div class="code">
-&lt;?php
-require "ouka/Megusta.php";
+<h3>Compila&ccedil;&atilde;o e Executa&ccedil;&atilde;o:</h3>
+<pre class="code">
+javac Main.java
+java Main
+</pre>
 
-$r = new Megusta();
-?&gt;
-</div>
+<h3>Sa&iacute;da:</h3>
+<pre class="output">
+Ol&aacute;, Mundo!
+</pre>
 
-<h2>💻 Primeiro Programa</h2>
+<hr>
 
-<h3>Python</h3>
-<div class="code">
-import sys
-sys.path.append('ouka')
-import ouka.Megusta as mg
+<h2>3. Entrada e Sa&iacute;da</h2>
 
-r = mg.Megusta()
+<h3>Imprimindo textos:</h3>
+<pre class="code">
+// rPrint() - Imprime sem quebra de linha
+r.rPrint("Ol&aacute; ");
+r.rPrint("Mundo");
 
-r.rPrintln("Olá, Mundo!")
-</div>
-<div class="output">
-Saída: Olá, Mundo!
-</div>
+// rPrintln() - Imprime com quebra de linha
+r.rPrintln();
+r.rPrintln("Ol&aacute;, Mundo!");
 
-<h3>JavaScript</h3>
-<div class="code">
-&lt;script src="ouka/Megusta.js">&lt;/script>
-&lt;script>
-let r = new Megusta();
-r.rPrintln("Olá, Mundo!");
-&lt;/script>
-</div>
-<div class="output">
-Saída: Olá, Mundo!
-</div>
+// rInput() - Lê entrada do usu&aacute;rio
+String nome = r.rInput("Digite seu nome: ");
+r.rPrintln("Ol&aacute;, " + nome + "!");
+</pre>
 
-<h3>Java</h3>
-<div class="code">
+<hr>
+
+<h2>4. Manipula&ccedil;&atilde;o de Strings</h2>
+
+<h3>4.1. replace() - Substitui substring</h3>
+<pre class="code">
+String original = "Hoje &eacute; um lindo dia!";
+String substituida = r.strReplace(original, "lindo", "maravilhoso");
+r.rPrintln(substituida); // Sa&iacute;da: "Hoje &eacute; um maravilhoso dia!"
+</pre>
+
+<h3>4.2. length() - Tamanho da string</h3>
+<pre class="code">
+String minhaString = "Ol&aacute;, mundo!";
+int tamanho = r.strLength(minhaString);
+r.rPrintln("O tamanho da string &eacute;: " + tamanho); // Sa&iacute;da: 12
+</pre>
+
+<h3>4.3. substring() - Extrai substring</h3>
+<pre class="code">
+String original = "Isso &eacute; uma string de exemplo.";
+String sub = r.strSubstring(original, 8, 13);
+r.rPrintln(sub); // Sa&iacute;da: "uma s"
+</pre>
+
+<h3>4.4. charAt() - Caractere na posi&ccedil;&atilde;o</h3>
+<pre class="code">
+String minhaString = "Ol&aacute;, mundo!";
+char primeiro = r.strCharAt(minhaString, 0); // 'O'
+char quarto = r.strCharAt(minhaString, 3); // ','
+r.rPrintln("Primeiro caractere: " + primeiro);
+r.rPrintln("Quarto caractere: " + quarto);
+</pre>
+
+<h3>4.5. indexOf() - Busca substring</h3>
+<pre class="code">
+String minhaString = "Isso &eacute; um exemplo de indexOf em Java.";
+int indice = r.strIndexOf(minhaString, "exemplo");
+r.rPrintln("A substring 'exemplo' come&ccedil;a no &iacute;ndice: " + indice); // Sa&iacute;da: 10
+</pre>
+
+<h3>4.6. lastIndexOf() - &Uacute;ltima ocorr&ecirc;ncia</h3>
+<pre class="code">
+String minhaString = "Isso &eacute; um exemplo. Outro exemplo.";
+int indice = r.strLastIndexOf(minhaString, "exemplo");
+r.rPrintln("&Uacute;ltima ocorr&ecirc;ncia: " + indice); // Sa&iacute;da: 26
+</pre>
+
+<h3>4.7. toLowerCase() - Min&uacute;sculas</h3>
+<pre class="code">
+String minhaString = "OL&Aacute;, MUNDO!";
+String resultado = r.strToLowerCase(minhaString);
+r.rPrintln(resultado); // Sa&iacute;da: "ol&aacute;, mundo!"
+</pre>
+
+<h3>4.8. toUpperCase() - Mai&uacute;sculas</h3>
+<pre class="code">
+String minhaString = "ol&aacute;, mundo!";
+String resultado = r.strToUpperCase(minhaString);
+r.rPrintln(resultado); // Sa&iacute;da: "OL&Aacute;, MUNDO!"
+</pre>
+
+<h3>4.9. equals() - Compara strings</h3>
+<pre class="code">
+boolean resultado1 = r.strEquals("Ol&aacute;", "Ol&aacute;"); // true
+boolean resultado2 = r.strEquals("Ol&aacute;", "ol&aacute;"); // false
+boolean resultado3 = r.strEqualsIgnoreCase("Ol&aacute;", "ol&aacute;"); // true
+r.rPrintln("equals: " + resultado1);
+r.rPrintln("equals (case sensitive): " + resultado2);
+r.rPrintln("equalsIgnoreCase: " + resultado3);
+</pre>
+
+<h3>4.10. split() - Divide string</h3>
+<pre class="code">
+String[] resultado = r.strSplit("a,b,c", ",");
+for (int i = 0; i &lt; r.arrSize(resultado); i++) {
+    r.rPrintln(resultado[i]);
+}
+// Sa&iacute;da: a, b, c
+</pre>
+
+<h3>4.11. padStart() - Preenche in&iacute;cio</h3>
+<pre class="code">
+String resultado = r.strPadStart("Ol&aacute;", 6, "0");
+r.rPrintln(resultado); // Sa&iacute;da: "00Ol&aacute;"
+</pre>
+
+<h3>4.12. padEnd() - Preenche final</h3>
+<pre class="code">
+String resultado = r.strPadEnd("Ol&aacute;", 6, "0");
+r.rPrintln(resultado); // Sa&iacute;da: "Ol&aacute;00"
+</pre>
+
+<h3>4.13. search() - Busca regex</h3>
+<pre class="code">
+int indice = r.strSearch("abc123", "\\d+");
+r.rPrintln("&Iacute;ndice do regex: " + indice); // Sa&iacute;da: 3
+</pre>
+
+<hr>
+
+<h2>5. Trabalhando com Datas</h2>
+
+<h3>5.1. dateDay() - Dia do m&ecirc;s</h3>
+<pre class="code">
+int dia = r.dateDay();
+r.rPrintln("Dia: " + dia);
+</pre>
+
+<h3>5.2. dateWeekDay() - Dia da semana (1=Domingo, 7=S&aacute;bado)</h3>
+<pre class="code">
+int semana = r.dateWeekDay();
+r.rPrintln("Dia da semana: " + semana);
+</pre>
+
+<h3>5.3. dateMonth() - M&ecirc;s (1=Janeiro, 12=Dezembro)</h3>
+<pre class="code">
+int mes = r.dateMonth();
+r.rPrintln("M&ecirc;s: " + mes);
+</pre>
+
+<h3>5.4. dateYear() - Ano</h3>
+<pre class="code">
+int ano = r.dateYear();
+r.rPrintln("Ano: " + ano);
+</pre>
+
+<h3>5.5. dateHour24() - Hora (0-23)</h3>
+<pre class="code">
+int hora = r.dateHour24();
+r.rPrintln("Hora: " + hora);
+</pre>
+
+<h3>5.6. dateMinute() - Minuto</h3>
+<pre class="code">
+int minuto = r.dateMinute();
+r.rPrintln("Minuto: " + minuto);
+</pre>
+
+<h3>5.7. dateSecond() - Segundo</h3>
+<pre class="code">
+int segundo = r.dateSecond();
+r.rPrintln("Segundo: " + segundo);
+</pre>
+
+<h3>5.8. dateSetWeekDay() - Dia da semana de uma data</h3>
+<pre class="code">
+int diaSemana = r.dateSetWeekDay(1997, 4, 28);
+r.rPrintln("28/04/1997 foi dia: " + diaSemana); // Sa&iacute;da: 2 (Segunda)
+</pre>
+
+<h2>6. Programa Completo com Data</h2>
+<pre class="code">
+int dia = r.dateDay();
+int semana = r.dateWeekDay();
+int mes = r.dateMonth();
+int ano = r.dateYear();
+
+String[] semanaNomes = {"", "Domingo", "Segunda", "Ter&ccedil;a", "Quarta", "Quinta", "Sexta", "S&aacute;bado"};
+String[] mesNomes = {"", "Janeiro", "Fevereiro", "Mar&ccedil;o", "Abril", "Maio", "Junho", 
+                     "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"};
+
+r.rPrintln(semanaNomes[semana] + ", " + dia + " de " + mesNomes[mes] + " de " + ano);
+r.rPrintln("S&atilde;o: " + r.dateHour24() + " horas, " + r.dateMinute() + " minutos e " + r.dateSecond() + " segundos.");
+</pre>
+
+<hr>
+
+<h2>7. Operações Matemáticas</h2>
+
+<h3>7.1. mathInt() - String para int</h3>
+<pre class="code">
+int numero = r.mathInt("123");
+r.rPrintln(numero); // Sa&iacute;da: 123
+</pre>
+
+<h3>7.2. mathNum() - String para double</h3>
+<pre class="code">
+double numero = r.mathNum("12.5");
+r.rPrintln(numero); // Sa&iacute;da: 12.5
+</pre>
+
+<h3>7.3. mathFloor() - Arredonda para baixo</h3>
+<pre class="code">
+double resultado = r.mathFloor(3.7);
+r.rPrintln(resultado); // Sa&iacute;da: 3.0
+</pre>
+
+<h3>7.4. mathCeil() - Arredonda para cima</h3>
+<pre class="code">
+double resultado = r.mathCeil(3.2);
+r.rPrintln(resultado); // Sa&iacute;da: 4.0
+</pre>
+
+<h3>7.5. mathRound() - Arredonda</h3>
+<pre class="code">
+double resultado = r.mathRound(3.5);
+r.rPrintln(resultado); // Sa&iacute;da: 4.0
+</pre>
+
+<h3>7.6. mathAbs() - Valor absoluto</h3>
+<pre class="code">
+double resultado = r.mathAbs(-5.5);
+r.rPrintln(resultado); // Sa&iacute;da: 5.5
+</pre>
+
+<h3>7.7. mathMax() - Máximo</h3>
+<pre class="code">
+double resultado = r.mathMax(3.0, 7.0);
+r.rPrintln(resultado); // Sa&iacute;da: 7.0
+</pre>
+
+<h3>7.8. mathMin() - Mínimo</h3>
+<pre class="code">
+double resultado = r.mathMin(3.0, 7.0);
+r.rPrintln(resultado); // Sa&iacute;da: 3.0
+</pre>
+
+<h3>7.9. mathPow() - Potência</h3>
+<pre class="code">
+double resultado = r.mathPow(2.0, 3.0);
+r.rPrintln(resultado); // Sa&iacute;da: 8.0
+</pre>
+
+<h3>7.10. mathSqrt() - Raiz quadrada</h3>
+<pre class="code">
+double resultado = r.mathSqrt(16.0);
+r.rPrintln(resultado); // Sa&iacute;da: 4.0
+</pre>
+
+<h3>7.11. mathRandom() - Número aleatório</h3>
+<pre class="code">
+double resultado = r.mathRandom();
+r.rPrintln(resultado); // Sa&iacute;da: 0.xxxxx
+</pre>
+
+<h3>7.12. mathDecimalFormat() - Formata número</h3>
+<pre class="code">
+String resultado = r.mathDecimalFormat(123.456789, "#.###");
+r.rPrintln(resultado); // Sa&iacute;da: "123.457"
+</pre>
+
+<h2>8. Arrays</h2>
+
+<h3>8.1. arrAdd() - Adiciona elemento</h3>
+<pre class="code">
+String[] frutas = {};
+r.arrAdd(frutas, "Banana");
+r.arrAdd(frutas, "Maçã");
+r.arrAdd(frutas, "Uva");
+</pre>
+
+<h3>8.2. arrAddAll() - Adiciona vários elementos</h3>
+<pre class="code">
+String[] frutas = {"Banana"};
+r.arrAddAll(frutas, "Maçã", "Uva", "Morango");
+</pre>
+
+<h3>8.3. arrSet() - Define elemento</h3>
+<pre class="code">
+r.arrSet(frutas, 1, "Laranja");
+</pre>
+
+<h3>8.4. arrGet() - Obtém elemento</h3>
+<pre class="code">
+String fruta = r.arrGet(frutas, 0);
+r.rPrintln(fruta); // Sa&iacute;da: "Banana"
+</pre>
+
+<h3>8.5. arrSize() - Tamanho do array</h3>
+<pre class="code">
+int tamanho = r.arrSize(frutas);
+r.rPrintln("Tamanho: " + tamanho);
+</pre>
+
+<h3>8.6. arrRemove() - Remove elemento</h3>
+<pre class="code">
+r.arrRemove(frutas, 1);
+</pre>
+
+<h3>8.7. arrClear() - Limpa array</h3>
+<pre class="code">
+r.arrClear(frutas);
+</pre>
+
+<h3>8.8. arrContains() - Verifica se contém</h3>
+<pre class="code">
+boolean contem = r.arrContains(frutas, "Banana");
+r.rPrintln("Contém Banana: " + contem);
+</pre>
+
+<h3>8.9. arrIndexOf() - Índice do elemento</h3>
+<pre class="code">
+int indice = r.arrIndexOf(frutas, "Maçã");
+r.rPrintln("Índice: " + indice);
+</pre>
+
+<h3>8.10. arrLastIndexOf() - Último índice</h3>
+<pre class="code">
+int indice = r.arrLastIndexOf(frutas, "Maçã");
+r.rPrintln("Último índice: " + indice);
+</pre>
+
+<hr>
+
+<h2>9. Arquivos</h2>
+
+<h3>9.1. rSaveFile() - Salva arquivo</h3>
+<pre class="code">
+r.rSaveFile("meu_arquivo.txt", "Conteúdo do arquivo");
+</pre>
+
+<h3>9.2. rOpenFile() - Lê arquivo</h3>
+<pre class="code">
+String conteudo = r.rOpenFile("meu_arquivo.txt");
+r.rPrintln(conteudo);
+</pre>
+
+<h3>9.3. rOpenFileWeb() - Busca URL</h3>
+<pre class="code">
+String conteudo = r.rOpenFileWeb("https://www.ouka.com.br/meu_arquivo.txt");
+r.rPrintln(conteudo);
+</pre>
+
+<h3>9.4. rOpenFileWebStatus() - Código HTTP</h3>
+<pre class="code">
+int status = r.rOpenFileWebStatus();
+r.rPrintln("Status HTTP: " + status);
+</pre>
+
+<h3>9.5. rOpenProgram() - Executa programa</h3>
+<pre class="code">
+r.rOpenProgram("java -jar MeuApp.jar");
+</pre>
+
+<hr>
+
+<h2>10. Exemplo Completo</h2>
+
+<h3>Arquivo: ExemploCompleto.java</h3>
+<pre class="code">
 import ouka.Megusta;
 
-public class Main {
+public class ExemploCompleto {
     public static void main(String[] args) {
         Megusta r = new Megusta();
-        r.rPrintln("Olá, Mundo!");
+        
+        // String
+        String nome = r.rInput("Digite seu nome: ");
+        r.rPrintln("Olá, " + nome + "!");
+        
+        // Data
+        int dia = r.dateDay();
+        int mes = r.dateMonth();
+        int ano = r.dateYear();
+        r.rPrintln("Data: " + dia + "/" + mes + "/" + ano);
+        
+        // Matemática
+        r.rPrintln("2^10 = " + r.mathPow(2, 10));
+        r.rPrintln("√144 = " + r.mathSqrt(144));
+        
+        // Arrays
+        int[] numeros = {};
+        r.arrAdd(numeros, 10);
+        r.arrAdd(numeros, 20);
+        r.arrAdd(numeros, 30);
+        
+        for (int i = 0; i < r.arrSize(numeros); i++) {
+            r.rPrintln("Número " + i + ": " + r.arrGet(numeros, i));
+        }
+        
+        // Arquivo
+        r.rSaveFile("saida.txt", "Resultado do programa");
+        r.rPrintln("Arquivo salvo com sucesso!");
     }
 }
-</div>
-<div class="output">
-Saída: Olá, Mundo!
-</div>
+</pre>
 
-<h2>📝 Entrada e Saída</h2>
+<hr>
 
-<h3>Imprimindo textos</h3>
-<div class="code">
-// Python
-r.rPrint("Sem quebra")  // Imprime sem quebra de linha
-r.rPrintln("Com quebra")  // Imprime com quebra de linha
-r.rPrintln()  // Apenas quebra de linha
-
-// JavaScript
-r.rPrint("Sem quebra")
-r.rPrintln("Com quebra")
-r.rPrintln()
-
-// Java
-r.rPrint("Sem quebra")
-r.rPrintln("Com quebra")
-r.rPrintln()
-</div>
-
-<h3>Lendo entrada do usuário</h3>
-<div class="code">
-nome = r.rInput("Digite seu nome: ")
-r.rPrintln("Olá, " + nome + "!")
-</div>
-<div class="output">
-Digite seu nome: João
-Saída: Olá, João!
-</div>
-
-<h2>📝 Manipulação de Strings</h2>
-
-<table>
-<tr>
-<th>Método</th>
-<th>Descrição</th>
-<th>Exemplo</th>
-</tr>
-<tr>
-<td>strReplace()</td>
-<td>Substitui substring</td>
-<td>r.strReplace("Olá mundo", "mundo", "Megusta")</td>
-</tr>
-<tr>
-<td>strLength()</td>
-<td>Tamanho da string</td>
-<td>r.strLength("Olá") → 3</td>
-</tr>
-<tr>
-<td>strSubstring()</td>
-<td>Extrai substring</td>
-<td>r.strSubstring("Olá mundo", 0, 3)</td>
-</tr>
-<tr>
-<td>strCharAt()</td>
-<td>Caractere na posição</td>
-<td>r.strCharAt("Olá", 0) → "O"</td>
-</tr>
-<tr>
-<td>strIndexOf()</td>
-<td>Índice da substring</td>
-<td>r.strIndexOf("Olá mundo", "mundo") → 4</td>
-</tr>
-<tr>
-<td>strLastIndexOf()</td>
-<td>Último índice</td>
-<td>r.strLastIndexOf("aaa", "a") → 2</td>
-</tr>
-<tr>
-<td>strToLowerCase()</td>
-<td>Converte para minúsculas</td>
-<td>r.strToLowerCase("OLÁ") → "olá"</td>
-</tr>
-<tr>
-<td>strToUpperCase()</td>
-<td>Converte para maiúsculas</td>
-<td>r.strToUpperCase("olá") → "OLÁ"</td>
-</tr>
-<tr>
-<td>strEquals()</td>
-<td>Compara strings</td>
-<td>r.strEquals("Olá", "Olá") → true</td>
-</tr>
-<tr>
-<td>strSplit()</td>
-<td>Divide string em array</td>
-<td>r.strSplit("a,b,c", ",") → ["a", "b", "c"]</td>
-</tr>
-<tr>
-<td>strPadStart()</td>
-<td>Preenche início</td>
-<td>r.strPadStart("Olá", 6, "0") → "0Olá"</td>
-</tr>
-<tr>
-<td>strPadEnd()</td>
-<td>Preenche final</td>
-<td>r.strPadEnd("Olá", 6, "0") → "Olá000"</td>
-</tr>
-<tr>
-<td>strSearch()</td>
-<td>Busca regex</td>
-<td>r.strSearch("abc123", r"\d+") → 3</td>
-</tr>
-</table>
-
-<h2>📅 Trabalhando com Datas</h2>
-
-<table>
-<tr>
-<th>Método</th>
-<th>Descrição</th>
-<th>Retorno</th>
-</tr>
-<tr>
-<td>dateDay()</td>
-<td>Dia do mês</td>
-<td>1-31</td>
-</tr>
-<tr>
-<td>dateWeekDay()</td>
-<td>Dia da semana</td>
-<td>1=Domingo, 7=Sábado</td>
-</tr>
-<tr>
-<td>dateMonth()</td>
-<td>Mês</td>
-<td>1=Janeiro, 12=Dezembro</td>
-</tr>
-<tr>
-<td>dateYear()</td>
-<td>Ano</td>
-<td>Ex: 2025</td>
-</tr>
-<tr>
-<td>dateHour24()</td>
-<td>Hora (24h)</td>
-<td>0-23</td>
-</tr>
-<tr>
-<td>dateMinute()</td>
-<td>Minuto</td>
-<td>0-59</td>
-</tr>
-<tr>
-<td>dateSecond()</td>
-<td>Segundo</td>
-<td>0-59</td>
-</tr>
-</table>
-
-<h3>Exemplo completo</h3>
-<div class="code">
-dia = r.dateDay()
-mes = r.dateMonth()
-ano = r.dateYear()
-semana = r.dateWeekDay()
-
-r.rPrintln(f"Hoje é {dia}/{mes}/{ano}")
-r.rPrintln(f"Dia da semana: {semana}")
-</div>
-<div class="output">
-Hoje é 26/09/2025
-Dia da semana: 6
-</div>
-
-<h2>🔢 Operações Matemáticas</h2>
-
-<table>
-<tr>
-<th>Método</th>
-<th>Descrição</th>
-<th>Exemplo</th>
-</tr>
-<tr>
-<td>mathInt()</td>
-<td>String para int</td>
-<td>r.mathInt("123") → 123</td>
-</tr>
-<tr>
-<td>mathNum()</td>
-<td>String para float</td>
-<td>r.mathNum("12.5") → 12.5</td>
-</tr>
-<tr>
-<td>mathFloor()</td>
-<td>Arredonda para baixo</td>
-<td>r.mathFloor(3.7) → 3</td>
-</tr>
-<tr>
-<td>mathCeil()</td>
-<td>Arredonda para cima</td>
-<td>r.mathCeil(3.2) → 4</td>
-</tr>
-<tr>
-<td>mathRound()</td>
-<td>Arredonda</td>
-<td>r.mathRound(3.5) → 4</td>
-</tr>
-<tr>
-<td>mathAbs()</td>
-<td>Valor absoluto</td>
-<td>r.mathAbs(-5) → 5</td>
-</tr>
-<tr>
-<td>mathMax()</td>
-<td>Máximo</td>
-<td>r.mathMax(3, 7) → 7</td>
-</tr>
-<tr>
-<td>mathMin()</td>
-<td>Mínimo</td>
-<td>r.mathMin(3, 7) → 3</td>
-</tr>
-<tr>
-<td>mathPow()</td>
-<td>Potência</td>
-<td>r.mathPow(2, 3) → 8</td>
-</tr>
-<tr>
-<td>mathSqrt()</td>
-<td>Raiz quadrada</td>
-<td>r.mathSqrt(16) → 4</td>
-</tr>
-<tr>
-<td>mathRandom()</td>
-<td>Número aleatório</td>
-<td>r.mathRandom() → 0.123...</td>
-</tr>
-<tr>
-<td>mathPI</td>
-<td>Constante π</td>
-<td>r.mathPI → 3.14159...</td>
-</tr>
-</table>
-
-<h2>📊 Arrays</h2>
-
-<table>
-<tr>
-<th>Método</th>
-<th>Descrição</th>
-</tr>
-<tr>
-<td>arrAdd()</td>
-<td>Adiciona elemento</td>
-</tr>
-<tr>
-<td>arrAddAll()</td>
-<td>Adiciona vários elementos</td>
-</tr>
-<tr>
-<td>arrSet()</td>
-<td>Define elemento na posição</td>
-</tr>
-<tr>
-<td>arrGet()</td>
-<td>Obtém elemento na posição</td>
-</tr>
-<tr>
-<td>arrSize()</td>
-<td>Tamanho do array</td>
-</tr>
-<tr>
-<td>arrRemove()</td>
-<td>Remove elemento</td>
-</tr>
-<tr>
-<td>arrClear()</td>
-<td>Limpa array</td>
-</tr>
-<tr>
-<td>arrContains()</td>
-<td>Verifica se contém</td>
-</tr>
-<tr>
-<td>arrIndexOf()</td>
-<td>Índice do elemento</td>
-</tr>
-<tr>
-<td>arrLastIndexOf()</td>
-<td>Último índice do elemento</td>
-</tr>
-</table>
-
-<h3>Exemplo</h3>
-<div class="code">
-frutas = []
-r.arrAdd(frutas, "Banana")
-r.arrAdd(frutas, "Maçã")
-r.arrAdd(frutas, "Uva")
-
-for i in range(r.arrSize(frutas)):
-    r.rPrintln(r.arrGet(frutas, i))
-</div>
-<div class="output">
-Banana
-Maçã
-Uva
-</div>
-
-<h2>💾 Arquivos</h2>
-
-<h3>Salvando arquivo</h3>
-<div class="code">
-r.rSaveFile("meu_arquivo.txt", "Conteúdo do arquivo")
-</div>
-
-<h3>Lendo arquivo</h3>
-<div class="code">
-conteudo = r.rOpenFile("meu_arquivo.txt")
-r.rPrintln(conteudo)
-</div>
-
-<h3>Buscando URL</h3>
-<div class="code">
-// Busca conteúdo da URL
-conteudo = r.rOpenFileWeb("https://api.example.com/dados")
-
-// Acessa código HTTP
-status = r.rOpenFileWebStatus()
-r.rPrintln(f"Status: {status}")
-</div>
-
-<h3>Executando programa</h3>
-<div class="code">
-// Executa programa do sistema
-r.rOpenProgram("python3 script.py")
-</div>
-
-<h2>🔍 Exemplo Completo</h2>
-
-<h3>Python</h3>
-<div class="code">
-import sys
-sys.path.append('ouka')
-import ouka.Megusta as mg
-
-r = mg.Megusta()
-
-# Strings
-nome = r.rInput("Digite seu nome: ")
-r.rPrintln(f"Olá, {nome}!")
-
-# Data
-dia = r.dateDay()
-mes = r.dateMonth()
-ano = r.dateYear()
-r.rPrintln(f"Data: {dia}/{mes}/{ano}")
-
-# Matemática
-r.rPrintln(f"2^10 = {r.mathPow(2, 10)}")
-r.rPrintln(f"√144 = {r.mathSqrt(144)}")
-
-# Arrays
-numeros = []
-r.arrAdd(numeros, 10)
-r.arrAdd(numeros, 20)
-r.arrAdd(numeros, 30)
-r.rPrintln(f"Soma: {r.mathMax(numeros[0], numeros[1])}")
-</div>
-
-<h2>📚 Referências</h2>
+<h2>11. Links Úteis</h2>
 
 <ul>
 <li><strong>GitHub:</strong> https://github.com/iataganCursos/Megusta</li>
 <li><strong>Tutorial:</strong> https://iatagancursos.github.io/Megusta/tutorial-megusta/tutorial_megusta.html</li>
 <li><strong>Página Principal:</strong> https://iatagancursos.github.io/Megusta/pagina-principal.html</li>
-<li><strong>Documentação Python:</strong> chatgpt/python/</li>
-<li><strong>Documentação Java:</strong> chatgpt/java/</li>
-<li><strong>Documentação JavaScript:</strong> chatgpt/javascript/</li>
 </ul>
 
-<h2>🎯 Próximos Passos</h2>
-
-<ol>
-<li>Instale o Megusta no seu projeto</li>
-<li>Escreva seu primeiro programa</li>
-<li>Teste em diferentes linguagens</li>
-<li>Explore a API completa</li>
-<li>Contribua com o projeto!</li>
-</ol>
-
 <hr>
-<p style="text-align: center; color: #7f8c8d;">
-Correções feitas pela SNN Asael e fera do apocalipse 🚀
-</p>
 
-</div>
+<p align="center"><em>Correções feitas pela SNN Asael e fera do apocalipse</em></p>
+
 </body>
 </html>
