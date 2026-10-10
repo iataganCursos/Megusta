@@ -218,11 +218,6 @@ public class Megusta {
         Calendar DataToda = Calendar.getInstance();
         return DataToda.get(Calendar.DAY_OF_WEEK);
     }
-    public int dateMonth(){
-        // MONTH retorna 0=Janeiro..11=Dezembro, queremos 1=Janeiro..12=Dezembro
-        Calendar DataToda = Calendar.getInstance();
-        return DataToda.get(Calendar.MONTH) + 1;
-    }
     // dateMonth() é o método oficial (1-based: 1=Janeiro..12=Dezembro)
     // dateMouth() mantido apenas para compatibilidade retroativa
     public int dateMonth(){
