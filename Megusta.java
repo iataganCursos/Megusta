@@ -1,0 +1,450 @@
+package ouka;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.util.Calendar;
+import java.util.Scanner;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Locale;
+import java.util.List;
+import java.util.Collections;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
+public class Megusta {
+    private Integer lastHttpStatus = null;
+
+    public Megusta(){
+    }
+
+    // Program
+
+    public String rOpenFileWeb(String VarURL) throws Exception {
+        // Retorna o corpo da resposta. Use rOpenFileWebStatus() para o status HTTP.
+        this.lastHttpStatus = null;
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(VarURL))
+                .header("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36")
+                .GET()
+                .build();
+        
+        HttpResponse<String> response = client.send(request, 
+                HttpResponse.BodyHandlers.ofString());
+        
+        this.lastHttpStatus = response.statusCode();
+        return response.body();
+    }
+
+    public Integer rOpenFileWebStatus() {
+        return this.lastHttpStatus;
+    }
+    
+    // Alias para compatibilidade com código legado
+    public Integer rOpenFileWebStatusCode() {
+        return this.lastHttpStatus;
+    }
+
+    public void rPrint(Object message) {
+        System.out.print(message);
+    }
+    public void rPrintln(Object message) {
+        System.out.println(message);
+    }
+    public void rPrintln() {
+        System.out.println("");
+    }
+    public String rInput(String prompt) {
+        System.out.print(prompt);
+        java.util.Scanner scanner = new java.util.Scanner(System.in);
+        return scanner.nextLine();
+    }
+
+    public void rSaveFile(String nomeArquivo, String conteudo){
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomeArquivo))) {
+            writer.write(conteudo);
+            System.out.println("Arquivo " + nomeArquivo + " salvo com sucesso.");
+        } catch (IOException e) {
+            System.err.println("Erro ao salvar o arquivo: " + e.getMessage());
+        }
+    }
+
+    public String rOpenFile(String Arquivo){
+        String linha = "";
+        String linhaX = "";
+        Scanner leitor = null;
+        try {
+            File arquivo = new File(Arquivo);
+            leitor = new Scanner(arquivo);
+
+            while (leitor.hasNextLine()){
+                linha = leitor.nextLine();
+                linhaX = linhaX + linha + "\n";
+            }
+        } catch (FileNotFoundException e) {
+            System.err.println("Erro: O arquivo nao foi encontrado.");
+            e.printStackTrace();
+        } finally {
+            if (leitor != null) {
+                leitor.close();
+            }
+        }
+        return linhaX;
+    }
+
+    public void rOpenProgram(String nomePrograma) {
+        try {
+            Process processo = Runtime.getRuntime().exec(nomePrograma);
+        } catch (IOException e) {
+            System.out.println("Erro ao tentar abrir o Programa: " + e.getMessage());
+        }
+    }
+
+    // String
+
+    public String strReplace(String original, String var1, String var2){
+        return original.replace(var1, var2);
+    }
+    public int strLength(String minhaString){
+        return minhaString.length();
+    }
+    public String strSubstring(String original, int var1, int var2){
+        return original.substring(var1, var2);
+    }
+    public char strCharAt(String minhaString, int var1){
+        return minhaString.charAt(var1);
+    }
+    public int strIndexOf(String minhaString, String var1){
+        return minhaString.indexOf(var1);
+    }
+    public int strLastIndexOf(String minhaString, String var1){
+        return minhaString.lastIndexOf(var1);
+    }
+    public String strToLowerCase(String minhaString){
+        return minhaString.toLowerCase();
+    }
+    public String strToUpperCase(String minhaString){
+        return minhaString.toUpperCase();
+    }
+    public int strCompareTo(String string1, String string2){
+        return string1.compareTo(string2);
+    }
+    public int strCompareToIgnoreCase(String string1, String string2){
+        return string1.compareToIgnoreCase(string2);
+    }
+    public boolean strEquals(String string1, String string2){
+        return string1.equals(string2);
+    }
+    public boolean strEqualsIgnoreCase(String string1, String string2){
+        return string1.equalsIgnoreCase(string2);
+    }
+// =============================
+    public String strConcat(String ... strings){
+        StringBuilder resultado = new StringBuilder();
+        for (String str : strings) {
+            resultado.append(str);
+        }
+        return resultado.toString();
+    }
+    public boolean strStartsWith(String minhaString, String var1){
+        return minhaString.startsWith(var1);
+    }
+    public boolean strEndsWith(String minhaString, String var1){
+        return minhaString.endsWith(var1);
+    }
+    public boolean strIncludes(String minhaString, String var1){
+        return minhaString.contains(var1);
+    }
+    public String[] strSplit(String minhaString, String var1){
+        if (var1 == null || var1.isEmpty()) {
+            throw new IllegalArgumentException("Empty string cannot be used as a delimiter");
+        }
+        return minhaString.split(var1);
+    }
+    public String strPadStart(String minhaString, int var1, String var2){
+        String fillChar = (var2 != null && !var2.isEmpty()) ? var2 : " ";
+        return String.format("%" + var1 + "s", minhaString).replace(' ', fillChar.charAt(0));
+    }
+    public String strPadEnd(String minhaString, int var1, String var2){
+        String fillChar = (var2 != null && !var2.isEmpty()) ? var2 : " ";
+        return String.format("%-" + var1 + "s", minhaString).replace(' ', fillChar.charAt(0));
+    }
+    public String strRepeat(String minhaString, int var1){
+        return minhaString.repeat(var1);
+    }
+    public int strSearch(String minhaString, String regex){
+        // Busca por regex e retorna o índice da primeira ocorrência
+        try {
+            Pattern pattern = Pattern.compile(regex);
+            Matcher matcher = pattern.matcher(minhaString);
+            if (matcher.find()) {
+                return matcher.start();
+            }
+        } catch (Exception e) {
+            // Se não for regex válido, faz busca literal
+            return minhaString.indexOf(regex);
+        }
+        return -1;
+    }
+    public String strTrim(String minhaString){
+        return minhaString.trim();
+    }
+    public String strTrimStart(String minhaString){
+        return minhaString.replaceAll("^\\s+", "");
+    }
+    public String strTrimEnd(String minhaString){
+        return minhaString.replaceAll("\\s+$", "");
+    }
+    public String strSlice(String minhaString, int var1, int var2){
+        return minhaString.substring(var1, var2);
+    }
+// =============================
+    // Date
+
+    public int dateDay(){
+        Calendar DataToda = Calendar.getInstance();
+        return DataToda.get(Calendar.DATE);
+    }
+    public int dateWeekDay(){
+        // DAY_OF_WEEK retorna 1=Domingo..7=Sábado - já está correto!
+        Calendar DataToda = Calendar.getInstance();
+        return DataToda.get(Calendar.DAY_OF_WEEK);
+    }
+    // dateMonth() é o método oficial (1-based: 1=Janeiro..12=Dezembro)
+    // dateMouth() mantido apenas para compatibilidade retroativa
+    public int dateMonth(){
+        // MONTH retorna 0=Janeiro..11=Dezembro, queremos 1=Janeiro..12=Dezembro
+        Calendar DataToda = Calendar.getInstance();
+        return DataToda.get(Calendar.MONTH) + 1;
+    }
+    
+    // Alias para compatibilidade com código legado
+    public int dateMouth(){
+        return this.dateMonth();
+    }
+    public int dateYear(){
+        Calendar DataToda = Calendar.getInstance();
+        return  DataToda.get(Calendar.YEAR);
+    }
+    public int dateSetWeekDay(int x_ano, int x_mes, int x_dia){
+        // DAY_OF_WEEK retorna 1=Domingo..7=Sábado - já está correto!
+        Calendar DataToda = Calendar.getInstance();
+        DataToda.set(x_ano, x_mes - 1, x_dia); // MONTH é 0-based
+        return DataToda.get(Calendar.DAY_OF_WEEK);
+    }
+    public int dateHour24(){
+        Calendar DataToda = Calendar.getInstance();
+        return DataToda.get(Calendar.HOUR_OF_DAY);
+    }
+    public int dateMinute(){
+        Calendar DataToda = Calendar.getInstance();
+        return DataToda.get(Calendar.MINUTE);
+    }
+    public int dateSecond(){
+        Calendar DataToda = Calendar.getInstance();
+        return DataToda.get(Calendar.SECOND);
+    }
+
+    // Array
+
+    public int xArrLength(Object[] lista){
+        return lista.length;
+    }
+    public void arrAddAll(List<String> lista, String ... valor) {
+        Collections.addAll(lista, valor);
+    }
+    public void arrAdd(List<String> lista, String valor) {
+        lista.add(valor);
+    }
+    public void arrAdd(List<String> lista, int i, String valor) {
+        lista.add(i, valor);
+    }
+    public void arrSet(List<String> lista, int i, String valor) {
+        lista.set(i, valor);
+    }
+    public String arrGet(List<String> lista, int i) {
+        return lista.get(i);
+    }
+    public int arrSize(List<String> lista){
+        return lista.size();
+    }
+    public void arrRemove(List<String> lista, int i){
+        lista.remove(i);
+    }
+    public void arrClear(List<String> lista){
+        lista.clear();
+    }
+    public boolean arrContains(List<String> lista, String o){
+        return lista.contains(o);
+    }
+    public Object[] arrToArray(List<String> lista){
+        return lista.toArray();
+    }
+    public int arrIndexOf(List<String> lista, String o){
+        return lista.indexOf(o);
+    }
+    public int arrLastIndexOf(List<String> lista, String o){
+        return lista.lastIndexOf(o);
+    }
+
+    // Math
+
+    public long mathInt(String numeroString){
+        return Long.parseLong(numeroString);
+    }
+    public double mathNum(String numeroString){
+        return Double.parseDouble(numeroString);
+    }
+    public boolean mathBool(String booleanString){
+        return Boolean.parseBoolean(booleanString);
+    }
+    public double mathFloor(double numeroOriginal){
+        return Math.floor(numeroOriginal);
+    }
+    public double mathCeil(double numeroOriginal){
+        return Math.ceil(numeroOriginal);
+    }
+    public double mathRound(double numeroOriginal){
+        return Math.round(numeroOriginal);
+    }
+    public String mathDecimalFormat(double numero, String pattern){
+        // Criar um objeto DecimalFormat
+        DecimalFormat formato = new DecimalFormat(pattern);
+        String numeroFormatado = formato.format(numero);
+        return numeroFormatado;
+    }
+    public String mathNumberFormat(double numero,  String language, String country){
+        // Formatar o número de acordo com a localidade
+        try {
+            Locale locale = new Locale(language, country);
+            NumberFormat formato = NumberFormat.getInstance(locale);
+            String numeroFormatado = formato.format(numero);
+            return numeroFormatado;
+        } catch (Exception e) {
+            // Fallback para formato padrão
+            return String.format("%.2f", numero).replace('.', ',');
+        }
+    }
+    public double mathRandom(){
+        return Math.random();
+    }
+    public double mathAbs(double numero){
+        return Math.abs(numero);
+    }
+    public double mathMax(double numero1, double numero2){
+        return Math.max(numero1, numero2);
+    }
+    public double mathMin(double numero1, double numero2){
+        return Math.min(numero1, numero2);
+    }
+    public double mathMaxArr(double ... values) {
+        if (values.length == 0) {
+            throw new IllegalArgumentException("mathMaxArr requires at least one argument");
+        }
+        double max = values[0];
+        for (int i = 1; i < values.length; i++) {
+            if (values[i] > max) {
+                max = values[i];
+            }
+        }
+        return max;
+    }
+    public double mathMinArr(double ... values) {
+        if (values.length == 0) {
+            throw new IllegalArgumentException("mathMinArr requires at least one argument");
+        }
+        double min = values[0];
+        for (int i = 1; i < values.length; i++) {
+            if (values[i] < min) {
+                min = values[i];
+            }
+        }
+        return min;
+    }
+    public double mathPow(double base, double expoente){
+        return Math.pow(base, expoente);
+    }
+    public double mathSqrt(double numero){
+        return Math.sqrt(numero);
+    }
+    public double mathSQRT1_2 = 0.7071067811865476;
+    public double mathSQRT2 = 1.4142135623730951;
+    public double mathCbrt(double numero){
+        return Math.cbrt(numero);
+    }
+    public double mathSignum(double numero){
+        return Math.signum(numero);
+    }
+    public double mathPI = Math.PI;
+    // Função para converter graus para radianos
+    public double mathConvertToRadians(double graus) {
+        return graus * (Math.PI / 180.0);
+    }
+    public double mathSin(double angulo){
+        return Math.sin(angulo);
+    }
+    public double mathCos(double angulo){
+        return Math.cos(angulo);
+    }
+    public double mathTan(double angulo){
+        return Math.tan(angulo);
+    }
+    public double mathAsin(double valor){
+        return Math.asin(valor);
+    }
+    public double mathAcos(double valor){
+        return Math.acos(valor);
+    }
+    public double mathAtan(double valor){
+        return Math.atan(valor);
+    }
+    public double mathSinh(double valor){
+        return Math.sinh(valor);
+    }
+    public double mathCosh(double valor){
+        return Math.cosh(valor);
+    }
+    public double mathTanh(double valor){
+        return Math.tanh(valor);
+    }
+    // Função para calcular o arco seno hiperbólico
+    public double mathAsinh(double x) {
+        return Math.log(x + Math.sqrt(x*x + 1));
+    }
+    // Função para calcular o arco cosseno hiperbólico
+    public double mathAcosh(double x) {
+        return Math.log(x + Math.sqrt(x*x - 1));
+    }
+    // Função para calcular o arco tangente hiperbólico
+    public double mathAtanh(double x) {
+        return 0.5 * Math.log((1 + x) / (1 - x));
+    }
+    public double mathLog(double numero){
+        return Math.log(numero);
+    }
+    public double mathLog10(double numero){
+        return Math.log10(numero);
+    }
+    public double mathE = Math.E;
+    public double mathLN2 = Math.log(2.0);
+    public double mathLOG2E = Math.log(2.0) / Math.log(Math.exp(1.0));
+    public double mathLN10 = Math.log(10.0);
+    public double mathLOG10E = 1.0 / Math.log(10.0);
+    public double mathExp(double expoente){
+        return Math.exp(expoente);
+    }
+    public double mathLog2(double numero){
+        return Math.log(numero) / Math.log(2);
+    }
+    public double mathLog1p(double valor){
+        return Math.log1p(valor);
+    }
+}
