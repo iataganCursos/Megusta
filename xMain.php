@@ -1,3 +1,4 @@
+<?php header('Content-Type: text/html; charset=utf-8'); ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -143,7 +144,7 @@ $r->rPrintln($r->strRepeat("Hello", 3));           // HelloHelloHello
 $r->rPrintln($r->strReplace("Hello", "llo", "y")); // Hey
 $r->rPrintln($r->strSearch("Hello", "e"));         // 1
 $r->rPrintln($r->strSlice("Hello", 1, 3));         // el
-$v = $r->strSplit("Hello", "");           // ['H','e','l','l','o']
+$v = $r->strSplit("He,ll,o", ",");           // ['H','e','l','l','o']
 for($i=0; $i<$r->xArrLength($v);$i++) {
         $r->rPrintln($v[$i]);
 }
@@ -170,13 +171,13 @@ $r->rPrintln($r->strTrimEnd(" Hello "));         // " Hello"
         $Segundos = $r->dateSecond();
         // ---------------------------------------
         $semana = array();
-        $semana[0] = "Domingo";
-        $semana[1] = "Segunda";
-        $semana[2] = "Terça";
-        $semana[3] = "Quarta";
-        $semana[4] = "Quinta";
-        $semana[5] = "Sexta";
-        $semana[6] = "Sábado";
+        $semana[1] = "Domingo";
+        $semana[2] = "Segunda";
+        $semana[3] = "Terça";
+        $semana[4] = "Quarta";
+        $semana[5] = "Quinta";
+        $semana[6] = "Sexta";
+        $semana[7] = "Sábado";
         $Semana_atual = $semana[$Dia_da_semana];
         //-------------------------
         $Mes2 = array();
@@ -211,13 +212,13 @@ $r->rPrintln($r->strTrimEnd(" Hello "));         // " Hello"
         $Mes = $x_mes;
         $Ano = $x_ano;
 
-        $semana[0] = "Domingo";
-        $semana[1] = "Segunda";
-        $semana[2] = "Terça";
-        $semana[3] = "Quarta";
-        $semana[4] = "Quinta";
-        $semana[5] = "Sexta";
-        $semana[6] = "Sábado";
+        $semana[1] = "Domingo";
+        $semana[2] = "Segunda";
+        $semana[3] = "Terça";
+        $semana[4] = "Quarta";
+        $semana[5] = "Quinta";
+        $semana[6] = "Sexta";
+        $semana[7] = "Sábado";
         $Semana_atual = $semana[$Dia_da_semana];
         //-------------------------
         $Mes2[1] = "Janeiro";
