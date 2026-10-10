@@ -136,7 +136,7 @@ r.rPrintln(r.strReplace("Hello", "llo", "y")); # Hey
 r.rPrintln(r.strSearch("Hello", "e"));         # 1 (regex - encontra 'e' na posição 1)
 r.rPrintln(r.strSlice("Hello", 1, 3));         # el
 v = []
-v = r.strSplit("Hello", "l");           # ['He', '', 'o']
+v = r.strSplit("He,ll,o", ",");           # ['He', '', 'o']
 for i in range(r.xArrLength(v)):
     r.rPrintln(v[i]);
 r.rPrintln(r.strSubstring("Hello", 2, 4));     # ll
