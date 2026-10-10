@@ -9,36 +9,6 @@
 #include <fstream>
 #include <curl/curl.h>
 
-size_t WriteCallback(void* contents, size_t size, size_t nmemb, void* userp) {
-    ((std::string*)userp)->append((char*)contents, size * nmemb);
-    return size * nmemb;
-}
-
-typedef struct{
-    char **data;
-    int size;
-    int capacity;
-} StringList;
-
-struct Megusta{
-static void* xmalloc(size_t size) {
-    void* ptr = malloc(size);
-    if (!ptr) {
-        fprintf(stderr, "Erro: falha na alocacao de memoria.\n");
-        exit(EXIT_FAILURE);
-    }
-    return ptr;
-}
-
-static void* xrealloc(void* ptr, size_t size) {
-    void* newPtr = realloc(ptr, size);
-    if (!newPtr) {
-        fprintf(stderr, "Erro: falha na realocacao de memoria.\n");
-        exit(EXIT_FAILURE);
-    }
-    return newPtr;
-}
-
 /* =========================
    PROGRAM
 ========================= */
@@ -78,6 +48,36 @@ int main(){
 //typedef enum {false=0, true=1} boolean;
 
 #define MAX_INPUT 1024
+
+size_t WriteCallback(void* contents, size_t size, size_t nmemb, void* userp) {
+    ((std::string*)userp)->append((char*)contents, size * nmemb);
+    return size * nmemb;
+}
+
+typedef struct{
+    char **data;
+    int size;
+    int capacity;
+} StringList;
+
+struct Megusta{
+static void* xmalloc(size_t size) {
+    void* ptr = malloc(size);
+    if (!ptr) {
+        fprintf(stderr, "Erro: falha na alocacao de memoria.\n");
+        exit(EXIT_FAILURE);
+    }
+    return ptr;
+}
+
+static void* xrealloc(void* ptr, size_t size) {
+    void* newPtr = realloc(ptr, size);
+    if (!newPtr) {
+        fprintf(stderr, "Erro: falha na realocacao de memoria.\n");
+        exit(EXIT_FAILURE);
+    }
+    return newPtr;
+}
 
 void rPrint(const char *message, ...){
   if(message == NULL) {
@@ -427,7 +427,7 @@ char* strRepeat(const char* minhaString, int vezes) {
 
 /* Buscar substring */
 int strSearch(const char* minhaString, const char* regex) {
-    char* pos = strstr(minhaString, regex);
+    const char* pos = strstr(minhaString, regex);
 
     if (pos == NULL)
         return -1;
