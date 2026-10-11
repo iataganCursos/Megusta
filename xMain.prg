@@ -2,8 +2,13 @@
 
 PROCEDURE Main()
         LOCAL r
-        r := Megusta():New()
 
+        REQUEST HB_CodePage_UTF8
+        HB_CdpSelect("UTF8")
+
+        SET DECIMALS TO 10
+
+        r := Megusta():New()
 
         CLS
         r:rPrint("Esta eh uma mensagem de exemplo.")
@@ -141,7 +146,7 @@ r:rPrintln(r:strReplace("Hello", "llo", "y")) // Hey
 r:rPrintln(r:strSearch("Hello", "e"))         // 1
 r:rPrintln(r:strSlice("Hello", 1, 3))         // el
 
-v := r:strSplit("Hello", "")          // ['H','e','l','l','o']
+v := r:strSplit("He,ll,o", ",")          // ['H','e','l','l','o']
 
 FOR i := 1 TO Len(v)
     r:rPrintln(v[i])
@@ -171,15 +176,17 @@ r:rPrintln(r:strTrimEnd(" Hello "))         // " Hello"
         Minutos := r:dateMinute()
         Segundos := r:dateSecond()
         // ---------------------------------------
-        semana := {"", "Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sabado"}
+        semana := {"Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sabado"}
         Semana_atual := semana[Dia_da_semana]
 
         Mes2 := {"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"}
         Mes_atual := Mes2[Mes]
 
-        Texto += Semana_atual + ", " + str(Dia_do_mes) + " de " + Mes_atual + " de " + str(Ano)
-        Texto += "\n"
-        Texto += "São: " + str(Horas) + " horas, " + str(Minutos) + " minutos e " + str(Segundos) + " segundos."
+        Texto = Semana_atual + ", " + str(Dia_do_mes) + " de " + Mes_atual + " de " + str(Ano)
+
+        r:rPrintln(Texto)
+
+        Texto = "São: " + str(Horas) + " horas, " + str(Minutos) + " minutos e " + str(Segundos) + " segundos."
 
         r:rPrintln(Texto)
 
@@ -195,13 +202,13 @@ r:rPrintln(r:strTrimEnd(" Hello "))         // " Hello"
         Mes := x_mes
         Ano := x_ano
 
-        semana := {"", "Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sabado"}
+        semana := {"Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sabado"}
         Semana_atual := semana[Dia_da_semana]
 
         Mes2 := {"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"}
         Mes_atual := Mes2[Mes]
 
-        Texto += Semana_atual + ", " + str(Dia_do_mes) + " de " + Mes_atual + " de " + str(Ano)
+        Texto = Semana_atual + ", " + str(Dia_do_mes) + " de " + Mes_atual + " de " + str(Ano)
 
         r:rPrintln(Texto)
 
