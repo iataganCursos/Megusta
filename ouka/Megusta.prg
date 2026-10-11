@@ -184,45 +184,15 @@ METHOD rOpenProgram( cPrograma ) CLASS Megusta
 RETURN NIL
 
 METHOD rOpenFileWeb( cArquivo ) CLASS Megusta
-   // Retorna o corpo da resposta. Use rOpenFileWebStatus() para o status HTTP.
-   LOCAL cConteudo := ""
-   LOCAL nStatus := 0
-   
-   // Harbour 3.x+ tem HB_FetchURL()
-   IF HB_Version() >= "3.0.0"
-      TRY
-         cConteudo := HB_FetchURL( cArquivo, { "User-Agent": "Mozilla/5.0" } )
-      CATCH
-         // Fallback para métodos manuais
-         cConteudo := ""
-      END
-   ENDIF
-   
-   // Se HB_FetchURL não funcionou, tenta com RUN (fallback)
-   IF Empty( cConteudo )
-      LOCAL cOS := Lower( OS() )
-      LOCAL cTempFile := "megusta_temp_" + StrTran(Time(), ":", "") + ".txt"
-      
-      IF At( "windows", cOS ) > 0
-         RUN ("powershell -Command \"(Invoke-WebRequest -Uri '" + cArquivo + "').Content > '" + cTempFile + "'\"")
-      ELSE
-         RUN ("wget -q -O '" + cTempFile + "' '" + cArquivo + "'")
+   SISTEMA_OPERACIONAL = lower(os())
+      IF ::strIndexOf(SISTEMA_OPERACIONAL, "windows") >= 1
+            RUN ('cmd /c powershell -Command "Invoke-WebRequest -Uri ' + cArquivo + ' -OutFile x0001.txt"')
+      ELSEIF ::strIndexOf(SISTEMA_OPERACIONAL, "linux") >= 1
+            RUN ("wget -O x0001.txt " + cArquivo)
       ENDIF
-      
-      IF File( cTempFile )
-         cConteudo := MemoRead( cTempFile )
-         ERASE cTempFile
-         nStatus := 1  // Assume sucesso se arquivo foi lido
-      ENDIF
-   ENDIF
-   
-   // Armazena o status para acesso posterior
-   HB_SetValue("__megusta_last_http_status", nStatus)
-   
-RETURN cConteudo
-
-METHOD rOpenFileWebStatus() CLASS Megusta
-RETURN HB_GetValue("__megusta_last_http_status", -1)
+      arquivo := ::rOpenFile("x0001.txt")
+      ERASE "x0001.txt"
+RETURN arquivo
 /* =========================
    STRING
    ========================= */
@@ -344,7 +314,8 @@ METHOD strSplit( cString, cDelimiter ) CLASS Megusta
 
    // Se delimitador é vazio, lança exceção (consistente com Java/Python)
    IF Empty( cDelimiter )
-      THROW Exception{ "Empty string cannot be used as a delimiter" }
+      ? "Empty string cannot be used as a delimiter"
+      BREAK
    ENDIF
 
    DO WHILE .T.
@@ -844,7 +815,8 @@ METHOD mathMaxArr( ... ) CLASS Megusta
    LOCAL nCount := PCount()
    
    IF nCount == 0
-      THROW Exception{ "mathMaxArr requires at least one argument" }
+      ? "mathMaxArr requires at least one argument"
+      BREAK
    ENDIF
    
    nMax := PValue(1)
@@ -861,7 +833,8 @@ METHOD mathMinArr( ... ) CLASS Megusta
    LOCAL nCount := PCount()
    
    IF nCount == 0
-      THROW Exception{ "mathMinArr requires at least one argument" }
+      ? "mathMinArr requires at least one argument"
+      BREAK
    ENDIF
    
    nMin := PValue(1)
