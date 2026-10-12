@@ -315,7 +315,7 @@ METHOD strSplit( cString, cDelimiter ) CLASS Megusta
    // Se delimitador é vazio, lança exceção (consistente com Java/Python)
    IF Empty( cDelimiter )
       ? "Empty string cannot be used as a delimiter"
-      BREAK
+      QUIT
    ENDIF
 
    DO WHILE .T.
@@ -816,7 +816,7 @@ METHOD mathMaxArr( ... ) CLASS Megusta
    
    IF nCount == 0
       ? "mathMaxArr requires at least one argument"
-      BREAK
+      QUIT
    ENDIF
    
    nMax := PValue(1)
@@ -834,7 +834,7 @@ METHOD mathMinArr( ... ) CLASS Megusta
    
    IF nCount == 0
       ? "mathMinArr requires at least one argument"
-      BREAK
+      QUIT
    ENDIF
    
    nMin := PValue(1)
