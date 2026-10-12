@@ -127,14 +127,16 @@ r.rPrintln(r.strEndsWith("Hello", "o"));       # true
 r.rPrintln(r.strIncludes("Hello", "x"));       # false
 r.rPrintln(r.strIndexOf("Hello", "l"));        # 2
 r.rPrintln(r.strLastIndexOf("Hello", "l"));    # 3
+r.rPrintln(r.strPadStart("Hello", 6));         #  Hello (espaço padrão)
 r.rPrintln(r.strPadStart("Hello", 6, "?"));    # ?Hello
+r.rPrintln(r.strPadEnd("Hello", 6));           # Hello  (espaço padrão)
 r.rPrintln(r.strPadEnd("Hello", 6, "?"));      # Hello?
 r.rPrintln(r.strRepeat("Hello", 3));           # HelloHelloHello
 r.rPrintln(r.strReplace("Hello", "llo", "y")); # Hey
-r.rPrintln(r.strSearch("Hello", "e"));         # 1
+r.rPrintln(r.strSearch("Hello", "e"));         # 1 (regex - encontra 'e' na posição 1)
 r.rPrintln(r.strSlice("Hello", 1, 3));         # el
 v = []
-v = r.strSplit("Hello", "");           # ['H','e','l','l','o']
+v = r.strSplit("He,ll,o", ",");           # ['He', '', 'o']
 for i in range(r.xArrLength(v)):
     r.rPrintln(v[i]);
 r.rPrintln(r.strSubstring("Hello", 2, 4));     # ll

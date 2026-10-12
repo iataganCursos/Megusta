@@ -1,6 +1,9 @@
 #include "ouka/Megusta.cpp"
 
 int main(){
+        SetConsoleOutputCP(CP_UTF8);
+        SetConsoleCP(CP_UTF8);
+
         Megusta r;
         r.rPrint("Esta eh uma mensagem de exemplo.");
         r.rPrintln("Esta eh uma mensagem de exemplo.");

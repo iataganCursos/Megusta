@@ -140,7 +140,7 @@ r.rPrintln(r.strRepeat("Hello", 3));           // HelloHelloHello
 r.rPrintln(r.strReplace("Hello", "llo", "y")); // Hey
 r.rPrintln(r.strSearch("Hello", "e"));         // 1
 r.rPrintln(r.strSlice("Hello", 1, 3));         // el
-String v[] = r.strSplit("Hello", "");           // ['H','e','l','l','o']
+String v[] = r.strSplit("H,e,l,l,o", ",");           // ['H','e','l','l','o']
 for(int i=0; i<r.xArrLength(v);i++) {
         r.rPrintln(v[i]);
 }
@@ -158,7 +158,7 @@ r.rPrintln(r.strTrimEnd(" Hello "));         // " Hello"
 
         int Dia_do_mes = r.dateDay();
         int Dia_da_semana = r.dateWeekDay();
-        int Mes = r.dateMouth();
+        int Mes = r.dateMonth();
         int Ano = r.dateYear();
 
         // ---------------------------------------
