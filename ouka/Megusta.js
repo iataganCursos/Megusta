@@ -1,4 +1,3 @@
-"use strict";
 /*
 <!DOCTYPE html>
 <html>
@@ -34,15 +33,16 @@ class Megusta {
     }
     // Program
     rPrint(message = "") {
-        document.body.innerHTML += message;
+        if (typeof document !== "undefined" && document.body) {
+            document.body.innerHTML += message;
+        }
         console.log(message);
     }
     rPrintln(message = "") {
-        document.body.innerHTML += message + "<br>";
+        if (typeof document !== "undefined" && document.body) {
+            document.body.innerHTML += message + "<br>";
+        }
         console.log(message);
-    }
-    rInput(promptText = "") {
-        return prompt(promptText);
     }
     // String
     strReplace(original, var1, var2) {
@@ -307,4 +307,7 @@ class Megusta {
     mathLog1p(x) {
         return Math.log1p(x);
     }
+}
+module.exports = {
+    Megusta
 }

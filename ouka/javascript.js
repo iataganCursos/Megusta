@@ -1,54 +1,97 @@
-var req;
-function AjaxJS(url){
-    req = null;
+const fs = require('fs');
 
-    if (window.XMLHttpRequest) {
-        req = new XMLHttpRequest();
-        req.onreadystatechange = processReqChange;
-        req.open("GET", url, true); 
-        req.send(null);
+function AjaxJS(url, callback) {
+    if (typeof window !== 'undefined') {
+        let req = null;
 
-    } else if (window.ActiveXObject) {
-        try {
-            req = new ActiveXObject("Msxml2.XMLHTTP.4.0");
-        } catch(e) {
+        if (window.XMLHttpRequest) {
+            req = new XMLHttpRequest();
+            req.onreadystatechange = function () {
+                if (req.readyState === 4) {
+                    if (req.status === 200) {
+                        const textHTML = req.responseText;
+                        if (typeof callback === 'function') {
+                            callback(textHTML);
+                        }
+                    } else if (typeof callback === 'function') {
+                        callback('');
+                    }
+                }
+            };
+            req.open('GET', url, true);
+            req.send(null);
+            return req;
+        }
+
+        if (typeof window.ActiveXObject !== 'undefined') {
             try {
-                req = new ActiveXObject("Msxml2.XMLHTTP.3.0");
-            } catch(e) {
+                req = new ActiveXObject('Msxml2.XMLHTTP.4.0');
+            } catch (e) {
                 try {
-                    req = new ActiveXObject("Msxml2.XMLHTTP");
-                } catch(e) {
+                    req = new ActiveXObject('Msxml2.XMLHTTP.3.0');
+                } catch (e2) {
                     try {
-                        req = new ActiveXObject("Microsoft.XMLHTTP");
-                    } catch(e) {
-                        req = false;
+                        req = new ActiveXObject('Msxml2.XMLHTTP');
+                    } catch (e3) {
+                        try {
+                            req = new ActiveXObject('Microsoft.XMLHTTP');
+                        } catch (e4) {
+                            req = false;
+                        }
                     }
                 }
             }
+
+            if (req) {
+                req.onreadystatechange = function () {
+                    if (req.readyState === 4) {
+                        if (req.status === 200) {
+                            const textHTML = req.responseText;
+                            if (typeof callback === 'function') {
+                                callback(textHTML);
+                            }
+                        } else if (typeof callback === 'function') {
+                            callback('');
+                        }
+                    }
+                };
+                req.open('GET', url, true);
+                req.send();
+                return req;
+            }
         }
-        if (req) {
-            req.onreadystatechange = processReqChange;
-            req.open("GET", url, true);
-            req.send();
+    }
+
+    try {
+        const textHTML = fs.readFileSync(url, 'utf8');
+        if (typeof callback === 'function') {
+            callback(textHTML);
         }
+        return textHTML;
+    } catch (err) {
+        if (typeof callback === 'function') {
+            callback('');
+        }
+        console.error(err.message);
+        return '';
     }
 }
 
- function processReqChange(){
-    if (req.readyState == 4) {
-        if (req.status == 200) {
-            var textHTML = req.responseText;
-            rOpenFileWebJS(textHTML);
-
-        } else {
-            alert("Houve um problema ao obter os dados:\n" + req.statusText);
-        }
-    }
- }
-function rSaveFileJS(nomeArquivo, conteudo){
-    window.localStorage.setItem(nomeArquivo, conteudo);
-    window.localStorage.setItem('timestamp', (new Date()).getTime());
+function rSaveFileJS(nomeArquivo, conteudo) {
+    fs.writeFileSync(nomeArquivo, conteudo, 'utf8');
 }
- function rOpenFileJS(nomeArquivo){
-    return window.localStorage.getItem(nomeArquivo);
- }
+
+function rOpenFileJS(nomeArquivo) {
+    try {
+        return fs.readFileSync(nomeArquivo, 'utf8');
+    } catch (err) {
+        console.error(err.message);
+        return '';
+    }
+}
+
+module.exports = {
+    AjaxJS,
+    rSaveFileJS,
+    rOpenFileJS
+};
