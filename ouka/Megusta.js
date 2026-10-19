@@ -44,6 +44,11 @@ class Megusta {
         }
         console.log(message);
     }
+    rInput(promptText = "") {
+        return typeof window !== "undefined" && typeof window.prompt === "function"
+            ? window.prompt(promptText)
+            : "";
+    }
     // String
     strReplace(original, var1, var2) {
         return original.replace(var1, var2);
@@ -308,6 +313,8 @@ class Megusta {
         return Math.log1p(x);
     }
 }
-module.exports = {
-    Megusta
+if (typeof module !== "undefined" && module.exports) {
+    module.exports = { Megusta };
+} else if (typeof window !== "undefined") {
+    window.Megusta = Megusta;
 }

@@ -1,4 +1,13 @@
-const fs = require('fs');
+const fs = typeof require === 'function' ? require('fs') : null;
+
+function openResponse(textHTML, callback) {
+    const handler = typeof callback === 'function'
+        ? callback
+        : (typeof rOpenFileWebJS === 'function' ? rOpenFileWebJS : null);
+    if (handler) {
+        handler(textHTML);
+    }
+}
 
 function AjaxJS(url, callback) {
     if (typeof window !== 'undefined') {
@@ -10,11 +19,9 @@ function AjaxJS(url, callback) {
                 if (req.readyState === 4) {
                     if (req.status === 200) {
                         const textHTML = req.responseText;
-                        if (typeof callback === 'function') {
-                            callback(textHTML);
-                        }
-                    } else if (typeof callback === 'function') {
-                        callback('');
+                        openResponse(textHTML, callback);
+                    } else {
+                        openResponse('', callback);
                     }
                 }
             };
@@ -47,11 +54,9 @@ function AjaxJS(url, callback) {
                     if (req.readyState === 4) {
                         if (req.status === 200) {
                             const textHTML = req.responseText;
-                            if (typeof callback === 'function') {
-                                callback(textHTML);
-                            }
-                        } else if (typeof callback === 'function') {
-                            callback('');
+                            openResponse(textHTML, callback);
+                        } else {
+                            openResponse('', callback);
                         }
                     }
                 };
@@ -60,6 +65,10 @@ function AjaxJS(url, callback) {
                 return req;
             }
         }
+    }
+
+    if (!fs) {
+        throw new Error('File access is unavailable in this environment.');
     }
 
     try {
@@ -78,10 +87,20 @@ function AjaxJS(url, callback) {
 }
 
 function rSaveFileJS(nomeArquivo, conteudo) {
+    if (typeof window !== 'undefined') {
+        window.localStorage.setItem(nomeArquivo, conteudo);
+        return;
+    }
     fs.writeFileSync(nomeArquivo, conteudo, 'utf8');
 }
 
 function rOpenFileJS(nomeArquivo) {
+    if (typeof window !== 'undefined') {
+        return window.localStorage.getItem(nomeArquivo);
+    }
+    if (!fs) {
+        throw new Error('File access is unavailable in this environment.');
+    }
     try {
         return fs.readFileSync(nomeArquivo, 'utf8');
     } catch (err) {
@@ -90,8 +109,14 @@ function rOpenFileJS(nomeArquivo) {
     }
 }
 
-module.exports = {
-    AjaxJS,
-    rSaveFileJS,
-    rOpenFileJS
-};
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = {
+        AjaxJS,
+        rSaveFileJS,
+        rOpenFileJS
+    };
+} else if (typeof window !== 'undefined') {
+    window.AjaxJS = AjaxJS;
+    window.rSaveFileJS = rSaveFileJS;
+    window.rOpenFileJS = rOpenFileJS;
+}
