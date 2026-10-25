@@ -123,12 +123,12 @@ impl Megusta {
         }
     }
 
-    pub fn r_open_program(&self, nome_programa: &str) {
+    pub fn r_open_program(&self, nome_programa: &str) -> io::Result<()> {
         let v: Vec<&str> = nome_programa.split(' ').collect();
         Command::new(v[0])
             .args(&v[1..])
             .spawn()
-            .expect("Falha ao abrir o programa");
+            .map(|_| ())
     }
 
     // String
