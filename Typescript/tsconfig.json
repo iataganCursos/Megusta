@@ -1,0 +1,11 @@
+{
+  /* Use o comando tsc para compilar */
+  "compilerOptions": {
+    "target": "ES2017",
+    "module": "CommonJS", // Use "NodeNext" ou "ESNext" dependendo do ambiente
+    "outDir": "./dist",   // Pasta onde os arquivos .js gerados vão ficar
+    "rootDir": "./Typescript", // Pasta onde estão os arquivos .ts
+    "types": ["node"]
+  },
+  "include": ["Typescript/**/*"]
+}
